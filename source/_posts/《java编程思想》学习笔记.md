@@ -1,0 +1,59 @@
+---
+layout: post
+title: java 类型类（Class）
+subtitle: object.getclass()和ClassName.class
+date: 2017-11-10
+categories: 读书笔记
+tags: java 编程语言
+---
+
+# 类型类
+
+> 我们知道在Java中一切都是对象，我们一般所使用的对象都继承自Object类。
+
+- Object类有一 **.getClass()** 方法，可以返回当前实例的类型类。
+- 类型类指的是 **代表类型的类** ，（因为一切皆是对象，类的类型也不例外），在Java使用类型类来表示一个类型。
+- 所有的类型类都是Class类的实例。
+
+# getClass and .class
+
+一般情况下，getclass（）方法和class（）方法是等价的，都可以获得一个类型名。
+
+```java
+class A{}
+
+public class Test {
+    public static void main(String[] args) {
+        A a = new A();
+        System.out.println(a.getClass()+" "+A.class);
+        //输出的结果为：class A class A
+    }
+}
+```
+
+- getClass() 一个类实例的方法, 运行时确定
+- .class 一个类的方法。 编译时确定
+
+# 运行时确定
+
+```java
+class A{}
+
+class B extends A{}
+public class Test {
+    public static void main(String[] args) {
+        A a = new A();
+        B b = new B();
+        A ab = new B();
+        System.out.println(a.getClass()+" "+A.class);
+        System.out.println(b.getClass()+" "+B.class);
+        System.out.println(ab.getClass());
+        ab = a;
+        System.out.println(ab.getClass());
+    }
+}
+```
+
+执行结果： class A class A class B class B class B class A
+
+因为是运行时确定，所以ab.getClass() 返回的是当前所指向实例的类型类
