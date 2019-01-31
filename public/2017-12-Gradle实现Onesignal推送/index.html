@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.6.0" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.6.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.6.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.6.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.6.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '6.6.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="OneSignalOneSignal 暴露了许多REST API，只要拿到对应的appId，通过简单的http请求就能向集成OneSignal推送的目标设备发起推送。不仅如果，各种与其平台相关的操作都有API。  实现https请求有许多方式，各个语言也是各显神通。Onesignal十分友好的提供了各语言的简单实现，满足各种情况的推送需求。  请求结构  OneSignal 发送推送 API 需要">
+<meta name="keywords" content="工具 脚本">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Gradle实现Onesignal推送">
+<meta property="og:url" content="http://yoursite.com/2017-12-Gradle实现Onesignal推送/index.html">
+<meta property="og:site_name" content="cchao1024 blog">
+<meta property="og:description" content="OneSignalOneSignal 暴露了许多REST API，只要拿到对应的appId，通过简单的http请求就能向集成OneSignal推送的目标设备发起推送。不仅如果，各种与其平台相关的操作都有API。  实现https请求有许多方式，各个语言也是各显神通。Onesignal十分友好的提供了各语言的简单实现，满足各种情况的推送需求。  请求结构  OneSignal 发送推送 API 需要">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/images/2017-12/push1.png">
+<meta property="og:image" content="http://yoursite.com/images/2017-12/push2.png">
+<meta property="og:image" content="http://yoursite.com/images/2017-12/push3.png">
+<meta property="og:image" content="http://yoursite.com/images/2017-12/push4.png">
+<meta property="og:image" content="http://yoursite.com/images/2017-12/push5.png">
+<meta property="og:image" content="http://yoursite.com/images/2017-12/push6.png">
+<meta property="og:updated_time" content="2018-12-23T15:12:11.830Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Gradle实现Onesignal推送">
+<meta name="twitter:description" content="OneSignalOneSignal 暴露了许多REST API，只要拿到对应的appId，通过简单的http请求就能向集成OneSignal推送的目标设备发起推送。不仅如果，各种与其平台相关的操作都有API。  实现https请求有许多方式，各个语言也是各显神通。Onesignal十分友好的提供了各语言的简单实现，满足各种情况的推送需求。  请求结构  OneSignal 发送推送 API 需要">
+<meta name="twitter:image" content="http://yoursite.com/images/2017-12/push1.png">
+
+
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017-12-Gradle实现Onesignal推送/">
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Gradle实现Onesignal推送 | cchao1024 blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">cchao1024 blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-schedule">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/schedule/" rel="section"><i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>Schedule</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-commonweal">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/404/" rel="section"><i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>Commonweal 404</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017-12-Gradle实现Onesignal推送/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="cchao1024">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/config/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="cchao1024 blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Gradle实现Onesignal推送
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2017-12-22 00:00:00" itemprop="dateCreated datePublished" datetime="2017-12-22T00:00:00+08:00">2017-12-22</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2018-12-23 23:12:11" itemprop="dateModified" datetime="2018-12-23T23:12:11+08:00">2018-12-23</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/gradle/" itemprop="url" rel="index"><span itemprop="name">gradle</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="OneSignal"><a href="#OneSignal" class="headerlink" title="OneSignal"></a>OneSignal</h1><p>OneSignal 暴露了许多REST API，只要拿到对应的appId，通过简单的http请求就能向集成OneSignal推送的目标设备发起推送。不仅如果，各种与其平台相关的操作都有API。</p>
+<p><img src="../images/2017-12/push1.png" alt="REST API"></p>
+<p>实现https请求有许多方式，各个语言也是各显神通。Onesignal十分友好的提供了各语言的简单实现，满足各种情况的推送需求。</p>
+<p><img src="../images/2017-12/push2.png" alt="REST API"></p>
+<h1 id="请求结构"><a href="#请求结构" class="headerlink" title="请求结构"></a>请求结构</h1><p>  OneSignal 发送推送 API 需要Post json数据到 <strong><a href="https://onesignal.com/api/v1/notifications" target="_blank" rel="noopener">https://onesignal.com/api/v1/notifications</a></strong></p>
+<p>  请求头部信息：</p>
+<ul>
+<li>Content-Type: application/json; charset=utf-8</li>
+<li><p>Authorization: Basic XXX（授权码）</p>
+<p>授权码，我瞎写了一个也能跑的通。暂不知道为什么</p>
+</li>
+</ul>
+<h1 id="请求体"><a href="#请求体" class="headerlink" title="请求体"></a>请求体</h1><p>  请求体是封装好相应所需参数的json字符串。以下为相应所需参数。</p>
+<ul>
+<li>app_id 或者 app_ids（推送多个app） 是必须的，但别两个都发</li>
+</ul>
+<p><img src="../images/2017-12/push3.png" alt=""></p>
+<table>
+<thead>
+<tr>
+<th>key</th>
+<th>说明</th>
+<th>数据结构</th>
+<th>example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>contents</td>
+<td>推送内容</td>
+<td>对象</td>
+<td>{“en”: “English Message”, “es”: “Spanish Message”}</td>
+</tr>
+<tr>
+<td>headings</td>
+<td>推送标题</td>
+<td>对象</td>
+<td>{“en”: “English Title”, “es”: “Spanish Title”}</td>
+</tr>
+<tr>
+<td>subtitle</td>
+<td>推送子标题</td>
+<td>对象(仅ios 10+)</td>
+<td>{“en”: “English Title”, “es”: “Spanish Title”}</td>
+</tr>
+<tr>
+<td>big_picture</td>
+<td>推送大图</td>
+<td>字符串(仅android)</td>
+<td>“big_picture.png”</td>
+</tr>
+<tr>
+<td>data</td>
+<td>携带的数据</td>
+<td>自定义</td>
+<td>自己协定好的格式，取到后能正常解析就行</td>
+</tr>
+<tr>
+<td>include_player_ids</td>
+<td>推送的设备</td>
+<td>数组</td>
+<td>[“AAA”,”BBB”]</td>
+</tr>
+</tbody>
+</table>
+<p>推送设备id是Onesignal给设备生成的UUID，类似这样的：6392d91a-b206-4b7b-a620-cd68e32c3a76</p>
+<h1 id="gradle-实现"><a href="#gradle-实现" class="headerlink" title="gradle 实现"></a>gradle 实现</h1><p>前文说到onesignal提供了许多实现，为了实现gradle脚本任务发起Http推送请求，果断选择了curl，光说有什么用，上代码呀。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> groovy.json.JsonOutput</span><br><span class="line"></span><br><span class="line"><span class="function">task <span class="title">push</span><span class="params">(type:Exec)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// App id ,很重要 望谨慎</span></span><br><span class="line">    def appId = <span class="string">"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx"</span></span><br><span class="line">    def REST_API_KEY = <span class="string">"MjY5NTljOsdfcyMC00asdaffdasfszMTktODQ2ZDU2NGVmMmQy"</span></span><br><span class="line">    <span class="comment">// 测试设备OneSignal Id</span></span><br><span class="line">    def playerIds = [<span class="string">"67bc0e94-88ca-4439-b108-abf6f3d63f3d"</span>]</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 推送的标题 &#123;"en": "English Title", "es": "Spanish Title"&#125;</span></span><br><span class="line">    def title = [en: <span class="string">"Test Title"</span>]</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 推送的内容 &#123;"en": "English Message", "es": "Spanish Message"&#125;</span></span><br><span class="line">    def content = [en: <span class="string">"Test Message"</span>]</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 推送的子标题 iOS 10+  &#123;"en": "English Subtitle", "es": "Spanish Subtitle"&#125;</span></span><br><span class="line">    def subtitle = [en: <span class="string">"English Subtitle"</span>]</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 各端协定好的携带的数据</span></span><br><span class="line">    def data = [t:<span class="string">"flashdeals"</span>,p:<span class="string">"10086"</span>]</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 目标地址</span></span><br><span class="line">    def targetUrl = <span class="string">"\"https://onesignal.com/api/v1/notifications\""</span></span><br><span class="line"></span><br><span class="line">    def shell = [<span class="string">"curl"</span>]</span><br><span class="line">    shell.add(<span class="string">"-v"</span>)</span><br><span class="line">    shell.add(<span class="string">"--http2"</span>)</span><br><span class="line">    shell.add(<span class="string">"-i"</span>)</span><br><span class="line">    shell.add(<span class="string">"-H \"Content-Type:application/json;charset=utf-8\""</span>)</span><br><span class="line">    shell.add(<span class="string">"-H \"Authorization:Basic "</span> + REST_API_KEY +<span class="string">"\""</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment">// map封装json</span></span><br><span class="line">    def <span class="built_in">map</span> = [<span class="string">"app_id"</span>: appId]</span><br><span class="line">    <span class="built_in">map</span>.put(<span class="string">"headings"</span>, title)</span><br><span class="line">    <span class="built_in">map</span>.put(<span class="string">"subtitle"</span>, subtitle)</span><br><span class="line">    <span class="built_in">map</span>.put(<span class="string">"contents"</span>, content)</span><br><span class="line">    <span class="built_in">map</span>.put(<span class="string">"data"</span>, data)</span><br><span class="line">    <span class="built_in">map</span>.put(<span class="string">"include_player_ids"</span>, playerIds)</span><br><span class="line"></span><br><span class="line">    shell.add(<span class="string">"-d \""</span> + JsonOutput.toJson(<span class="built_in">map</span>).replaceAll(<span class="string">"\""</span>,<span class="string">"\\\\\""</span>)+<span class="string">"\""</span>)</span><br><span class="line"></span><br><span class="line">    shell.add(targetUrl)</span><br><span class="line">    def curlStr=<span class="string">""</span></span><br><span class="line">    <span class="keyword">for</span>(i in shell)&#123;</span><br><span class="line">        curlStr += i + <span class="string">" "</span></span><br><span class="line">    &#125;</span><br><span class="line">    println curlStr</span><br><span class="line">    if (System.properties['os.name'].contains('windows'))&#123;</span><br><span class="line">      commandLine 'cmd', '/c', curlStr</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      commandLine curlStr</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>最后一行，根据使用的操作系统会有差异。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">task <span class="title">stopTomcat</span><span class="params">(type:Exec)</span> </span>&#123;</span><br><span class="line">  workingDir <span class="string">'../tomcat/bin'</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">//on windows:</span></span><br><span class="line">  commandLine <span class="string">'cmd'</span>, <span class="string">'/c'</span>, <span class="string">'stop.bat'</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">//on linux</span></span><br><span class="line">  commandLine <span class="string">'./stop.sh'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在当前目录打开终端命令行，输入命令 gradle push，</p>
+<p><img src="../images/2017-12/push4.png" alt=""></p>
+<p>一切正常会收到推送id（可以用来取消刚才的推送）和影响的设备数。</p>
+<p>上文的curl，如果测试正常，可以去除 -v 和 -i</p>
+<p>再本地测试ok后，可酌情把代码放入项目中，在笔者的android studio开发环境是携带一个终端的，我就可以直接在开发环境就能调起推送测试</p>
+<p><img src="../images/2017-12/push5.png" alt=""></p>
+<h1 id="进阶"><a href="#进阶" class="headerlink" title="进阶"></a>进阶</h1><blockquote>
+<p>当我完成这一系列操作后，打算上传代码时。发现需求还要求把这个task做成工具，其他人只要引用就可以跑。在我一脸懵逼，抽个烟后冷静后。又开始了哒哒哒。</p>
+</blockquote>
+<p>在仔细阅读完需求后，感觉还是合情合理的，不可能我推送一次改一次。一次性把所有支持的推送格式都推出去，然后慢慢测。</p>
+<p>然后duang的一下，我就想到了解决方案。</p>
+<p>我可以这样，让引用我这个Task的人先把请求数据结构按我想要的结构写好、放好，然后当他调用我任务时，我就去读取规定好的变量的值，然后把这些值处理后继续我的Curl 发推送。</p>
+<p>规定以json格式放在项目gradle文件里的 push_test_json里，写入如下必要的参数。list数组的里面编写推送内容。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line">ext &#123;</span><br><span class="line">    push_test_json = <span class="string">'''</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="string">"app_id"</span>: <span class="string">"xxxxxx-xxxx-xxxx-xxxxx-xxxxxxxxx"</span>,</span><br><span class="line">    <span class="string">"REST_API_KEY"</span>: <span class="string">"XXXXXXXXXXXXXXXXXXXXXy"</span>,</span><br><span class="line">    <span class="string">"playerIds"</span>: [<span class="string">"67bc0e94-88ca-4439-b108-abf6f3d63f3d"</span>],</span><br><span class="line">    <span class="string">"list"</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="string">"headings"</span>: &#123;<span class="string">"en"</span>: <span class="string">"English Title"</span>, <span class="string">"es"</span>: <span class="string">"Spanish Title"</span>&#125;,</span><br><span class="line">            <span class="string">"subtitle"</span>: &#123;<span class="string">"en"</span>: <span class="string">"English Subtitle"</span>, <span class="string">"es"</span>: <span class="string">"Spanish Subtitle"</span>&#125;,</span><br><span class="line">            <span class="string">"contents"</span>: &#123;<span class="string">"en"</span>: <span class="string">"English Message"</span>, <span class="string">"es"</span>: <span class="string">"Spanish Message"</span>&#125;,</span><br><span class="line">            <span class="string">"big_picture"</span>:<span class="string">"big_picture"</span>,</span><br><span class="line">            <span class="string">"data"</span>: &#123;<span class="string">"t"</span>:<span class="string">"flashdeals"</span>,<span class="string">"p"</span>:<span class="string">"1111111"</span>&#125;,</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="string">"headings"</span>: &#123;<span class="string">"en"</span>: <span class="string">"English Title2"</span>, <span class="string">"es"</span>: <span class="string">"Spanish Title"</span>&#125;,</span><br><span class="line">            <span class="string">"subtitle"</span>: &#123;<span class="string">"en"</span>: <span class="string">"English Subtitle2"</span>, <span class="string">"es"</span>: <span class="string">"Spanish Subtitle"</span>&#125;,</span><br><span class="line">            <span class="string">"contents"</span>: &#123;<span class="string">"en"</span>: <span class="string">"English Message2"</span>, <span class="string">"es"</span>: <span class="string">"Spanish Message"</span>&#125;,</span><br><span class="line">            <span class="string">"data"</span>: &#123;<span class="string">"t"</span>:<span class="string">"flashdeals"</span>,<span class="string">"p"</span>:<span class="string">"22222222"</span>&#125;</span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br><span class="line"><span class="string">'''</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">task push &#123;</span><br><span class="line">    doLast &#123;</span><br><span class="line">        <span class="comment">// 目标地址</span></span><br><span class="line">        def targetUrl = <span class="string">"\"https://onesignal.com/api/v1/notifications\""</span></span><br><span class="line"></span><br><span class="line">        def jsonSlurper = <span class="keyword">new</span> JsonSlurper()</span><br><span class="line">        Object rootJson = jsonSlurper.parseText(rootProject.push_test_json)</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 遍历要发送的推送</span></span><br><span class="line">        rootJson.<span class="built_in">list</span>.each &#123;</span><br><span class="line">            def shell = [<span class="string">"curl"</span>]</span><br><span class="line">            shell.add(<span class="string">"--http2"</span>)</span><br><span class="line">            shell.add(<span class="string">"-H \"Content-Type:application/json;charset=utf-8\""</span>)</span><br><span class="line">            shell.add(<span class="string">"-H \"Authorization:Basic "</span> + rootJson.REST_API_KEY + <span class="string">"\""</span>)</span><br><span class="line"></span><br><span class="line">            def <span class="built_in">map</span> = [<span class="string">"app_id"</span>: rootJson.app_id]</span><br><span class="line">            <span class="built_in">map</span>.put(<span class="string">"headings"</span>, it.headings)</span><br><span class="line">            <span class="built_in">map</span>.put(<span class="string">"subtitle"</span>, it.subtitle)</span><br><span class="line">            <span class="built_in">map</span>.put(<span class="string">"contents"</span>, it.contents)</span><br><span class="line">            <span class="built_in">map</span>.put(<span class="string">"big_picture"</span>, it.big_picture)</span><br><span class="line">            <span class="built_in">map</span>.put(<span class="string">"data"</span>, it.data)</span><br><span class="line">            <span class="built_in">map</span>.put(<span class="string">"include_player_ids"</span>, rootJson.playerIds)</span><br><span class="line"></span><br><span class="line">            shell.add(<span class="string">"-d \""</span> + JsonOutput.toJson(<span class="built_in">map</span>).replaceAll(<span class="string">"\""</span>, <span class="string">"\\\\\""</span>) + <span class="string">"\""</span>)</span><br><span class="line"></span><br><span class="line">            shell.add(targetUrl)</span><br><span class="line">            def curlStr = <span class="string">""</span></span><br><span class="line">            <span class="keyword">for</span> (i in shell) &#123;</span><br><span class="line">                curlStr += i + <span class="string">" "</span></span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            def outPut = <span class="keyword">new</span> ByteArrayOutputStream()</span><br><span class="line">            println <span class="string">"\n发送请求: \n"</span> + curlStr</span><br><span class="line">            exec &#123;</span><br><span class="line">                commandLine 'cmd', '/c', curlStr</span><br><span class="line">                standardOutput = outPut</span><br><span class="line">            &#125;</span><br><span class="line">            println <span class="string">"\n收到Onesignal响应: "</span> + outPut.toString()</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>同样，在终端输入命令 就能发出推送了。</p>
+<p><img src="../images/2017-12/push6.png" alt=""></p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+       
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/工具-脚本/" rel="tag"># 工具 脚本</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017-12-Gradle简明教程/" rel="next" title="Gradle简明教程">
+                <i class="fa fa-chevron-left"></i> Gradle简明教程
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017-12-科学上网原理/" rel="prev" title="科学上网原理">
+                科学上网原理 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/config/avatar.png" alt="cchao1024">
+            
+              <p class="site-author-name" itemprop="name">cchao1024</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">28</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">9</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">18</span>
+                    <span class="site-state-item-name">tags</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#OneSignal"><span class="nav-number">1.</span> <span class="nav-text">OneSignal</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#请求结构"><span class="nav-number">2.</span> <span class="nav-text">请求结构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#请求体"><span class="nav-number">3.</span> <span class="nav-text">请求体</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#gradle-实现"><span class="nav-number">4.</span> <span class="nav-text">gradle 实现</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#进阶"><span class="nav-number">5.</span> <span class="nav-text">进阶</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">cchao1024</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v6.6.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.6.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.6.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.6.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.6.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.6.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.6.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.6.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

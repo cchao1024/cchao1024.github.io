@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.6.0" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.6.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.6.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.6.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.6.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '6.6.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="推送平台GCM(Google Cloud Messaging)gcm是google提供的一个免费推送服务,可以实现客户端和服务器之前的推送。（包括客服端推送消息到服务器或者服务器推送消息到客户端） FCM(Firebase Cloud Messaging)Firebase云消息传递是GCM的新版本。它继承了可靠和可扩展的GCM基础架构，以及新的功能！ 使用 GCM/FCM，您可以通知客户端应用存在">
+<meta name="keywords" content="工具">
+<meta property="og:type" content="article">
+<meta property="og:title" content="安卓推送实现原理">
+<meta property="og:url" content="http://yoursite.com/2017-11-安卓推送原理/index.html">
+<meta property="og:site_name" content="cchao1024 blog">
+<meta property="og:description" content="推送平台GCM(Google Cloud Messaging)gcm是google提供的一个免费推送服务,可以实现客户端和服务器之前的推送。（包括客服端推送消息到服务器或者服务器推送消息到客户端） FCM(Firebase Cloud Messaging)Firebase云消息传递是GCM的新版本。它继承了可靠和可扩展的GCM基础架构，以及新的功能！ 使用 GCM/FCM，您可以通知客户端应用存在">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/images/2017-11/push2.jpg">
+<meta property="og:image" content="http://yoursite.com/images/2017-11/push1.png">
+<meta property="og:image" content="http://yoursite.com/images/2017-11/push3.png">
+<meta property="og:image" content="http://yoursite.com/images/2017-11/push4.png">
+<meta property="og:image" content="http://yoursite.com/images/2017-11/push6.png">
+<meta property="og:image" content="http://yoursite.com/images/2017-11/push7.png">
+<meta property="og:image" content="http://yoursite.com/images/2017-11/push8.png">
+<meta property="og:updated_time" content="2018-12-23T15:12:16.709Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="安卓推送实现原理">
+<meta name="twitter:description" content="推送平台GCM(Google Cloud Messaging)gcm是google提供的一个免费推送服务,可以实现客户端和服务器之前的推送。（包括客服端推送消息到服务器或者服务器推送消息到客户端） FCM(Firebase Cloud Messaging)Firebase云消息传递是GCM的新版本。它继承了可靠和可扩展的GCM基础架构，以及新的功能！ 使用 GCM/FCM，您可以通知客户端应用存在">
+<meta name="twitter:image" content="http://yoursite.com/images/2017-11/push2.jpg">
+
+
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017-11-安卓推送原理/">
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>安卓推送实现原理 | cchao1024 blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">cchao1024 blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-schedule">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/schedule/" rel="section"><i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>Schedule</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-commonweal">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/404/" rel="section"><i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>Commonweal 404</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017-11-安卓推送原理/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="cchao1024">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/config/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="cchao1024 blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">安卓推送实现原理
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2017-11-28 00:00:00" itemprop="dateCreated datePublished" datetime="2017-11-28T00:00:00+08:00">2017-11-28</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2018-12-23 23:12:16" itemprop="dateModified" datetime="2018-12-23T23:12:16+08:00">2018-12-23</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="推送平台"><a href="#推送平台" class="headerlink" title="推送平台"></a>推送平台</h1><h4 id="GCM-Google-Cloud-Messaging"><a href="#GCM-Google-Cloud-Messaging" class="headerlink" title="GCM(Google Cloud Messaging)"></a>GCM(Google Cloud Messaging)</h4><p>gcm是google提供的一个免费推送服务,可以实现客户端和服务器之前的推送。（包括客服端推送消息到服务器或者服务器推送消息到客户端）</p>
+<h4 id="FCM-Firebase-Cloud-Messaging"><a href="#FCM-Firebase-Cloud-Messaging" class="headerlink" title="FCM(Firebase Cloud Messaging)"></a>FCM(Firebase Cloud Messaging)</h4><p>Firebase云消息传递是GCM的新版本。它继承了可靠和可扩展的GCM基础架构，以及新的功能！</p>
+<p>使用 GCM/FCM，您可以通知客户端应用存在可同步的新电子邮件或其他数据。您可以发送通知消息以再次吸引用户并促进用户留存。在即时消息传递等使用情形中，一条消息可将最大 4KB 的有效负载传送至客户端应用。</p>
+<h4 id="OneSignal"><a href="#OneSignal" class="headerlink" title="OneSignal"></a>OneSignal</h4><p>OneSignal是提供针对网站和移动应用的高容量和可靠推送通知服务的平台。实现了GCM / FCM（Google），APNS（Apple）和Web Push协议的接口，具有细分市场定位，自动/触发的通知，变量替换，详细的推送报告工具等功能。</p>
+<p>可以理解为 OneSignal是对GCM/FCM和APNS的功能拓展。</p>
+<h1 id="推送原理"><a href="#推送原理" class="headerlink" title="推送原理"></a>推送原理</h1><p>我们知道，当我们推送后台编辑好推送内容后，消息就会送达到用户的设备，如果使用的是OneSignal还可以选择特定的用户分类去发送推送，那整个过程是怎么实现的，我们先了解推送平台是如何记住各个用户，以及划分用户类别的。</p>
+<p><img src="../images/2017-11/push2.jpg" alt="推送过程"></p>
+<ol>
+<li>Android设备将设备信息和App ID发送到推送平台(FCM/OneSignal)服务器进行注册。</li>
+<li>注册成功后，推送平台会生成唯一的标识（firebase是token,OneSignal是设备ID）并记录下来，之后发送这个<strong>唯一的标识</strong>给App。</li>
+<li>收到唯一的标识后，App会将唯一的标识和用户信息发送到自己网站的服务器。（可选）</li>
+<li>网站的服务器将唯一的标识和用户信息绑定存储在数据库。（可选）</li>
+</ol>
+<p>在完成上面过程后，app就会收集该用户的行为特征并不断地告诉推送平台和服务器，而平台和服务器把收到的信息绑定到唯一的标识，比如：这个用户经常看裙子分类下服装，那么我们就会将这个用户的喜好发送给推送平台或者自己的网站服务器。而另一个用户喜欢看包包，那她就属于喜欢包包的用户分类。就这样我们就将各个用户进行了分类（其他更多的分类道理一样），分类完成后当特定的活动或节日就可以依靠这些分类对特定用户群体就行推送。</p>
+<p>具备了用户的信息后，我们就能愉快的推送用户群。有两种方式：</p>
+<p>a. 网站服务器从数据库中筛选出需要推送的用户，比如 某次活动需要倒计时，底下有个”活动开始提醒我”按钮。活动开始了，服务器筛选出所有点击过”提醒我”按钮的用户列表发送给推送平台。</p>
+<p>b. 推送平台收到列表后照着列表里的唯一的标识逐个发出推送。用户被收到的推送唤起，打开app进入活动页</p>
+<p>我们且称上面的方式为自动推送，其实是后端同事写的代码。而另一种就是我们手动去推送了</p>
+<p>b. 当需要推送时，我们就进入Firebase控制台（或者OneSignal）,然后选择我们希望这次希望推送被推送的用户群体，选择推送的内容，选择推送的时间。</p>
+<p><img src="../images/2017-11/push1.png" alt="推送过程"></p>
+<p>两种方式都需要推送平台的支持。</p>
+<p><a href="https://youtu.be/sioEY4tWmLI?list=PLl-K7zZEsYLmOF_07IayrTntevxtbUxDL" target="_blank" rel="noopener">firebase推送原理视频</a></p>
+<h1 id="推送tutorial"><a href="#推送tutorial" class="headerlink" title="推送tutorial"></a>推送tutorial</h1><p>就入<a href="https://onesignal.com/apps" target="_blank" rel="noopener">https://onesignal.com/apps</a> 选择需要发起推送的app</p>
+<ul>
+<li>选中左侧的New Message，选择推送的对象：</li>
+</ul>
+<p><img src="../images/2017-11/push3.png" alt="推送过程"></p>
+<ul>
+<li>编辑推送的内容，可以编辑多语言</li>
+</ul>
+<p><img src="../images/2017-11/push4.png" alt="推送过程"></p>
+<ul>
+<li>选择推送目标操作系统以及推送数据</li>
+</ul>
+<p><img src="../images/2017-11/push6.png" alt="推送过程"></p>
+<ul>
+<li>编辑需要推送的数据</li>
+</ul>
+<p><img src="../images/2017-11/push7.png" alt="推送过程"></p>
+<ul>
+<li>编辑推送的时间</li>
+</ul>
+<p><img src="../images/2017-11/push8.png" alt="推送过程"></p>
+<ul>
+<li>完成上诉步骤后就会计算这次推送的目标用户数量，算完就可以点推送了</li>
+</ul>
+<p><a href="https://documentation.onesignal.com/docs/notifications" target="_blank" rel="noopener">官网详细说明</a></p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+       
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/工具/" rel="tag"># 工具</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017-11-fiddler抓包/" rel="next" title="利用Fildder抓包，捕获https协议的传输内容">
+                <i class="fa fa-chevron-left"></i> 利用Fildder抓包，捕获https协议的传输内容
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017-12-Java8 简明教程/" rel="prev" title="Java8 简明教程">
+                Java8 简明教程 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/config/avatar.png" alt="cchao1024">
+            
+              <p class="site-author-name" itemprop="name">cchao1024</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">28</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">9</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">18</span>
+                    <span class="site-state-item-name">tags</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#推送平台"><span class="nav-number">1.</span> <span class="nav-text">推送平台</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#GCM-Google-Cloud-Messaging"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">GCM(Google Cloud Messaging)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#FCM-Firebase-Cloud-Messaging"><span class="nav-number">1.0.0.2.</span> <span class="nav-text">FCM(Firebase Cloud Messaging)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#OneSignal"><span class="nav-number">1.0.0.3.</span> <span class="nav-text">OneSignal</span></a></li></ol></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#推送原理"><span class="nav-number">2.</span> <span class="nav-text">推送原理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#推送tutorial"><span class="nav-number">3.</span> <span class="nav-text">推送tutorial</span></a></li></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">cchao1024</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v6.6.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.6.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.6.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.6.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.6.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.6.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.6.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.6.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

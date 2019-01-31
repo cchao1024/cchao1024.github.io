@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.6.0" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.6.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.6.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.6.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.6.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '6.6.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="[TOC] Sample下面的是官方Get请求的sample，代码先创建 OkHttpClient 实例（建议全局只维持一个实例，避免多个连接池和线程池的浪费），然后在子线程通过建造器创建出 Request ，之后通过 Call接口 的工场方法 newCall 创建出一个RealCall对象，使用 execute 方法执行同步请求，完成后返回 Response 对象，最后return出响应的 bo">
+<meta name="keywords" content="okhttp 网络">
+<meta property="og:type" content="article">
+<meta property="og:title" content="okHttp 请求与响应">
+<meta property="og:url" content="http://yoursite.com/2017-09-OkHttp源码1-请求与响应/index.html">
+<meta property="og:site_name" content="cchao1024 blog">
+<meta property="og:description" content="[TOC] Sample下面的是官方Get请求的sample，代码先创建 OkHttpClient 实例（建议全局只维持一个实例，避免多个连接池和线程池的浪费），然后在子线程通过建造器创建出 Request ，之后通过 Call接口 的工场方法 newCall 创建出一个RealCall对象，使用 execute 方法执行同步请求，完成后返回 Response 对象，最后return出响应的 bo">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1633382-1cf36dac6536235c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1633382-6285751ff48a0a86.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1633382-e3b35f6c299afa72.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-12-22T04:13:18.837Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="okHttp 请求与响应">
+<meta name="twitter:description" content="[TOC] Sample下面的是官方Get请求的sample，代码先创建 OkHttpClient 实例（建议全局只维持一个实例，避免多个连接池和线程池的浪费），然后在子线程通过建造器创建出 Request ，之后通过 Call接口 的工场方法 newCall 创建出一个RealCall对象，使用 execute 方法执行同步请求，完成后返回 Response 对象，最后return出响应的 bo">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1633382-1cf36dac6536235c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017-09-OkHttp源码1-请求与响应/">
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>okHttp 请求与响应 | cchao1024 blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">cchao1024 blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-schedule">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/schedule/" rel="section"><i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>Schedule</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-commonweal">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/404/" rel="section"><i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>Commonweal 404</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017-09-OkHttp源码1-请求与响应/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="cchao1024">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/config/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="cchao1024 blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">okHttp 请求与响应
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2017-09-12 00:00:00" itemprop="dateCreated datePublished" datetime="2017-09-12T00:00:00+08:00">2017-09-12</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2018-12-22 12:13:18" itemprop="dateModified" datetime="2018-12-22T12:13:18+08:00">2018-12-22</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>[TOC]</p>
+<h1 id="Sample"><a href="#Sample" class="headerlink" title="Sample"></a>Sample</h1><p>下面的是官方Get请求的sample，代码先<strong>创建 OkHttpClient 实例</strong>（建议全局只维持一个实例，避免多个连接池和线程池的浪费），然后在子线程通过建造器创建出 <strong>Request</strong> ，之后通过 <strong>Call接口</strong> 的工场方法 <strong>newCall</strong> 创建出一个RealCall对象，使用 <strong>execute</strong> 方法执行同步请求，完成后返回 <strong>Response</strong> 对象，最后return出响应的 body 内容。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">OkHttpClient client = new OkHttpClient();</span><br><span class="line"></span><br><span class="line">String run(String url) throws IOException &#123;</span><br><span class="line">  Request request = new Request.Builder()</span><br><span class="line">      .url(url)</span><br><span class="line">      .build();</span><br><span class="line"></span><br><span class="line">  Response response = client.newCall(request).execute();</span><br><span class="line">  return response.body().string();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="Requests"><a href="#Requests" class="headerlink" title="Requests"></a><a href="http://square.github.io/okhttp/3.x/okhttp/okhttp3/Request.html" target="_blank" rel="noopener">Requests</a></h1><p><code>Request</code> 是一个<strong>不可变类</strong>，它就是我们每天都接触的<strong>Http请求</strong>，通过它的Builder可以设置我们Http请求的目标<code>Url</code>、<code>head</code>、<code>body</code>以及<code>method（GET、POST...）</code>，还有它提供了一个<strong>Object类型tag</strong>属性，我们可以拿它标识不同的Request，比如<strong>通过页面唯一tag标识请求</strong>，如果用户主动关闭页面，我们可以<code>cancel</code>掉相应的<code>Request</code>。</p>
+<h3 id="缺省填充"><a href="#缺省填充" class="headerlink" title="缺省填充"></a>缺省填充</h3><p>我们再建造Request对象时，省略了许多正常Http请求需要的字段，但是OkHttp会默认给我添加这些字段，比如：：<code>Content-Length</code>, <code>Transfer-Encoding</code>, <code>User-Agent</code>, <code>Host</code>, <code>Connection</code>, <code>Content-Type</code>，<code>Accept-Encoding</code>以及<code>cookie</code>等。</p>
+<h3 id="重定向及重试"><a href="#重定向及重试" class="headerlink" title="重定向及重试"></a>重定向及重试</h3><p>如果请求的URL返回了302重定向，Request会重新指向重定向地址，拿到最终的Respond。有时连接会失败（池连接失效、断开连接），或者无法连接到对应web服务器。OkHttp将以不同的方式重新尝试请求。</p>
+<h3 id="方法及实现"><a href="#方法及实现" class="headerlink" title="方法及实现"></a>方法及实现</h3><ul>
+<li><code>url:HttpUrl</code>[^HttpUrl] — 可以理解为请求的URL，但它不止于此</li>
+<li><code>header:Headers</code> — 有序的首部字段，由一个不可变的字符串数组保存，okHttp会自动添加一些通用字段)</li>
+<li><code>cacheControl:CacheControl</code> — 对应着Http的通用首部字段 Cache-Control[^Cache-Control]</li>
+<li><p><code>body:RequestBoy</code> — 请求体，RequestBoy[^RequestBody]是一个抽象类，有以下子类分别对应不同的<strong>Content-Type</strong>字段</p>
+<ul>
+<li>HttpEntityBody — 二进制流 对应 Content-Type：application/octet-stream</li>
+<li>FormBody — 键值对表单 对应 Content-Type：application/x-www-form-urlencoded</li>
+<li>MultipartBody 多部分的body 对应 Content-Type：multipart/… 需要boundary分割多个部分</li>
+<li>….</li>
+</ul>
+</li>
+</ul>
+<p>下图是Request.Builder的结构图</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1633382-1cf36dac6536235c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Request"></p>
+<h1 id="Responses"><a href="#Responses" class="headerlink" title="Responses"></a><a href="http://square.github.io/okhttp/3.x/okhttp/okhttp3/Response.html" target="_blank" rel="noopener">Responses</a></h1><p><code>Respond</code> 也是个final类，它的内容就比Request丰富多了，首先它是持有对应的<code>Request</code>对象的，再者它还有<code>Handshake</code>（TLS握手，也就是HTTPS请求需要的TLS/SSL层支持）对象，还有就是我们熟悉的响应行，响应首部，ResponseBody等。同样的，Respond也提供了缺省填充，如：</p>
+<h3 id="方法及实现-1"><a href="#方法及实现-1" class="headerlink" title="方法及实现"></a>方法及实现</h3><ul>
+<li>protocol:Protocol — 枚举http版本 Http1.0、Http1.1、Http2.0（h2）以及spdy/3.1（弃用）</li>
+<li>body:ResponseBody — 响应body，抽象类，对应着一下具体实现RealResponseBody（普通impl）、ProgressResponseBody（能更新进度）、CacheResponseBody（读取缓存）<br>-</li>
+</ul>
+<p><img src="http://upload-images.jianshu.io/upload_images/1633382-6285751ff48a0a86.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Respond_Builder.png"></p>
+<h1 id="Call"><a href="#Call" class="headerlink" title="Call"></a>Call</h1><p>Call 是一个接口，它的实现类是RealCall。Call是一次Request和Respond对，它不能被执行两次，但是可以取消请求（cancel方法）</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1633382-e3b35f6c299afa72.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Call"></p>
+<p>方法execute和enqueue分别是同步和异步请求。</p>
+<h3 id="execute"><a href="#execute" class="headerlink" title="execute"></a>execute</h3><p>excute方法将Call放进okHttpClient的<code>Dispatcher</code>(分发器)的<code>队列runningSyncCalls</code>（下文有说明）。并且加入一堆<code>Interceptor(拦截器)</code>：</p>
+<ul>
+<li>用户定义的拦截器（通过<code>OkHttpClient#addInterceptor(Interceptor)</code>)加入的拦截器）</li>
+<li><code>RetryAndFollowUpInterceptor</code></li>
+<li><code>BridgeInterceptor</code></li>
+<li><code>CacheInterceptor</code></li>
+<li><code>ConnectInterceptor</code></li>
+<li><code>CallServerInterceptor</code> 最后一个拦截器，对服务器发起网络请求</li>
+</ul>
+<p>然后执行getResponseWithInterceptorChain进入了一堆痛苦的拦截，在逐层向下后在某一层得到需要的Response，检测无疑就return了，有问题就捕获并finish掉这个Call</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">@Override public Response execute() throws IOException &#123;</span><br><span class="line">    synchronized (this) &#123;</span><br><span class="line">      if (executed) throw new IllegalStateException(&quot;Already Executed&quot;);</span><br><span class="line">      executed = true;</span><br><span class="line">    &#125;</span><br><span class="line">    captureCallStackTrace();</span><br><span class="line">    eventListener.fetchStart(this);</span><br><span class="line">    try &#123;</span><br><span class="line">      client.dispatcher().executed(this);</span><br><span class="line">      Response result = getResponseWithInterceptorChain();</span><br><span class="line">      if (result == null) throw new IOException(&quot;Canceled&quot;);</span><br><span class="line">      eventListener.fetchEnd(this, null);</span><br><span class="line">      return result;</span><br><span class="line">    &#125; catch (IOException e) &#123;</span><br><span class="line">      eventListener.fetchEnd(this, e);</span><br><span class="line">      throw e;</span><br><span class="line">    &#125; finally &#123;</span><br><span class="line">      client.dispatcher().finished(this);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">Response getResponseWithInterceptorChain() throws IOException &#123;</span><br><span class="line">    // Build a full stack of interceptors.</span><br><span class="line">    List&lt;Interceptor&gt; interceptors = new ArrayList&lt;&gt;();</span><br><span class="line">    interceptors.addAll(client.interceptors());</span><br><span class="line">    interceptors.add(retryAndFollowUpInterceptor);</span><br><span class="line">    interceptors.add(new BridgeInterceptor(client.cookieJar()));</span><br><span class="line">    interceptors.add(new CacheInterceptor(client.internalCache()));</span><br><span class="line">    interceptors.add(new ConnectInterceptor(client));</span><br><span class="line">    if (!forWebSocket) &#123;</span><br><span class="line">      interceptors.addAll(client.networkInterceptors());</span><br><span class="line">    &#125;</span><br><span class="line">    interceptors.add(new CallServerInterceptor(forWebSocket));</span><br><span class="line"></span><br><span class="line">    Interceptor.Chain chain = new RealInterceptorChain(interceptors, null, null, null, 0,</span><br><span class="line">        originalRequest, this, eventListener, client.connectTimeoutMillis(),</span><br><span class="line">        client.readTimeoutMillis(), client.writeTimeoutMillis());</span><br><span class="line">    return chain.proceed(originalRequest);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p>RealInterceptorChain ＋ Interceptor实现了职责链模式(Chain of Responsibility)，对请求/响应进行串式（流式）处理。</p>
+<ol>
+<li>将这堆拦截器、request、call等封装成<code>RealInterceptorChain</code>(拦截链Chain对象)</li>
+<li>迭代（index）取出一个拦截器，拦截器在实现<code>intercept(Chain)方法</code>时如果自己不能处理和返回Response（比如CacheInterceptor没有缓存），就会<code>Return Chain#Proceed(Request)</code>交给拦截链继续传递获取到Response。</li>
+<li>RealInterceptorChain的proceed方法内部将自己（RealInterceptorChain）持有的成员变量通过构造器再new出来一个新的<code>RealInterceptorChain(interceptors, request, index +=1 ...)</code>对象</li>
+<li>如果执行到最后一个拦截器<code>CallServerInterceptor</code>,就对服务器发起网络请求，等待数据返回并<code>Return Response</code>。否则就继续第二步。</li>
+</ol>
+<p>代码有删减</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">/** Constructor*/</span><br><span class="line">public RealInterceptorChain(List&lt;Interceptor&gt; interceptors,  StreamAllocation streamAllocation,</span><br><span class="line">    HttpCodec httpCodec, RealConnection connection, int index, Request request, Call call,</span><br><span class="line">    EventListener eventListener, int connectTimeout, int readTimeout, int writeTimeout) &#123;</span><br><span class="line">  this.interceptors = interceptors;</span><br><span class="line">  this.connection = connection;</span><br><span class="line">  this.streamAllocation = streamAllocation;</span><br><span class="line">  this.httpCodec = httpCodec;</span><br><span class="line">  this.index = index;</span><br><span class="line">  this.request = request;</span><br><span class="line">  this.call = call;</span><br><span class="line">  this.eventListener = eventListener;</span><br><span class="line">  this.connectTimeout = connectTimeout;</span><br><span class="line">  this.readTimeout = readTimeout;</span><br><span class="line">  this.writeTimeout = writeTimeout;</span><br><span class="line">&#125;</span><br><span class="line">@Override</span><br><span class="line">public Response proceed(Request request) throws IOException &#123;</span><br><span class="line">  return proceed(request, streamAllocation, httpCodec, connection);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public Response proceed(Request request, StreamAllocation streamAllocation, HttpCodec httpCodec,</span><br><span class="line">    RealConnection connection) throws IOException &#123;</span><br><span class="line"></span><br><span class="line">  // Call the next interceptor in the chain.</span><br><span class="line">  RealInterceptorChain next = new RealInterceptorChain(interceptors, streamAllocation, httpCodec,</span><br><span class="line">      connection, index + 1, request, call, eventListener, connectTimeout, readTimeout,</span><br><span class="line">      writeTimeout);</span><br><span class="line">  Interceptor interceptor = interceptors.get(index);</span><br><span class="line">  Response response = interceptor.intercept(next);</span><br><span class="line"></span><br><span class="line">  // Confirm that the next interceptor made its required call to chain.proceed().</span><br><span class="line">  if (httpCodec != null &amp;&amp; index + 1 &lt; interceptors.size() &amp;&amp; next.calls != 1) &#123;</span><br><span class="line">    throw new IllegalStateException(&quot;network interceptor &quot; + interceptor</span><br><span class="line">        + &quot; must call proceed() exactly once&quot;);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  if (response.body() == null) &#123;</span><br><span class="line">    throw new IllegalStateException(</span><br><span class="line">        &quot;interceptor &quot; + interceptor + &quot; returned a response with no body&quot;);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  return response;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="enqueue"><a href="#enqueue" class="headerlink" title="enqueue"></a>enqueue</h3><p>enqueue是Call的异步实现，需要传入一个<code>Callback</code>回调方法，其内部是将callback封装成<code>AsyncCall</code>对象</p>
+<p>AsyncCall继承于<code>NamedRunnable</code>，NamedRunnable是个实现Runnable接口的，能对执行线程的命名的抽象类，是装饰模式对Runnable接口添加Name功能。其实现是，（AsyncCall构造方法通过super把name赋值给成员变量name）当线程在线程队列排队完成开始执行<code>run</code>方法时调起<code>Thread#setName（name）</code>为自己命名并执行抽象方法<code>execute</code>。</p>
+<p>在AsyncCall的execute方法里（这个方法被调起就意味着这个等待线程在被执行），我们可以看到，其实enqueue在排队完成后做的事情和excute是类似的，都调起了<code>getResponseWithInterceptorChain</code>,开始了一堆拦截器的层层拦截和过滤。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">final class AsyncCall extends NamedRunnable &#123;</span><br><span class="line">    private final Callback responseCallback;</span><br><span class="line"></span><br><span class="line">    AsyncCall(Callback responseCallback) &#123;</span><br><span class="line">      super(&quot;OkHttp %s&quot;, redactedUrl());</span><br><span class="line">      this.responseCallback = responseCallback;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    String host() &#123;</span><br><span class="line">      return originalRequest.url().host();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    Request request() &#123;</span><br><span class="line">      return originalRequest;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    RealCall get() &#123;</span><br><span class="line">      return RealCall.this;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override protected void execute() &#123;</span><br><span class="line">      boolean signalledCallback = false;</span><br><span class="line">      try &#123;</span><br><span class="line">        Response response = getResponseWithInterceptorChain();</span><br><span class="line">        if (retryAndFollowUpInterceptor.isCanceled()) &#123;</span><br><span class="line">          signalledCallback = true;</span><br><span class="line">          responseCallback.onFailure(RealCall.this, new IOException(&quot;Canceled&quot;));</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">          signalledCallback = true;</span><br><span class="line">          responseCallback.onResponse(RealCall.this, response);</span><br><span class="line">        &#125;</span><br><span class="line">        eventListener.fetchEnd(RealCall.this, null);</span><br><span class="line">      &#125; catch (IOException e) &#123;</span><br><span class="line">        if (signalledCallback) &#123;</span><br><span class="line">          // Do not signal the callback twice!</span><br><span class="line">          Platform.get().log(INFO, &quot;Callback failure for &quot; + toLoggableString(), e);</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">          eventListener.fetchEnd(RealCall.this, e);</span><br><span class="line">          responseCallback.onFailure(RealCall.this, e);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125; finally &#123;</span><br><span class="line">        client.dispatcher().finished(this);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p>交给okHttpClient的<code>dispatcher（分发器）</code>放入恰当的双端队列。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">if (runningAsyncCalls 队列里的AsyncCall对象数 &lt; 64（默认）</span><br><span class="line">  &amp;&amp; 与同一Web服务器通讯的并行数 &lt; 5（默认））&#123;</span><br><span class="line">   放入`runningAsyncCalls`队列</span><br><span class="line"> &#125;else&#123;</span><br><span class="line">   放入`readyAsyncCalls`队列</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Dispatcher"><a href="#Dispatcher" class="headerlink" title="Dispatcher"></a>Dispatcher</h3><p>这里需要提一下Dispatcher分发器的实现，分发器里面维持着三个双端队列（readyAsyncCalls、runningAsyncCalls、runningSyncCalls）和一个线程池</p>
+<ul>
+<li><code>readyAsyncCalls</code> 等待的AsyncCall队列，等待runningAsyncCalls里的线程执行完成被放入线程池执行</li>
+<li><code>runningAsyncCalls</code> 正在执行的AsyncCall队列，队列中线程finish时会调promoteCalls从readyAsyncCalls取出队首线程add并执行</li>
+<li><code>runningSyncCalls</code> 正在执行的RealCall队列，他没用线程池，执行他的就是调用run它的线程</li>
+<li><code>executorService</code> 一个可重用之前60秒内使用过的创建的线程对象的线程池（maxRequests设置了池里最多只能有64个线程体）</li>
+</ul>
+<p>另外，两个running队列的线程在finish时都会判断是不是还有运行的Call，如果没有就调起<code>idleCallback</code></p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+       
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/okhttp-网络/" rel="tag"># okhttp 网络</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017-05-java元组/" rel="next" title="java tuple（元组）">
+                <i class="fa fa-chevron-left"></i> java tuple（元组）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017-09-OkHttp源码2-拦截器们_/" rel="prev" title="okHttp-拦截器们">
+                okHttp-拦截器们 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/config/avatar.png" alt="cchao1024">
+            
+              <p class="site-author-name" itemprop="name">cchao1024</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">28</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">9</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">18</span>
+                    <span class="site-state-item-name">tags</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Sample"><span class="nav-number">1.</span> <span class="nav-text">Sample</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Requests"><span class="nav-number">2.</span> <span class="nav-text">Requests</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#缺省填充"><span class="nav-number">2.0.1.</span> <span class="nav-text">缺省填充</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#重定向及重试"><span class="nav-number">2.0.2.</span> <span class="nav-text">重定向及重试</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#方法及实现"><span class="nav-number">2.0.3.</span> <span class="nav-text">方法及实现</span></a></li></ol></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#Responses"><span class="nav-number">3.</span> <span class="nav-text">Responses</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#方法及实现-1"><span class="nav-number">3.0.1.</span> <span class="nav-text">方法及实现</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Call"><span class="nav-number">4.</span> <span class="nav-text">Call</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#execute"><span class="nav-number">4.0.1.</span> <span class="nav-text">execute</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#enqueue"><span class="nav-number">4.0.2.</span> <span class="nav-text">enqueue</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Dispatcher"><span class="nav-number">4.0.3.</span> <span class="nav-text">Dispatcher</span></a></li></ol></li></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">cchao1024</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v6.6.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.6.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.6.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.6.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.6.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.6.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.6.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.6.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
