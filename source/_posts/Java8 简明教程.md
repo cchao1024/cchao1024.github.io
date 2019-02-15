@@ -7,6 +7,17 @@ categories: java
 tags: 编程语言
 ---
 
+# 特性
+
+- 接口的默认方法和静态方法
+- 函数式接口FunctionInterface与lambda表达式
+- 方法引用
+- Stream
+- Optional
+- Date/time API的改进
+
+
+
 # Lambda
 
 ## 语法
@@ -150,12 +161,107 @@ public class Java8Tester {
 # Stream
 
 Stream（流）是来自数据源的元素队列，支持聚合操作。
+
+通过将集合转换为这么一种叫做 “流” 的元素序列，通过声明性方式，能够对集合中的每个元素进行一系列并行或串行的**流水线操作**。
+
 * 元素 - 是特定类型的对象，形成一个队列。Java中的Stream并不会存储元素，而是按需计算。
-
 * 数据源 - 流的输入，可以是集合，数组或I/O资源。
-
 * 聚合操作 - 如filter, map, limit, reduced, find, match等处理元素的操作。
-
 * 管道传输 - 大多数流操作的返回流本身使他们的结果可以被管道传输。这些操作被称为中间操作以及它们的功能是利用输入，处理输入和输出返回到目标。collect()方法是终端操作，这是通常出现在管道传输操作结束标记流的结束。
-
 * 自动迭代 - 流操作内部做了反复对比，其中明确迭代需要集合提供源元素。
+
+
+
+流和迭代器类似，只能迭代一次。
+
+
+
+### stream() / parallelStream()  将集合转换成流
+
+filter（T -> boolean）剔除返回值为false的元素
+
+distinct 剔除重复元素，通过equals判断两元素是否相同
+
+sorted/sorted((T,T)-> int) 对元素进行排序，通过Comparable接口实现排序规则
+
+limit(long n) 返回前n个元素
+
+skip(long n) 剔除前n个元素
+
+map(T -> R) 流中的元素类型转化为R
+
+flatMap(T -> Stream<R>)  汇聚水流
+
+anyMatch(T -> boolean) 检查流中是否有元素满足条件规则
+
+allMatch(T -> boolean) 检查流中所有元素是否都满足条件规则
+
+noneMatch(T -> boolean) 检查流中所有元素是否都不满足条件规则
+
+findAny() 找到其中一个元素
+
+findFirst 找到第一个元素
+
+reduce((T,T) -> T)  对流中元素进行组合操作，如：求和，求积
+
+reduce(T,(T,T) -> T)   对流中元素进行组合操作，第一个参数是起始值
+
+count() 返回流中元素的个数
+
+collect() 收集器，
+
+forEach()  遍历流中元素
+
+--------------
+
+
+
+### 数值流
+
+#### 流转换为数值流
+
+- mapToInt(T -> int) : return IntStream
+- mapToDouble(T -> double) : return DoubleStream
+- mapToLong(T -> long) : return LongStream
+
+
+
+数值流转换为流
+
+```
+intStream.boxed();
+DoubleStream.boxed();
+```
+
+- sum()
+- max()
+- min()
+- average() 等...
+- range(x,y) 生成x到y开区间内的元素数值流，(1,100)    x<= int <=y  
+- rangeClosed(x,y) 生成x到y范围内的元素数值流  [1,100)   x< int <=y
+
+## Optional
+Optional是一个容器类，可以代表一个值存在或不存在
+- isPresent() ：值存在时返回 true，反之 flase
+- get() ：返回当前值，若值不存在会抛出异常
+- orElse(T) ：值存在时返回该值，否则返回 T 的值
+其还有三个类似版本 OptionalInt，OptionalLong，OptionalDouble
+
+### collect
+coollect 方法作为终端操作，接受的是一个 Collector 接口参数，能对数据进行一些收集归总操作
+
+- toList
+- toSet
+- toCollection
+- toMap
+- counting
+- summingInt
+- summingLong
+- averagingInt
+- averagingLong
+- summarizingInt  返回 平均数，和，最值操作
+- max
+- Joining 连接字符串
+
+
+
