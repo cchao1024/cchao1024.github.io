@@ -14,7 +14,7 @@
   
 
 
-<html class="theme-next gemini use-motion" lang="">
+<html class="theme-next gemini use-motion" lang>
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -123,7 +123,7 @@
 <meta property="og:image" content="http://yoursite.com/images/2017-11/fiddler6.png">
 <meta property="og:image" content="http://yoursite.com/images/2017-11/fiddler7.png">
 <meta property="og:image" content="http://yoursite.com/images/2017-11/fiddler1.png">
-<meta property="og:updated_time" content="2018-12-23T15:12:20.437Z">
+<meta property="og:updated_time" content="2019-02-14T08:39:44.824Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="利用Fildder抓包，捕获https协议的传输内容">
 <meta name="twitter:description" content="抓包 抓包（packet capture）就是将网络传输发送与接收的数据包进行截获、重发、编辑、转存等操作，也用来检查网络安全。抓包也经常被用来进行数据截取等。  本文讨论的数据包限于超文本传输协议报文(Http), 也就是通常我们经常用来浏览网页的协议。 除了传统的web端，http协议也广泛应用于移动互联网app与后端服务器的数据交互。其实网络底层为了保证协议的传输准确和效率做了许多事情. 对">
@@ -186,7 +186,7 @@
 
 </head>
 
-<body itemscope="" itemtype="http://schema.org/WebPage" lang="default">
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
 
   
   
@@ -196,7 +196,7 @@
   <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
   <div class="site-meta ">
     
@@ -372,20 +372,20 @@
 
   
 
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017-11-fiddler抓包/">
 
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="cchao1024">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content>
       <meta itemprop="image" content="/images/config/avatar.png">
     </span>
 
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="cchao1024 blog">
     </span>
 
@@ -436,7 +436,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2018-12-23 23:12:20" itemprop="dateModified" datetime="2018-12-23T23:12:20+08:00">2018-12-23</time>
+                <time title="Modified: 2019-02-14 16:39:44" itemprop="dateModified" datetime="2019-02-14T16:39:44+08:00">2019-02-14</time>
               
             
           </span>
@@ -453,7 +453,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a></span>
 
                 
                 
@@ -498,9 +498,9 @@
 <p>Fiddler 帮我们做了这件事件。这么6，那我们就试着安装使用下。</p>
 <h1 id="Fiddler-安装和使用"><a href="#Fiddler-安装和使用" class="headerlink" title="Fiddler 安装和使用"></a>Fiddler 安装和使用</h1><p>去 <a href="https://www.telerik.com/fiddler" target="_blank" rel="noopener">https://www.telerik.com/fiddler</a> 下载 Fiddler 并安装。</p>
 <p>安装完成，打开Fiddler。在Tools中选择 Fiddler Options 。选择选项 HTTPS 在apture HTTPS CONNECTs前打钩。</p>
-<p><img src="../images/2017-11/fiddler2.png" alt=""></p>
+<p><img src="../images/2017-11/fiddler2.png" alt></p>
 <p>继续选择选项Connections，按下图钩选。注意到 Fiddler listens on port:8888。这是Fiddler默认的监听端口。也就是我们在设置代理时使用的端口号。一般保持不变就好。</p>
-<p><img src="../images/2017-11/fiddler3.png" alt=""></p>
+<p><img src="../images/2017-11/fiddler3.png" alt></p>
 <h1 id="手机设置"><a href="#手机设置" class="headerlink" title="手机设置"></a>手机设置</h1><p>Ok, 现在我们已经设置完了Fiddler，接下来就是让手机连入这个网络，</p>
 <ul>
 <li><p>完成这个首先要确保手机和安装有Fiddler的计算机处在同一个局域网中，可以使用路由器，或者使用笔记本发送热点给手机使用。</p>
@@ -508,21 +508,21 @@
 <li><p>然后查看计算机的IPv4地址，运行命令行（Cmd）输入ipconfig 显示如下图。</p>
 </li>
 </ul>
-<p><img src="../images/2017-11/fiddler4.png" alt=""></p>
+<p><img src="../images/2017-11/fiddler4.png" alt></p>
 <ul>
 <li>确定手机连入相同网络后，打开选中手机的wifi，长按或者点设置进入修改网络，输入代理设置</li>
 </ul>
-<p><img src="../images/2017-11/fiddler5.png" alt=""></p>
+<p><img src="../images/2017-11/fiddler5.png" alt></p>
 <ul>
 <li>最后用浏览器打开刚才获取到的[ ip地址+ :8888] 如 192.168.4.89:8888</li>
 </ul>
-<p><img src="../images/2017-11/fiddler6.png" alt=""></p>
+<p><img src="../images/2017-11/fiddler6.png" alt></p>
 <ul>
 <li>进入页面，点击下载 FiddlerRoot certificate ,随便起个名（如果手机没有设置安全锁，是需要用户设置的）</li>
 </ul>
-<p><img src="../images/2017-11/fiddler7.png" alt=""></p>
+<p><img src="../images/2017-11/fiddler7.png" alt></p>
 <p>依次完成 安装配置完成后，会是这个样子</p>
-<p><img src="../images/2017-11/fiddler1.png" alt=""></p>
+<p><img src="../images/2017-11/fiddler1.png" alt></p>
 <p>就这样，我们就能愉快的拦截到手机的网络交互了</p>
 <h1 id="坑"><a href="#坑" class="headerlink" title="坑"></a>坑</h1><p>上面我们所做的是针对整个android设备（系统层）的网络进行拦截，因为我们安装了拦截用的证书，所有系统会提示我们 你的网络被监控了等等。</p>
 <p>不过不怕，我们自己做了什么，自己心里还是有点B树的。</p>
@@ -633,7 +633,7 @@
 
       <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
               <img class="site-author-image" itemprop="image" src="/images/config/avatar.png" alt="cchao1024">
             
@@ -648,7 +648,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">28</span>
+                    <span class="site-state-item-count">31</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -728,7 +728,13 @@
                     
                       
                     
-                    <span class="site-state-item-count">18</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">21</span>
                     <span class="site-state-item-name">tags</span>
                   
                 </div>

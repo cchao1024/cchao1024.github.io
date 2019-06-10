@@ -14,7 +14,7 @@
   
 
 
-<html class="theme-next gemini use-motion" lang="">
+<html class="theme-next gemini use-motion" lang>
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -122,7 +122,7 @@
 <meta property="og:image" content="http://yoursite.com/images/2017-12/push4.png">
 <meta property="og:image" content="http://yoursite.com/images/2017-12/push5.png">
 <meta property="og:image" content="http://yoursite.com/images/2017-12/push6.png">
-<meta property="og:updated_time" content="2018-12-23T15:12:11.830Z">
+<meta property="og:updated_time" content="2019-02-14T08:39:44.817Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Gradle实现Onesignal推送">
 <meta name="twitter:description" content="OneSignalOneSignal 暴露了许多REST API，只要拿到对应的appId，通过简单的http请求就能向集成OneSignal推送的目标设备发起推送。不仅如果，各种与其平台相关的操作都有API。  实现https请求有许多方式，各个语言也是各显神通。Onesignal十分友好的提供了各语言的简单实现，满足各种情况的推送需求。  请求结构  OneSignal 发送推送 API 需要">
@@ -185,7 +185,7 @@
 
 </head>
 
-<body itemscope="" itemtype="http://schema.org/WebPage" lang="default">
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
 
   
   
@@ -195,7 +195,7 @@
   <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
   <div class="site-meta ">
     
@@ -371,20 +371,20 @@
 
   
 
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017-12-Gradle实现Onesignal推送/">
 
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="cchao1024">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content>
       <meta itemprop="image" content="/images/config/avatar.png">
     </span>
 
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="cchao1024 blog">
     </span>
 
@@ -435,7 +435,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2018-12-23 23:12:11" itemprop="dateModified" datetime="2018-12-23T23:12:11+08:00">2018-12-23</time>
+                <time title="Modified: 2019-02-14 16:39:44" itemprop="dateModified" datetime="2019-02-14T16:39:44+08:00">2019-02-14</time>
               
             
           </span>
@@ -452,7 +452,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/gradle/" itemprop="url" rel="index"><span itemprop="name">gradle</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/gradle/" itemprop="url" rel="index"><span itemprop="name">gradle</span></a></span>
 
                 
                 
@@ -502,7 +502,7 @@
 <ul>
 <li>app_id 或者 app_ids（推送多个app） 是必须的，但别两个都发</li>
 </ul>
-<p><img src="../images/2017-12/push3.png" alt=""></p>
+<p><img src="../images/2017-12/push3.png" alt></p>
 <table>
 <thead>
 <tr>
@@ -557,11 +557,11 @@
 <p>最后一行，根据使用的操作系统会有差异。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">task <span class="title">stopTomcat</span><span class="params">(type:Exec)</span> </span>&#123;</span><br><span class="line">  workingDir <span class="string">'../tomcat/bin'</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">//on windows:</span></span><br><span class="line">  commandLine <span class="string">'cmd'</span>, <span class="string">'/c'</span>, <span class="string">'stop.bat'</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">//on linux</span></span><br><span class="line">  commandLine <span class="string">'./stop.sh'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>在当前目录打开终端命令行，输入命令 gradle push，</p>
-<p><img src="../images/2017-12/push4.png" alt=""></p>
+<p><img src="../images/2017-12/push4.png" alt></p>
 <p>一切正常会收到推送id（可以用来取消刚才的推送）和影响的设备数。</p>
 <p>上文的curl，如果测试正常，可以去除 -v 和 -i</p>
 <p>再本地测试ok后，可酌情把代码放入项目中，在笔者的android studio开发环境是携带一个终端的，我就可以直接在开发环境就能调起推送测试</p>
-<p><img src="../images/2017-12/push5.png" alt=""></p>
+<p><img src="../images/2017-12/push5.png" alt></p>
 <h1 id="进阶"><a href="#进阶" class="headerlink" title="进阶"></a>进阶</h1><blockquote>
 <p>当我完成这一系列操作后，打算上传代码时。发现需求还要求把这个task做成工具，其他人只要引用就可以跑。在我一脸懵逼，抽个烟后冷静后。又开始了哒哒哒。</p>
 </blockquote>
@@ -571,7 +571,7 @@
 <p>规定以json格式放在项目gradle文件里的 push_test_json里，写入如下必要的参数。list数组的里面编写推送内容。</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line">ext &#123;</span><br><span class="line">    push_test_json = <span class="string">'''</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="string">"app_id"</span>: <span class="string">"xxxxxx-xxxx-xxxx-xxxxx-xxxxxxxxx"</span>,</span><br><span class="line">    <span class="string">"REST_API_KEY"</span>: <span class="string">"XXXXXXXXXXXXXXXXXXXXXy"</span>,</span><br><span class="line">    <span class="string">"playerIds"</span>: [<span class="string">"67bc0e94-88ca-4439-b108-abf6f3d63f3d"</span>],</span><br><span class="line">    <span class="string">"list"</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="string">"headings"</span>: &#123;<span class="string">"en"</span>: <span class="string">"English Title"</span>, <span class="string">"es"</span>: <span class="string">"Spanish Title"</span>&#125;,</span><br><span class="line">            <span class="string">"subtitle"</span>: &#123;<span class="string">"en"</span>: <span class="string">"English Subtitle"</span>, <span class="string">"es"</span>: <span class="string">"Spanish Subtitle"</span>&#125;,</span><br><span class="line">            <span class="string">"contents"</span>: &#123;<span class="string">"en"</span>: <span class="string">"English Message"</span>, <span class="string">"es"</span>: <span class="string">"Spanish Message"</span>&#125;,</span><br><span class="line">            <span class="string">"big_picture"</span>:<span class="string">"big_picture"</span>,</span><br><span class="line">            <span class="string">"data"</span>: &#123;<span class="string">"t"</span>:<span class="string">"flashdeals"</span>,<span class="string">"p"</span>:<span class="string">"1111111"</span>&#125;,</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="string">"headings"</span>: &#123;<span class="string">"en"</span>: <span class="string">"English Title2"</span>, <span class="string">"es"</span>: <span class="string">"Spanish Title"</span>&#125;,</span><br><span class="line">            <span class="string">"subtitle"</span>: &#123;<span class="string">"en"</span>: <span class="string">"English Subtitle2"</span>, <span class="string">"es"</span>: <span class="string">"Spanish Subtitle"</span>&#125;,</span><br><span class="line">            <span class="string">"contents"</span>: &#123;<span class="string">"en"</span>: <span class="string">"English Message2"</span>, <span class="string">"es"</span>: <span class="string">"Spanish Message"</span>&#125;,</span><br><span class="line">            <span class="string">"data"</span>: &#123;<span class="string">"t"</span>:<span class="string">"flashdeals"</span>,<span class="string">"p"</span>:<span class="string">"22222222"</span>&#125;</span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br><span class="line"><span class="string">'''</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">task push &#123;</span><br><span class="line">    doLast &#123;</span><br><span class="line">        <span class="comment">// 目标地址</span></span><br><span class="line">        def targetUrl = <span class="string">"\"https://onesignal.com/api/v1/notifications\""</span></span><br><span class="line"></span><br><span class="line">        def jsonSlurper = <span class="keyword">new</span> JsonSlurper()</span><br><span class="line">        Object rootJson = jsonSlurper.parseText(rootProject.push_test_json)</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 遍历要发送的推送</span></span><br><span class="line">        rootJson.<span class="built_in">list</span>.each &#123;</span><br><span class="line">            def shell = [<span class="string">"curl"</span>]</span><br><span class="line">            shell.add(<span class="string">"--http2"</span>)</span><br><span class="line">            shell.add(<span class="string">"-H \"Content-Type:application/json;charset=utf-8\""</span>)</span><br><span class="line">            shell.add(<span class="string">"-H \"Authorization:Basic "</span> + rootJson.REST_API_KEY + <span class="string">"\""</span>)</span><br><span class="line"></span><br><span class="line">            def <span class="built_in">map</span> = [<span class="string">"app_id"</span>: rootJson.app_id]</span><br><span class="line">            <span class="built_in">map</span>.put(<span class="string">"headings"</span>, it.headings)</span><br><span class="line">            <span class="built_in">map</span>.put(<span class="string">"subtitle"</span>, it.subtitle)</span><br><span class="line">            <span class="built_in">map</span>.put(<span class="string">"contents"</span>, it.contents)</span><br><span class="line">            <span class="built_in">map</span>.put(<span class="string">"big_picture"</span>, it.big_picture)</span><br><span class="line">            <span class="built_in">map</span>.put(<span class="string">"data"</span>, it.data)</span><br><span class="line">            <span class="built_in">map</span>.put(<span class="string">"include_player_ids"</span>, rootJson.playerIds)</span><br><span class="line"></span><br><span class="line">            shell.add(<span class="string">"-d \""</span> + JsonOutput.toJson(<span class="built_in">map</span>).replaceAll(<span class="string">"\""</span>, <span class="string">"\\\\\""</span>) + <span class="string">"\""</span>)</span><br><span class="line"></span><br><span class="line">            shell.add(targetUrl)</span><br><span class="line">            def curlStr = <span class="string">""</span></span><br><span class="line">            <span class="keyword">for</span> (i in shell) &#123;</span><br><span class="line">                curlStr += i + <span class="string">" "</span></span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            def outPut = <span class="keyword">new</span> ByteArrayOutputStream()</span><br><span class="line">            println <span class="string">"\n发送请求: \n"</span> + curlStr</span><br><span class="line">            exec &#123;</span><br><span class="line">                commandLine 'cmd', '/c', curlStr</span><br><span class="line">                standardOutput = outPut</span><br><span class="line">            &#125;</span><br><span class="line">            println <span class="string">"\n收到Onesignal响应: "</span> + outPut.toString()</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>同样，在终端输入命令 就能发出推送了。</p>
-<p><img src="../images/2017-12/push6.png" alt=""></p>
+<p><img src="../images/2017-12/push6.png" alt></p>
 
       
     </div>
@@ -608,8 +608,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017-12-Gradle简明教程/" rel="next" title="Gradle简明教程">
-                <i class="fa fa-chevron-left"></i> Gradle简明教程
+              <a href="/2017-12-Java8 简明教程/" rel="next" title="Java8 简明教程">
+                <i class="fa fa-chevron-left"></i> Java8 简明教程
               </a>
             
           </div>
@@ -677,7 +677,7 @@
 
       <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
               <img class="site-author-image" itemprop="image" src="/images/config/avatar.png" alt="cchao1024">
             
@@ -692,7 +692,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">28</span>
+                    <span class="site-state-item-count">31</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -772,7 +772,13 @@
                     
                       
                     
-                    <span class="site-state-item-count">18</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">21</span>
                     <span class="site-state-item-name">tags</span>
                   
                 </div>
