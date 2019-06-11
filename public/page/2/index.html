@@ -11,10 +11,8 @@
 
 
 
-  
 
-
-<html class="theme-next gemini use-motion" lang>
+<html class="theme-next gemini" lang>
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -32,8 +30,6 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -46,6 +42,21 @@
 
 
 
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.2">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.2">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.2">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.2">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.2" color="#222">
 
 
 
@@ -53,45 +64,20 @@
 
 
 
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
-
-<link href="/css/main.css?v=6.6.0" rel="stylesheet" type="text/css">
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.6.0">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.6.0">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.6.0">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=6.6.0" color="#222">
-
-
-
-
-
-
-
-
-
-<script type="text/javascript" id="hexo.configurations">
+<script id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
     scheme: 'Gemini',
-    version: '6.6.0',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    version: '7.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
     fancybox: false,
     fastclick: false,
     lazyload: false,
     tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     algolia: {
       applicationID: '',
       apiKey: '',
@@ -120,12 +106,13 @@
 
 
 
-
+  
+  
   <link rel="canonical" href="http://yoursite.com/page/2/">
 
 
 
-<script type="text/javascript" id="page.configurations">
+<script id="page.configurations">
   CONFIG.page = {
     sidebar: "",
   };
@@ -144,30 +131,29 @@
 
 
 
+
   <noscript>
-  <style type="text/css">
-    .use-motion .motion-element,
-    .use-motion .brand,
-    .use-motion .menu-item,
-    .sidebar-inner,
-    .use-motion .post-block,
-    .use-motion .pagination,
-    .use-motion .comments,
-    .use-motion .post-header,
-    .use-motion .post-body,
-    .use-motion .collection-title { opacity: initial; }
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
 
-    .use-motion .logo,
-    .use-motion .site-title,
-    .use-motion .site-subtitle {
-      opacity: initial;
-      top: initial;
-    }
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
 
-    .use-motion {
-      .logo-line-before i { left: initial; }
-      .logo-line-after i { right: initial; }
-    }
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
   </style>
 </noscript>
 
@@ -186,7 +172,7 @@
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
+  <div class="site-meta">
     
 
     <div class="custom-logo-site-title">
@@ -196,6 +182,7 @@
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
+    
     
   </div>
 
@@ -282,40 +269,6 @@
     <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
 
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-schedule">
-
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/schedule/" rel="section"><i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>Schedule</a>
-
-  </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-commonweal">
-
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/404/" rel="section"><i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>Commonweal 404</a>
-
-  </li>
 
       
       
@@ -365,6 +318,603 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018-09-SSL-TLS/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="cchao1024">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/config/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="cchao1024 blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2018-09-SSL-TLS/" class="post-title-link" itemprop="url">SSL/TLS</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-09-02 23:34:49" itemprop="dateCreated datePublished" datetime="2018-09-02T23:34:49+08:00">2018-09-02</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-06-10 17:45:17" itemprop="dateModified" datetime="2019-06-10T17:45:17+08:00">2019-06-10</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/基础知识/" itemprop="url" rel="index"><span itemprop="name">基础知识</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">Comments: </span>
+                <a href="/2018-09-SSL-TLS/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018-09-SSL-TLS/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>
+              
+传输层安全性协定 TLS（Transport Layer Security），及其前身安全套接层 SSL（Secure Sockets Layer）是一种 安全协议，目的是为网际网路通信，提供安全及数据完整性保障。
+
+网景在1994年推出首版网页浏览器时，推出HTTPS协定，以SSL进行加密，这是
+              ...
+            </p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2018-09-SSL-TLS/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018-09-Android网络安全配置/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="cchao1024">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/config/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="cchao1024 blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2018-09-Android网络安全配置/" class="post-title-link" itemprop="url">Android网络安全配置</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-09-01 23:33:30" itemprop="dateCreated datePublished" datetime="2018-09-01T23:33:30+08:00">2018-09-01</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-06-10 17:45:17" itemprop="dateModified" datetime="2019-06-10T17:45:17+08:00">2019-06-10</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/基础知识/" itemprop="url" rel="index"><span itemprop="name">基础知识</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">Comments: </span>
+                <a href="/2018-09-Android网络安全配置/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018-09-Android网络安全配置/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>
+              基础概念HTTPHTTP协议工作于 客户端-服务端架构上。通常，由HTTP客户端发起一个请求，建立一个到服务器指定端口（默认是80端口）的TCP连接。HTTP服务器则在那个端口监听客户端的请求。一旦收到请求，服务器会向客户端响应返回一个状态，比如”HTTP/1.1 200 OK”，以及返回的内容，如
+              ...
+            </p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2018-09-Android网络安全配置/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018-08-证书、CA、证书信任链/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="cchao1024">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/config/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="cchao1024 blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2018-08-证书、CA、证书信任链/" class="post-title-link" itemprop="url">证书、CA、证书信任链</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-08-29 23:31:40" itemprop="dateCreated datePublished" datetime="2018-08-29T23:31:40+08:00">2018-08-29</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-06-10 17:45:17" itemprop="dateModified" datetime="2019-06-10T17:45:17+08:00">2019-06-10</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/基础知识/" itemprop="url" rel="index"><span itemprop="name">基础知识</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">Comments: </span>
+                <a href="/2018-08-证书、CA、证书信任链/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018-08-证书、CA、证书信任链/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>
+              TLS
+传输层安全性协定 TLS（Transport Layer Security），及其前身安全套接层 SSL（Secure Sockets Layer）是一种安全协议，目的是为网际网路通信，提供安全及数据完整性保障。
+
+
+如图，TLS 在建立连接时是需要 
+
+客户端发送 ClientHello（
+              ...
+            </p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2018-08-证书、CA、证书信任链/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018-08-Gist/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -385,7 +935,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2018-08-Gist/" class="post-title-link" itemprop="http://yoursite.com/page/2/index.html">Gist</a>
+                <a href="/2018-08-Gist/" class="post-title-link" itemprop="url">Gist</a>
               
             
           </h1>
@@ -454,6 +1004,20 @@
 
           
             
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">Comments: </span>
+                <a href="/2018-08-Gist/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018-08-Gist/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -480,24 +1044,23 @@
       
         
           
-            <blockquote>
-<p><a href="https://gist.github.com/" target="_blank" rel="noopener">Gist</a> 是 <a href="https://github.com/" target="_blank" rel="noopener">Github</a> 推出的基于 Git 的代码片段管理服务。用户可以提交自己的代码片段或任意的文本，可以作为个人的代码管理库、文档管理库等。</p>
-</blockquote>
-<p>通过gists，你可以分享单一的文件，部分代码片段甚至整个应用程序代码给其他人。</p>
-<h1 id="创建gist"><a href="#创建gist" class="headerlink" title="创建gist"></a>创建gist</h1><p>你可以创建 <strong>公开的</strong>，或者 <strong>私有的</strong> 。<br>进入<a href="https://gist.github.com/" target="_blank" rel="noopener">gist</a>，输入 描述、文件名、内容后。右下角可以选择公开或者私有这个 gist<br><img src="https://upload-images.jianshu.io/upload_images/1633382-d9de50569303a2b8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<h1 id="Forking-或者-clone-gists"><a href="#Forking-或者-clone-gists" class="headerlink" title="Forking 或者 clone gists"></a>Forking 或者 clone gists</h1><p> Gists实际上是Git存储库，这意味着可以fork或clone它。还可以查看gist的完整提交历史记录和差异。</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/1633382-b0e612ed27cefcad.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<h1 id="搜索"><a href="#搜索" class="headerlink" title="搜索"></a>搜索</h1><p>可以通过 搜索 <a href="https://gist.github.com/search?q=keywords" target="_blank" rel="noopener">https://gist.github.com/search?q=keywords</a>去搜索别人公开的gist<br><img src="https://upload-images.jianshu.io/upload_images/1633382-fb9407357c569fc1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<h1 id="桌面管理Gist"><a href="#桌面管理Gist" class="headerlink" title="桌面管理Gist"></a>桌面管理Gist</h1><h3 id="Gistbox"><a href="#Gistbox" class="headerlink" title="Gistbox"></a>Gistbox</h3><p><a href="http://www.gistboxapp.com/" target="_blank" rel="noopener">Gistbox</a> 是 gist的桌面客户端（跨平台的，window \ mac \ Linux 均可运行）可以对Gist进行搜索、编辑、查看历史和分享。<br><img src="https://upload-images.jianshu.io/upload_images/1633382-d78bc5b4cf777f9b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<p>Chrome也有相应插件  <a href="https://chrome.google.com/webstore/detail/gistbox-clipper/cejmhmbmafamjegaebkjhnckhepgmido" target="_blank" rel="noopener">GistBox Clipper</a> </p>
-<p>特别的，主流编辑器  <a href="https://marketplace.visualstudio.com/items?itemName=Cacher.cacher-vscode" target="_blank" rel="noopener">Visual Studio Code</a>, <a href="https://atom.io/packages/cacher" target="_blank" rel="noopener">Atom Editor</a> , <a href="https://packagecontrol.io/packages/Cacher" target="_blank" rel="noopener">Sublime Text</a> 均有插件实现。</p>
-<p><a href="www.jetbrains.com">JetBrains</a> 全家桶默认支持<br><img src="https://upload-images.jianshu.io/upload_images/1633382-ed90f2f81cbcae3b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<p><a href="[http://www.youtube.com/watch?v=VLgyY6lqpsQ](http://www.youtube.com/watch?v=VLgyY6lqpsQ">Youtube</a><br>)  有详细教程和介绍。</p>
-<h3 id="Lepton"><a href="#Lepton" class="headerlink" title="Lepton"></a>Lepton</h3><p><a href="http://hackjutsu.com/Lepton/" target="_blank" rel="noopener">Lepton</a> 也是跨平台的，与GistBox 类似的产品</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/1633382-841800754e77d937.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
-<h1 id="参考连接"><a href="#参考连接" class="headerlink" title="参考连接"></a>参考连接</h1><p><a href="https://help.github.com/articles" target="_blank" rel="noopener">https://help.github.com/articles</a><br><a href="http://ruikye.com/2014/08/30/github-gist/" target="_blank" rel="noopener">http://ruikye.com/2014/08/30/github-gist/</a></p>
+            <p>
+              
+Gist 是 Github 推出的基于 Git 的代码片段管理服务。用户可以提交自己的代码片段或任意的文本，可以作为个人的代码管理库、文档管理库等。
 
+通过gists，你可以分享单一的文件，部分代码片段甚至整个应用程序代码给其他人。
+创建gist你可以创建 公开的，或者 私有的 。进入gist，输
+              ...
+            </p>
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/2018-08-Gist/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
@@ -511,7 +1074,7 @@
     
 
     
-       
+      
     
     
 
@@ -572,7 +1135,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2018-08-python上传APK至fir-im/" class="post-title-link" itemprop="http://yoursite.com/page/2/index.html">python上传APK至fir.im</a>
+                <a href="/2018-08-python上传APK至fir-im/" class="post-title-link" itemprop="url">python上传APK至fir.im</a>
               
             
           </h1>
@@ -641,6 +1204,20 @@
 
           
             
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">Comments: </span>
+                <a href="/2018-08-python上传APK至fir-im/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018-08-python上传APK至fir-im/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -667,115 +1244,45 @@
       
         
           
-            <h1 id="Fir文档"><a href="#Fir文档" class="headerlink" title="Fir文档"></a>Fir文档</h1><p>发布应用操作分两步，</p>
-<ul>
-<li>获取上传凭证</li>
-<li>上传文件</li>
-</ul>
-<h2 id="获取上传凭证"><a href="#获取上传凭证" class="headerlink" title="获取上传凭证"></a>获取上传凭证</h2><h3 id="API"><a href="#API" class="headerlink" title="API"></a>API</h3><p><strong>发布应用获取上传凭证</strong></p>
-<blockquote>
-<p><strong>POST</strong> <a href="javascript:void(0" target="_blank" rel="noopener">http://api.fir.im/apps</a>)</p>
-</blockquote>
-<h3 id="参数列表"><a href="#参数列表" class="headerlink" title="参数列表"></a>参数列表</h3><table>
-<thead>
-<tr>
-<th>名称</th>
-<th>类型</th>
-<th>必填</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>type</td>
-<td>String</td>
-<td>是</td>
-<td>ios 或者 android（发布新应用时必填）</td>
-</tr>
-<tr>
-<td>bundle_id</td>
-<td>String</td>
-<td>是</td>
-<td>App 的 bundleId（发布新应用时必填）</td>
-</tr>
-<tr>
-<td>api_token</td>
-<td>String</td>
-<td>是</td>
-<td>长度为 32, 用户在 fir 的 api_token</td>
-</tr>
-</tbody>
-</table>
-<h2 id="上传文件"><a href="#上传文件" class="headerlink" title="上传文件"></a>上传文件</h2><h3 id="API-1"><a href="#API-1" class="headerlink" title="API"></a>API</h3><p>将 ICON 和安装包文件分别上传到上一步操作中获取到的 <code>cert.icon</code> 和 <code>cert.binary</code> 中的 <code>upload_url</code></p>
-<blockquote>
-<p><strong>POST</strong> upload_url</p>
-</blockquote>
-<h3 id="参数列表-1"><a href="#参数列表-1" class="headerlink" title="参数列表"></a>参数列表</h3><table>
-<thead>
-<tr>
-<th>名称</th>
-<th>类型</th>
-<th>必填</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>key</td>
-<td>String</td>
-<td>是</td>
-<td>七牛上传 key</td>
-</tr>
-<tr>
-<td>token</td>
-<td>String</td>
-<td>是</td>
-<td>七牛上传 token</td>
-</tr>
-<tr>
-<td>file</td>
-<td>File</td>
-<td>是</td>
-<td>安装包文件</td>
-</tr>
-<tr>
-<td>x:name</td>
-<td>String</td>
-<td>是</td>
-<td>应用名称（上传 ICON 时不需要）</td>
-</tr>
-<tr>
-<td>x:version</td>
-<td>String</td>
-<td>是</td>
-<td>版本号（上传 ICON 时不需要）</td>
-</tr>
-<tr>
-<td>x:build</td>
-<td>String</td>
-<td>是</td>
-<td>Build 号（上传 ICON 时不需要）</td>
-</tr>
-<tr>
-<td>x:release_type</td>
-<td>String</td>
-<td>否</td>
-<td>打包类型，只针对 iOS (Adhoc, Inhouse)（上传 ICON 时不需要）</td>
-</tr>
-<tr>
-<td>x:changelog</td>
-<td>String</td>
-<td>否</td>
-<td>更新日志（上传 ICON 时不需要）</td>
-</tr>
-</tbody>
-</table>
-<h1 id="Python3脚本"><a href="#Python3脚本" class="headerlink" title="Python3脚本"></a>Python3脚本</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/python</span><br><span class="line"># -*- coding: UTF-8 -*-</span><br><span class="line"></span><br><span class="line">import requests</span><br><span class="line">import json</span><br><span class="line">import os</span><br><span class="line">import sys</span><br><span class="line"></span><br><span class="line">split = &apos;-&apos; * 20</span><br><span class="line"></span><br><span class="line">proxies = &#123;</span><br><span class="line">    &apos;http&apos;: &apos;127.0.0.1:8899&apos;,</span><br><span class="line">    &apos;https&apos;: &apos;127.0.0.1:8899&apos;,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def print_split(s):</span><br><span class="line">    print(split + &apos;[ &apos; + s + &apos; ]&apos; + split)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 必填项，可以通过命令行参数传入</span><br><span class="line"></span><br><span class="line"># fir 的token 和包信息</span><br><span class="line">APP_INFO = &#123;</span><br><span class="line">    &apos;api_token&apos;: &apos;04d3c6e1dc9b65977be388be3801asfdafsdasfd7&apos;,</span><br><span class="line">    &apos;applicationId&apos;: &apos;com.xxx.yyy&apos;,</span><br><span class="line">    &apos;versionName&apos;: &apos;1.2.3&apos;,</span><br><span class="line">    &apos;versionCode&apos;: &apos;90&apos;,</span><br><span class="line">    &apos;changelog&apos;: &apos;暂无提交log&apos;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 必填项，可以通过命令行参数传入</span><br><span class="line"></span><br><span class="line">def init_app_info():</span><br><span class="line">    if len(sys.argv) &gt; 1:</span><br><span class="line">        print_split(&apos;获取到传递过来的参数&apos;)</span><br><span class="line">        print(str(sys.argv))</span><br><span class="line">        APP_INFO[&apos;api_token&apos;] = sys.argv[1]</span><br><span class="line">        APP_INFO[&apos;applicationId&apos;] = sys.argv[2]</span><br><span class="line">        APP_INFO[&apos;versionName&apos;] = sys.argv[3]</span><br><span class="line">        APP_INFO[&apos;versionCode&apos;] = sys.argv[4]</span><br><span class="line">    if len(sys.argv) &gt; 4:</span><br><span class="line">        APP_INFO[&apos;changelog&apos;] = sys.argv[5]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 获取 fir 的上传凭证</span><br><span class="line">def get_cert():</span><br><span class="line">    print_split(&apos;发起获取上传凭证请求&apos;)</span><br><span class="line">    data = &#123;&apos;type&apos;: &apos;android&apos;, &apos;bundle_id&apos;: APP_INFO[&apos;applicationId&apos;],</span><br><span class="line">            &apos;api_token&apos;: APP_INFO[&apos;api_token&apos;]&#125;</span><br><span class="line">    print(data)</span><br><span class="line">    req = requests.post(url=&apos;http://api.fir.im/apps&apos;, data=data)</span><br><span class="line">    cert_resp = req.content</span><br><span class="line">    print_split(&apos;获取到 fir 响应&apos;)</span><br><span class="line">    print(str(cert_resp))</span><br><span class="line">    return cert_resp</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 遍历目录获取到 最后一次修改的apk文件（认为是需要上传的文件）</span><br><span class="line">def get_last_modify_apk():</span><br><span class="line">    print_split(&apos;遍历获取 Apk&apos;)</span><br><span class="line">    # 遍历拿到最后一次修改的路径</span><br><span class="line">    last_m_time = 100</span><br><span class="line">    last_apk_path = &apos;&apos;</span><br><span class="line">    for (root, dirs, files) in os.walk(&apos;../&apos;):</span><br><span class="line">        for item in files:</span><br><span class="line">            if os.path.splitext(item)[1] == &apos;.apk&apos;:</span><br><span class="line">                abs_path = os.path.join(root, item)</span><br><span class="line">                print(&apos;检测到apk文件：&apos; + abs_path)</span><br><span class="line">                if os.path.getmtime(abs_path) &gt; last_m_time:</span><br><span class="line">                    last_m_time = os.path.getmtime(abs_path)</span><br><span class="line">                    last_apk_path = abs_path</span><br><span class="line">    print_split(&apos;获取到最后一次修改的 apk文件路径&apos;)</span><br><span class="line">    print(last_apk_path)</span><br><span class="line">    return last_apk_path</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 上传到fir</span><br><span class="line">def upload_fir(binary, path):</span><br><span class="line">    # 拿到相应的token</span><br><span class="line">    cert_key = binary[&apos;key&apos;]</span><br><span class="line">    cert_token = binary[&apos;token&apos;]</span><br><span class="line">    cert_upload_url = binary[&apos;upload_url&apos;]</span><br><span class="line"></span><br><span class="line">    print_split(&apos;上传 Apk&apos;)</span><br><span class="line">    file = &#123;&apos;file&apos;: open(path, &apos;rb&apos;)&#125;</span><br><span class="line">    param = &#123;</span><br><span class="line">        &quot;key&quot;: cert_key,</span><br><span class="line">        &quot;token&quot;: cert_token,</span><br><span class="line">        &apos;x:build&apos;: APP_INFO[&apos;versionCode&apos;],</span><br><span class="line">        &quot;x:name&quot;: &apos;  &apos;,</span><br><span class="line">        &quot;x:changelog&quot;: APP_INFO[&apos;changelog&apos;]</span><br><span class="line">    &#125;</span><br><span class="line">    requests.packages.urllib3.disable_warnings()</span><br><span class="line">    req = requests.post(cert_upload_url,files=file, data=param, verify=False)</span><br><span class="line"></span><br><span class="line">    print(req.content)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if __name__ == &apos;__main__&apos;:</span><br><span class="line">    init_app_info()</span><br><span class="line">    cert_resp2 = get_cert()</span><br><span class="line"></span><br><span class="line">    # 拿到cert实体</span><br><span class="line">    cert_json = json.loads(cert_resp2)</span><br><span class="line">    binary_dirt = cert_json[&apos;cert&apos;][&apos;binary&apos;]</span><br><span class="line"></span><br><span class="line">    apk_path = get_last_modify_apk()</span><br><span class="line"></span><br><span class="line">    upload_fir(binary_dirt, apk_path)</span><br></pre></td></tr></table></figure>
-<h1 id="Gradle-脚本"><a href="#Gradle-脚本" class="headerlink" title="Gradle 脚本"></a>Gradle 脚本</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">复制下面的代码到 app/build.gradle </span><br><span class="line"></span><br><span class="line">task uploadFir &#123;</span><br><span class="line">//    dependsOn &apos;assembleRelease&apos;  (这个是可选的，标识是否构建最新Release版本)</span><br><span class="line">    doLast &#123;</span><br><span class="line"></span><br><span class="line">        def apiToken = &quot;04d3c6e1dc9b65977be388be38asfdasdfasdf&quot;</span><br><span class="line">        def appId = project.android.defaultConfig.applicationId</span><br><span class="line">        def versionName = project.android.defaultConfig.versionName</span><br><span class="line">        def versionCode = project.android.defaultConfig.versionCode</span><br><span class="line">        def changeLog = &quot;填写更新日志&quot;</span><br><span class="line"></span><br><span class="line">        // 执行Python脚本</span><br><span class="line">        def process = &quot;python3 fir.py $&#123;apiToken&#125; $&#123;appId&#125; $&#123;versionName&#125; $&#123;versionCode&#125; $&#123;changeLog&#125;&quot;.execute()</span><br><span class="line"></span><br><span class="line">        ByteArrayOutputStream result = new ByteArrayOutputStream()</span><br><span class="line">        def inputStream = process.getInputStream()</span><br><span class="line">        byte[] buffer = new byte[1024]</span><br><span class="line">        int length</span><br><span class="line">        while ((length = inputStream.read(buffer)) != -1) &#123;</span><br><span class="line">            result.write(buffer, 0, length)</span><br><span class="line">        &#125;</span><br><span class="line">        println(result.toString(&quot;UTF-8&quot;))</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>在 终端 执行  gradle uploadFir</p>
-<p>运行结果</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&gt; Task :app:uploadFir </span><br><span class="line">--------------------[ 获取到传递过来的参数 ]--------------------</span><br><span class="line">[&apos;fir.py&apos;, &apos;04d3c6e1dc9b65977be388be3801c9c7&apos;, &apos;com.xxxx&apos;, &apos;4.3.0&apos;, &apos;150&apos;, &apos;填写更新日志&apos;]</span><br><span class="line">--------------------[ 发起获取上传凭证请求 ]--------------------</span><br><span class="line">&#123;&apos;type&apos;: &apos;android&apos;, &apos;bundle_id&apos;: &apos;com.yoinsapp&apos;, &apos;api_token&apos;: &apos;04d3c6e1dc9b65977be388be3801c9c7&apos;&#125;</span><br><span class="line">--------------------[ 获取到 fir 响应 ]--------------------</span><br><span class="line">b&apos;&#123;&quot;id&quot;:&quot;5af3a2e2959d693a4c99861a&quot;,&quot;type&quot;:&quot;android&quot;,&quot;short&quot;:&quot;ysandroid&quot;,&quot;app_user_id&quot;:&quot;596c3640ca87a843e100000e&quot;,&quot;storage&quot;:&quot;qiniu&quot;,&quot;form_method&quot;:&quot;POST&quot;,&quot;cert&quot;:&#123;&quot;icon&quot;:&#123;&quot;key&quot;:&quot;79993a222dfe8e55b8d6058f397dd52904901b9b&quot;,&quot;token&quot;:&quot;这个值很长&quot;,&quot;upload_url&quot;:&quot;https://upload.qbox.me&quot;,&quot;custom_headers&quot;:&#123;&#125;,&quot;custom_callback_data&quot;:&#123;&quot;original_key&quot;:&quot;3957ad13cc2794e206f610f57f7e8507ec551808&quot;&#125;&#125;,&quot;binary&quot;:&#123;&quot;key&quot;:&quot;3cbed5d72486957b245ba81e7d1f9389f4f038df.apk&quot;,&quot;token&quot;:&quot;这个值很长&quot;,&quot;upload_url&quot;:&quot;https://upload.qbox.me&quot;,&quot;custom_headers&quot;:&#123;&#125;&#125;,&quot;mqc&quot;:&#123;&quot;total&quot;:5,&quot;used&quot;:0,&quot;is_mqc_availabled&quot;:true&#125;,&quot;support&quot;:&quot;qiniu&quot;,&quot;prefix&quot;:&quot;x:&quot;&#125;&#125;&apos;</span><br><span class="line">--------------------[ 遍历获取 Apk ]--------------------</span><br><span class="line">检测到apk文件：../XXXX/app/build/outputs/apk/release/app-release-unsigned.apk</span><br><span class="line">检测到apk文件：../XXXX/app/build/outputs/apk/debug/app-debug.apk</span><br><span class="line">检测到apk文件：../YYYYl/app/release/125.apk</span><br><span class="line">检测到apk文件：../YYYY/app/build/outputs/apk/release/150.apk</span><br><span class="line">检测到apk文件：../YYYY/app/build/outputs/apk/debug/150.apk</span><br><span class="line">--------------------[ 获取到最后一次修改的 apk文件路径 ]--------------------</span><br><span class="line">../YYYY/app/build/outputs/apk/release/150.apk</span><br><span class="line">--------------------[ 上传 Apk ]--------------------</span><br><span class="line">b&apos;&#123;&quot;download_url&quot;:&quot;https://pro-app-qn.fir.im/XXXXX.apk?e=1529662797\\u0026token=SSSSSS-T:js8wDCbtYglY5rf4YBHPofIL-PU=&quot;,&quot;is_completed&quot;:true,&quot;release_id&quot;:&quot;5b2cbf3c959d6926ef0420ca&quot;&#125;&apos;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">BUILD SUCCESSFUL in 42s</span><br><span class="line">1 actionable task: 1 executed</span><br></pre></td></tr></table></figure>
+            <p>
+              Fir文档发布应用操作分两步，
+
+获取上传凭证
+上传文件
+
+获取上传凭证API发布应用获取上传凭证
+
+POST http://api.fir.im/apps)
+
+参数列表
+
+
+名称
+类型
+必填
+说明
+
+
+
+
+type
+String
+是
+ios 或者 android（发布新应用时必填）
+
+
+bundl
+              ...
+            </p>
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/2018-08-python上传APK至fir-im/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
@@ -789,7 +1296,7 @@
     
 
     
-       
+      
     
     
 
@@ -850,7 +1357,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2018-05-Python3实现Onesignal推送/" class="post-title-link" itemprop="http://yoursite.com/page/2/index.html">Onesignalt推送-Python3的实现</a>
+                <a href="/2018-05-Python3实现Onesignal推送/" class="post-title-link" itemprop="url">Onesignalt推送-Python3的实现</a>
               
             
           </h1>
@@ -919,6 +1426,20 @@
 
           
             
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">Comments: </span>
+                <a href="/2018-05-Python3实现Onesignal推送/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018-05-Python3实现Onesignal推送/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -945,81 +1466,21 @@
       
         
           
-            <h1 id="OneSignal"><a href="#OneSignal" class="headerlink" title="OneSignal"></a>OneSignal</h1><p>OneSignal 暴露了许多REST API，只要拿到对应的appId，通过简单的http请求就能向集成OneSignal推送的目标设备发起推送。不仅如果，各种与其平台相关的操作都有API。</p>
-<p><img src="../images/2017-12/push1.png" alt="REST API"></p>
-<p>实现https请求有许多方式，各个语言也是各显神通。Onesignal十分友好的提供了各语言的简单实现，满足各种情况的推送需求。</p>
-<p><img src="../images/2017-12/push2.png" alt="REST API"></p>
-<h1 id="请求结构"><a href="#请求结构" class="headerlink" title="请求结构"></a>请求结构</h1><p>  OneSignal 发送推送 API 需要Post json数据到 <strong><a href="https://onesignal.com/api/v1/notifications" target="_blank" rel="noopener">https://onesignal.com/api/v1/notifications</a></strong></p>
-<p>  请求头部信息：</p>
-<ul>
-<li>Content-Type: application/json; charset=utf-8</li>
-<li><p>Authorization: Basic XXX（授权码）</p>
-<p>授权码，我瞎写了一个也能跑的通。暂不知道为什么</p>
-</li>
-</ul>
-<h1 id="请求体"><a href="#请求体" class="headerlink" title="请求体"></a>请求体</h1><p>  请求体是封装好相应所需参数的json字符串。以下为相应所需参数。</p>
-<ul>
-<li>app_id 或者 app_ids（推送多个app） 是必须的，但别两个都发</li>
-</ul>
-<p><img src="../images/2017-12/push3.png" alt></p>
-<table>
-<thead>
-<tr>
-<th>key</th>
-<th>说明</th>
-<th>数据结构</th>
-<th>example</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>contents</td>
-<td>推送内容</td>
-<td>对象</td>
-<td>{“en”: “English Message”, “es”: “Spanish Message”}</td>
-</tr>
-<tr>
-<td>headings</td>
-<td>推送标题</td>
-<td>对象</td>
-<td>{“en”: “English Title”, “es”: “Spanish Title”}</td>
-</tr>
-<tr>
-<td>subtitle</td>
-<td>推送子标题</td>
-<td>对象(仅ios 10+)</td>
-<td>{“en”: “English Title”, “es”: “Spanish Title”}</td>
-</tr>
-<tr>
-<td>big_picture</td>
-<td>推送大图</td>
-<td>字符串(仅android)</td>
-<td>“big_picture.png”</td>
-</tr>
-<tr>
-<td>data</td>
-<td>携带的数据</td>
-<td>自定义</td>
-<td>自己协定好的格式，取到后能正常解析就行</td>
-</tr>
-<tr>
-<td>include_player_ids</td>
-<td>推送的设备</td>
-<td>数组</td>
-<td>[“AAA”,”BBB”]</td>
-</tr>
-</tbody>
-</table>
-<p>推送设备id是Onesignal给设备生成的UUID，类似这样的：6392d91a-b206-4b7b-a620-cd68e32c3a7x</p>
-<h1 id="Python-实现"><a href="#Python-实现" class="headerlink" title="Python 实现"></a>Python 实现</h1><p>前文说到onesignal提供了许多实现，下文就是代码。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: UTF-8 -*-</span></span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">pushJsonStr 为推送的准备 json</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">app_id  = 就是应用id 改成自己项目的</span></span><br><span class="line"><span class="string">REST_API_KEY = 是授权账号的 api key</span></span><br><span class="line"><span class="string">include_player_ids = 要被推送的用户，list，可以写入多个账号</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">list 是你要推送的内容数据，这里写成了个列表，可以加入多个推送内容，一次性推送多个。里面的data是我们协定的、可处理的格式</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line">pushJsonStr = <span class="string">'''&#123;</span></span><br><span class="line"><span class="string">    "app_id": "xxxxxxx-1ac1-4cb5-8585-xxxxxxxxxx",</span></span><br><span class="line"><span class="string">    "REST_API_KEY": "XXXXXXXXXjYtM2JjZC00NDgyLTk2ZDQtYjY5NmXXXXXXXXX",</span></span><br><span class="line"><span class="string">    "include_player_ids": ["c608501f-5af5-4d08-bc3f-bd025af3a946"],</span></span><br><span class="line"><span class="string">    "list": [</span></span><br><span class="line"><span class="string">        &#123;</span></span><br><span class="line"><span class="string">            "headings": &#123;"en": "English Title", "es": "Spanish Title"&#125;,</span></span><br><span class="line"><span class="string">            "subtitle": &#123;"en": "English Subtitle", "es": "Spanish Subtitle"&#125;,</span></span><br><span class="line"><span class="string">            "contents": &#123;"en": "English Message", "es": "Spanish Message"&#125;,</span></span><br><span class="line"><span class="string">            "big_picture": "http://img5.imgtn.bdimg.com/it/u=3087789860,3276852373&amp;fm=27&amp;gp=0.jpg",</span></span><br><span class="line"><span class="string">            "data": &#123;"t": "flashdeals", "p": ""&#125;</span></span><br><span class="line"><span class="string">        &#125;,</span></span><br><span class="line"><span class="string">        &#123;</span></span><br><span class="line"><span class="string">            "headings": &#123;"en": "English Title2", "es": "Spanish Title"&#125;,</span></span><br><span class="line"><span class="string">            "subtitle": &#123;"en": "English Subtitle2", "es": "Spanish Subtitle"&#125;,</span></span><br><span class="line"><span class="string">            "contents": &#123;"en": "English Message2", "es": "Spanish Message"&#125;,</span></span><br><span class="line"><span class="string">            "data": &#123;"t": "flashdeals", "p": ""&#125;</span></span><br><span class="line"><span class="string">        &#125;</span></span><br><span class="line"><span class="string">    ]</span></span><br><span class="line"><span class="string">&#125;'''</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 把json串加载成字典</span></span><br><span class="line">jsonDirt = json.loads(pushJsonStr)</span><br><span class="line">print(type(jsonDirt))</span><br><span class="line"></span><br><span class="line">header = &#123;<span class="string">"Content-Type"</span>: <span class="string">"application/json; charset=utf-8"</span>,</span><br><span class="line">          <span class="string">"Authorization"</span>: <span class="string">"Basic "</span> + jsonDirt[<span class="string">'REST_API_KEY'</span>]&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 代理，调试查看请求用，调通就不需要了</span></span><br><span class="line">proxies = &#123;</span><br><span class="line">    <span class="string">'http'</span>: <span class="string">'127.0.0.1:8899'</span>,</span><br><span class="line">    <span class="string">'https'</span>: <span class="string">'127.0.0.1:8899'</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 遍历 json字典的 push 内容</span></span><br><span class="line"><span class="keyword">for</span> x <span class="keyword">in</span> jsonDirt[<span class="string">'list'</span>]:</span><br><span class="line"></span><br><span class="line">    <span class="comment">#  加入 app_id</span></span><br><span class="line">    x[<span class="string">'app_id'</span>] = jsonDirt[<span class="string">'app_id'</span>]</span><br><span class="line">    <span class="comment"># 加入需要推送的 设备id</span></span><br><span class="line">    x[<span class="string">'include_player_ids'</span>] = jsonDirt[<span class="string">'include_player_ids'</span>]</span><br><span class="line">    <span class="comment"># 开始推送</span></span><br><span class="line">    print(<span class="string">'-'</span> * <span class="number">50</span>)</span><br><span class="line">    print(<span class="string">'【发出推送请求】: '</span> + json.dumps(x))</span><br><span class="line">    req = requests.post(<span class="string">"https://onesignal.com/api/v1/notifications"</span>,</span><br><span class="line">                        headers=header,  data=json.dumps(x))</span><br><span class="line">    print(<span class="string">'\n'</span>)</span><br><span class="line">    print(<span class="string">'【收到推送响应Code】: '</span> + str(req.status_code) + <span class="string">' '</span> + req.reason)</span><br><span class="line">    print(<span class="string">'【收到推送响应体】: '</span> + req.text)</span><br><span class="line">    print(<span class="string">'-'</span> * <span class="number">50</span> + <span class="string">'\n'</span>)</span><br></pre></td></tr></table></figure>
-<p>把上面的代码 复制到 <strong>push.py</strong> 里，修改成你想要的推送内容。 在终端输入命令 就可以跑了(python3 环境自备)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python3 push.py</span><br></pre></td></tr></table></figure>
-<p>如果终端打印出 200 就可以了，注意 响应体里面的 <strong>recipients</strong> 它标识着被推送的用户数，正常就个位数，</p>
-<p>如果不是 那问题就严重了，所以一定要小心，先抓包验证没问题 再推。</p>
-<p><img src="../images/2018-5/push1.png" alt></p>
+            <p>
+              OneSignalOneSignal 暴露了许多REST API，只要拿到对应的appId，通过简单的http请求就能向集成OneSignal推送的目标设备发起推送。不仅如果，各种与其平台相关的操作都有API。
 
+实现https请求有许多方式，各个语言也是各显神通。Onesignal十分友好的提供了
+              ...
+            </p>
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/2018-05-Python3实现Onesignal推送/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
@@ -1033,7 +1494,7 @@
     
 
     
-       
+      
     
     
 
@@ -1094,7 +1555,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2018-04-YAML语法简明教程/" class="post-title-link" itemprop="http://yoursite.com/page/2/index.html">YAML语法简明教程</a>
+                <a href="/2018-04-YAML语法简明教程/" class="post-title-link" itemprop="url">YAML语法简明教程</a>
               
             
           </h1>
@@ -1163,6 +1624,20 @@
 
           
             
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">Comments: </span>
+                <a href="/2018-04-YAML语法简明教程/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018-04-YAML语法简明教程/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -1189,94 +1664,22 @@
       
         
           
-            <h2 id="YAML"><a href="#YAML" class="headerlink" title="YAML"></a>YAML</h2><blockquote>
-<p>YAML是一个可读性高，用来表达数据序列的格式。是 “YAML Ain’t a Markup Language”（YAML不是一种标记语言）的递归缩写。</p>
-</blockquote>
-<p>YAML的语法和其他高级语言类似，可以简单表达清单、散列表，标量等数据形态。由于YAML使用空白字符和分行来分隔数据，使得它特别适合用grep／Python／Perl／Ruby操作。其让人最容易上手的特色是巧妙避开各种封闭符号，如：引号、各种括号等，这些符号在嵌套结构时会变得复杂而难以辨认(字符串中引号需要额外转义)。</p>
-<h2 id="设计目标"><a href="#设计目标" class="headerlink" title="设计目标"></a>设计目标</h2><ul>
-<li>人类容易阅读</li>
-<li>可用于不同程序间的数据交换</li>
-<li>适合描述程序所使用的数据结构，特别是脚本语言</li>
-<li>丰富的表达能力与可扩展性</li>
-<li>易于使用</li>
-</ul>
-<h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><ul>
-<li>YAML使用可打印的Unicode字符，可使用UTF-8或UTF-16。</li>
-<li>使用空白字符为文件缩进来表示结构；不过不能使用制表符符(TAB)。</li>
-<li>注解由井字号（ # ）开始，可以出现在一行中的任何位置，而且范围只有一行（也就是一般所谓的单行注解）</li>
-<li>在单一文件中，可用连续三个连字号（—）区分多个文件。<br>另外，还有选择性的连续三个点号（ … ）用来表示文件结尾。</li>
-</ul>
-<h2 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h2><p>YAML 有三种数据结构，其中 数组和键值对有两种表达方式，数据结构可以嵌套形成复杂的复合结构</p>
-<ul>
-<li>标量 （基础数据类型）</li>
-<li>数组 （也被称为序列、列表）</li>
-<li>键值表（也被称为对象、Map表）</li>
-</ul>
-<h3 id="标量"><a href="#标量" class="headerlink" title="标量"></a>标量</h3><table>
-<thead>
-<tr>
-<th>类型</th>
-<th style="text-align:center">yaml</th>
-<th style="text-align:left">json</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>字符串</td>
-<td style="text-align:center">str: balabala</td>
-<td style="text-align:left">{ str:”balabala” }</td>
-</tr>
-<tr>
-<td>布尔值</td>
-<td style="text-align:center">boolValue: true</td>
-<td style="text-align:left">{ boolValue:true }</td>
-</tr>
-<tr>
-<td>整数</td>
-<td style="text-align:center">intValue: 1234</td>
-<td style="text-align:left">{ intValue:1234 }</td>
-</tr>
-<tr>
-<td>浮点数</td>
-<td style="text-align:center">number: 12.30</td>
-<td style="text-align:left">{ number: 12.30 }</td>
-</tr>
-<tr>
-<td>null</td>
-<td style="text-align:center">nullValue: ~</td>
-<td style="text-align:left">{ nullValue: null }</td>
-</tr>
-</tbody>
-</table>
-<p>因为YAML 字符串不需要包在引号之内 所以当出现 str: 123 就会有歧义，难以区分123是字符串还是数值。这个时候可以用 双引号将123 包裹起来，如：str: “123” 。<br>此外YAML 还提供了强制类型转换，通过两个！ 表示值的类型。<br>比如：str: !!str 123<br>再比如：floatValue: !!float 123</p>
-<h4 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h4><p>数组有两中表达方式：</p>
-<ol>
-<li>使用“-”（横线） + 空格表示单个列表项</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">--- # 文档开始</span><br><span class="line">- 小明</span><br><span class="line">- 小红</span><br><span class="line">- 小芳</span><br></pre></td></tr></table></figure>
-<ol start="2">
-<li>使用 [] 包裹，并用逗号+空格 [, ] 分开成员</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">--- # 文档开始</span><br><span class="line">[小明, 小红, 小芳]</span><br></pre></td></tr></table></figure>
-<h4 id="键值对"><a href="#键值对" class="headerlink" title="键值对"></a>键值对</h4><p>键值对 也有两种表达方式，通过配合数组嵌套能够形成复杂的数据结构</p>
-<ol>
-<li><p>使用 “:”（冒号） + 空格表示单个键值对</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"># 用户信息</span><br><span class="line">user:</span><br><span class="line">  userid: 7654321</span><br><span class="line">  userinfo:</span><br><span class="line">   name: Mike</span><br><span class="line">   age: 28</span><br><span class="line">  userfriend:Â</span><br><span class="line">   - 小明</span><br><span class="line">   - 小红</span><br><span class="line">   - 小芳</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>使用 大括号{} 包裹， 并用用逗号+空格分隔 key: value对</p>
-</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 用户信息</span><br><span class="line">&#123; user:</span><br><span class="line">   &#123; userid: 7654321,</span><br><span class="line">     userinfo: &#123; name: &apos;Mike&apos;, age: 28 &#125;,</span><br><span class="line">     userfriend: [ &apos;小明&apos;, &apos;小红&apos;, &apos;小芳&apos; ] &#125;</span><br></pre></td></tr></table></figure>
-<p>特别的。 当键是一个列表或键值表时，可以通过 “? “ 问号+空格表示复杂的键。</p>
-<h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2><p>字符串默认不需要加引号。加了单引号和双引号处理特殊字符会有差异。<br>单引号会转义特殊字符，双引号不会。特别的，如果单引号里面包含单引号 需要额外一个 ‘ 转义<br>如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">test:</span><br><span class="line"> str1: &apos;我是’&apos;字符\n串&apos;</span><br><span class="line"> str2: &quot;我是&apos;字符\n串&quot;</span><br><span class="line">#  json的写法 &#123; test: &#123; str1: &apos;我是\&apos;字符\\n串&apos;, str2: &apos;我是\&apos;字符\n串&apos; &#125;</span><br></pre></td></tr></table></figure></p>
-<p>多行字符串可以使用 | 保留换行符 \n ，也可以使用 &gt; 去除换行。 在该符号之后额外添加+ - 可以保留或移除最后的一堆换行</p>
-<p>如</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">data: &gt;</span><br><span class="line">  do you know</span><br><span class="line">  php is the</span><br><span class="line">  best language</span><br><span class="line"></span><br><span class="line">json写法   data: &apos;do you know php is the best language\n&apos;</span><br><span class="line"></span><br><span class="line">data: |-</span><br><span class="line">  do you know</span><br><span class="line">  php is the</span><br><span class="line">  best language</span><br><span class="line"></span><br><span class="line">json写法  data: &apos;do you know\nphp is the\nbest language&apos;</span><br></pre></td></tr></table></figure>
-<h2 id="锚点"><a href="#锚点" class="headerlink" title="锚点"></a>锚点</h2><p>锚点与引用，定义数据的复用。使用 “&amp;” 定义数据锚点（即要复制的数据）使用 * 引用上述锚点数据（即粘贴数据)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">str1: &amp;q which language is best?</span><br><span class="line"></span><br><span class="line">print: &amp;chat</span><br><span class="line"> quest: *q</span><br><span class="line"> answer: php</span><br><span class="line"></span><br><span class="line">print2:</span><br><span class="line"> chat: Tell me.</span><br><span class="line"> &lt;&lt; : *chat</span><br><span class="line"></span><br><span class="line">json写法</span><br><span class="line"></span><br><span class="line">str1: &apos;which language is best?&apos;,</span><br><span class="line">print: &#123; quest: &apos;which language is best?&apos;, answer: &apos;php&apos; &#125;,</span><br><span class="line">print2:</span><br><span class="line"> &#123; chat: &apos;Tell me.&apos;,</span><br><span class="line">   quest: &apos;which language is best?&apos;,</span><br><span class="line">   answer: &apos;php&apos; &#125;</span><br></pre></td></tr></table></figure>
-<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a href="https://www.wikiwand.com/zh-cn/YAML" target="_blank" rel="noopener">https://www.wikiwand.com/zh-cn/YAML</a><br><a href="http://www.ruanyifeng.com/blog/2016/07/yaml.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2016/07/yaml.html</a><br><a href="https://blog.csdn.net/liukuan73/article/details/78031693" target="_blank" rel="noopener">https://blog.csdn.net/liukuan73/article/details/78031693</a></p>
+            <p>
+              YAML
+YAML是一个可读性高，用来表达数据序列的格式。是 “YAML Ain’t a Markup Language”（YAML不是一种标记语言）的递归缩写。
 
+YAML的语法和其他高级语言类似，可以简单表达清单、散列表，标量等数据形态。由于YAML使用空白字符和分行来分隔数据，使得它特别适合用
+              ...
+            </p>
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/2018-04-YAML语法简明教程/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
@@ -1290,7 +1693,7 @@
     
 
     
-       
+      
     
     
 
@@ -1351,7 +1754,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2018-04-Hash算法/" class="post-title-link" itemprop="http://yoursite.com/page/2/index.html">Hash算法</a>
+                <a href="/2018-04-Hash算法/" class="post-title-link" itemprop="url">Hash算法</a>
               
             
           </h1>
@@ -1420,6 +1823,20 @@
 
           
             
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">Comments: </span>
+                <a href="/2018-04-Hash算法/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018-04-Hash算法/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -1446,15 +1863,22 @@
       
         
           
-            <h2 id="HASH"><a href="#HASH" class="headerlink" title="HASH"></a>HASH</h2><blockquote>
-<p>哈希算法（摘要算法或者散列算法）并不是一个特定的算法而是一类算法的统称。哈希算法也叫散列算法，一般来说满足这样的关系：f(data)=key，输入算法定义域内长度的data数据，经过哈希算法处理后输出一个定长的数据key。同时这个过程是不可逆的，无法由key逆推出data。</p>
-</blockquote>
-<p>由于输入数据不定长，而输出的哈希值却是固定长度的，这意味着哈希值是一个有限的集合，而输入数据则可以是无穷多个。那么建立一对一关系明显是不现实的<br>。所以 <strong>”碰撞“</strong> (不同的输入数据输出了相同的哈希值)是必然会发生的，所以一个成熟的哈希算法会有较好的抗冲突性。同时在实现哈希表的结构时也要考虑到哈希冲突的问题。</p>
-<p>即 data1 != data2，而f(key1) == f(key2)</p>
-<h4 id="哈希表"><a href="#哈希表" class="headerlink" title="哈希表"></a>哈希表</h4><p>将keys与原始数据进行一一映射就得到了一个哈希表。一般来说哈希表M符合M[key]=data这种形式。</p>
-<h4 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h4><p>哈希表的好处是当原始数据较大时，我们可以用哈希算法处理得到定长的哈希值key，那么这个key相对原始数据要小得多。我们就可以用这个较小的数据集来做索引，达到快速查找的目的。</p>
+            <p>
+              HASH
+哈希算法（摘要算法或者散列算法）并不是一个特定的算法而是一类算法的统称。哈希算法也叫散列算法，一般来说满足这样的关系：f(data)=key，输入算法定义域内长度的data数据，经过哈希算法处理后输出一个定长的数据key。同时这个过程是不可逆的，无法由key逆推出data。
 
+由于输
+              ...
+            </p>
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/2018-04-Hash算法/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
@@ -1468,7 +1892,7 @@
     
 
     
-       
+      
     
     
 
@@ -1529,7 +1953,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2018-04-Linux 常用命令/" class="post-title-link" itemprop="http://yoursite.com/page/2/index.html">Linux 常用命令</a>
+                <a href="/2018-04-Linux 常用命令/" class="post-title-link" itemprop="url">Linux 常用命令</a>
               
             
           </h1>
@@ -1598,6 +2022,20 @@
 
           
             
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">Comments: </span>
+                <a href="/2018-04-Linux 常用命令/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018-04-Linux 常用命令/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -1624,61 +2062,20 @@
       
         
           
-            <h2 id="cd命令"><a href="#cd命令" class="headerlink" title="cd命令"></a>cd命令</h2><p>这是一个非常基本，也是大家经常需要使用的命令，它用于切换当前目录，它的参数是要切换到的目录的路径，可以是绝对路径，也可以是相对路径。如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd /root/Docements # 切换到目录/root/Docements  </span><br><span class="line">cd ./path          # 切换到当前目录下的path目录中，“.”表示当前目录    </span><br><span class="line">cd ../path         # 切换到上层目录中的path目录中，“..”表示上一层目录</span><br></pre></td></tr></table></figure>
-<h2 id="ls命令"><a href="#ls命令" class="headerlink" title="ls命令"></a>ls命令</h2><p>这是一个非常有用的查看文件与目录的命令，list之意，它的参数非常多，下面就列出一些我常用的参数吧，如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">-l ：列出长数据串，包含文件的属性与权限数据等  </span><br><span class="line">-a ：列出全部的文件，连同隐藏文件（开头为.的文件）一起列出来（常用）  </span><br><span class="line">-d ：仅列出目录本身，而不是列出目录的文件数据  </span><br><span class="line">-h ：将文件容量以较易读的方式（GB，kB等）列出来  </span><br><span class="line">-R ：连同子目录的内容一起列出（递归列出），等于该目录下的所有文件都会显示出来</span><br></pre></td></tr></table></figure>
-<p>注：这些参数也可以组合使用，下面举两个例子：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ls -l #以长数据串的形式列出当前目录下的数据文件和目录  </span><br><span class="line">ls -lR #以长数据串的形式列出当前目录下的所有文件</span><br></pre></td></tr></table></figure>
-<h2 id="grep命令"><a href="#grep命令" class="headerlink" title="grep命令"></a>grep命令</h2><p>该命令常用于分析一行的信息，若当中有我们所需要的信息，就将该行显示出来，该命令通常与管道命令一起使用，用于对一些命令的输出进行筛选加工等等，它的简单语法为</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep [-acinv] [--color=auto] &apos;查找字符串&apos; filename</span><br></pre></td></tr></table></figure>
-<p>它的常用参数如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">-a ：将binary文件以text文件的方式查找数据  </span><br><span class="line">-c ：计算找到‘查找字符串’的次数  </span><br><span class="line">-i ：忽略大小写的区别，即把大小写视为相同  </span><br><span class="line">-v ：反向选择，即显示出没有‘查找字符串’内容的那一行  </span><br><span class="line"></span><br><span class="line">例如： 取出文件/etc/man.config中包含MANPATH的行，并把找到的关键字加上颜色  </span><br><span class="line"></span><br><span class="line">grep --color=auto &apos;MANPATH&apos; /etc/man.config  </span><br><span class="line"></span><br><span class="line">把ls -l的输出中包含字母xxx（不区分大小写）的内容输出  </span><br><span class="line"></span><br><span class="line">ls -l | grep -i xxx  </span><br><span class="line">ls -l | grep -c -i xxx  计算出文件名包含 xxx 的文件数量</span><br></pre></td></tr></table></figure>
-<h2 id="find命令"><a href="#find命令" class="headerlink" title="find命令"></a>find命令</h2><p>find是一个基于查找的功能非常强大的命令，相对而言，它的使用也相对较为复杂，参数也比较多，所以在这里将给把它们分类列出，它的基本语法如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find [PATH] [option] [action]</span><br></pre></td></tr></table></figure>
-<ul>
-<li>与时间有关的参数：</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">-mtime n : n为数字，意思为在n天之前的“一天内”被更改过的文件；  </span><br><span class="line">-mtime +n : 列出在n天之前（不含n天本身）被更改过的文件名；  </span><br><span class="line">-mtime -n : 列出在n天之内（含n天本身）被更改过的文件名；  </span><br><span class="line">-newer file : 列出比file还要新的文件名  </span><br><span class="line"></span><br><span class="line">例如：  find /root -mtime 0 # 在当前目录下查找今天之内有改动的文件</span><br></pre></td></tr></table></figure>
-<ul>
-<li>与用户或用户组名有关的参数：  </li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">-user name : 列出文件所有者为name的文件  </span><br><span class="line">-group name : 列出文件所属用户组为name的文件  </span><br><span class="line">-uid n : 列出文件所有者为用户ID为n的文件  </span><br><span class="line">-gid n : 列出文件所属用户组为用户组ID为n的文件  </span><br><span class="line"></span><br><span class="line">例如：  find /home/ljianhui -user ljianhui # 在目录/home/ljianhui中找出所有者为ljianhui的文件</span><br></pre></td></tr></table></figure>
-<ul>
-<li>与文件权限及名称有关的参数：  </li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">-name filename ：找出文件名为filename的文件  </span><br><span class="line">-size [+-]SIZE ：找出比SIZE还要大（+）或小（-）的文件  </span><br><span class="line">-tpye TYPE ：查找文件的类型为TYPE的文件， TYPE的值主要有：一般文件（f)、设备文件（b、c）、  </span><br><span class="line">             目录（d）、连接文件（l）、socket（s）、FIFO管道文件（p)</span><br><span class="line">-perm mode ：查找文件权限刚好等于mode的文件，mode用数字表示，如0755；  </span><br><span class="line">-perm -mode ：查找文件权限必须要全部包括mode权限的文件，mode用数字表示  </span><br><span class="line">-perm +mode ：查找文件权限包含任一mode的权限的文件，mode用数字表示  </span><br><span class="line"></span><br><span class="line">例如：  </span><br><span class="line">find / -name passwd # 查找文件名为passwd的文件  </span><br><span class="line">find . -perm 0755 # 查找当前目录中文件权限的0755的文件  </span><br><span class="line">find . -size +12k # 查找当前目录中大于12KB的文件，注意c表示byte</span><br></pre></td></tr></table></figure>
-<h2 id="cp命令"><a href="#cp命令" class="headerlink" title="cp命令"></a>cp命令</h2><p>该命令用于复制文件，copy之意，它还可以把多个文件一次性地复制到一个目录下，它的常用参数如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">-a ：将文件的特性一起复制  </span><br><span class="line">-p ：连同文件的属性一起复制，而非使用默认方式，与-a相似，常用于备份  </span><br><span class="line">-i ：若目标文件已经存在时，在覆盖时会先询问操作的进行  </span><br><span class="line">-r ：递归持续复制，用于目录的复制行为  </span><br><span class="line">-u ：目标文件与源文件有差异时才会复制  </span><br><span class="line"></span><br><span class="line">例如 ：</span><br><span class="line">cp -a file1 file2 #连同文件的所有特性把文件file1复制成文件file2  </span><br><span class="line">cp file1 file2 file3 dir #把文件file## file## file3复制到目录dir中</span><br></pre></td></tr></table></figure>
-<h2 id="mv命令"><a href="#mv命令" class="headerlink" title="mv命令"></a>mv命令</h2><p>该命令用于移动文件、目录或更名，move之意，它的常用参数如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">-f ：force强制的意思，如果目标文件已经存在，不会询问而直接覆盖  </span><br><span class="line">-i ：若目标文件已经存在，就会询问是否覆盖  </span><br><span class="line">-u ：若目标文件已经存在，且比目标文件新，才会更新  </span><br><span class="line"></span><br><span class="line">注：该命令可以把一个文件或多个文件一次移动一个文件夹中，但是最后一个目标文件一定要是“目录”。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">例如：</span><br><span class="line">mv file1 file2 file3 dir # 把文件file## file## file3移动到目录dir中  </span><br><span class="line">mv file1 file2 # 把文件file1重命名为file2</span><br></pre></td></tr></table></figure>
-<h2 id="rm命令"><a href="#rm命令" class="headerlink" title="rm命令"></a>rm命令</h2><p>该命令用于删除文件或目录，remove之间，它的常用参数如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">-f ：就是force的意思，忽略不存在的文件，不会出现警告消息  </span><br><span class="line">-i ：互动模式，在删除前会询问用户是否操作  </span><br><span class="line">-r ：递归删除，最常用于目录删除，它是一个非常危险的参数  </span><br><span class="line"></span><br><span class="line">例如</span><br><span class="line">rm -i file # 删除文件file，在删除之前会询问是否进行该操作  </span><br><span class="line">rm -fr dir # 强制删除目录dir中的所有文件</span><br></pre></td></tr></table></figure>
-<h2 id="ps命令"><a href="#ps命令" class="headerlink" title="ps命令"></a>ps命令</h2><p>该命令用于将某个时间点的进程运行情况选取下来并输出，process之意，它的常用参数如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">-A ：所有的进程均显示出来  </span><br><span class="line">-a ：不与terminal有关的所有进程  </span><br><span class="line">-u ：有效用户的相关进程  </span><br><span class="line">-x ：一般与a参数一起使用，可列出较完整的信息  </span><br><span class="line">-l ：较长，较详细地将PID的信息列出  </span><br><span class="line"></span><br><span class="line">其实我们只要记住ps一般使用的命令参数搭配即可，它们并不多，如下：</span><br><span class="line"></span><br><span class="line">ps aux # 查看系统所有的进程数据  </span><br><span class="line">ps ax # 查看不与terminal有关的所有进程  </span><br><span class="line">ps -lA # 查看系统所有的进程数据  </span><br><span class="line">ps axjf # 查看连同一部分进程树状态</span><br></pre></td></tr></table></figure>
-<h2 id="kill命令"><a href="#kill命令" class="headerlink" title="kill命令"></a>kill命令</h2><p>该命令用于向某个工作（jobnumber）或者是某个PID（数字）传送一个信号，它通常与ps和jobs命令一起使用，它的基本语法如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">kill -signal PID  </span><br><span class="line"></span><br><span class="line">signal的常用参数如下：</span><br><span class="line"></span><br><span class="line">注：最前面的数字为信号的代号，使用时可以用代号代替相应的信号。</span><br><span class="line"></span><br><span class="line">1：SIGHUP，启动被终止的进程  </span><br><span class="line">2：SIGINT，相当于输入ctrl+c，中断一个程序的进行  </span><br><span class="line">9：SIGKILL，强制中断一个进程的进行  </span><br><span class="line">15：SIGTERM，以正常的结束进程方式来终止进程  </span><br><span class="line">17：SIGSTOP，相当于输入ctrl+z，暂停一个进程的进行  </span><br><span class="line"></span><br><span class="line">* 以正常的结束进程方式来终于第一个后台工作，可用jobs命令查看后台中的第一个工作进程  </span><br><span class="line">kill -SIGTERM %1   </span><br><span class="line">* 重新改动进程ID为PID的进程，PID可用ps命令通过管道命令加上grep命令进行筛选获得  </span><br><span class="line">kill -SIGHUP PID</span><br></pre></td></tr></table></figure>
-<h2 id="killall命令"><a href="#killall命令" class="headerlink" title="killall命令"></a>killall命令</h2><p>该命令用于向一个命令启动的进程发送一个信号，它的一般语法如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">killall [-iIe] [command name]  </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">它的参数如下：</span><br><span class="line"></span><br><span class="line">-i ：交互式的意思，若需要删除时，会询问用户  </span><br><span class="line">-e ：表示后面接的command name要一致，但command name不能超过15个字符  </span><br><span class="line">-I ：命令名称忽略大小写  </span><br><span class="line">* 例如：  </span><br><span class="line">killall -SIGHUP syslogd # 重新启动syslogd</span><br></pre></td></tr></table></figure>
-<h2 id="file命令"><a href="#file命令" class="headerlink" title="file命令"></a>file命令</h2><p>该命令用于判断接在file命令后的文件的基本数据，因为在Linux下文件的类型并不是以后缀为分的，所以这个命令对我们来说就很有用了，它的用法非常简单，基本语法如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">file filename  </span><br><span class="line">例如：  file ./test</span><br></pre></td></tr></table></figure>
-<h2 id="tar命令"><a href="#tar命令" class="headerlink" title="tar命令"></a>tar命令</h2><p>该命令用于对文件进行打包，默认情况并不会压缩，如果指定了相应的参数，它还会调用相应的压缩程序（如gzip和bzip等）进行压缩和解压。它的常用参数如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">-c ：新建打包文件  </span><br><span class="line">-t ：查看打包文件的内容含有哪些文件名  </span><br><span class="line">-x ：解打包或解压缩的功能，可以搭配-C（大写）指定解压的目录，注意-c,-t,-x不能同时出现在同一条命令中  </span><br><span class="line">-j ：通过bzip2的支持进行压缩/解压缩  </span><br><span class="line">-z ：通过gzip的支持进行压缩/解压缩  </span><br><span class="line">-v ：在压缩/解压缩过程中，将正在处理的文件名显示出来  </span><br><span class="line">-f filename ：filename为要处理的文件  </span><br><span class="line">-C dir ：指定压缩/解压缩的目录dir  </span><br><span class="line"></span><br><span class="line">通常我们只需要记住下面三条命令即可：</span><br><span class="line"></span><br><span class="line">压缩：tar -jcv -f filename.tar.bz2 要被处理的文件或目录名称  </span><br><span class="line">查询：tar -jtv -f filename.tar.bz2  </span><br><span class="line">解压：tar -jxv -f filename.tar.bz2 -C 欲解压缩的目录  </span><br><span class="line">注：文件名并不定要以后缀tar.bz2结尾，这里主要是为了说明使用的压缩程序为bzip2</span><br></pre></td></tr></table></figure>
-<h2 id="cat命令"><a href="#cat命令" class="headerlink" title="cat命令"></a>cat命令</h2><p>该命令用于查看文本文件的内容，后接要查看的文件名，通常可用管道与more和less一起使用，从而可以一页页地查看数据。例如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cat text | less # 查看text文件中的内容  </span><br><span class="line">* 注：这条命令也可以使用less text来代替</span><br></pre></td></tr></table></figure>
-<h2 id="chgrp命令"><a href="#chgrp命令" class="headerlink" title="chgrp命令"></a>chgrp命令</h2><p>该命令用于改变文件所属用户组，它的使用非常简单，它的基本用法如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">chgrp [-R] dirname/filename  </span><br><span class="line">-R ：进行递归的持续对所有文件和子目录更改  </span><br><span class="line"></span><br><span class="line">* 例如：  </span><br><span class="line">chgrp users -R ./dir # 递归地把dir目录下中的所有文件和子目录下所有文件的用户组修改为users</span><br></pre></td></tr></table></figure>
-<h2 id="chown命令"><a href="#chown命令" class="headerlink" title="chown命令"></a>chown命令</h2><p>该命令用于改变文件的所有者，与chgrp命令的使用方法相同，只是修改的文件属性不同，不再详述。</p>
-<h2 id="chmod命令"><a href="#chmod命令" class="headerlink" title="chmod命令"></a>chmod命令</h2><p>该命令用于改变文件的权限，一般的用法如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">chmod [-R] xyz 文件或目录  </span><br><span class="line">-R：进行递归的持续更改，即连同子目录下的所有文件都会更改  </span><br><span class="line">同时，chmod还可以使用u（user）、g（group）、o（other）、a（all）和+（加入）、-（删除）、=（设置）跟rwx搭配来对文件的权限进行更改。</span><br><span class="line"></span><br><span class="line">* 例如：  </span><br><span class="line">chmod 0755 file # 把file的文件权限改变为-rxwr-xr-x  </span><br><span class="line">chmod g+w file # 向file的文件权限中加入用户组可写权限</span><br></pre></td></tr></table></figure>
-<h2 id="vim命令"><a href="#vim命令" class="headerlink" title="vim命令"></a>vim命令</h2><p>该命令主要用于文本编辑，它接一个或多个文件名作为参数，如果文件存在就打开，如果文件不存在就以该文件名创建一个文件。vim是一个非常好用的文本编辑器，它里面有很多非常好用的命令，在这里不再多说。你可以从这里下载vim常用操作的详细说明。</p>
-<h2 id="gcc命令"><a href="#gcc命令" class="headerlink" title="gcc命令"></a>gcc命令</h2><p>对于一个用Linux开发C程序的人来说，这个命令就非常重要了，它用于把C语言的源程序文件，编译成可执行程序，由于g++的很多参数跟它非常相似，所以这里只介绍gcc的参数，它的常用参数如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">-o ：output之意，用于指定生成一个可执行文件的文件名  </span><br><span class="line">-c ：用于把源文件生成目标文件（.o)，并阻止编译器创建一个完整的程序  </span><br><span class="line">-I ：增加编译时搜索头文件的路径  </span><br><span class="line">-L ：增加编译时搜索静态连接库的路径  </span><br><span class="line">-S ：把源文件生成汇编代码文件  </span><br><span class="line">-lm：表示标准库的目录中名为libm.a的函数库  </span><br><span class="line">-lpthread ：连接NPTL实现的线程库  </span><br><span class="line">-std= ：用于指定把使用的C语言的版本  </span><br><span class="line"></span><br><span class="line">* 例如：  </span><br><span class="line">* 把源文件test.c按照c99标准编译成可执行程序test  </span><br><span class="line">gcc -o test test.c -lm -std=c99  </span><br><span class="line">#把源文件test.c转换为相应的汇编程序源文件test.s  </span><br><span class="line">gcc -S test.c</span><br></pre></td></tr></table></figure>
-<h2 id="time命令"><a href="#time命令" class="headerlink" title="time命令"></a>time命令</h2><p>该命令用于测算一个命令（即程序）的执行时间。它的使用非常简单，就像平时输入命令一样，不过在命令的前面加入一个time即可，例如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">time ./process  </span><br><span class="line">time ps aux  </span><br><span class="line"></span><br><span class="line">在程序或命令运行结束后，在最后输出了三个时间，它们分别是：</span><br><span class="line"></span><br><span class="line">user：用户CPU时间，命令执行完成花费的用户CPU时间，即命令在用户态中执行时间总和；</span><br><span class="line"></span><br><span class="line">system：系统CPU时间，命令执行完成花费的系统CPU时间，即命令在核心态中执行时间总和；</span><br><span class="line"></span><br><span class="line">real：实际时间，从command命令行开始执行到运行终止的消逝时间；</span><br></pre></td></tr></table></figure>
-<p>注：用户CPU时间和系统CPU时间之和为CPU时间，即命令占用CPU执行的时间总和。实际时间要大于CPU时间，因为Linux是多任务操作系统，往往在执行一条命令时，系统还要处理其它任务。另一个需要注意的问题是即使每次执行相同命令，但所花费的时间也是不一样，其花费时间是与系统运行相关的。</p>
-
+            <p>
+              cd命令这是一个非常基本，也是大家经常需要使用的命令，它用于切换当前目录，它的参数是要切换到的目录的路径，可以是绝对路径，也可以是相对路径。如：
+cd /root/Docements # 切换到目录/root/Docements  cd ./path          # 切换到当前目录下的path
+              ...
+            </p>
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/2018-04-Linux 常用命令/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
@@ -1692,7 +2089,7 @@
     
 
     
-       
+      
     
     
 
@@ -1753,7 +2150,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2017-12-科学上网原理/" class="post-title-link" itemprop="http://yoursite.com/page/2/index.html">科学上网原理</a>
+                <a href="/2017-12-科学上网原理/" class="post-title-link" itemprop="url">科学上网原理</a>
               
             
           </h1>
@@ -1822,276 +2219,19 @@
 
           
             
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="防火墙"><a href="#防火墙" class="headerlink" title="防火墙"></a>防火墙</h1><blockquote>
-<p>防火墙（英文：Firewall）是一个架设在互联网与内网之间的资安系统，根据预定的策略来监控往来的数据传输。</p>
-</blockquote>
-<p>防火长城（英语：Great Firewall (of China)，常用简称：GFW，是对中华人民共和国政府在其互联网边界审查系统（包括相关行政审查系统）的统称。此系统起步于1998年，其英文名称得自于2002年5月17日Charles R. Smith所写的一篇关于中国网络审查的文章，取与Great Wall（长城）相谐的效果，简写为Great Firewall，缩写GFW。随着使用的拓广，中文”墙”和英文”GFW”有时也被用作动词，网友所说的”被墙”即指被防火长城所屏蔽，”翻墙”也被引申为浏览境外网站的行为。</p>
-<p><img src="../images/2017-12/gfw1.jpg" alt="防火长城"></p>
-<p>一般情况下，防火长城主要指中国政府监控和过滤互联网国际出口上内容的软硬件系统的集合。但中国政府并进一步设置将查获的特定网点阻断等，造成大家所熟知的连接错误现象，因此防火墙不是中国特有的一个专门单位，是由分散部门的各服务器和路由器等设备，加上相关公司的应用程序所构成，是一个跨军民合作的大型信息管制系统，防火长城的作用主要是监控国际网关上的通讯，对部分的传输内容，进行干扰、阻断、屏蔽。含有”不合适”内容的网站，会受到政府直接的行政干预，被要求自我审查、自我监管，乃至关闭，故防火长城主要作用在于分析和过滤中国境外网络的信息互相访问。</p>
-<h1 id="墙的主要技术"><a href="#墙的主要技术" class="headerlink" title="墙的主要技术"></a>墙的主要技术</h1><h2 id="DNS污染"><a href="#DNS污染" class="headerlink" title="DNS污染"></a>DNS污染</h2><blockquote>
-<p>防火长城对所有经过骨干出口路由的在UDP的53端口(域名解析)进行监测，一经发现与 <strong>黑名单列表</strong> 相匹配的域名查询请求，防火长城会伪装成目标域名的解析服务器给查询者返回虚假结果。由于通常的域名查询没有任何认证机制，而且域名查询通常基于的UDP协议是无连接不可靠的协议，查询者只能接受最先到达的格式正确结果，并丢弃之后的结果。用户若改用TCP在53端口上进行DNS查询，虽然不会被防火长城污染，但可能会遭遇连接重置，导致无法获得目标网站的IP地址。</p>
-</blockquote>
-<p>当我们访问某一墙外网站时，最新需要的就是根据域名获取到相应网站的IP地址，而墙就会在主干网络（比如 上海的路由中转）返回错误的IP地址，我们拿到这个错误的IP自然无法正确访问到数据。</p>
-<p>应对DNS污染，我们想到了如果我们直接通过访问网站的IP地址（不是域名），是不是意味着不进行域名解析了，不需要访问DNS服务器了，也就不被误导去错误的地址了。</p>
-<p>那问题来了，我们不通过域名解析怎么能知道正确的网站IP呢？</p>
-<p>社区从来不缺乐于助人的工程师。<a href="https://github.com/racaljk/hosts" target="_blank" rel="noopener">https://github.com/racaljk/hosts</a> 通过他人分享的host文件替换自己本地的就阔以了。</p>
-<p>没错，我们就是这么一群品德高尚、心地善良的人，捂脸。</p>
-<h2 id="IP封锁"><a href="#IP封锁" class="headerlink" title="IP封锁"></a>IP封锁</h2><p>既然我们可以通过IP直接访问网站，是不是墙也可以屏蔽掉这个IP的访问请求呢？没错，它确实这么做了，在以前墙有一张 <strong>访问控制列表</strong>，就是一张映射表，列出某某IP可以访问，某某IP不可以。在主干路由对传输的IP报文的目标地址进行比较，决定改报文是否能正确送达。</p>
-<p>后面被 <strong>路由扩散技术</strong> 替代了，该技术理解为，网络管理员通过 <strong>静态路由协议</strong> 在某一主干路由故意把特定IP路由到错误的服务器，然后其他相邻路由根据 <strong>动态路由协议</strong> 在进行分享路由信息时，就也拿到了错误的路由路径。。。然后整个局域网对该IP的路由信息都是错的。</p>
-<p>假设网络管理者在配置的时候故意将IP路由到一台接受所有数据的服务器（<strong>黑洞服务器</strong>），他就能收集所有对封锁IP的网络交互，可能还返回引导向善之类的页面。</p>
-<p>以前一个IP可能不仅仅对应一个网站（<strong>VPS 虚拟主机服务</strong>）,所有墙的这种方式很容易误伤，比如我是守法公民，刚好和坏坏的网站使用同一个虚拟主机服务提供商且分到了同一个ip（端口不一样），就被误杀了。所有，墙就把封锁粒度调到端口了，针对特定的 [IP+端口] 封锁。</p>
-<h1 id="代理"><a href="#代理" class="headerlink" title="代理"></a>代理</h1><h2 id="HTTP代理"><a href="#HTTP代理" class="headerlink" title="HTTP代理"></a>HTTP代理</h2><p>既然IP不能直接访问了，那是不是可以通过中间人访问到目标地址呢。举个例子。</p>
-<p>上课时小明想给小红小纸条，但是班主任看着呢。小明就假假的和学习委员讨论问题，然后委托学习委员把纸条给小红，学习委员又假假的和小红讨论问题，最后把纸条给了小红。学习委员在这个场景里就是 <strong>代理服务器</strong>。</p>
-<p><img src="../images/2017-12/gfw2.jpg" alt="REST API"></p>
-<p>在上面的场景中，我们知道了代理的工作机制，</p>
-<p>但是互联网不像我们普通的沟通，没协议你说个球呀。所以我们熟悉的Http就先上了。</p>
-<p>HTTP代理很简单，就是墙内 <strong>客户端A</strong> 试图与 <strong>服务器B</strong> 进行数据交互。但是直接连接受限制了，于是A和B就通过 <strong>代理服务器C</strong> 转发数据完成交互，这里C与A或B的通讯应不受限制。</p>
-<p>首先A和 <strong>代理服务器C</strong> 建立TCP连接，然后通过Http(S)协议发起 <strong>CONNECT 请求</strong> 告诉C去连接目标服务器B。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">CONNECT www.google.com:80 HTTP/1.1</span><br><span class="line">Host: www.google.com:80</span><br><span class="line">Proxy-Connection: Keep-Alive</span><br><span class="line">Proxy-Authorization: Basic + [BASE64编码的账号和密码]</span><br><span class="line">Content-Length: 0</span><br></pre></td></tr></table></figure>
-<p>C在收到请求并验证身份完成后发出响应。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">HTTP/1.1 200 Connection Established</span><br></pre></td></tr></table></figure>
-<p>至此，代理服务器就确定了自己作为 <strong>中间人</strong> 的角色完成双方的数据通讯。</p>
-<p>A在收到C的响应后，就把原先要发送给B的数据发送给C，C再转交给B（数据回传也同理），这里需要注意的在 <strong>完成代理关系确定后，A和B的通讯不仅仅是HTTP协议了 ，他们可以是其他TCP/IP协议。</strong> 如：POP2、SMTP、FTP等等。</p>
-<p>虽然HTTP代理看上去应该是阔以的，但是不要忘了，请求行是文明传输的，你想要发CONNET连接的时候各大的主干路由都知道了。拿你的目标地址和黑名单比对，匹配上了就把你的包肆意处理了。然后就没有然后了。。。</p>
-<h2 id="VPN"><a href="#VPN" class="headerlink" title="VPN"></a>VPN</h2><p>从上面Http代理的惨痛失败中我们可以知道，任何明文的传输都会把自己的想法暴露出去。所以理所当然的我们想到了加密传输，而且要先建立加密连接（不暴露目标服务器信息）然后再发送目标数据。这个加密连接我们称为 <strong>隧道</strong>，建立该隧道的协议称为 <strong>隧道协议</strong>。<br>VPN（虚拟专用网Virtual Private Network）就是利用隧道协议来进行通讯的，客户端先与VPN服务器认证，建立隧道，然后再通过隧道发送加密的数据，经过VPN服务器的代理中转送达目标服务器。可想而知VPN提供商是能知道客户端与目标服务器通讯的所有报文的，所以通讯内容其实是不隐秘的。其次墙虽然不知道你的目标服务器，但是他可以感知某个VPN服务器被大量的客户端频繁访问，然后搞事情。</p>
-<p>隧道协议有许多种实现，比如：</p>
-<p>基于数据包:</p>
-<ul>
-<li>IPsec</li>
-<li>一般路由封装（GRE），支持多种网络层协议和多路技术</li>
-<li>IP in IP[2]，比GRE更小的负载头，并且适合只有负载一个IP流的情况。</li>
-<li>L2TP（数据链接层隧道协议）[3]</li>
-<li>MPLS （多协议标签交换）</li>
-<li>GTP</li>
-<li>PPTP（点对点隧道协议） [4]</li>
-<li>PPPoE（基于以太网的点对点隧道）</li>
-<li>PPPoA（基于ATM的点对点隧道）</li>
-<li>IEEE 802.1Q （以太网VLANs）</li>
-<li>DLSw（英语：DLSw） (SNA负载互联网协议)</li>
-<li>XOT（英语：XOT） (X.25数据片负载TCP)</li>
-<li>IPv6 穿隧：6to4、6in4、Teredo</li>
-</ul>
-<p>基于流:</p>
-<ul>
-<li>传输层安全</li>
-<li>SSH</li>
-<li>SOCKS</li>
-<li>HTTP CONNECT 命令</li>
-</ul>
-<h2 id="SSH"><a href="#SSH" class="headerlink" title="SSH"></a>SSH</h2><blockquote>
-<p>SSH的英文全称是Secure SHell。通过使用SSH，你可以把所有传输的数据进行加密，这样“中间人”这种攻击方式就不可能实现了，而且也能够防止DNS和IP欺骗。还有一个额外的好处就是传输的数据是经过压缩的，所以可以加快传输的速度。SSH有很多功能，它既可以代替telnet，又可以为ftp、pop、甚至ppp提供一个安全的“通道”。SSH是由客户端和服务端的软件组成的，有两个不兼容的版本分别是：1.x和2.x。用SSH 2.x的客户程序是不能连接到SSH 1.x的服务程序上去的。OpenSSH 2.x同时支持SSH 1.x和2.x。</p>
-</blockquote>
-<p>SSH 提供两种级别的安全验证</p>
-<ul>
-<li>第一种级别（基于口令的安全验证） 只要你知道自己帐号和口令，就可以登录到远程主机。所有传输的数据都会被加密，但是不能保证你正在连接的服务器就是你想连接的服务器。可能会有别的服务器在冒充真正的服务器，也就是受到“中间人”这种方式的攻击。</li>
-<li><p>第二种级别（基于密匙的安全验证） 需要依靠密匙，也就是你必须为自己创建一对密匙，并把公用密匙放在需要访问的服务器上。如果你要连接到SSH服务器上，客户端软件就会向服务器发出请求，请求用你的密匙进行安全验证。服务器收到请求之后，先在你在该服务器的Home目录下寻找你的公用密匙，然后把它和你发送过来的公用密匙进行比较。如果两个密匙一致，服务器就用公用密匙加密“质询”（challenge）并把它发送给客户端软件。客户端软件收到“质询”之后就可以用你的私人密匙解密再把它发送给服务器。用这种方式，你必须知道自己密匙的口令。</p>
-<p>与第一种级别相比，第二种级别不需要在网络上传送口令。第二种级别不仅加密所有传送的数据，而且“中间人”这种攻击方式也是不可能的（因为他没有你的私人密匙）。但是整个登录的过程可能需要10秒。</p>
-</li>
-</ul>
-<h2 id="SOCKS"><a href="#SOCKS" class="headerlink" title="SOCKS"></a>SOCKS</h2><blockquote>
-<p>SOCKS是一种 <strong>会话层网络代理协议</strong> ，主要用于客户端与外网服务器之间通讯的中间传递</p>
-</blockquote>
-<p>同样是代理协议 SOCKS工作的层级和HTTP代理更低。我们知道HTTP是应用层协议，需要建立TCP链接,发了HTPP的CONNECT代理请求（这个时候暴露了目标服务器地址）代理才能走通，而且该代理也只能转发TCP报文。而SOCKS5支持UDP和TCP。</p>
-<p>其转发过程可以概括如下：</p>
-<ol>
-<li>代理服务器B 监听发给1080端口，客户端A 与代理服务端 <strong>建立TCP连接</strong>（3次握手） （1-3）</li>
-<li>客户端A 发送支持的 <strong>认证方式列表</strong> ，代理服务器B 发送报文收到的响应 （4-5）</li>
-<li>代理服务器B 发送 <strong>选择响应认证方式</strong> ，客户端A发送报文收到的响应 （6-7）</li>
-<li>（认证过程，无需认证就跳过该步骤）</li>
-<li>客户端A 发送 <strong>连接目标服务器的请求</strong>，包含目标服务器IP，端口，连接方式（TCP/IP流、TCP/IP端口、UDP端口），地址类型（域名、IPV4、IPV6）,代理服务器B 发送报文收到的响应 （8-9）</li>
-<li>代理服务器B <strong>发送对代理请求的响应</strong>，包含目标服务器IP，端口等。客户端A发送报文收到的响应（10-11）</li>
-<li>客户端A向目标服务器发送HTTP请求（或者其他基于TCP/UDP的协议），代理服务器B 发送报文收到的响应（12-13）</li>
-<li>代理服务器B 对目标服务器 <strong>发送HTTP请求</strong>，目标服务器发送HTTP响应。</li>
-<li>代理服务器B 对客户端A <strong>转发HTTP响应</strong>，客户端A 发送报文收到的响应 （14-15）</li>
-<li>TCP四次挥手，<strong>关闭连接</strong> （16-19）</li>
-</ol>
-<h2 id="SSH-SOCKS"><a href="#SSH-SOCKS" class="headerlink" title="SSH + SOCKS"></a>SSH + SOCKS</h2><blockquote>
-<p>由于SOCKS是明文传输的，所以这样直接明目张胆的传输数据肯定是不对嘀。从上文我们知道SSH是可以建立加密的通讯隧道。</p>
-</blockquote>
-<p>SO 我可以这样，通过SSH 建立加密的隧道，然后 SSH服务端 转发我们的请求给 SOCKS服务器程序（端口1080）。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -f -C2qTnN -D 1080 &lt;username&gt;@&lt;remote SSH server&gt;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>-f  后台运行</li>
-<li>-C 压缩</li>
-<li>-2 只支持版本2协议</li>
-<li>-q 静默模式</li>
-<li>-T 禁用伪终端分配</li>
-<li>-n  阻止从标准输入读取。后台运行的话，必须使用。</li>
-<li>-N 不执行远程命令</li>
-<li>-D [bind_address : ] port <strong>本地动态应用级端口转发</strong>。没有指定address将监听在127.0.0.1上。</li>
-</ul>
-<h2 id="Shadowsocks"><a href="#Shadowsocks" class="headerlink" title="Shadowsocks"></a>Shadowsocks</h2><p><strong>Shadowsocks</strong> Shadowsocks是通过协定好客户端和代理服务器使用的 <strong>对称加密算法</strong>。</p>
-<p>客户端发过去的时候加密，SS代理收的时候解密，解密获取到明文的请求信息后对目标服务器发起请求。SS代理收到响应后加密回传给客户端。</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-       
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017-12-Gradle实现Onesignal推送/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="cchao1024">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/config/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="cchao1024 blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2017-12-Gradle实现Onesignal推送/" class="post-title-link" itemprop="http://yoursite.com/page/2/index.html">Gradle实现Onesignal推送</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2017-12-22 00:00:00" itemprop="dateCreated datePublished" datetime="2017-12-22T00:00:00+08:00">2017-12-22</time>
-            
-
             
               
-
-              
-                
+              <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
-                
-
                 <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
+                  <i class="fa fa-comment-o"></i>
                 </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-06-10 17:45:17" itemprop="dateModified" datetime="2019-06-10T17:45:17+08:00">2019-06-10</time>
-              
             
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
+                <span class="post-meta-item-text">Comments: </span>
+                <a href="/2017-12-科学上网原理/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017-12-科学上网原理/" itemprop="commentCount"></span>
+                </a>
               </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/gradle/" itemprop="url" rel="index"><span itemprop="name">gradle</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
             
           
 
@@ -2119,94 +2259,22 @@
       
         
           
-            <h1 id="OneSignal"><a href="#OneSignal" class="headerlink" title="OneSignal"></a>OneSignal</h1><p>OneSignal 暴露了许多REST API，只要拿到对应的appId，通过简单的http请求就能向集成OneSignal推送的目标设备发起推送。不仅如果，各种与其平台相关的操作都有API。</p>
-<p><img src="../images/2017-12/push1.png" alt="REST API"></p>
-<p>实现https请求有许多方式，各个语言也是各显神通。Onesignal十分友好的提供了各语言的简单实现，满足各种情况的推送需求。</p>
-<p><img src="../images/2017-12/push2.png" alt="REST API"></p>
-<h1 id="请求结构"><a href="#请求结构" class="headerlink" title="请求结构"></a>请求结构</h1><p>  OneSignal 发送推送 API 需要Post json数据到 <strong><a href="https://onesignal.com/api/v1/notifications" target="_blank" rel="noopener">https://onesignal.com/api/v1/notifications</a></strong></p>
-<p>  请求头部信息：</p>
-<ul>
-<li>Content-Type: application/json; charset=utf-8</li>
-<li><p>Authorization: Basic XXX（授权码）</p>
-<p>授权码，我瞎写了一个也能跑的通。暂不知道为什么</p>
-</li>
-</ul>
-<h1 id="请求体"><a href="#请求体" class="headerlink" title="请求体"></a>请求体</h1><p>  请求体是封装好相应所需参数的json字符串。以下为相应所需参数。</p>
-<ul>
-<li>app_id 或者 app_ids（推送多个app） 是必须的，但别两个都发</li>
-</ul>
-<p><img src="../images/2017-12/push3.png" alt></p>
-<table>
-<thead>
-<tr>
-<th>key</th>
-<th>说明</th>
-<th>数据结构</th>
-<th>example</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>contents</td>
-<td>推送内容</td>
-<td>对象</td>
-<td>{“en”: “English Message”, “es”: “Spanish Message”}</td>
-</tr>
-<tr>
-<td>headings</td>
-<td>推送标题</td>
-<td>对象</td>
-<td>{“en”: “English Title”, “es”: “Spanish Title”}</td>
-</tr>
-<tr>
-<td>subtitle</td>
-<td>推送子标题</td>
-<td>对象(仅ios 10+)</td>
-<td>{“en”: “English Title”, “es”: “Spanish Title”}</td>
-</tr>
-<tr>
-<td>big_picture</td>
-<td>推送大图</td>
-<td>字符串(仅android)</td>
-<td>“big_picture.png”</td>
-</tr>
-<tr>
-<td>data</td>
-<td>携带的数据</td>
-<td>自定义</td>
-<td>自己协定好的格式，取到后能正常解析就行</td>
-</tr>
-<tr>
-<td>include_player_ids</td>
-<td>推送的设备</td>
-<td>数组</td>
-<td>[“AAA”,”BBB”]</td>
-</tr>
-</tbody>
-</table>
-<p>推送设备id是Onesignal给设备生成的UUID，类似这样的：6392d91a-b206-4b7b-a620-cd68e32c3a76</p>
-<h1 id="gradle-实现"><a href="#gradle-实现" class="headerlink" title="gradle 实现"></a>gradle 实现</h1><p>前文说到onesignal提供了许多实现，为了实现gradle脚本任务发起Http推送请求，果断选择了curl，光说有什么用，上代码呀。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> groovy.json.JsonOutput</span><br><span class="line"></span><br><span class="line"><span class="function">task <span class="title">push</span><span class="params">(type:Exec)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// App id ,很重要 望谨慎</span></span><br><span class="line">    def appId = <span class="string">"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx"</span></span><br><span class="line">    def REST_API_KEY = <span class="string">"MjY5NTljOsdfcyMC00asdaffdasfszMTktODQ2ZDU2NGVmMmQy"</span></span><br><span class="line">    <span class="comment">// 测试设备OneSignal Id</span></span><br><span class="line">    def playerIds = [<span class="string">"67bc0e94-88ca-4439-b108-abf6f3d63f3d"</span>]</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 推送的标题 &#123;"en": "English Title", "es": "Spanish Title"&#125;</span></span><br><span class="line">    def title = [en: <span class="string">"Test Title"</span>]</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 推送的内容 &#123;"en": "English Message", "es": "Spanish Message"&#125;</span></span><br><span class="line">    def content = [en: <span class="string">"Test Message"</span>]</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 推送的子标题 iOS 10+  &#123;"en": "English Subtitle", "es": "Spanish Subtitle"&#125;</span></span><br><span class="line">    def subtitle = [en: <span class="string">"English Subtitle"</span>]</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 各端协定好的携带的数据</span></span><br><span class="line">    def data = [t:<span class="string">"flashdeals"</span>,p:<span class="string">"10086"</span>]</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 目标地址</span></span><br><span class="line">    def targetUrl = <span class="string">"\"https://onesignal.com/api/v1/notifications\""</span></span><br><span class="line"></span><br><span class="line">    def shell = [<span class="string">"curl"</span>]</span><br><span class="line">    shell.add(<span class="string">"-v"</span>)</span><br><span class="line">    shell.add(<span class="string">"--http2"</span>)</span><br><span class="line">    shell.add(<span class="string">"-i"</span>)</span><br><span class="line">    shell.add(<span class="string">"-H \"Content-Type:application/json;charset=utf-8\""</span>)</span><br><span class="line">    shell.add(<span class="string">"-H \"Authorization:Basic "</span> + REST_API_KEY +<span class="string">"\""</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment">// map封装json</span></span><br><span class="line">    def <span class="built_in">map</span> = [<span class="string">"app_id"</span>: appId]</span><br><span class="line">    <span class="built_in">map</span>.put(<span class="string">"headings"</span>, title)</span><br><span class="line">    <span class="built_in">map</span>.put(<span class="string">"subtitle"</span>, subtitle)</span><br><span class="line">    <span class="built_in">map</span>.put(<span class="string">"contents"</span>, content)</span><br><span class="line">    <span class="built_in">map</span>.put(<span class="string">"data"</span>, data)</span><br><span class="line">    <span class="built_in">map</span>.put(<span class="string">"include_player_ids"</span>, playerIds)</span><br><span class="line"></span><br><span class="line">    shell.add(<span class="string">"-d \""</span> + JsonOutput.toJson(<span class="built_in">map</span>).replaceAll(<span class="string">"\""</span>,<span class="string">"\\\\\""</span>)+<span class="string">"\""</span>)</span><br><span class="line"></span><br><span class="line">    shell.add(targetUrl)</span><br><span class="line">    def curlStr=<span class="string">""</span></span><br><span class="line">    <span class="keyword">for</span>(i in shell)&#123;</span><br><span class="line">        curlStr += i + <span class="string">" "</span></span><br><span class="line">    &#125;</span><br><span class="line">    println curlStr</span><br><span class="line">    if (System.properties['os.name'].contains('windows'))&#123;</span><br><span class="line">      commandLine 'cmd', '/c', curlStr</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      commandLine curlStr</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>最后一行，根据使用的操作系统会有差异。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">task <span class="title">stopTomcat</span><span class="params">(type:Exec)</span> </span>&#123;</span><br><span class="line">  workingDir <span class="string">'../tomcat/bin'</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">//on windows:</span></span><br><span class="line">  commandLine <span class="string">'cmd'</span>, <span class="string">'/c'</span>, <span class="string">'stop.bat'</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">//on linux</span></span><br><span class="line">  commandLine <span class="string">'./stop.sh'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>在当前目录打开终端命令行，输入命令 gradle push，</p>
-<p><img src="../images/2017-12/push4.png" alt></p>
-<p>一切正常会收到推送id（可以用来取消刚才的推送）和影响的设备数。</p>
-<p>上文的curl，如果测试正常，可以去除 -v 和 -i</p>
-<p>再本地测试ok后，可酌情把代码放入项目中，在笔者的android studio开发环境是携带一个终端的，我就可以直接在开发环境就能调起推送测试</p>
-<p><img src="../images/2017-12/push5.png" alt></p>
-<h1 id="进阶"><a href="#进阶" class="headerlink" title="进阶"></a>进阶</h1><blockquote>
-<p>当我完成这一系列操作后，打算上传代码时。发现需求还要求把这个task做成工具，其他人只要引用就可以跑。在我一脸懵逼，抽个烟后冷静后。又开始了哒哒哒。</p>
-</blockquote>
-<p>在仔细阅读完需求后，感觉还是合情合理的，不可能我推送一次改一次。一次性把所有支持的推送格式都推出去，然后慢慢测。</p>
-<p>然后duang的一下，我就想到了解决方案。</p>
-<p>我可以这样，让引用我这个Task的人先把请求数据结构按我想要的结构写好、放好，然后当他调用我任务时，我就去读取规定好的变量的值，然后把这些值处理后继续我的Curl 发推送。</p>
-<p>规定以json格式放在项目gradle文件里的 push_test_json里，写入如下必要的参数。list数组的里面编写推送内容。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line">ext &#123;</span><br><span class="line">    push_test_json = <span class="string">'''</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="string">"app_id"</span>: <span class="string">"xxxxxx-xxxx-xxxx-xxxxx-xxxxxxxxx"</span>,</span><br><span class="line">    <span class="string">"REST_API_KEY"</span>: <span class="string">"XXXXXXXXXXXXXXXXXXXXXy"</span>,</span><br><span class="line">    <span class="string">"playerIds"</span>: [<span class="string">"67bc0e94-88ca-4439-b108-abf6f3d63f3d"</span>],</span><br><span class="line">    <span class="string">"list"</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="string">"headings"</span>: &#123;<span class="string">"en"</span>: <span class="string">"English Title"</span>, <span class="string">"es"</span>: <span class="string">"Spanish Title"</span>&#125;,</span><br><span class="line">            <span class="string">"subtitle"</span>: &#123;<span class="string">"en"</span>: <span class="string">"English Subtitle"</span>, <span class="string">"es"</span>: <span class="string">"Spanish Subtitle"</span>&#125;,</span><br><span class="line">            <span class="string">"contents"</span>: &#123;<span class="string">"en"</span>: <span class="string">"English Message"</span>, <span class="string">"es"</span>: <span class="string">"Spanish Message"</span>&#125;,</span><br><span class="line">            <span class="string">"big_picture"</span>:<span class="string">"big_picture"</span>,</span><br><span class="line">            <span class="string">"data"</span>: &#123;<span class="string">"t"</span>:<span class="string">"flashdeals"</span>,<span class="string">"p"</span>:<span class="string">"1111111"</span>&#125;,</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="string">"headings"</span>: &#123;<span class="string">"en"</span>: <span class="string">"English Title2"</span>, <span class="string">"es"</span>: <span class="string">"Spanish Title"</span>&#125;,</span><br><span class="line">            <span class="string">"subtitle"</span>: &#123;<span class="string">"en"</span>: <span class="string">"English Subtitle2"</span>, <span class="string">"es"</span>: <span class="string">"Spanish Subtitle"</span>&#125;,</span><br><span class="line">            <span class="string">"contents"</span>: &#123;<span class="string">"en"</span>: <span class="string">"English Message2"</span>, <span class="string">"es"</span>: <span class="string">"Spanish Message"</span>&#125;,</span><br><span class="line">            <span class="string">"data"</span>: &#123;<span class="string">"t"</span>:<span class="string">"flashdeals"</span>,<span class="string">"p"</span>:<span class="string">"22222222"</span>&#125;</span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br><span class="line"><span class="string">'''</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">task push &#123;</span><br><span class="line">    doLast &#123;</span><br><span class="line">        <span class="comment">// 目标地址</span></span><br><span class="line">        def targetUrl = <span class="string">"\"https://onesignal.com/api/v1/notifications\""</span></span><br><span class="line"></span><br><span class="line">        def jsonSlurper = <span class="keyword">new</span> JsonSlurper()</span><br><span class="line">        Object rootJson = jsonSlurper.parseText(rootProject.push_test_json)</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 遍历要发送的推送</span></span><br><span class="line">        rootJson.<span class="built_in">list</span>.each &#123;</span><br><span class="line">            def shell = [<span class="string">"curl"</span>]</span><br><span class="line">            shell.add(<span class="string">"--http2"</span>)</span><br><span class="line">            shell.add(<span class="string">"-H \"Content-Type:application/json;charset=utf-8\""</span>)</span><br><span class="line">            shell.add(<span class="string">"-H \"Authorization:Basic "</span> + rootJson.REST_API_KEY + <span class="string">"\""</span>)</span><br><span class="line"></span><br><span class="line">            def <span class="built_in">map</span> = [<span class="string">"app_id"</span>: rootJson.app_id]</span><br><span class="line">            <span class="built_in">map</span>.put(<span class="string">"headings"</span>, it.headings)</span><br><span class="line">            <span class="built_in">map</span>.put(<span class="string">"subtitle"</span>, it.subtitle)</span><br><span class="line">            <span class="built_in">map</span>.put(<span class="string">"contents"</span>, it.contents)</span><br><span class="line">            <span class="built_in">map</span>.put(<span class="string">"big_picture"</span>, it.big_picture)</span><br><span class="line">            <span class="built_in">map</span>.put(<span class="string">"data"</span>, it.data)</span><br><span class="line">            <span class="built_in">map</span>.put(<span class="string">"include_player_ids"</span>, rootJson.playerIds)</span><br><span class="line"></span><br><span class="line">            shell.add(<span class="string">"-d \""</span> + JsonOutput.toJson(<span class="built_in">map</span>).replaceAll(<span class="string">"\""</span>, <span class="string">"\\\\\""</span>) + <span class="string">"\""</span>)</span><br><span class="line"></span><br><span class="line">            shell.add(targetUrl)</span><br><span class="line">            def curlStr = <span class="string">""</span></span><br><span class="line">            <span class="keyword">for</span> (i in shell) &#123;</span><br><span class="line">                curlStr += i + <span class="string">" "</span></span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            def outPut = <span class="keyword">new</span> ByteArrayOutputStream()</span><br><span class="line">            println <span class="string">"\n发送请求: \n"</span> + curlStr</span><br><span class="line">            exec &#123;</span><br><span class="line">                commandLine 'cmd', '/c', curlStr</span><br><span class="line">                standardOutput = outPut</span><br><span class="line">            &#125;</span><br><span class="line">            println <span class="string">"\n收到Onesignal响应: "</span> + outPut.toString()</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>同样，在终端输入命令 就能发出推送了。</p>
-<p><img src="../images/2017-12/push6.png" alt></p>
+            <p>
+              防火墙
+防火墙（英文：Firewall）是一个架设在互联网与内网之间的资安系统，根据预定的策略来监控往来的数据传输。
 
+防火长城（英语：Great Firewall (of China)，常用简称：GFW，是对中华人民共和国政府在其互联网边界审查系统（包括相关行政审查系统）的统称。此系统起步于199
+              ...
+            </p>
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/2017-12-科学上网原理/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
@@ -2220,562 +2288,7 @@
     
 
     
-       
-    
-    
-
-    
-
-    <footer class="post-footer">
       
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017-12-Gradle简明教程/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="cchao1024">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/config/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="cchao1024 blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2017-12-Gradle简明教程/" class="post-title-link" itemprop="http://yoursite.com/page/2/index.html">Gradle简明教程</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2017-12-01 00:00:00" itemprop="dateCreated datePublished" datetime="2017-12-01T00:00:00+08:00">2017-12-01</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-06-10 17:45:17" itemprop="dateModified" datetime="2019-06-10T17:45:17+08:00">2019-06-10</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/gradle/" itemprop="url" rel="index"><span itemprop="name">gradle</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="自动化构建"><a href="#自动化构建" class="headerlink" title="自动化构建"></a>自动化构建</h1><h3 id="构建（打包）"><a href="#构建（打包）" class="headerlink" title="构建（打包）"></a>构建（打包）</h3><p>在计算机科学中，软件组建（Software build），又译为软件建构、软件构筑，意指由源代码档案转换成可以在电脑上执行的软件这中间的过程，或是转换后的结果。软件组建中最重要的一个步骤，就是由源代码转换为可执行机器码这之间的编译过程。为了进行版本控制，在执行完软件组建，之后释出的软件程式，通常会给与一个软件版本号。</p>
-<h3 id="自动化构建-1"><a href="#自动化构建-1" class="headerlink" title="自动化构建"></a>自动化构建</h3><p>组建自动化（Build automation，又称构建自动化、自动化构建）指自动创建软件组建的一组进程，包括将计算机源代码编译成二进制码（binary code）、將二进制码包装成软件包以及运行自动化测试。</p>
-<ul>
-<li><p>自动化构建工具 通过编译和链接源代码等活动来生成软件包。如Make、Rake、Cake、MS build、Ant、Gradle等。</p>
-</li>
-<li><p>自动化构建服务器 基于Web的通用工具能够在预定或触发的基础上执行组建自动化实用程序。持续集成是组建自动化服务器的类型之一。如Jenkins。</p>
-</li>
-</ul>
-<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><ul>
-<li>下载JDK，配置JAVA_HOME环境变量</li>
-<li>下载<a href="http://www.gradle.org/downloads" target="_blank" rel="noopener">gradle 官网</a>相应的Gradle版本gradle-x.xx-all.zip 解压</li>
-<li>配置环境变量GRADLE_HOME，配置%GRADLE_HOME%/bin 到path</li>
-</ul>
-<p>JVM 选项可以通过设置环境变量来更改. 可以使用 GRADLE_OPTS 或者 JAVA_OPTS.</p>
-<ul>
-<li>JAVA_OPTS 是一个用于 JAVA 应用的环境变量. 一个典型的用例是在 JAVA_OPTS 里设置HTTP代理服务器(proxy),</li>
-<li>GRADLE_OPTS 是内存选项. 这些变量可以在 gradle 的一开始就设置或者通过 gradlew 脚本来设置.</li>
-</ul>
-<h1 id="构建脚本基础"><a href="#构建脚本基础" class="headerlink" title="构建脚本基础"></a>构建脚本基础</h1><h3 id="项目（projects）和任务（tasks）"><a href="#项目（projects）和任务（tasks）" class="headerlink" title="项目（projects）和任务（tasks）"></a>项目（projects）和任务（tasks）</h3><p>每一个构建都是由一个或多个 projects 构成，每一个 project 是由一个或多个 tasks 构成的<br>。每个task代表了构建过程当中的一个原子性操作</p>
-<h3 id="Hello-World"><a href="#Hello-World" class="headerlink" title="Hello World"></a>Hello World</h3><p>创建一个build.gradle，编写如下内容:</p>
-<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">task</span> hello &#123;</span><br><span class="line">    <span class="keyword">doLast</span> &#123;</span><br><span class="line">        <span class="keyword">println</span> <span class="string">'Hello world!'</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>注意 &lt;&lt; 将被弃用，使用该操作符会显示运行警告：</p>
-<p>The Task.leftShift(Closure) method has been deprecated and is scheduled to be removed in Gradle 5.0. Please use Task.doLast(Action) instead.</p>
-<p>同级目录，运行命令行 gradle hello 就可以输出 Hello, World!和运行日志，通过添加参数-q 可以取消日志的输出（gradle -q hello)</p>
-<h3 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">task hello &#123;</span><br><span class="line">    ext.property = &quot;property1024&quot;</span><br><span class="line">    doLast &#123;</span><br><span class="line">      println &apos;Hello world!&apos;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">hello.doLast &#123;</span><br><span class="line">    println &quot;$hello.name task have a property $hello.property&quot;</span><br><span class="line">	  println appendStr(&quot;xy&quot;,&quot;z&quot;)</span><br><span class="line">&#125;</span><br><span class="line">task hello2(dependsOn: hello) &#123;</span><br><span class="line">    doLast&#123;</span><br><span class="line">      println &quot;I&apos;m Gradle&quot;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">String appendStr(String content,String append)&#123;</span><br><span class="line">    content+=append</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>dependsOn: 表示依赖关系，被依赖的任务会先执行</li>
-<li>doFirst 和 doLast 可以被执行许多次. 他们分别可以在任务动作列表的开始和结束加入动作</li>
-<li>短标记 $ 可以访问一个存在的任务. 也就是说每个任务都可以作为构建脚本的属性</li>
-<li>ext.[name] 可以声明任务的自定义属性</li>
-</ul>
-<p>上述代码的执行结果：</p>
-<p><img src="../images/2017-12/gradle1.png" alt></p>
-<ul>
-<li>在文件顶部添加 默认任务 defaultTasks ‘hello2’，则执行 gradle 等价于 gradle hello2</li>
-</ul>
-<h1 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h1><p>插件是一组能完成某一构建目的，使用默认配置的任务、对象集合。</p>
-<p>把插件应用到项目中可以让插件来扩展项目的功能：</p>
-<ul>
-<li>将任务添加到项目（如编译、 测试）</li>
-<li>使用有用的默认设置对已添加的任务进行预配置。</li>
-<li>向项目中添加依赖配置。</li>
-<li>通过扩展对现有类型添加新的属性和方法。</li>
-</ul>
-<h3 id="插件类型"><a href="#插件类型" class="headerlink" title="插件类型"></a>插件类型</h3><ul>
-<li>脚本插件 从网络或者本地加载的gradle插件 通过 apply from: + [URI] 声明</li>
-<li>二进制插件 从gradle服务器，通过 apply plugin: + [插件标识ID] 声明</li>
-</ul>
-<h1 id="依赖管理"><a href="#依赖管理" class="headerlink" title="依赖管理"></a>依赖管理</h1><p>依赖管理由两部分组成：</p>
-<ul>
-<li>需要获取项目需要的代码、文件等，下载导入的资源称为项目的 <strong>依赖项（dependencies）</strong>，寻找并解析该资源的过程称为 <strong>依赖解析（dependency resolution）</strong>，如果你的依赖项同时需要依赖其他资源，这个关系称为 <strong>传递依赖（transitive dependencies）</strong></li>
-<li>项目通过构建生成资源，被上传的资源称为 <strong>publications(发布项)</strong>，将发布项传递出去的操作称为 <strong>发布（publication）</strong></li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">apply plugin: &apos;java&apos;</span><br><span class="line"></span><br><span class="line">repositories &#123;</span><br><span class="line">    mavenCentral()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">dependencies &#123;</span><br><span class="line">    implementation group: &apos;org.hibernate&apos;, name: &apos;hibernate-core&apos;, version: &apos;3.6.7.Final&apos;</span><br><span class="line">    testImplementation group: &apos;junit&apos;, name: &apos;junit&apos;, version: &apos;4.+&apos;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="仓库"><a href="#仓库" class="headerlink" title="仓库"></a>仓库</h3><p>仓库（repository）是存放依赖项的服务器，Gradle 能解析多种种不同的仓库形式, 比如 Maven 、Ivy、本地文件系统或 HTTP。<br>默认地, Gradle 不提前定义任何仓库. 在使用外部依赖之前, 你需要自己至少定义一个库。</p>
-<h3 id="依赖项"><a href="#依赖项" class="headerlink" title="依赖项"></a>依赖项</h3><p>dependencies 标识了外部依赖集合，使用 [group:name:version] 格式，唯一标识依赖项</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-       
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017-12-Java8 简明教程/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="cchao1024">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/config/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="cchao1024 blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2017-12-Java8 简明教程/" class="post-title-link" itemprop="http://yoursite.com/page/2/index.html">Java8 简明教程</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2017-12-01 00:00:00" itemprop="dateCreated datePublished" datetime="2017-12-01T00:00:00+08:00">2017-12-01</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-06-10 17:45:17" itemprop="dateModified" datetime="2019-06-10T17:45:17+08:00">2019-06-10</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h1><ul>
-<li>接口的默认方法和静态方法</li>
-<li>函数式接口FunctionInterface与lambda表达式</li>
-<li>方法引用</li>
-<li>Stream，Optional</li>
-<li></li>
-<li>Date/time API的改进</li>
-</ul>
-<h1 id="Lambda"><a href="#Lambda" class="headerlink" title="Lambda"></a>Lambda</h1><h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><p><strong>parameter -&gt; expression body</strong></p>
-<ul>
-<li>可选的参数类型声明 - 无需声明参数的类型</li>
-<li>可选的参数圆括号 - 只有一个参数可以不要括号包裹（零个或多个必须）</li>
-<li>可选的大括号 - 只有一条语句可以不要大括号包裹（多条必须）</li>
-<li>可选的retrun语句 - 如果只有一条语句默认实现了return</li>
-</ul>
-<p>只具有一个方法的接口称为 <strong>函数式接口</strong>。函数式接口，可以被隐式转换为lambda表达式。如：java.lang.Runnable 。 为防止函数式新增方法导致编译失败（因为增加了方法接口就不止一个方法了），Java 8增加了注解 <strong>@FunctionalInterface</strong> 声明该接口为函数式接口。</p>
-<p>特别的：默认方法与静态方法并不影响函数式接口，可以任意使用：</p>
-<h2 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JavaTest</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        IMathOp mathOp = (x, y) -&gt; x + y;</span><br><span class="line">        System.out.println(mathOp.add(<span class="number">43</span>, <span class="number">5</span>));</span><br><span class="line">        <span class="comment">// Runnable</span></span><br><span class="line">        <span class="keyword">new</span> Thread(() -&gt; System.out.print(mathOp.add(<span class="number">24</span>, <span class="number">2</span>)))</span><br><span class="line">            .start();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@FunctionalInterface</span></span><br><span class="line">    <span class="class"><span class="keyword">interface</span> <span class="title">IMathOp</span> </span>&#123;</span><br><span class="line">        <span class="function"><span class="keyword">int</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span></span>;</span><br><span class="line">        <span class="function"><span class="keyword">default</span> <span class="keyword">int</span> <span class="title">say</span><span class="params">(<span class="keyword">int</span> y)</span></span>&#123;</span><br><span class="line">            <span class="keyword">return</span> y;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="方法引用"><a href="#方法引用" class="headerlink" title="方法引用"></a>方法引用</h2><h1 id="接口的默认方法与静态方法"><a href="#接口的默认方法与静态方法" class="headerlink" title="接口的默认方法与静态方法"></a>接口的默认方法与静态方法</h1><p>接口方法可以通过 default 关键字声明默认实现。<br>接口方法可以通过 static 关键字声明静态方法。</p>
-<p>如果有多重默认（类实现的接口里有相同的默认方法），则必须重写该接口方法，通过 interface.super.method() 调用特定接口方法。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Java8Tester</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span></span>&#123;</span><br><span class="line">        Vehicle vehicle = <span class="keyword">new</span> Car();</span><br><span class="line">        vehicle.print();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Vehicle</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">default</span> <span class="keyword">void</span> <span class="title">print</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"I am a vehicle!"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">blowHorn</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"Blowing horn!!!"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">FourWheeler</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">default</span> <span class="keyword">void</span> <span class="title">print</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"I am a four wheeler!"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Car</span> <span class="keyword">implements</span> <span class="title">Vehicle</span>, <span class="title">FourWheeler</span> </span>&#123;</span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">    @Override</span></span><br><span class="line"><span class="comment">    public void print() &#123;</span></span><br><span class="line"><span class="comment">        // 覆盖默认实现</span></span><br><span class="line"><span class="comment">    &#125;</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">print</span><span class="params">()</span></span>&#123;</span><br><span class="line">        Vehicle.<span class="keyword">super</span>.print();</span><br><span class="line">        FourWheeler.<span class="keyword">super</span>.print();</span><br><span class="line">        Vehicle.blowHorn();</span><br><span class="line">        System.out.println(<span class="string">"I am a car!"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h1 id="Optional-类"><a href="#Optional-类" class="headerlink" title="Optional 类"></a>Optional 类</h1><p>Optional 类是一个可以为null的容器对象。如果值存在则isPresent()方法会返回true，调用get()方法会返回该对象。<br>Optional 是个容器：它可以保存类型T的值，或者仅仅保存null。Optional提供很多有用的方法，这样我们就不用显式进行空值检测。<br>Optional 类的引入很好的解决空指针异常。</p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th>方法及说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>static &lt; T&gt; Optional&lt; T&gt; empty()</td>
-<td>返回一个空的 Optional 实例。</td>
-</tr>
-<tr>
-<td>boolean equals(Object obj)</td>
-<td>表示某个其他对象是否“等于”此Optional。</td>
-</tr>
-<tr>
-<td>Optional&lt; T&gt; filter(Predicate&lt;? super T&gt; predicate)</td>
-<td>如果值存在，并且该值给定的谓词匹配，返回一个可选描述值，否则返回一个空Optional。</td>
-</tr>
-<tr>
-<td>&lt; U&gt; Optional&lt; U&gt; flatMap(Function&lt;? super T,Optional<u>&gt; mapper)</u></td>
-<td>如果值存在，应用提供的可选承载映射功能到它，返回结果，否则返回一个空Optional。</td>
-</tr>
-<tr>
-<td>T get()</td>
-<td>如果值是出现在这个 Optional 中，返回这个值，否则抛出NoSuchElementException异常。</td>
-</tr>
-<tr>
-<td>int hashCode()</td>
-<td>返回当前值，哈希码值（如有）或0（零），如果值不存在。</td>
-</tr>
-<tr>
-<td>void ifPresent(Consumer&lt;? super T&gt; consumer)</td>
-<td>如果值存在，调用指定的使用方提供值，否则什么都不做。</td>
-</tr>
-<tr>
-<td>boolean isPresent()</td>
-<td>返回true，如果有一个值存在，否则为false。</td>
-</tr>
-<tr>
-<td><u> Optional<u> map(Function&lt;? super T,? extends U&gt; mapper)</u></u></td>
-<td>如果值存在，应用提供的映射函数，如果结果非空，返回一个Optional描述结果。</td>
-</tr>
-<tr>
-<td>static &lt; T&gt; Optional&lt; T&gt; of(T value)</td>
-<td>返回一个Optional具有指定当前非空值。</td>
-</tr>
-<tr>
-<td>static &lt; T&gt; Optional&lt; T&gt; ofNullable(T value)</td>
-<td>返回一个Optional描述指定的值，如果非空，否则返回一个空的Optional。</td>
-</tr>
-<tr>
-<td>T orElse(T other)</td>
-<td>返回值（如果存在），否则返回other。</td>
-</tr>
-<tr>
-<td>T orElseGet(Supplier&lt;? extends T&gt; other)</td>
-<td>如果存在，返回值，否则调用其他并返回调用的结果。</td>
-</tr>
-<tr>
-<td><x extends throwable> T orElseThrow(Supplier&lt;? extends X&gt; exceptionSupplier)</x></td>
-<td>返回所含值，如果存在的话，否则抛出将由提供者创建的一个例外。</td>
-</tr>
-<tr>
-<td>String toString()</td>
-<td>返回此Optional 适合调试一个非空字符串表示。</td>
-</tr>
-</tbody>
-</table>
-<p>code</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Java8Tester</span> </span>&#123;</span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span></span>&#123;</span><br><span class="line"></span><br><span class="line">      Java8Tester java8Tester = <span class="keyword">new</span> Java8Tester();</span><br><span class="line">      Integer value1 = <span class="keyword">null</span>;</span><br><span class="line">      Integer value2 = <span class="keyword">new</span> Integer(<span class="number">10</span>);</span><br><span class="line"></span><br><span class="line">      <span class="comment">// Optional.ofNullable - 允许传递为 null 参数</span></span><br><span class="line">      Optional&lt;Integer&gt; a = Optional.ofNullable(value1);</span><br><span class="line"></span><br><span class="line">      <span class="comment">// Optional.of - 如果传递的参数是 null，抛出异常 NullPointerException</span></span><br><span class="line">      Optional&lt;Integer&gt; b = Optional.of(value2);</span><br><span class="line">      System.out.println(java8Tester.sum(a,b));</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="function"><span class="keyword">public</span> Integer <span class="title">sum</span><span class="params">(Optional&lt;Integer&gt; a, Optional&lt;Integer&gt; b)</span></span>&#123;</span><br><span class="line"></span><br><span class="line">      <span class="comment">// Optional.isPresent - 判断值是否存在</span></span><br><span class="line"></span><br><span class="line">      System.out.println(<span class="string">"第一个参数值存在: "</span> + a.isPresent());</span><br><span class="line">      System.out.println(<span class="string">"第二个参数值存在: "</span> + b.isPresent());</span><br><span class="line"></span><br><span class="line">      <span class="comment">// Optional.orElse - 如果值存在，返回它，否则返回默认值</span></span><br><span class="line">      Integer value1 = a.orElse(<span class="keyword">new</span> Integer(<span class="number">0</span>));</span><br><span class="line"></span><br><span class="line">      <span class="comment">//Optional.get - 获取值，值需要存在</span></span><br><span class="line">      Integer value2 = b.get();</span><br><span class="line">      <span class="keyword">return</span> value1 + value2;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="Stream"><a href="#Stream" class="headerlink" title="Stream"></a>Stream</h1><p>Stream（流）是来自数据源的元素队列，支持聚合操作。</p>
-<p>通过将集合转换为这么一种叫做 “流” 的元素序列，通过声明性方式，能够对集合中的每个元素进行一系列并行或串行的<strong>流水线操作</strong>。</p>
-<ul>
-<li>元素 - 是特定类型的对象，形成一个队列。Java中的Stream并不会存储元素，而是按需计算。</li>
-<li>数据源 - 流的输入，可以是集合，数组或I/O资源。</li>
-<li>聚合操作 - 如filter, map, limit, reduced, find, match等处理元素的操作。</li>
-<li>管道传输 - 大多数流操作的返回流本身使他们的结果可以被管道传输。这些操作被称为中间操作以及它们的功能是利用输入，处理输入和输出返回到目标。collect()方法是终端操作，这是通常出现在管道传输操作结束标记流的结束。</li>
-<li>自动迭代 - 流操作内部做了反复对比，其中明确迭代需要集合提供源元素。</li>
-</ul>
-<p>流和迭代器类似，只能迭代一次。</p>
-<h3 id="stream-parallelStream-将集合转换成流"><a href="#stream-parallelStream-将集合转换成流" class="headerlink" title="stream() / parallelStream()  将集合转换成流"></a>stream() / parallelStream()  将集合转换成流</h3><p>filter（T -&gt; boolean）剔除返回值为false的元素</p>
-<p>distinct 剔除重复元素，通过equals判断两元素是否相同</p>
-<p>sorted/sorted((T,T)-&gt; int) 对元素进行排序，通过Comparable接口实现排序规则</p>
-<p>limit(long n) 返回前n个元素</p>
-<p>skip(long n) 剔除前n个元素</p>
-<p>map(T -&gt; R) 流中的元素类型转化为R</p>
-<p>flatMap(T -&gt; Stream<r>)  汇聚水流</r></p>
-<p>anyMatch(T -&gt; boolean) 检查流中是否有元素满足条件规则</p>
-<p>allMatch(T -&gt; boolean) 检查流中所有元素是否都满足条件规则</p>
-<p>noneMatch(T -&gt; boolean) 检查流中所有元素是否都不满足条件规则</p>
-<p>findAny() 找到其中一个元素</p>
-<p>findFirst 找到第一个元素</p>
-<p>reduce((T,T) -&gt; T)  对流中元素进行组合操作，如：求和，求积</p>
-<p>reduce(T,(T,T) -&gt; T)   对流中元素进行组合操作，第一个参数是起始值</p>
-<p>count() 返回流中元素的个数</p>
-<p>collect() 收集器，</p>
-<p>forEach()  遍历流中元素</p>
-<hr>
-<h3 id="数值流"><a href="#数值流" class="headerlink" title="数值流"></a>数值流</h3><h4 id="流转换为数值流"><a href="#流转换为数值流" class="headerlink" title="流转换为数值流"></a>流转换为数值流</h4><ul>
-<li>mapToInt(T -&gt; int) : return IntStream</li>
-<li>mapToDouble(T -&gt; double) : return DoubleStream</li>
-<li>mapToLong(T -&gt; long) : return LongStream</li>
-</ul>
-<p>数值流转换为流</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">intStream.boxed();</span><br><span class="line">DoubleStream.boxed();</span><br></pre></td></tr></table></figure>
-<ul>
-<li>sum()</li>
-<li>max()</li>
-<li>min()</li>
-<li>average() 等…</li>
-<li>range(x,y) 生成x到y开区间内的元素数值流，(1,100)    x&lt;= int &lt;=y  </li>
-<li>rangeClosed(x,y) 生成x到y范围内的元素数值流  [1,100)   x&lt; int &lt;=y</li>
-</ul>
-<h2 id="Optional"><a href="#Optional" class="headerlink" title="Optional"></a>Optional</h2><p>Optional是一个容器类，可以代表一个值存在或不存在</p>
-<ul>
-<li>isPresent() ：值存在时返回 true，反之 flase</li>
-<li>get() ：返回当前值，若值不存在会抛出异常</li>
-<li>orElse(T) ：值存在时返回该值，否则返回 T 的值<br>其还有三个类似版本 OptionalInt，OptionalLong，OptionalDouble</li>
-</ul>
-<h3 id="collect"><a href="#collect" class="headerlink" title="collect"></a>collect</h3><p>coollect 方法作为终端操作，接受的是一个 Collector 接口参数，能对数据进行一些收集归总操作</p>
-<ul>
-<li>toList</li>
-<li>toSet</li>
-<li>toCollection</li>
-<li>toMap</li>
-<li>counting</li>
-<li>summingInt</li>
-<li>summingLong</li>
-<li>averagingInt</li>
-<li>averagingLong</li>
-<li>summarizingInt  返回 平均数，和，最值操作</li>
-<li>max</li>
-<li>Joining 连接字符串</li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-       
     
     
 
@@ -2826,21 +2339,20 @@
   </div>
 
   <aside id="sidebar" class="sidebar">
-    
     <div class="sidebar-inner">
 
       
 
       
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
               <img class="site-author-image" itemprop="image" src="/images/config/avatar.png" alt="cchao1024">
             
               <p class="site-author-name" itemprop="name">cchao1024</p>
-              <p class="site-description motion-element" itemprop="description"></p>
+              <div class="site-description motion-element" itemprop="description"></div>
           </div>
 
           
@@ -2850,7 +2362,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">31</span>
+                    <span class="site-state-item-count">34</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -2860,7 +2372,11 @@
                 
                 
                 <div class="site-state-item site-state-categories">
-                  <a href="/categories/index.html">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
                     
                     
                       
@@ -2949,6 +2465,34 @@
           
 
           
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/cchao1024" title="GitHub &rarr; https://github.com/cchao1024" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:cchao1024@163.com" title="E-Mail &rarr; mailto:cchao1024@163.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            </div>
+          
+
+          
 
           
           
@@ -2957,9 +2501,14 @@
             
           
           
+<!--网易云音乐-->
+<div id="music163player" style="margin-top: 15px">
+    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="360" height="86" src="//music.163.com/outchain/player?type=2&id=36664503&auto=1&height=66"></iframe>
+</div>
+
 
         </div>
-      </section>
+      </div>
 
       
 
@@ -2967,6 +2516,7 @@
 
     </div>
   </aside>
+  
 
 
         
@@ -2977,7 +2527,7 @@
       <div class="footer-inner">
         <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
   <span class="with-love" id="animate">
-    <i class="fa fa-user"></i>
+    <i class="fa fa-fa-heart"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">cchao1024</span>
 
@@ -2995,7 +2545,7 @@
 
 
 
-  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v6.6.0</div>
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.1.2</div>
 
 
 
@@ -3021,7 +2571,7 @@
     
 
     
-	
+
     
 
     
@@ -3029,7 +2579,7 @@
 
   
 
-<script type="text/javascript">
+<script>
   if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
     window.Promise = null;
   }
@@ -3061,27 +2611,21 @@
 
 
   
-  
-    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-  
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
 
   
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
 
   
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
 
 
   
 
 
-  <script type="text/javascript" src="/js/src/utils.js?v=6.6.0"></script>
+  <script src="/js/utils.js?v=7.1.2"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=6.6.0"></script>
+  <script src="/js/motion.js?v=7.1.2"></script>
 
 
 
@@ -3089,9 +2633,10 @@
   
 
 
-  <script type="text/javascript" src="/js/src/affix.js?v=6.6.0"></script>
+  <script src="/js/affix.js?v=7.1.2"></script>
 
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.6.0"></script>
+  <script src="/js/schemes/pisces.js?v=7.1.2"></script>
+
 
 
 
@@ -3100,29 +2645,7 @@
   
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.6.0"></script>
-
-
-
-  
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
+  <script src="/js/next-boot.js?v=7.1.2"></script>
 
 
   
@@ -3132,10 +2655,29 @@
   
 
   
+  
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+
+
+
+
+
+
 
   
 
-  
+
+
+
   
 
   
@@ -3150,5 +2692,19 @@
 
   
 
-</body>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
 </html>

@@ -1,6 +1,6 @@
 {
   "name": "hexo-theme-next",
-  "version": "6.6.0",
+  "version": "7.1.2",
   "description": "Elegant and powerful theme for Hexo",
   "main": "index.js",
   "directories": {
@@ -35,5 +35,8 @@
     "js-yaml": "^3.8.1",
     "jshint-stylish": "^2.1.0",
     "stylint": "^1.5.9"
+  },
+  "dependencies": {
+    "hexo-admin": "^2.3.0"
   }
 }

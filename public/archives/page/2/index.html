@@ -11,10 +11,8 @@
 
 
 
-  
 
-
-<html class="theme-next gemini use-motion" lang>
+<html class="theme-next gemini" lang>
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -32,8 +30,6 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -46,6 +42,21 @@
 
 
 
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.2">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.2">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.2">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.2">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.2" color="#222">
 
 
 
@@ -53,45 +64,20 @@
 
 
 
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
-
-<link href="/css/main.css?v=6.6.0" rel="stylesheet" type="text/css">
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.6.0">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.6.0">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.6.0">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=6.6.0" color="#222">
-
-
-
-
-
-
-
-
-
-<script type="text/javascript" id="hexo.configurations">
+<script id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
     scheme: 'Gemini',
-    version: '6.6.0',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    version: '7.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
     fancybox: false,
     fastclick: false,
     lazyload: false,
     tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     algolia: {
       applicationID: '',
       apiKey: '',
@@ -120,12 +106,13 @@
 
 
 
-
+  
+  
   <link rel="canonical" href="http://yoursite.com/archives/page/2/">
 
 
 
-<script type="text/javascript" id="page.configurations">
+<script id="page.configurations">
   CONFIG.page = {
     sidebar: "",
   };
@@ -144,30 +131,29 @@
 
 
 
+
   <noscript>
-  <style type="text/css">
-    .use-motion .motion-element,
-    .use-motion .brand,
-    .use-motion .menu-item,
-    .sidebar-inner,
-    .use-motion .post-block,
-    .use-motion .pagination,
-    .use-motion .comments,
-    .use-motion .post-header,
-    .use-motion .post-body,
-    .use-motion .collection-title { opacity: initial; }
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
 
-    .use-motion .logo,
-    .use-motion .site-title,
-    .use-motion .site-subtitle {
-      opacity: initial;
-      top: initial;
-    }
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
 
-    .use-motion {
-      .logo-line-before i { left: initial; }
-      .logo-line-after i { right: initial; }
-    }
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
   </style>
 </noscript>
 
@@ -185,7 +171,7 @@
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
+  <div class="site-meta">
     
 
     <div class="custom-logo-site-title">
@@ -195,6 +181,7 @@
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
+    
     
   </div>
 
@@ -281,40 +268,6 @@
     <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
 
   </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-schedule">
-
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/schedule/" rel="section"><i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>Schedule</a>
-
-  </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-commonweal">
-
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/404/" rel="section"><i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>Commonweal 404</a>
-
-  </li>
 
       
       
@@ -358,12 +311,6 @@
       
       
     
-      
-      
-    
-      
-      
-    
     
 
   
@@ -386,7 +333,7 @@
         
          
         
-        OK! 31 posts in total. Keep on posting.
+        OK! 34 posts in total. Keep on posting.
       </span>
       
 
@@ -411,11 +358,116 @@
 
       <h2 class="post-title">
         
-            <a class="post-title-link" href="/2017-11-安卓推送原理/" itemprop="url">
-              
-                <span itemprop="name">安卓推送实现原理</span>
-              
-            </a>
+          <a class="post-title-link" href="/2017-12-Gradle实现Onesignal推送/" itemprop="url">
+            
+              <span itemprop="name">Gradle实现Onesignal推送</span>
+            
+          </a>
+        
+      </h2>
+
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated" datetime="2017-12-22T00:00:00+08:00" content="2017-12-22">
+          12-22
+        </time>
+      </div>
+
+    </header>
+  </article>
+
+
+
+      
+
+        
+        
+        
+
+        
+        
+
+        
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h2 class="post-title">
+        
+          <a class="post-title-link" href="/2017-12-Gradle简明教程/" itemprop="url">
+            
+              <span itemprop="name">Gradle简明教程</span>
+            
+          </a>
+        
+      </h2>
+
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated" datetime="2017-12-01T00:00:00+08:00" content="2017-12-01">
+          12-01
+        </time>
+      </div>
+
+    </header>
+  </article>
+
+
+
+      
+
+        
+        
+        
+
+        
+        
+
+        
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h2 class="post-title">
+        
+          <a class="post-title-link" href="/2017-12-Java8 简明教程/" itemprop="url">
+            
+              <span itemprop="name">Java8 简明教程</span>
+            
+          </a>
+        
+      </h2>
+
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated" datetime="2017-12-01T00:00:00+08:00" content="2017-12-01">
+          12-01
+        </time>
+      </div>
+
+    </header>
+  </article>
+
+
+
+      
+
+        
+        
+        
+
+        
+        
+
+        
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h2 class="post-title">
+        
+          <a class="post-title-link" href="/2017-11-安卓推送原理/" itemprop="url">
+            
+              <span itemprop="name">安卓推送实现原理</span>
+            
+          </a>
         
       </h2>
 
@@ -446,11 +498,11 @@
 
       <h2 class="post-title">
         
-            <a class="post-title-link" href="/2017-11-fiddler抓包/" itemprop="url">
-              
-                <span itemprop="name">利用Fildder抓包，捕获https协议的传输内容</span>
-              
-            </a>
+          <a class="post-title-link" href="/2017-11-fiddler抓包/" itemprop="url">
+            
+              <span itemprop="name">利用Fildder抓包，捕获https协议的传输内容</span>
+            
+          </a>
         
       </h2>
 
@@ -481,11 +533,11 @@
 
       <h2 class="post-title">
         
-            <a class="post-title-link" href="/2017-11-OkHttp源码介绍/" itemprop="url">
-              
-                <span itemprop="name">okHttp 源码介绍</span>
-              
-            </a>
+          <a class="post-title-link" href="/2017-11-OkHttp源码介绍/" itemprop="url">
+            
+              <span itemprop="name">okHttp 源码介绍</span>
+            
+          </a>
         
       </h2>
 
@@ -516,11 +568,11 @@
 
       <h2 class="post-title">
         
-            <a class="post-title-link" href="/2017-11-《java编程思想》学习笔记/" itemprop="url">
-              
-                <span itemprop="name">java 类型类（Class）</span>
-              
-            </a>
+          <a class="post-title-link" href="/2017-11-《java编程思想》学习笔记/" itemprop="url">
+            
+              <span itemprop="name">java 类型类（Class）</span>
+            
+          </a>
         
       </h2>
 
@@ -551,11 +603,11 @@
 
       <h2 class="post-title">
         
-            <a class="post-title-link" href="/2017-11-Git Command/" itemprop="url">
-              
-                <span itemprop="name">Git 常用命令</span>
-              
-            </a>
+          <a class="post-title-link" href="/2017-11-Git Command/" itemprop="url">
+            
+              <span itemprop="name">Git 常用命令</span>
+            
+          </a>
         
       </h2>
 
@@ -586,11 +638,11 @@
 
       <h2 class="post-title">
         
-            <a class="post-title-link" href="/2017-09-OkHttp源码2-拦截器们_/" itemprop="url">
-              
-                <span itemprop="name">okHttp-拦截器们</span>
-              
-            </a>
+          <a class="post-title-link" href="/2017-09-OkHttp源码2-拦截器们_/" itemprop="url">
+            
+              <span itemprop="name">okHttp-拦截器们</span>
+            
+          </a>
         
       </h2>
 
@@ -621,11 +673,11 @@
 
       <h2 class="post-title">
         
-            <a class="post-title-link" href="/2017-09-python3简易教程/" itemprop="url">
-              
-                <span itemprop="name">Python3 简易教程</span>
-              
-            </a>
+          <a class="post-title-link" href="/2017-09-python3简易教程/" itemprop="url">
+            
+              <span itemprop="name">Python3 简易教程</span>
+            
+          </a>
         
       </h2>
 
@@ -656,11 +708,11 @@
 
       <h2 class="post-title">
         
-            <a class="post-title-link" href="/2017-09-OkHttp源码1-请求与响应/" itemprop="url">
-              
-                <span itemprop="name">okHttp 请求与响应</span>
-              
-            </a>
+          <a class="post-title-link" href="/2017-09-OkHttp源码1-请求与响应/" itemprop="url">
+            
+              <span itemprop="name">okHttp 请求与响应</span>
+            
+          </a>
         
       </h2>
 
@@ -691,11 +743,11 @@
 
       <h2 class="post-title">
         
-            <a class="post-title-link" href="/2017-05-java元组/" itemprop="url">
-              
-                <span itemprop="name">java tuple（元组）</span>
-              
-            </a>
+          <a class="post-title-link" href="/2017-05-java元组/" itemprop="url">
+            
+              <span itemprop="name">java tuple（元组）</span>
+            
+          </a>
         
       </h2>
 
@@ -726,11 +778,11 @@
 
       <h2 class="post-title">
         
-            <a class="post-title-link" href="/2017-01-python3爬妹子图/" itemprop="url">
-              
-                <span itemprop="name">Python3爬虫 多线程爬取美女图片保存到本地</span>
-              
-            </a>
+          <a class="post-title-link" href="/2017-01-python3爬妹子图/" itemprop="url">
+            
+              <span itemprop="name">Python3爬虫 多线程爬取美女图片保存到本地</span>
+            
+          </a>
         
       </h2>
 
@@ -766,11 +818,11 @@
 
       <h2 class="post-title">
         
-            <a class="post-title-link" href="/2010-01-工具图集/" itemprop="url">
-              
-                <span itemprop="name">工具图</span>
-              
-            </a>
+          <a class="post-title-link" href="/2010-01-工具图集/" itemprop="url">
+            
+              <span itemprop="name">工具图</span>
+            
+          </a>
         
       </h2>
 
@@ -817,21 +869,20 @@
   </div>
 
   <aside id="sidebar" class="sidebar">
-    
     <div class="sidebar-inner">
 
       
 
       
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
               <img class="site-author-image" itemprop="image" src="/images/config/avatar.png" alt="cchao1024">
             
               <p class="site-author-name" itemprop="name">cchao1024</p>
-              <p class="site-description motion-element" itemprop="description"></p>
+              <div class="site-description motion-element" itemprop="description"></div>
           </div>
 
           
@@ -841,7 +892,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">31</span>
+                    <span class="site-state-item-count">34</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -851,7 +902,11 @@
                 
                 
                 <div class="site-state-item site-state-categories">
-                  <a href="/categories/index.html">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
                     
                     
                       
@@ -940,6 +995,34 @@
           
 
           
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/cchao1024" title="GitHub &rarr; https://github.com/cchao1024" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:cchao1024@163.com" title="E-Mail &rarr; mailto:cchao1024@163.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            </div>
+          
+
+          
 
           
           
@@ -948,9 +1031,14 @@
             
           
           
+<!--网易云音乐-->
+<div id="music163player" style="margin-top: 15px">
+    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="360" height="86" src="//music.163.com/outchain/player?type=2&id=36664503&auto=1&height=66"></iframe>
+</div>
+
 
         </div>
-      </section>
+      </div>
 
       
 
@@ -958,6 +1046,7 @@
 
     </div>
   </aside>
+  
 
 
         
@@ -968,7 +1057,7 @@
       <div class="footer-inner">
         <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
   <span class="with-love" id="animate">
-    <i class="fa fa-user"></i>
+    <i class="fa fa-fa-heart"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">cchao1024</span>
 
@@ -986,7 +1075,7 @@
 
 
 
-  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v6.6.0</div>
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.1.2</div>
 
 
 
@@ -1012,7 +1101,7 @@
     
 
     
-	
+
     
 
     
@@ -1020,7 +1109,7 @@
 
   
 
-<script type="text/javascript">
+<script>
   if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
     window.Promise = null;
   }
@@ -1052,27 +1141,21 @@
 
 
   
-  
-    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-  
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
 
   
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
 
   
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
 
 
   
 
 
-  <script type="text/javascript" src="/js/src/utils.js?v=6.6.0"></script>
+  <script src="/js/utils.js?v=7.1.2"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=6.6.0"></script>
+  <script src="/js/motion.js?v=7.1.2"></script>
 
 
 
@@ -1080,9 +1163,10 @@
   
 
 
-  <script type="text/javascript" src="/js/src/affix.js?v=6.6.0"></script>
+  <script src="/js/affix.js?v=7.1.2"></script>
 
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.6.0"></script>
+  <script src="/js/schemes/pisces.js?v=7.1.2"></script>
+
 
 
 
@@ -1091,29 +1175,7 @@
   
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.6.0"></script>
-
-
-
-  
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
+  <script src="/js/next-boot.js?v=7.1.2"></script>
 
 
   
@@ -1123,10 +1185,29 @@
   
 
   
+  
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+
+
+
+
+
+
 
   
 
-  
+
+
+
   
 
   
@@ -1141,5 +1222,19 @@
 
   
 
-</body>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
 </html>
