@@ -97,8 +97,10 @@ services:
     image: mysql:latest                            #从私有仓库拉镜像
     restart: always                    
     volumes:
-      - ./mysql/data/:/var/lib/mysql/                             #映射mysql的数据目录到宿主机，保存数据
-      - ./mysql/conf/mysqld.cnf:/etc/mysql/mysql.conf.d/mysqld.cnf #把mysql的配置文件映射到容器的相应目录
+      - ./mysql/data/:/var/lib/mysql/
+      - ./mysql/mysql-files:/var/lib/mysql-files/   
+      - ./mysql/cnf/:/etc/mysql/                          #映射mysql的数据目录到宿主机，保存数据
+      - ./mysql/mysqld.cnf:/etc/mysql/mysql.conf.d/mysqld.cnf #把mysql的配置文件映射到容器的相应目录
     ports:
       - "3306:3306"
     environment:
@@ -132,6 +134,7 @@ services:
       - ./tomcat/logs/:/usr/local/tomcat/logs/
     links:
       - mysql                                                   #连接数据库镜像
+
   redis:
     # 指定镜像
     image: redis
@@ -145,9 +148,12 @@ services:
     command:
       # 执行的命令
       redis-server
+
 ```
 
-> 注意目录挂载中的文件挂载。如果不存在该文件，docker-compose 是会把它当成目录去创建，如：/nginx/conf/nginx.conf，需要手动 创建这个配置文件
+> 注意目录挂载中的文件挂载。如果不存在该文件，docker-compose 是会把它当成目录去创建，如：/nginx/conf/nginx.conf，需要手动 创建这个配置文件，而且不是仅仅创建就完了，还需要对他进行正确的配置
+>
+> 笔者也觉得很麻烦，所以是通过一个git仓库去管理这些文件的，每次部署（可能几年就一次）新的设备时，就 pull 下来 直接 docm up 就可以了
 
 
 在实际开发中，这个 **docker-compose** 太长了，可以通过配置别名 **alias** 把它改短一些，笔者用的是docm
