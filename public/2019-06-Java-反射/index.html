@@ -94,14 +94,17 @@
 
 
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="categories">
-<meta property="og:url" content="http://yoursite.com/categories/index.html">
+  <meta name="description" content="反射是指计算机程序在运行时（Run time）可以访问、检测和修改它本身状态或行为的一种能力。 要注意术语“反射”和“内省)”（type introspection）的关系。内省（或称“自省”）机制仅指程序在运行时对自身信息（称为元数据）的检测；反射机制不仅包括要能在运行时对程序自身信息进行检测，还要求程序能进一步根据这些信息改变程序状态或结构。  “程序运行时，允许改变程序结构或变量类型，这">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java 反射">
+<meta property="og:url" content="http://yoursite.com/2019-06-Java-反射/index.html">
 <meta property="og:site_name" content="cchao1024 blog">
+<meta property="og:description" content="反射是指计算机程序在运行时（Run time）可以访问、检测和修改它本身状态或行为的一种能力。 要注意术语“反射”和“内省)”（type introspection）的关系。内省（或称“自省”）机制仅指程序在运行时对自身信息（称为元数据）的检测；反射机制不仅包括要能在运行时对程序自身信息进行检测，还要求程序能进一步根据这些信息改变程序状态或结构。  “程序运行时，允许改变程序结构或变量类型，这">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-10T09:45:17.287Z">
+<meta property="og:updated_time" content="2019-06-18T01:48:03.194Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="categories">
+<meta name="twitter:title" content="Java 反射">
+<meta name="twitter:description" content="反射是指计算机程序在运行时（Run time）可以访问、检测和修改它本身状态或行为的一种能力。 要注意术语“反射”和“内省)”（type introspection）的关系。内省（或称“自省”）机制仅指程序在运行时对自身信息（称为元数据）的检测；反射机制不仅包括要能在运行时对程序自身信息进行检测，还要求程序能进一步根据这些信息改变程序状态或结构。  “程序运行时，允许改变程序结构或变量类型，这">
 
 
 
@@ -109,7 +112,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/categories/">
+  <link rel="canonical" href="http://yoursite.com/2019-06-Java-反射/">
 
 
 
@@ -119,7 +122,7 @@
   };
 </script>
 
-  <title>categories | cchao1024 blog</title>
+  <title>Java 反射 | cchao1024 blog</title>
   
 
 
@@ -239,7 +242,7 @@
         
         
           
-          <li class="menu-item menu-item-categories menu-item-active">
+          <li class="menu-item menu-item-categories">
 
     
     
@@ -298,115 +301,242 @@
           
             
 
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
-
           
           <div id="content" class="content">
             
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019-06-Java-反射/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="cchao1024">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/config/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="cchao1024 blog">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-<h1 class="post-title" itemprop="name headline">categories
-
-</h1>
-
-<div class="post-meta">
-  
-  
-
-
-
-</div>
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
         
         
-          <div class="category-all-page">
-            <div class="category-all-title">
+          <h1 class="post-title" itemprop="name headline">Java 反射
+
               
-              
-                
-                  
-                
-              
-                
-                  
-                
-              
-                
-                  
-                
-              
-                
-                  
-                
-              
-                
-                  
-                
-              
-                
-                  
-                
-              
-                
-                  
-                
-              
-                
-                  
-                
-              
-                
-                  
-                
-              
-              9 categories in total
-            </div>
-            <div class="category-all">
-              <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/gradle/">gradle</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/python3/">python3</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/基础知识/">基础知识</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术/">技术</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/语言/">语言</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/读书笔记/">读书笔记</a><span class="category-list-count">1</span></li></ul>
-            </div>
-          </div>
+            
+          </h1>
         
-      </div>
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-06-17 17:32:40" itemprop="dateCreated datePublished" datetime="2019-06-17T17:32:40+08:00">2019-06-17</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-06-18 09:48:03" itemprop="dateModified" datetime="2019-06-18T09:48:03+08:00">2019-06-18</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">Comments: </span>
+                <a href="/2019-06-Java-反射/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019-06-Java-反射/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
       
+
+      
+        <blockquote>
+<p> <strong>反射</strong>是指<a href="https://www.wikiwand.com/zh/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A8%8B%E5%BA%8F" target="_blank" rel="noopener">计算机程序</a>在<a href="https://www.wikiwand.com/zh/%E8%BF%90%E8%A1%8C%E6%97%B6" target="_blank" rel="noopener">运行时</a>（Run time）可以访问、检测和修改它本身状态或行为的一种能力。</p>
+<p>要注意术语“反射”和“<a href="https://www.wikiwand.com/zh/%E5%86%85%E7%9C%81_(%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6" target="_blank" rel="noopener">内省</a>)”（type introspection）的关系。内省（或称“自省”）机制仅指程序在运行时对自身信息（称为<a href="https://www.wikiwand.com/zh/%E5%85%83%E6%95%B0%E6%8D%AE" target="_blank" rel="noopener">元数据</a>）的检测；反射机制不仅包括要能在运行时对程序自身信息进行检测，还要求程序能进一步根据这些信息改变程序状态或结构。</p>
+</blockquote>
+<p>“程序运行时，允许改变程序结构或变量类型，这种语言称为<a href="https://baike.baidu.com/item/%E5%8A%A8%E6%80%81%E8%AF%AD%E8%A8%80/797407" target="_blank" rel="noopener">动态语言</a>”。从这个观点看，Perl，Python，Ruby是动态语言，C++，Java，C# 不是动态语言。</p>
+<p>Java 反射（Reflection）使我们可以于运行时加载、探知、使用编译期间完全未知的classes。</p>
+<blockquote>
+<p>编译方式说明：</p>
+<ol>
+<li>静态编译：在编译时确定类型 &amp; 绑定对象。如常见的使用<code>new</code>关键字创建对象</li>
+<li>动态编译：运行时确定类型 &amp; 绑定对象。动态编译体现了<code>Java</code>的灵活性、多态特性 &amp; 降低类之间的藕合性</li>
+</ol>
+</blockquote>
+<p>换句话说，Java程序可以加载一个运行时的class，获悉其完整构造，并生成其对象实体、或对其fields设值、或唤起其methods。</p>
+<h1 id="Class"><a href="#Class" class="headerlink" title="Class"></a>Class</h1><p>反射机制的实现 主要通过 <strong>操作java.lang.Class类</strong> ， <code>java.lang.Class</code> 类是反射机制的基础</p>
+<p><code>Java</code> 反射机制的实现除了依靠 <code>Java.lang.Class</code> 类，还需要依靠：<code>Constructor</code>类、<code>Field</code>类、<code>Method</code>类，分别作用于类的各个组成部分：</p>
+<ul>
+<li>Class 类对象</li>
+<li>Constructor 类的构造对象</li>
+<li>Field 类的属性对象</li>
+<li>Method 类的方法对象</li>
+</ul>
+<p>获取 Class 对象的方法</p>
+<ol>
+<li>Object.getClass()</li>
+<li>T.class</li>
+<li>Class.forName</li>
+<li>T.TYPE</li>
+</ol>
+<h1 id="Field-Method"><a href="#Field-Method" class="headerlink" title="Field Method"></a>Field Method</h1><p>获取到 Class 后，需要拿到类的属性和方法才能对 fields设值、或唤起其methods。<br>获取 Field 和 Method 的方法名比较规律，格式为 </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 获取单个值, 根据获取的不同值，需传入不同参数</span><br><span class="line">get + [Field|Annotation|Constructor] + ([String name|Class&lt;A&gt; annotationClass|Class...&lt;?&gt; parameterTypes])</span><br><span class="line"># 获取所有值</span><br><span class="line">get + [Fields|Annotations|Constructors]</span><br></pre></td></tr></table></figure>
+<p>默认获取的是共有的值， 加上 <strong>Declared</strong> 表示也获取私有值，如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">getDeclaredField(String name)</span><br></pre></td></tr></table></figure>
+<p>获取到  Field 和 Method 后，可以对他进行赋值或调用</p>
+<h2 id="调用"><a href="#调用" class="headerlink" title="调用"></a>调用</h2><ul>
+<li>Field<ul>
+<li>equals(Object obj)            属性与obj相等则返回true</li>
+<li>get(Object obj)               获得obj中对应的属性值  </li>
+<li>set(Object obj, Object value) 设置obj中对应属性值    </li>
+</ul>
+</li>
+<li><p>Method</p>
+<ul>
+<li>invoke(Object obj, Object… args)  传递object对象及参数调用该对象对应的方法 </li>
+</ul>
+</li>
+<li><p>Constructor</p>
+<ul>
+<li>newInstance(Object… initargs)    根据传递的参数创建类的对象   </li>
+</ul>
+</li>
+</ul>
+<h1 id="Referance"><a href="#Referance" class="headerlink" title="Referance"></a>Referance</h1><p><a href="https://www.wikiwand.com/zh/%E5%8F%8D%E5%B0%84_(%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6" target="_blank" rel="noopener">Java 反射 wiki</a>&gt;)</p>
+<p><a href="https://baike.baidu.com/item/JAVA%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6/6015990?fr=aladdin" target="_blank" rel="noopener">Java 反射 百度百科</a></p>
+<p><a href="https://www.jianshu.com/p/9be58ee20dee" target="_blank" rel="noopener">https://www.jianshu.com/p/9be58ee20dee</a></p>
+
       
     </div>
-    
-
-
 
     
+
     
     
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019-06-Java-注解/" rel="next" title="Java 注解">
+                <i class="fa fa-chevron-left"></i> Java 注解
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
   </div>
 
 
@@ -442,8 +572,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -609,6 +748,23 @@
       </div>
 
       
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Class"><span class="nav-number">1.</span> <span class="nav-text">Class</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Field-Method"><span class="nav-number">2.</span> <span class="nav-text">Field Method</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#调用"><span class="nav-number">2.1.</span> <span class="nav-text">调用</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Referance"><span class="nav-number">3.</span> <span class="nav-text">Referance</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
 
       
 
@@ -772,9 +928,9 @@
 
 <script>
   var disqus_config = function() {
-    this.page.url = "http://yoursite.com/categories/index.html";
-    this.page.identifier = "categories/index.html";
-    this.page.title = 'categories';
+    this.page.url = "http://yoursite.com/2019-06-Java-反射/";
+    this.page.identifier = "2019-06-Java-反射/";
+    this.page.title = 'Java 反射';
     };
   function loadComments() {
     var d = document, s = d.createElement('script');
