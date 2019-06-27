@@ -22,6 +22,13 @@
 
 
 
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link rel="stylesheet" href="/lib/pace/pace-theme-flash.min.css?v=1.0.2">
+
 
 
 
@@ -72,7 +79,7 @@
     version: '7.1.2',
     sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
     back2top: true,
-    back2top_sidebar: false,
+    back2top_sidebar: true,
     fancybox: false,
     fastclick: false,
     lazyload: false,
@@ -102,10 +109,12 @@
 <meta property="og:site_name" content="cchao1024 blog">
 <meta property="og:description" content="xargs与管道有什么不同呢 xargs 将标准输入作为参数输入给命令           echo -l|xargs ls     等于  ls -l 管道 将标准输入作为标准输入传给命令      du 查看目录大小du -h –max-depth=2  查看目录大小 du -h -d2  https://www.jianshu.com/p/1dcb1e2acff1 lsoflsof(list">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-18T01:34:03.738Z">
+<meta property="og:image" content="http://yoursite.com/images/2019-6/io_1.jpg">
+<meta property="og:updated_time" content="2019-06-19T02:26:39.181Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux备忘">
 <meta name="twitter:description" content="xargs与管道有什么不同呢 xargs 将标准输入作为参数输入给命令           echo -l|xargs ls     等于  ls -l 管道 将标准输入作为标准输入传给命令      du 查看目录大小du -h –max-depth=2  查看目录大小 du -h -d2  https://www.jianshu.com/p/1dcb1e2acff1 lsoflsof(list">
+<meta name="twitter:image" content="http://yoursite.com/images/2019-6/io_1.jpg">
 
 
 
@@ -172,7 +181,12 @@
   
 
   <div class="container sidebar-position-left page-post-detail">
-    <div class="headband"></div>
+    <div class="headband">
+
+    <a href="https://github.com/cchao1024" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a>
+    <style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    </div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
@@ -382,7 +396,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-06-18 09:34:03" itemprop="dateModified" datetime="2019-06-18T09:34:03+08:00">2019-06-18</time>
+                <time title="Modified: 2019-06-19 10:26:39" itemprop="dateModified" datetime="2019-06-19T10:26:39+08:00">2019-06-19</time>
               
             
           </span>
@@ -412,6 +426,34 @@
 
           
 
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Symbols count in article: </span>
+                
+                <span title="Symbols count in article">1k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">1 mins.</span>
+              
+            </div>
           
 
           
@@ -460,6 +502,9 @@
 <li><p>省略号…：任意多个参数。</p>
 </li>
 </ul>
+<h1 id="5种-网络IO模型"><a href="#5种-网络IO模型" class="headerlink" title="5种 网络IO模型"></a>5种 网络IO模型</h1><p><strong>阻塞IO、非阻塞IO、多路复用IO、信号驱动IO、异步IO</strong></p>
+<p>前四个都是同步IO，在内核数据copy到用户程序时都是阻塞的，而第五个则是异步的</p>
+<p><img src="../images/2019-6/io_1.jpg" alt></p>
 
       
     </div>
@@ -589,7 +634,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">37</span>
+                    <span class="site-state-item-count">44</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -748,7 +793,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#du-查看目录大小"><span class="nav-number">1.</span> <span class="nav-text">du 查看目录大小</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#lsof"><span class="nav-number">1.1.</span> <span class="nav-text">lsof</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ps"><span class="nav-number">2.</span> <span class="nav-text">ps</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#linux命令语法格式"><span class="nav-number">3.</span> <span class="nav-text">linux命令语法格式</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#du-查看目录大小"><span class="nav-number">1.</span> <span class="nav-text">du 查看目录大小</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#lsof"><span class="nav-number">1.1.</span> <span class="nav-text">lsof</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ps"><span class="nav-number">2.</span> <span class="nav-text">ps</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#linux命令语法格式"><span class="nav-number">3.</span> <span class="nav-text">linux命令语法格式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5种-网络IO模型"><span class="nav-number">4.</span> <span class="nav-text">5种 网络IO模型</span></a></li></ol></div>
             
 
           </div>
@@ -756,6 +801,13 @@
       <!--/noindex-->
       
 
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
       
 
     </div>
@@ -776,7 +828,21 @@
   <span class="author" itemprop="copyrightHolder">cchao1024</span>
 
   
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+    <span title="Symbols count total">176k</span>
+  
 
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+    <span title="Reading time total">2:40</span>
   
 </div>
 
@@ -807,11 +873,6 @@
       </div>
     </footer>
 
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
     
 
     
@@ -973,5 +1034,9 @@
 
   
 
+
+  <!-- 代码块复制功能 -->
+  <script type="text/javascript" src="/js/src/clipboard.min.js"></script>  
+  <script type="text/javascript" src="/js/src/clipboard-use.js"></script>
 <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
 </html>
