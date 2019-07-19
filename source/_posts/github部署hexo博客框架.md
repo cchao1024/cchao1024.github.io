@@ -3,9 +3,9 @@ layout: post
 title: Github部署Hexo博客框架
 subtitle: Git
 date: 2018-12-22
-categories: 技术
+categories: 搭建过程
 cover: ''
-tags: Git
+tags: hexo
 ---
 
 # 安装 Hexo

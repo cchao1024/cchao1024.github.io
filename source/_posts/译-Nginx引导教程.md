@@ -1,7 +1,8 @@
 ---
 title: '[译] Nginx引导教程'
 date: 2019-02-11 11:49:57
-tags:
+tags: nginx
+categories: 周边积累
 ---
 
 > 本文为译文，原文来至 [http://nginx.org/en/docs/beginners_guide.html](http://nginx.org/en/docs/beginners_guide.html)

@@ -103,7 +103,7 @@
 
   <meta name="description" content="Docker 是一个开源的应用容器引擎，基于 Go 语言 并遵从Apache2.0协议开源。 Docker 可以让开发者打包他们的应用以及依赖包到一个轻量级、可移植的容器中，然后发布到任何流行的 Linux 机器上，也可以实现虚拟化。 容器是完全使用沙箱机制，相互之间不会有任何接口（类似 iPhone 的 app）, 更重要的是容器性能开销极低。  Docker 官网 Docker123456#">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Docker 解放生产力">
+<meta property="og:title" content="cchao1024 blog">
 <meta property="og:url" content="http://yoursite.com/2019-06-Docker 解放生产力/index.html">
 <meta property="og:site_name" content="cchao1024 blog">
 <meta property="og:description" content="Docker 是一个开源的应用容器引擎，基于 Go 语言 并遵从Apache2.0协议开源。 Docker 可以让开发者打包他们的应用以及依赖包到一个轻量级、可移植的容器中，然后发布到任何流行的 Linux 机器上，也可以实现虚拟化。 容器是完全使用沙箱机制，相互之间不会有任何接口（类似 iPhone 的 app）, 更重要的是容器性能开销极低。  Docker 官网 Docker123456#">
@@ -111,9 +111,12 @@
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1633382-ec985503d17980b8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1633382-028b69b1a834f9f5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://yoursite.com/images/2019-6/docker_1.png">
-<meta property="og:updated_time" content="2019-06-14T08:40:20.918Z">
+<meta property="og:image" content="http://yoursite.com/images/2019-6/docker_1.png">
+<meta property="og:image" content="http://yoursite.com/images/2019-6/docker_2.jpg">
+<meta property="og:image" content="http://yoursite.com/images/2019-6/docker_3.png">
+<meta property="og:updated_time" content="2019-06-28T03:07:21.116Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Docker 解放生产力">
+<meta name="twitter:title" content="cchao1024 blog">
 <meta name="twitter:description" content="Docker 是一个开源的应用容器引擎，基于 Go 语言 并遵从Apache2.0协议开源。 Docker 可以让开发者打包他们的应用以及依赖包到一个轻量级、可移植的容器中，然后发布到任何流行的 Linux 机器上，也可以实现虚拟化。 容器是完全使用沙箱机制，相互之间不会有任何接口（类似 iPhone 的 app）, 更重要的是容器性能开销极低。  Docker 官网 Docker123456#">
 <meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/1633382-ec985503d17980b8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
@@ -133,7 +136,7 @@
   };
 </script>
 
-  <title>Docker 解放生产力 | cchao1024 blog</title>
+  <title> | cchao1024 blog</title>
   
 
 
@@ -258,6 +261,23 @@
         
         
           
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
+  </li>
+        
+        
+        
+          
           <li class="menu-item menu-item-categories">
 
     
@@ -354,7 +374,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Docker 解放生产力
+          <h1 class="post-title" itemprop="name headline">
 
               
             
@@ -397,7 +417,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-06-14 16:40:20" itemprop="dateModified" datetime="2019-06-14T16:40:20+08:00">2019-06-14</time>
+                <time title="Modified: 2019-06-28 11:07:21" itemprop="dateModified" datetime="2019-06-28T11:07:21+08:00">2019-06-28</time>
               
             
           </span>
@@ -438,7 +458,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">3.8k</span>
+                <span title="Symbols count in article">4.4k</span>
               
 
               
@@ -452,7 +472,7 @@
                 
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
-                <span title="Reading time">3 mins.</span>
+                <span title="Reading time">4 mins.</span>
               
             </div>
           
@@ -498,6 +518,21 @@
 </blockquote>
 <p>在实际开发中，这个 <strong>docker-compose</strong> 太长了，可以通过配置别名 <strong>alias</strong> 把它改短一些，笔者用的是docm<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alias docm="docker-compose"</span><br></pre></td></tr></table></figure></p>
 <p><img src="../images/2019-6/docker_1.png" alt="ps"></p>
+<h1 id="打包容器到Docker-hub"><a href="#打包容器到Docker-hub" class="headerlink" title="打包容器到Docker hub"></a>打包容器到Docker hub</h1><ol>
+<li><p>去<a href="https://hub.docker.com" target="_blank" rel="noopener"> https://hub.docker.com</a> 新建一个 repository</p>
+</li>
+<li><p><code>docker login</code> 登录账号</p>
+</li>
+<li><p>运行 <code>docker ps</code> 查看当前容器 id</p>
+<p><img src="../images/2019-6/docker_1.png" alt="image-20190628110555941"></p>
+</li>
+<li><p>创建一个提交生成镜像 <code>docker commit CONTAINER_ID Name</code><br> <img src="../images/2019-6/docker_2.jpg" alt></p>
+</li>
+<li><p>push 刚才的镜像到远程仓库<br>  <img src="../images/2019-6/docker_3.png" alt></p>
+</li>
+<li><p>正常的使用镜像</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">version: <span class="string">"3.7"</span></span><br><span class="line">services:</span><br><span class="line">  mysql_cchao:</span><br><span class="line">    container_name: mysql_cchao</span><br><span class="line">    image: cchao1024/mysql:latest                          <span class="comment">#从私有仓库拉镜像</span></span><br><span class="line">    restart: always                    </span><br><span class="line">    volumes:</span><br><span class="line">      - ./mysql/data/:/var/lib/mysql/                             <span class="comment">#映射mysql的数据目录到宿主机，保存数据</span></span><br><span class="line">      - ./mysql/conf/mysqld.cnf:/etc/mysql/mysql.conf.d/mysqld.cnf</span><br><span class="line">    ports:</span><br><span class="line">      - <span class="string">"3307:3307"</span></span><br><span class="line">    environment:</span><br><span class="line">      - MYSQL_ROOT_PASSWORD=ROOT</span><br></pre></td></tr></table></figure></li>
+</ol>
 
       
     </div>
@@ -618,7 +653,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">44</span>
+                    <span class="site-state-item-count">47</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -653,7 +688,17 @@
                     
                       
                     
-                    <span class="site-state-item-count">9</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">14</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -708,7 +753,17 @@
                     
                       
                     
-                    <span class="site-state-item-count">21</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">26</span>
                     <span class="site-state-item-name">tags</span>
                   
                 </div>
@@ -777,7 +832,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Docker"><span class="nav-number">1.</span> <span class="nav-text">Docker</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#运行一个web应用"><span class="nav-number">1.1.</span> <span class="nav-text">运行一个web应用</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#常用命令"><span class="nav-number">2.</span> <span class="nav-text">常用命令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Docker-Compose"><span class="nav-number">3.</span> <span class="nav-text">Docker-Compose</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Docker"><span class="nav-number">1.</span> <span class="nav-text">Docker</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#运行一个web应用"><span class="nav-number">1.1.</span> <span class="nav-text">运行一个web应用</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#常用命令"><span class="nav-number">2.</span> <span class="nav-text">常用命令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Docker-Compose"><span class="nav-number">3.</span> <span class="nav-text">Docker-Compose</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#打包容器到Docker-hub"><span class="nav-number">4.</span> <span class="nav-text">打包容器到Docker hub</span></a></li></ol></div>
             
 
           </div>
@@ -817,7 +872,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">176k</span>
+    <span title="Symbols count total">210k</span>
   
 
   
@@ -826,7 +881,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="Reading time total">2:40</span>
+    <span title="Reading time total">3:11</span>
   
 </div>
 
@@ -965,7 +1020,7 @@
   var disqus_config = function() {
     this.page.url = "http://yoursite.com/2019-06-Docker 解放生产力/";
     this.page.identifier = "2019-06-Docker 解放生产力/";
-    this.page.title = 'Docker 解放生产力';
+    this.page.title = '';
     };
   function loadComments() {
     var d = document, s = d.createElement('script');

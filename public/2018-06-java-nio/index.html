@@ -102,6 +102,7 @@
 
 
   <meta name="description" content="5种 io模型阻塞IO、非阻塞IO、多路复用IO、信号驱动IO、异步IO 前四个都是同步IO，在内核数据copy到用户程序时都是阻塞的，而第五个则是异步的  NIO即 Non-Block IO, 使用多路复用模型实现 单线程 多通道。 I/O 多路复用主要由以下实现  select      它通过一个select()系统调用来监视多个文件描述符的数组，当select()返回后，该数组中就绪的文件">
+<meta name="keywords" content="java">
 <meta property="og:type" content="article">
 <meta property="og:title" content="java-nio">
 <meta property="og:url" content="http://yoursite.com/2018-06-java-nio/index.html">
@@ -109,7 +110,7 @@
 <meta property="og:description" content="5种 io模型阻塞IO、非阻塞IO、多路复用IO、信号驱动IO、异步IO 前四个都是同步IO，在内核数据copy到用户程序时都是阻塞的，而第五个则是异步的  NIO即 Non-Block IO, 使用多路复用模型实现 单线程 多通道。 I/O 多路复用主要由以下实现  select      它通过一个select()系统调用来监视多个文件描述符的数组，当select()返回后，该数组中就绪的文件">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/Users/cchao/github/hexo/source/images/2019-6/io_1.jpg">
-<meta property="og:updated_time" content="2019-06-25T06:14:01.823Z">
+<meta property="og:updated_time" content="2019-06-27T08:21:59.874Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="java-nio">
 <meta name="twitter:description" content="5种 io模型阻塞IO、非阻塞IO、多路复用IO、信号驱动IO、异步IO 前四个都是同步IO，在内核数据copy到用户程序时都是阻塞的，而第五个则是异步的  NIO即 Non-Block IO, 使用多路复用模型实现 单线程 多通道。 I/O 多路复用主要由以下实现  select      它通过一个select()系统调用来监视多个文件描述符的数组，当select()返回后，该数组中就绪的文件">
@@ -256,6 +257,23 @@
         
         
           
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
+  </li>
+        
+        
+        
+          
           <li class="menu-item menu-item-categories">
 
     
@@ -395,11 +413,29 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-06-25 14:14:01" itemprop="dateModified" datetime="2019-06-25T14:14:01+08:00">2019-06-25</time>
+                <time title="Modified: 2019-06-27 16:21:59" itemprop="dateModified" datetime="2019-06-27T16:21:59+08:00">2019-06-27</time>
               
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/编程语言/" itemprop="url" rel="index"><span itemprop="name">编程语言</span></a></span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -549,6 +585,15 @@
 
     <footer class="post-footer">
       
+        
+          
+        
+        <div class="post-tags">
+          
+            <a href="/tags/java/" rel="tag"># java</a>
+          
+        </div>
+      
 
       
       
@@ -558,8 +603,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018-05-Python3实现Onesignal推送/" rel="next" title="Onesignalt推送-Python3的实现">
-                <i class="fa fa-chevron-left"></i> Onesignalt推送-Python3的实现
+              <a href="/2018-06-Java-反射/" rel="next" title="Java 反射">
+                <i class="fa fa-chevron-left"></i> Java 反射
               </a>
             
           </div>
@@ -648,7 +693,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">44</span>
+                    <span class="site-state-item-count">47</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -683,7 +728,17 @@
                     
                       
                     
-                    <span class="site-state-item-count">9</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">14</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -738,7 +793,17 @@
                     
                       
                     
-                    <span class="site-state-item-count">21</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">26</span>
                     <span class="site-state-item-name">tags</span>
                   
                 </div>
@@ -847,7 +912,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">176k</span>
+    <span title="Symbols count total">210k</span>
   
 
   
@@ -856,7 +921,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="Reading time total">2:40</span>
+    <span title="Reading time total">3:11</span>
   
 </div>
 

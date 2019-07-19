@@ -1,7 +1,8 @@
 ---
 title: Linux 交换区
 date: 2019-03-9 11:51:05
-tags:
+tags: Linux
+categories: 运维技术
 ---
 
 # Swap Space

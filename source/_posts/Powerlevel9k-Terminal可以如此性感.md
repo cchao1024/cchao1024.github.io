@@ -1,7 +1,8 @@
 ---
 title: Powerlevel9k - Terminal可以如此性感
 date: 2018-12-22
-tags:
+categories: 搭建过程
+tags: Powerlevel9k
 ---
 
 Powerlevel9k 是使用[Powerline Fonts](https://github.com/powerline/fonts)的ZSH框架主题。

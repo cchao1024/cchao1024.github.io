@@ -3,8 +3,8 @@ layout: post
 title: 'okHttp 源码介绍'
 subtitle: 'okhttp源码'
 date: 2017-11-24
-categories: 技术
-tags: okhttp 网络
+categories: 框架技术
+tags: okhttp
 ---
 
 

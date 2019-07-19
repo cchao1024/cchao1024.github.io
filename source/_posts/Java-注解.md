@@ -1,7 +1,8 @@
 ---
 title: Java 注解
 date: 2019-06-17 16:59:30
-tags:
+tags: java 
+categories: 编程语言
 ---
 
 > **Java 注解**又称**Java 标注**，是 [Java](https://www.wikiwand.com/zh/Java) 语言5.0版本开始支持加入[源代码](https://www.wikiwand.com/zh/%E6%BA%90%E4%BB%A3%E7%A0%81)的特殊语法[元数据](https://www.wikiwand.com/zh/%E5%85%83%E6%95%B0%E6%8D%AE)[[1\]](https://www.wikiwand.com/zh/Java%E6%B3%A8%E8%A7%A3#citenote1)。

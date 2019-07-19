@@ -1,7 +1,8 @@
 ---
 title: Java-guide 学习笔记
 date: 2019-06-18 17:29:28
-tags:
+tags: java-guide
+categories: 学习笔记
 ---
 
 来至 [https://github.com/Snailclimb/JavaGuide](https://github.com/Snailclimb/JavaGuide)
@@ -33,7 +34,7 @@ tags:
 
 HashSet 放入新的对象A，会判断是否已存在，判断过程会先获取对象A的hashCode，如果HashSet中相应的hashCode目标位置已存在对象B，则执行对象A和对象B的equal，不相同就添加。这样大大减少了 equals 的次数（equals整个表的对象）
 ## Exception
-![image](https://upload-images.jianshu.io/upload_images/1633382-ccbbfc0e1b22889d?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![image](../images/2019-6/guide_1.png)
 
 ## 关键字
 ### static
@@ -45,7 +46,7 @@ HashSet 放入新的对象A，会判断是否已存在，判断过程会先获�
 ### final
 - 修饰类 类不能被继承。final类中的所有成员方法都会被隐式地指定为final方法。
 - 修饰方法 1. 继承类不能复写；2. 早期的Java实现版本性能提升，类中的private方法都隐式地指定为final。
-- 修饰遍历 1. 基础变量 初始化不再变更，2. 对象 指向后不能修改
+- 修饰变量 1. 基础变量 初始化不再变更，2. 对象 指向后不能修改
 ### transient
 阻止实例中那些用此关键字修饰的的变量序列化；当对象被反序列化时，被transient修饰的变量值不会被持久化和恢复。transient只能修饰变量，不能修饰类和方法。
 
@@ -58,7 +59,7 @@ HashSet 放入新的对象A，会判断是否已存在，判断过程会先获�
 volatile只能保证可见性，无法保证原子性
 
 ## 流
-![image](https://upload-images.jianshu.io/upload_images/1633382-d82d86f2a9ade489?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![image](../images/2019-6/guide_2.png)
 
 - BIO 同步阻塞I/O模式
 - NIO 同步非阻塞的I/O模型 提供了与传统BIO模型中的 Socket 和 ServerSocket 相对应的 SocketChannel 和 ServerSocketChannel 两种不同的套接字通道实现
@@ -97,7 +98,7 @@ hash%length==hash&(length-1) 的前提是 length 是2的 n 次方）
 
 当元素个数超过数组大小 **loadFactor** 时，就会进行数组扩容，loadFactor的 **默认值为 0.75**，也就是，默认情况下，数组大小为16，那么当元素个数超过 16 \* 0.75=12 的时候，就把数组的大小扩展为 2\* 16=32，即扩大一倍，然后重新计算每个元素在数组中的位置，而这是一个非常消耗性能的操作，所以如果我们已经预知元素的个数，那么预设元素的个数能够有效的提高hashmap的性能。
 
-比如说，我们预计要放入 1000 个元素，要使用 **new HashMap(1024)** ，因为 2048不仅是2的次幂，而且 2048*0.75 > 1000 不需要扩容resize了
+比如说，我们预计要放入 1000 个元素，要使用 **new HashMap(2048)** ，因为 2048不仅是2的次幂，而且 2048*0.75 > 1000 不需要扩容resize了
 
 ### HashMap 和 Hashtable
 1 HashMap 是非线程安全的，HashTable 是线程安全的
@@ -108,14 +109,14 @@ hash%length==hash&(length-1) 的前提是 length 是2的 n 次方）
 
 ### LinkHashMap
 
-底层还是hashmap，但是加入元素后，会将 hashmap 的元素用双向链表串起来
+底层还是hashmap，但是加入元素后，会将 hashmap 的元素用双向链表串起来，输出的顺序和输入的相同，LRU 算法应用
 
 # 并发
 ### 并发基础
 **进程**是操作系统**分配资源**的最小单元，**线程**是操作系统**调度**的最小单元
 > 协程，英文Coroutines，是一种比线程更加轻量级的存在。协程是是由程序所控制（也就是在用户态执行）应线程阻塞提出的回调恢复上下文。
 
-![image.png](https://upload-images.jianshu.io/upload_images/1633382-4eeba860004f3d46.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![image.png](../images/2019-6/guide_3.png)
 
 堆和方法区是所有线程共享的资源，其中堆是进程中最大的一块内存，主要用于存放新创建的对象 (所有对象都在这里分配内存)，方法区主要用于存放已被加载的类信息、常量、静态变量、即时编译器编译后的代码等数据。
 ### 避免死锁
@@ -123,14 +124,14 @@ hash%length==hash&(length-1) 的前提是 length 是2的 n 次方）
 - 破坏请求与保持条件 一次性申请所有的资源。
 - 破坏不剥夺条件 占用部分资源的线程进一步申请其他资源时，如果申请不到，可以主动释放它占有的资源。
 - 破坏循环等待条件 靠按序申请资源来预防。按某一顺序申请资源，释放资源则反序释放。破坏循环等待条件。
-### sleep() 方法和 wait() 方法区别和共同点?
+### sleep和 wait 区别和共同点
 sleep 方法没有释放锁，而 wait 方法释放了锁 。
 两者都可以暂停线程的执行。
 Wait 通常被用于线程间交互/通信，sleep 通常被用于暂停执行。
 wait() 方法被调用后，线程不会自动苏醒，需要别的线程调用同一个对象上的 notify() 或者 notifyAll() 方法。
 sleep() 方法执行完成后，线程会自动苏醒。
 
-### 为什么我们调用 start() 方法时会执行 run() 方法，为什么我们不能直接调用 run() 方法？
+### 为什么我们不能直接调用 run() 方法
 
 new 一个 Thread，线程进入了新建状态;调用 start() 方法，会启动一个线程并使线程进入了就绪状态，当分配到时间片后就可以开始运行了。 
 
@@ -142,14 +143,14 @@ new 一个 Thread，线程进入了新建状态;调用 start() 方法，会启�
 ## 并发进阶
 ### synchronized
 synchronized关键字解决的是多个线程之间访问资源的同步性，synchronized关键字可以保证被它修饰的方法或者代码块在任意时刻只能有一个线程执行。
-#### synchronized关键字最主要的三种使用方式：
+#### synchronized 使用方式
 1. 修饰实例方法: 作用于当前对象实例加锁，进入同步代码前要获得当前对象实例的锁
 2. 修饰静态方法: 也就是给当前类加锁，会作用于**类的所有对象实例**，因为静态成员不属于任何一个实例对象，是类成员。所以如果一个线程A调用一个实例对象的非静态 synchronized 方法，而线程B需要调用这个实例对象所属类的静态 synchronized 方法，是允许的，不会发生互斥现象，因为访问静态 synchronized 方法占用的锁是当前类的锁，而访问非静态 synchronized 方法占用的锁是当前实例对象锁。
 3. 修饰代码块: 指定加锁对象，对给定对象加锁，进入同步代码库前要获得给定对象的锁。
     总结：synchronized 关键字加到 static 静态方法和 synchronized(class)代码块上都是是给 Class 类上锁。synchronized 关键字加到实例方法上是给对象实例上锁。
     尽量不要使用 synchronized(String a) 因为JVM中，字符串常量池具有缓存功能！
 
-```
+```java
 public class Singleton {
     /* volatile 是必要的，因为JVM会指令重排 使123变成132 多线程下会导致出错，
     1. 分配内存空间  2. 初始化对象  3. 执行分配的空间
@@ -182,25 +183,24 @@ public class Singleton {
 
 ### synchronized和ReentrantLock 的区别
 - 两者都是**可重入锁**（自己可以再次获取自己的内部锁）。
-- synchronized 依赖于 JVM 而 ReentrantLock 依赖于 API（需要lock, unlock）
+- synchronized **依赖于 JVM** 而 ReentrantLock **依赖于 API**（需要lock, unlock）
 - 相比synchronized 增加了一些高级功能
- - 等待可中断  lock.lockInterruptibly()，正在等待的线程可以选择放弃等待，改为处理其他事情。
- - 可实现公平锁  ReentrantLock可以指定是**公平锁**（先等待的线程先获得锁）还是非公平锁。而synchronized只能是非公平锁。
- - 可实现选择性通知（锁可以绑定多个条件）ReentrantLock类结合Condition实例可以实现“选择性通知”。而synchronized关键字就相当于整个Lock对象中只有一个Condition实例，所有的线程都注册在它一个身上。如果执行notifyAll()方法的话就会通知所有处于等待状态的线程这样会造成很大的效率问题，而Condition实例的signalAll()方法 只会唤醒注册在该Condition实例中的所有等待线程。
+ - **等待可中断**  lock.lockInterruptibly()，正在等待的线程可以选择放弃等待，改为处理其他事情。
+ - **可实现公平锁**  ReentrantLock可以指定是**公平锁**（先等待的线程先获得锁）还是非公平锁。而synchronized只能是非公平锁。
+ - **可实现选择性通知**（锁可以绑定多个条件）ReentrantLock类结合Condition实例可以实现“选择性通知”。而synchronized关键字就相当于整个Lock对象中只有一个Condition实例，所有的线程都注册在它一个身上。如果执行notifyAll()方法的话就会通知所有处于等待状态的线程这样会造成很大的效率问题，而Condition实例的signalAll()方法 只会唤醒注册在该Condition实例中的所有等待线程。
 
 ## volatile
 ### 内存模式
 当前的 Java 内存模型下，线程可以把变量保存本地内存比如机器的寄存器中，而不是直接在主存中进行读写。这就可能造成一个线程在主存中修改了一个变量的值，而另外一个线程还继续使用它在寄存器中的变量值的拷贝，造成数据的不一致。
 
-![image](https://upload-images.jianshu.io/upload_images/1633382-69fa5bf9fabb8c4e?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![image](../images/2019-6/guide_4.png)
 
 把变量声明为volatile，这就指示 JVM，这个变量是不稳定的，每次使用它都到主存中进行读取。
-volatile 关键字的主要作用就是保证变量的可见性然后还有一个作用是防止指令重排序。
 
-### synchronized关键字和volatile关键字比较
-* volatile关键字是线程同步的轻量级实现，所以volatile性能肯定比synchronized关键字要好。但是volatile关键字只能用于变量而synchronized关键字可以修饰方法以及代码块。synchronized关键字在JavaSE1.6之后进行了主要包括为了减少获得锁和释放锁带来的性能消耗而引入的偏向锁和轻量级锁以及其它各种优化之后执行效率有了显著提升，实际开发中使用 synchronized 关键字的场景还是更多一些。
-* 多线程访问volatile关键字不会发生阻塞，而synchronized关键字可能会发生阻塞
-* volatile关键字能保证数据的可见性，但**不能保证数据的原子性**。synchronized关键字**两者都能保证**。
+### synchronized和volatile比较
+* **volatile关键字是线程同步的轻量级实现**，volatile性能比synchronized关键字要好。但是**volatile关键字只能用于变量**而synchronized关键字可以修饰方法以及代码块。synchronized关键字在JavaSE1.6之后进行了主要包括为了减少获得锁和释放锁带来的性能消耗而引入的偏向锁和轻量级锁以及其它各种优化之后执行效率有了显著提升，实际开发中使用 synchronized 关键字的场景还是更多一些。
+* 多线程访问 volatile 关键字不会发生阻塞，而 synchronized 关键字可能会发生阻塞
+* volatile关键字能保证数据的**可见性**，但**不能保证数据的原子性**。synchronized关键字**两者都能保证**。
 * volatile关键字主要用于解决**变量在多个线程之间的可见性**，而 synchronized关键字解决的是多个线程之间**访问资源的同步性**。
 
 ### ThreadLocal
@@ -241,13 +241,13 @@ AQS使用一个int成员变量来表示同步状态，通过内置的FIFO队列�
 > TODO 有空研究下
 
 ## 悲观锁与乐观锁 
-* 悲观锁 每次去拿数据的时候都认为别人会修改，所以每次在拿数据的时候都会上锁。
+* **悲观锁** 每次去拿数据的时候都认为别人会修改，所以每次在拿数据的时候都会上锁。
   传统的关系型数据库里边就用到了很多这种锁机制
   比如行锁，表锁等，读锁，写锁等，都是在做操作之前先上锁。
   Java中synchronized和ReentrantLock等独占锁就是悲观锁思想的实现。
-* 乐观锁 每次去拿数据的时候都认为别人不会修改，所以不会上锁，但是在更新的时候会判断一下在此期间别人有没有去更新这个数据，可以使用版本号机制和CAS算法实现。
+* **乐观锁** 每次去拿数据的时候都认为别人不会修改，所以不会上锁，但是在更新的时候会判断一下在此期间别人有没有去更新这个数据，可以使用版本号机制和CAS算法实现。
   乐观锁适用于多读的应用类型，这样可以提高吞吐量，像数据库提供的类似于write_condition机制，其实都是提供的乐观锁。
-  在Java中java.util.concurrent.atomic包下面的原子变量类就是使用了乐观锁的一种实现方式CAS实现的。
+  在Java中java.util.concurrent.atomic包下面的**原子变量类**就是使用了乐观锁的一种实现方式CAS实现的。
 
 乐观锁 使用版本号机制和CAS算法实现：
 1. 版本号机制：在数据表中加上一个数据版本号version字段，修改写入时比较读取时的值，相同意味着没有其他线程修改过。
@@ -257,12 +257,10 @@ AQS使用一个int成员变量来表示同步状态，通过内置的FIFO队列�
 简单的来说CAS适用于写比较少的情况下（多读场景，冲突一般较少），synchronized适用于写比较多的情况下（多写场景，冲突一般较多）
 synchronized在线程冲突较少的情况下，可以获得和CAS类似的性能；而线程冲突严重的情况下，性能远高于CAS。
 
-
-
 #   JVM 虚拟机
 
 ## 内存区域
-![image](https://upload-images.jianshu.io/upload_images/1633382-9ba246fb67b32eef?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![image](../images/2019-6/guide_5.png)
 
 ### 程序计数器
 可以看作是当前线程所执行的字节码的行号指示器，
@@ -274,6 +272,7 @@ Java 虚拟机栈是由一个个栈帧组成，而每个栈帧中都拥有：局
 Java 方法有两种返回方式：
 1 return 语句
 2 抛出异常
+
  - StackOverFlowError 线程请求栈的深度大于虚拟机所允许的栈深度
  - OutOfMemoryError 虚拟机在扩展时无法申请到足够的内存空间
     不管哪种返回方式都会导致栈帧被弹出
@@ -306,8 +305,8 @@ JDK1.4 中新加入的 NIO(New Input/Output) 类，引入了一种基于通道�
 ### 对象创建
 1. **类加载检查**：虚拟机遇到一条 new 指令时，首先将去检查这个指令的参数是否能在常量池中定位到这个类的符号引用，并且检查这个符号引用代表的类是否已被加载过、解析和初始化过。如果没有，那必须先执行相应的类加载过程。
 2. **分配内存**： 虚拟机将为新生对象分配内存。对象所需的内存大小在类加载完成后便可确定，为对象分配空间的任务等同于把一块确定大小的内存从 Java 堆中划分出来。分配方式有 **“指针碰撞”** 和 **“空闲列表”** 两种， 
- -  指针碰撞 内存没有碎片的，分配时移动指针（指向是否分配的临界点）就可以
- - 空闲列表 内存有碎片，列表里记录着哪里碎片区间能用
+    - 指针碰撞 内存没有碎片的，分配时移动指针（指向是否分配的临界点）就可以
+    - 空闲列表 内存有碎片，列表里记录着哪里碎片区间能用
 
   Java 堆是否规整由所采用的垃圾收集器是否带有压缩整理功能决定，取决于 GC 收集器的算法是"**标记-清除**"，还是"**标记-整理**"（也称作"**标记-压缩**"），值得注意的是，复制算法内存也是规整的
 
@@ -326,7 +325,7 @@ JDK1.4 中新加入的 NIO(New Input/Output) 类，引入了一种基于通道�
 - **TLAB**: 为每一个线程预先在 Eden 区分配一块儿内存，为对象分配内存时，首先在 TLAB 分配，当对象大于 TLAB 中的剩余内存或 TLAB 的内存已用尽时，再采用上述的 CAS 进行内存分配
 
 ### 对象的内存布局
-分为 3 块区域：对象头、实例数据和对齐填充。
+分为 3 块区域：**对象头、实例数据和对齐填充**
 - 对象头 包含哈希码、GC 分代年龄、锁状态标志等以及类元数据指针（标识它是什么类）
 - 实例数据 程序中所定义的各种类型的字段内容。
 - 不是必然存在的，用来占位的（因为对象的大小必须是 8 byte的整数倍）
@@ -341,19 +340,21 @@ JDK1.4 中新加入的 NIO(New Input/Output) 类，引入了一种基于通道�
 使用双引号声明出来的 String 对象会存储在常量池中。
 String.intern() 返回常量池中字符串的引用（没有就创建）
 String s1 = new String("abc");  将创建 1 或 2 个字符串。如果池中已存在字符串文字“abc”，
+
 #### 基础类型包装类
 Byte, Short, Integer, Long, Character, Boolean；这 5 种包装类默认创建了数值[-128，127] 的相应类型的缓存数据，但是超出此范围仍然会去创建新的对象。
 两种浮点数类型的包装类 Float, Double 并没有实现常量池技术。
 因为+这个操作符不适用于 Integer 对象，如果 Integer 使用了 + 就会自动拆箱 
 
 ## JVM 垃圾回收
-![image](https://upload-images.jianshu.io/upload_images/1633382-1e37b9d82a021015?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![image](../images/2019-6/guide_6.png)
 上图所示的 eden 区、s0("From") 区、s1("To") 区都属于新生代，tentired 区属于老年代。
 每一次垃圾回收都会使年龄+1，达到默认15时进入老年代（可通过 -XX:MaxTenuringThreshold  设置）
-1 对象在Eden区分配
-2 第一次新时代垃圾回收后，存活则进入s1(To)，年龄+1
-3 回收后eden和s0已经被清空，s0和s1交换角色，保证s1区域都是空的
-4 重复2，3直到 s1被填满，就将所有对象移到 tentired
+1.  对象在Eden区分配
+2.  第一次新时代垃圾回收后，存活则进入s1(To)，年龄+1
+3.  回收后eden和s0已经被清空，s0和s1交换角色，保证s1区域都是空的
+4.  重复2，3直到 s1被填满，就将所有对象移到 tentired
+
 **新生代 GC（Minor GC）**: Minor GC 非常频繁，回收速度一般也比较快。
 **老年代 GC（Major GC/Full GC）**: 出现了 Major GC 经常会伴随至少一次的 Minor GC，速度一般会比 Minor GC 的慢 10 倍以上。
 **分配担保机制** Minor GC后还是没有足够的内存，就将新生代的对象放入老年代腾出空间（如果老年代的空间放不下新对象，则执行Full GC）
@@ -362,7 +363,7 @@ Byte, Short, Integer, Long, Character, Boolean；这 5 种包装类默认创建�
 **动态年龄判定** 如果s0, s1相同年龄所有对象大小总和大于总空间一半，则全部放入老年代
 
 ### 对象死亡
-![image](https://upload-images.jianshu.io/upload_images/1633382-cdf87e09537a8cb2?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![image](../images/2019-6/guide_7.png)
 
 - 引用计数法：当有一个地方引用它，计数器 +1，引用失效，计数器 -1，但存在循环引用问题，所以并不采用
 - 可达性分析算法：以 “GC Roots” 的对象为起点，向下搜索，记录可达对象，遍历完不可达的对象为不可用对象（比如它们聚在角落）
@@ -374,14 +375,13 @@ Byte, Short, Integer, Long, Character, Boolean；这 5 种包装类默认创建�
 - 虚引用（PhantomReference）： 在任何时候都可能被垃圾回收
 > 懵逼中... 【引用】
 
-**如何判断一个类是无用的类**： 1 所有实例被回收 2 该类ClassLoader被回收 3 该类对应的 java.lang.Class 对象没有被引用，无法通过反射访问该类的方法。
+**如何判断一个类是无用的类**： 1 所有实例被回收   2 该类ClassLoader被回收 3 该类对应的 java.lang.Class 对象没有被引用，无法通过反射访问该类的方法。
 
 ### 垃圾回收算法
-- 标记-清除算法：标记出所有需要回收的对象，在标记完成后统一回收被标记的对象，但清除后存在不连续的碎片
-- 标记-清理算法：标记出存活的对象，让存活的向一端移动，清理掉端边界以外的内存
-- 复制算法：它可以将内存**分为大小相同的两块**，每次使用其中的一块。当这一块的内存使用完后，就将还存活的对象复制到另一块去，然后再把使用的空间一次清理掉
-  分代收集算法： 新生代使用 复制算法，老年代使用 标记-清除 或 标记-整理 
-   算法
+- **标记-清除算法**：标记出所有需要回收的对象，在标记完成后统一回收被标记的对象，但清除后存在不连续的碎片
+- **标记-清理算法**：标记出存活的对象，让存活的向一端移动，清理掉端边界以外的内存
+- **复制算法**：它可以将内存**分为大小相同的两块**，每次使用其中的一块。当这一块的内存使用完后，就将还存活的对象复制到另一块去，然后再把使用的空间一次清理掉
+  分代收集算法： **新生代使用 复制算法，老年代使用 标记-清除 或 标记-整理**
 ## JDK 监控 【JDK监控】
 ## 类文件结构 【类文件结构】
 ## 类加载  【类加载】
@@ -428,9 +428,11 @@ ps -ef/ps -aux  查看正在运行进程
 
 # 数据结构
 ## Set
-* Set 是一个不允许出现重复元素，并且无序的集合，主要 HashSet 和 TreeSet 两大实现类。
-  1 HashSet 是哈希表结构，利用 HashMap 的 key 来存储元素，计算插入元素的 hashCode 来获取元素在集合中的位置；
-   2 TreeSet 是红黑树结构，每一个元素都是树中的一个节点，插入的元素都会进行排序；
+Set 是一个不允许出现重复元素，并且无序的集合，主要 HashSet 和 TreeSet 两大实现类。
+
+1. **HashSet** 是哈希表结构，利用 HashMap 的 key 来存储元素，计算插入元素的 hashCode 来获取元素在集合中的位置；
+2.  **TreeSet** 是红黑树结构，每一个元素都是树中的一个节点，插入的元素都会进行排序；
+
 ## 树
 ### 二叉树
 * **完全二叉树** 若设二叉树的高度为h，除第 h 层外，其它各层 (1～h-1) 的结点数都达到最大个数，第h层有叶子结点，并且叶子结点都是从左到右依次排布（最后一层从左到右排没排满）
@@ -450,16 +452,21 @@ ps -ef/ps -aux  查看正在运行进程
   红黑树通过 **变色，左旋，右旋** 来实现自平衡 [漫画：什么是红黑树？]([https://juejin.im/post/5a27c6946fb9a04509096248](https://juejin.im/post/5a27c6946fb9a04509096248)
   )
 * B-树（或B树）是一种平衡的多路查找（又称排序）树，在文件系统中有所应用。主要用作文件的索引。其中的B就表示平衡(Balance) 
-   1 B+ 树的叶子节点链表结构相比于 B- 树便于扫库，和范围检索。 
-    2 B+ 树支持range-query（区间查询）非常方便，而B树不支持。这是数据库选用B+树的最主要原因。 
-    3 B* 树 是B+树的变体，B*树分配新结点的概率比B+树要低，空间使用率更高；
+
+   1. B+ 树的叶子节点链表结构相比于 B- 树便于扫库，和范围检索。 
+
+   2. B+ 树支持**range-query（区间查询）**非常方便，而B树不支持。**这是数据库选用B+树的最主要原因**  
+
+   3. B* 树 是B+树的变体，B*树分配新结点的概率比B+树要低，空间使用率更高； 
 # 算法
 # Mysql
 [一千行MySQL命令.md](https://github.com/Snailclimb/JavaGuide/blob/master/docs/database/%E4%B8%80%E5%8D%83%E8%A1%8CMySQL%E5%91%BD%E4%BB%A4.md)
 TODO
+
 # Redis
 [Redis](https://github.com/Snailclimb/JavaGuide/blob/master/docs/database/Redis/Redis.md)
 redis 就是一个存在内存的数据库，可用作分布式锁，支持事务 、持久化、LUA脚本、LRU驱动事件、多种集群方案。
+
 ## 缓存
 使用 redis 做缓存，可以
 1. 提高性能（不访问数据库，从内存中直接拿值），
@@ -469,6 +476,8 @@ redis 就是一个存在内存的数据库，可用作分布式锁，支持事�
 缓存分为**本地缓存**和**分布式缓存**
 - 本地缓存（如Java中自己实现的 map）轻量快速，生命周期跟随 jvm 。
 - 分布式缓存（如 redis，memcached）缓存具有一致性，但架构复杂
+
+对于写操作，应先操作数据库，再删除缓存，避免高并发时出现不一致
 
 ## 过期时间
 可以设置key的过期时间，通过 **定期删除（每隔100ms随机抽取删除）**和**惰性删除**（不释放内存） 实现删除
@@ -515,6 +524,7 @@ Redis 4.0 开始支持 RDB 和 AOF 的混合持久化，AOF 重写的时候就�
 ## 并发竞争 key
 指多个系统同时对一个 key 进行操作，但是最后执行的顺序和我们期望的顺序不同
 解决：使用 **分布式锁**（zookeeper 和 redis 都可以实现分布式锁），基于zookeeper临时有序节点
+
 ## 保证缓存和数据库双写数据一致性
 读请求和写请求串行化，串到一个内存队列里去，这样就可以保证一定不会出现不一致的情况
 
@@ -539,14 +549,16 @@ Spring 官网列出的 Spring 的 6 个特征:
 **Web支持** ：Spring MVC和Spring WebFlux Web框架。
 **集成** ：远程处理，JMS，JCA，JMX，电子邮件，任务，调度，缓存。
 **语言** ：Kotlin，Groovy，动态语言。
+
 ## IoC
-IoC（Inverse of Control:控制反转）是一种设计思想，就是 将原本在程序中手动创建对象的控制权，交由Spring框架来管理。
+IoC（Inverse of Control:控制反转）是一种设计思想，是将原本在程序中手动创建对象的控制权，交由Spring框架来管理。
 Spring 时代我们一般通过 XML 文件来配置 Bean，SpringBoot 使用注解配置
+
 ## AOP
 AOP(Aspect-Oriented Programming:面向切面编程)能够将那些与业务无关，却为业务模块所共同调用的逻辑或责任（例如**事务处理、日志管理、权限控制等**）封装起来，便于**减少系统的重复代码，降低模块间的耦合度，并有利于未来的可拓展性和可维护性**
 
-Spring AOP就是基于**动态代理**的，如果要代理的对象，实现了某个接口，那么Spring AOP会使用JDK Proxy，去创建代理对象（动态代理只能代理接口）
-而对于没有实现接口的对象，就无法使用 JDK Proxy 去进行代理了，这时候Spring AOP会使用Cglib ，使用 Cglib 生成一个被代理对象的子类来作为代理
+Spring AOP就是基于**动态代理**的，如果要代理的对象，实现了某个接口，那么Spring AOP会使用JDK Proxy，去创建代理对象（**动态代理只能代理接口**）
+而对于没有实现接口的对象，就无法使用 JDK Proxy 去进行代理了，这时候Spring AOP会使用**Cglib** ，使用 Cglib 生成一个被代理对象的子类来作为代理
 
 当然你也可以使用 AspectJ, Spring AOP 已经集成了AspectJ ，AspectJ 应该算的上是 Java 生态系统中最完整的 AOP 框架了。
 - Spring AOP 属于**运行时增强**，基于 **动态代理**，简单
@@ -558,7 +570,7 @@ Spring注意到AspectJ在AOP的实现方式上依赖于特殊编译器(ajc编译
 ### Spring 中的 bean 生命周期 TODO
 ### Spring 中的 bean 的作用域 TODO
 ## SpringMVC
-![image](https://upload-images.jianshu.io/upload_images/1633382-0b9f3d744f1ebafa?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![image](../images/2019-6/guide_8.png)
 
 1. 客户端（浏览器）发送请求，直接请求到 `DispatcherServlet`。
 2. `DispatcherServlet` 根据请求信息调用 `HandlerMapping`，解析请求对应的 `Handler`。
@@ -606,7 +618,7 @@ Spring注意到AspectJ在AOP的实现方式上依赖于特殊编译器(ajc编译
 ### 降低系统耦合性
 **EDA事件驱动架构**：EDA是一种以事件为媒介，实现组件或服务之间最大松耦合的方式。传统面向接口编程是以接口为媒介，实现调用接口者和接口实现者之间的解耦，但是这种解耦程度不是很高，如果接口发生变化，双方代码都需要变动，而事件驱动则是调用者和被调用者互相不知道对方，两者只和中间消息队列耦合。
 
-消消息发送者将消息发送至分布式消息队列即结束对消息的处理，消息接受者从分布式消息队列获取该消息后进行后续处理，并不需要知道该消息从何而来。
+消息发送者将消息发送至分布式消息队列即结束对消息的处理，消息接受者从分布式消息队列获取该消息后进行后续处理，并不需要知道该消息从何而来。
 对新增业务，只要对该类消息感兴趣，即可订阅该消息，对原有系统和业务没有任何影响，从而实现网站业务的**可扩展性设计**。
 
 另外为了避免消息队列服务器宕机造成消息丢失，会将成功发送到消息队列的消息存储在消息生产者服务器上，等消息真正被消费者服务器处理后才删除消息。在消息队列服务器宕机后，生产者服务器会选择分布式消息队列服务器集群中的其他服务器发布消息。
@@ -616,13 +628,13 @@ Spring注意到AspectJ在AOP的实现方式上依赖于特殊编译器(ajc编译
 - **系统复杂性提高**：重复消费，消息传递顺序
 - **一致性问题**：没正确消费
 ### JMS VS AMQP
-**JMS**（JAVA Message Service，Java消息服务）API是一个消息服务的标准或者说是规范
-ActiveMQ 就是基于 JMS 规范实现的。
-**AMQP** (Advanced Message Queuing Protocol)一个提供统一消息服务的应用层标准 高级消息队列协议（二进制应用层协议），为面向消息的中间件设计，兼容 JMS
+**JMS**（JAVA Message Service，Java消息服务）API是一个消息服务的标准或者说是规范。ActiveMQ 就是基于 JMS 规范实现的。
+**AMQP** (Advanced Message Queuing Protocol)一个提供统一消息服务的应用层标准。高级消息队列协议（二进制应用层协议），为面向消息的中间件设计，兼容 JMS
+
 ## RabbitMQ 入门 TODO
 # 网络架构
 ## 分布式
-![image](https://upload-images.jianshu.io/upload_images/1633382-32316a2902d4023d?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![image](../images/2019-6/guide_9.png)
 - 分布式存储：将数据分散存储在多台独立的设备上
 - 分布式计算：是一门计算机科学，它研究如何把一个需要非常巨大的计算能力才能解决的问题分成许多小的部分，然后把这些部分分配给许多计算机进行处理，最后把这些计算结果综合起来得到最终的结果
   -分布式网络存储技术：是将数据分散的存储于多台独立的机器设备上。分布式网络存储系统采用可扩展的系统结构，利用多台存储服务器分担存储负荷，利用位置服务器定位存储信息，不但解决了传统集中式存储系统中单存储服务器的瓶颈问题，还提高了系统的可靠性、可用性和扩展性。

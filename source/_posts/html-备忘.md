@@ -1,7 +1,8 @@
 ---
 title: html 备忘
 date: 2018-06-20 14:27:31
-tags:
+tags: html
+categories: Web技术
 ---
 
 # details

@@ -1,7 +1,8 @@
 ---
 title: java泛型
 date: 2019-02-18 10:36:30
-tags: java
+tags: java 
+categories: 编程语言
 ---
 
 # 泛型

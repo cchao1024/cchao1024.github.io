@@ -102,9 +102,9 @@
 
 
   <meta name="description" content="抓包 抓包（packet capture）就是将网络传输发送与接收的数据包进行截获、重发、编辑、转存等操作，也用来检查网络安全。抓包也经常被用来进行数据截取等。  本文讨论的数据包限于超文本传输协议报文(Http), 也就是通常我们经常用来浏览网页的协议。 除了传统的web端，http协议也广泛应用于移动互联网app与后端服务器的数据交互。其实网络底层为了保证协议的传输准确和效率做了许多事情. 对">
-<meta name="keywords" content="工具">
+<meta name="keywords" content="Fidder">
 <meta property="og:type" content="article">
-<meta property="og:title" content="利用Fildder抓包，捕获https协议的传输内容">
+<meta property="og:title" content="利用Fidder抓包，捕获https协议的传输内容">
 <meta property="og:url" content="http://yoursite.com/2017-11-fiddler抓包/index.html">
 <meta property="og:site_name" content="cchao1024 blog">
 <meta property="og:description" content="抓包 抓包（packet capture）就是将网络传输发送与接收的数据包进行截获、重发、编辑、转存等操作，也用来检查网络安全。抓包也经常被用来进行数据截取等。  本文讨论的数据包限于超文本传输协议报文(Http), 也就是通常我们经常用来浏览网页的协议。 除了传统的web端，http协议也广泛应用于移动互联网app与后端服务器的数据交互。其实网络底层为了保证协议的传输准确和效率做了许多事情. 对">
@@ -116,9 +116,9 @@
 <meta property="og:image" content="http://yoursite.com/images/2017-11/fiddler6.png">
 <meta property="og:image" content="http://yoursite.com/images/2017-11/fiddler7.png">
 <meta property="og:image" content="http://yoursite.com/images/2017-11/fiddler1.png">
-<meta property="og:updated_time" content="2019-06-10T09:45:17.282Z">
+<meta property="og:updated_time" content="2019-06-27T08:17:38.274Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="利用Fildder抓包，捕获https协议的传输内容">
+<meta name="twitter:title" content="利用Fidder抓包，捕获https协议的传输内容">
 <meta name="twitter:description" content="抓包 抓包（packet capture）就是将网络传输发送与接收的数据包进行截获、重发、编辑、转存等操作，也用来检查网络安全。抓包也经常被用来进行数据截取等。  本文讨论的数据包限于超文本传输协议报文(Http), 也就是通常我们经常用来浏览网页的协议。 除了传统的web端，http协议也广泛应用于移动互联网app与后端服务器的数据交互。其实网络底层为了保证协议的传输准确和效率做了许多事情. 对">
 <meta name="twitter:image" content="http://yoursite.com/images/2017-11/fiddler2.png">
 
@@ -138,7 +138,7 @@
   };
 </script>
 
-  <title>利用Fildder抓包，捕获https协议的传输内容 | cchao1024 blog</title>
+  <title>利用Fidder抓包，捕获https协议的传输内容 | cchao1024 blog</title>
   
 
 
@@ -263,6 +263,23 @@
         
         
           
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
+  </li>
+        
+        
+        
+          
           <li class="menu-item menu-item-categories">
 
     
@@ -359,7 +376,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">利用Fildder抓包，捕获https协议的传输内容
+          <h1 class="post-title" itemprop="name headline">利用Fidder抓包，捕获https协议的传输内容
 
               
             
@@ -402,7 +419,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-06-10 17:45:17" itemprop="dateModified" datetime="2019-06-10T17:45:17+08:00">2019-06-10</time>
+                <time title="Modified: 2019-06-27 16:17:38" itemprop="dateModified" datetime="2019-06-27T16:17:38+08:00">2019-06-27</time>
               
             
           </span>
@@ -562,7 +579,7 @@
         
         <div class="post-tags">
           
-            <a href="/tags/工具/" rel="tag"># 工具</a>
+            <a href="/tags/Fidder/" rel="tag"># Fidder</a>
           
         </div>
       
@@ -665,7 +682,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">44</span>
+                    <span class="site-state-item-count">47</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -700,7 +717,17 @@
                     
                       
                     
-                    <span class="site-state-item-count">9</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">14</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -755,7 +782,17 @@
                     
                       
                     
-                    <span class="site-state-item-count">21</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">26</span>
                     <span class="site-state-item-name">tags</span>
                   
                 </div>
@@ -864,7 +901,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">176k</span>
+    <span title="Symbols count total">210k</span>
   
 
   
@@ -873,7 +910,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="Reading time total">2:40</span>
+    <span title="Reading time total">3:11</span>
   
 </div>
 
@@ -1012,7 +1049,7 @@
   var disqus_config = function() {
     this.page.url = "http://yoursite.com/2017-11-fiddler抓包/";
     this.page.identifier = "2017-11-fiddler抓包/";
-    this.page.title = '利用Fildder抓包，捕获https协议的传输内容';
+    this.page.title = '利用Fidder抓包，捕获https协议的传输内容';
     };
   function loadComments() {
     var d = document, s = d.createElement('script');

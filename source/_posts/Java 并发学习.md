@@ -1,7 +1,8 @@
 ---
 title: Java 并发学习
 date: 2018-06-19 11:45:51
-tags:
+tags: java 
+categories: 编程语言
 ---
 
 

@@ -3,7 +3,7 @@ layout: post
 title: 'Git 常用命令'
 subtitle: 'Git 常用命令'
 date: 2017-11-2
-categories: 技术
+categories: git
 cover: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1510228637994&di=cd28eed1789785fda36db1139cf72b0a&imgtype=0&src=http%3A%2F%2Fimg.imooc.com%2F5774d9c40001841306000338.jpg'
 tags: git 版本管理
 ---

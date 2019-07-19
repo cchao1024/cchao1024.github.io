@@ -1,7 +1,8 @@
 ---
 title: Java 反射
-date: 2019-06-17 17:32:40
-tags:
+date: 2018-06-17 17:32:40
+tags: java 
+categories: 编程语言
 ---
 
 >  **反射**是指[计算机程序](https://www.wikiwand.com/zh/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A8%8B%E5%BA%8F)在[运行时](https://www.wikiwand.com/zh/%E8%BF%90%E8%A1%8C%E6%97%B6)（Run time）可以访问、检测和修改它本身状态或行为的一种能力。

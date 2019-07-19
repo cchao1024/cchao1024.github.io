@@ -1,7 +1,8 @@
 ---
-title: Linux备忘
+title: Linux 备忘
 date: 2019-03-06 09:57:47
 tags: Linux
+categories: 运维技术
 ---
 
 xargs与管道有什么不同呢
@@ -77,5 +78,12 @@ Z 僵死 a defunct (”zombie”) process
 
 ![](../images/2019-6/io_1.jpg)
 
+## 后台执行 
 
+```
+nohup xxxx output.log
+```
 
+out.log 如果未定义，则会在同级目录下生成一个nohup.out文件来储存日志信息
+
+通过 `tail -f nohup.out` 查看日志

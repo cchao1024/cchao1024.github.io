@@ -101,17 +101,18 @@
 
 
 
-  <meta name="description" content="Termial httpie  格式化的http终端交互，替代curl">
+  <meta name="description" content="Termial httpie  格式化的http终端交互，替代curl ncdu 扫描（比较耗时）后列出目录结构，可以通过左右方向键进出目录 alias du=&amp;quot;ncdu --color dark -rr -x --exclude .git --exclude node_modules&amp;quot; bat 支持语法高亮，分页，行号，git等内容打印工具。alias cat=&amp;#39;ba">
+<meta name="keywords" content="工具集">
 <meta property="og:type" content="article">
 <meta property="og:title" content="生产工具集">
 <meta property="og:url" content="http://yoursite.com/2000-06-生产工具集/index.html">
 <meta property="og:site_name" content="cchao1024 blog">
-<meta property="og:description" content="Termial httpie  格式化的http终端交互，替代curl">
+<meta property="og:description" content="Termial httpie  格式化的http终端交互，替代curl ncdu 扫描（比较耗时）后列出目录结构，可以通过左右方向键进出目录 alias du=&amp;quot;ncdu --color dark -rr -x --exclude .git --exclude node_modules&amp;quot; bat 支持语法高亮，分页，行号，git等内容打印工具。alias cat=&amp;#39;ba">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-20T06:37:22.798Z">
+<meta property="og:updated_time" content="2019-07-18T09:22:41.915Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="生产工具集">
-<meta name="twitter:description" content="Termial httpie  格式化的http终端交互，替代curl">
+<meta name="twitter:description" content="Termial httpie  格式化的http终端交互，替代curl ncdu 扫描（比较耗时）后列出目录结构，可以通过左右方向键进出目录 alias du=&amp;quot;ncdu --color dark -rr -x --exclude .git --exclude node_modules&amp;quot; bat 支持语法高亮，分页，行号，git等内容打印工具。alias cat=&amp;#39;ba">
 
 
 
@@ -248,6 +249,23 @@
     
 
     <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
 
   </li>
         
@@ -393,11 +411,29 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-06-20 14:37:22" itemprop="dateModified" datetime="2019-06-20T14:37:22+08:00">2019-06-20</time>
+                <time title="Modified: 2019-07-18 17:22:41" itemprop="dateModified" datetime="2019-07-18T17:22:41+08:00">2019-07-18</time>
               
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/周边积累/" itemprop="url" rel="index"><span itemprop="name">周边积累</span></a></span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -434,7 +470,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">37</span>
+                <span title="Symbols count in article">571</span>
               
 
               
@@ -470,6 +506,24 @@
       
         <h1 id="Termial"><a href="#Termial" class="headerlink" title="Termial"></a>Termial</h1><ul>
 <li>httpie  格式化的http终端交互，替代curl</li>
+<li>ncdu 扫描（比较耗时）后列出目录结构，可以通过左右方向键进出目录 <code>alias du=&quot;ncdu --color dark -rr -x --exclude .git --exclude node_modules&quot;</code></li>
+<li>bat 支持语法高亮，分页，行号，git等内容打印工具。<code>alias cat=&#39;bat&#39;</code></li>
+<li>prettyping 更友好的输出，替代 ping <code>alias ping=&#39;prettyping --nolegend&#39;</code></li>
+<li>fzf  相比于 <code>ctrl+r</code> 它能针对命令行历史进行模糊查询，并且提供了对可能的合格结果进行全面交互式预览。</li>
+<li><code>alias top=&quot;sudo htop&quot;</code> <ul>
+<li><code>P</code> —— 按 CPU 使用率排序</li>
+<li><code>M</code> —— 按内存使用排序</li>
+<li><code>F4</code> —— 用字符串过滤进程（例如只看包括 node 的进程）</li>
+<li><code>space</code> —— 锚定一个单独进程，这样我能观察它是否有尖峰状态</li>
+</ul>
+</li>
+<li>jq 格式化json</li>
+<li><a href="https://jonas.github.io/tig/INSTALL.html" target="_blank" rel="noopener">tig</a> 友好方式查看git提交内容 </li>
+<li><a href="https://github.com/cjbassi/gotop" target="_blank" rel="noopener">gotop</a> 图形化查看cpu，gpu使用，通过？ 查看帮助文档</li>
+</ul>
+<h1 id="跨平台"><a href="#跨平台" class="headerlink" title="跨平台"></a>跨平台</h1><ul>
+<li>copyQ 剪切板，存在卡顿问题</li>
+<li>utools 高效命令映射管理（Alfred）</li>
 </ul>
 
       
@@ -491,6 +545,15 @@
     
 
     <footer class="post-footer">
+      
+        
+          
+        
+        <div class="post-tags">
+          
+            <a href="/tags/工具集/" rel="tag"># 工具集</a>
+          
+        </div>
       
 
       
@@ -587,7 +650,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">44</span>
+                    <span class="site-state-item-count">47</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -622,7 +685,17 @@
                     
                       
                     
-                    <span class="site-state-item-count">9</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">14</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -677,7 +750,17 @@
                     
                       
                     
-                    <span class="site-state-item-count">21</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">26</span>
                     <span class="site-state-item-name">tags</span>
                   
                 </div>
@@ -746,7 +829,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Termial"><span class="nav-number">1.</span> <span class="nav-text">Termial</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Termial"><span class="nav-number">1.</span> <span class="nav-text">Termial</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#跨平台"><span class="nav-number">2.</span> <span class="nav-text">跨平台</span></a></li></ol></div>
             
 
           </div>
@@ -786,7 +869,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">176k</span>
+    <span title="Symbols count total">210k</span>
   
 
   
@@ -795,7 +878,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="Reading time total">2:40</span>
+    <span title="Reading time total">3:11</span>
   
 </div>
 

@@ -102,6 +102,7 @@
 
 
   <meta name="description" content="状态 阻塞和等待的区别在于，阻塞是被动的，它是在等待获取一个排它锁。而等待是主动的，通过调用 Thread.sleep() 和 Object.wait() 等方法进入。    进入方法 退出方法     Thread.sleep() 方法 时间结束   设置了 Timeout 参数的 Object.wait() 方法 时间结束 / Object.notify() / Object.notifyAl">
+<meta name="keywords" content="java">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java 并发学习">
 <meta property="og:url" content="http://yoursite.com/2018-06-Java 并发学习/index.html">
@@ -109,7 +110,7 @@
 <meta property="og:description" content="状态 阻塞和等待的区别在于，阻塞是被动的，它是在等待获取一个排它锁。而等待是主动的，通过调用 Thread.sleep() 和 Object.wait() 等方法进入。    进入方法 退出方法     Thread.sleep() 方法 时间结束   设置了 Timeout 参数的 Object.wait() 方法 时间结束 / Object.notify() / Object.notifyAl">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://github.com/CyC2018/CS-Notes/raw/master/notes/pics/adfb427d-3b21-40d7-a142-757f4ed73079.png">
-<meta property="og:updated_time" content="2019-06-25T06:03:00.219Z">
+<meta property="og:updated_time" content="2019-06-27T08:20:57.936Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java 并发学习">
 <meta name="twitter:description" content="状态 阻塞和等待的区别在于，阻塞是被动的，它是在等待获取一个排它锁。而等待是主动的，通过调用 Thread.sleep() 和 Object.wait() 等方法进入。    进入方法 退出方法     Thread.sleep() 方法 时间结束   设置了 Timeout 参数的 Object.wait() 方法 时间结束 / Object.notify() / Object.notifyAl">
@@ -256,6 +257,23 @@
         
         
           
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
+  </li>
+        
+        
+        
+          
           <li class="menu-item menu-item-categories">
 
     
@@ -395,11 +413,29 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-06-25 14:03:00" itemprop="dateModified" datetime="2019-06-25T14:03:00+08:00">2019-06-25</time>
+                <time title="Modified: 2019-06-27 16:20:57" itemprop="dateModified" datetime="2019-06-27T16:20:57+08:00">2019-06-27</time>
               
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/编程语言/" itemprop="url" rel="index"><span itemprop="name">编程语言</span></a></span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -536,7 +572,7 @@
 <p>对于CyclicBarrier，下一步动作实施者是“其他线程”。如：有一张门需要N把钥匙组合才能开门，大家商量好同时从不同地方向那张门赶去，必须要等待所有人都到达后才能打开门并进入。</p>
 <h2 id="Semaphore"><a href="#Semaphore" class="headerlink" title="Semaphore"></a>Semaphore</h2><p>Semaphore 类似于操作系统中的信号量，可以控制对互斥资源的访问线程数。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SemaphoreExample</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">final</span> <span class="keyword">int</span> clientCount = <span class="number">3</span>;</span><br><span class="line">        <span class="keyword">final</span> <span class="keyword">int</span> totalRequestCount = <span class="number">10</span>;</span><br><span class="line">        Semaphore semaphore = <span class="keyword">new</span> Semaphore(clientCount);</span><br><span class="line">        ExecutorService executorService = Executors.newCachedThreadPool();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; totalRequestCount; i++) &#123;</span><br><span class="line">            executorService.execute(()-&gt;&#123;</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    semaphore.acquire();</span><br><span class="line">                    System.out.print(semaphore.availablePermits() + <span class="string">" "</span>);</span><br><span class="line">                &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">                    semaphore.release();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;</span><br><span class="line">        executorService.shutdown();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="FuturnTask"><a href="#FuturnTask" class="headerlink" title="FuturnTask"></a>FuturnTask</h2><p>FutureTask 可用于异步获取执行结果或取消执行任务的场景。当一个计算任务需要执行很长时间，那么就可以用 FutureTask 来封装这个任务，主线程在完成自己的任务之后再去获取结果。</p>
+<h2 id="FutureTask"><a href="#FutureTask" class="headerlink" title="FutureTask"></a>FutureTask</h2><p>FutureTask 可用于异步获取执行结果或取消执行任务的场景。当一个计算任务需要执行很长时间，那么就可以用 FutureTask 来封装这个任务，主线程在完成自己的任务之后再去获取结果。</p>
 <h2 id="BlockingQueue"><a href="#BlockingQueue" class="headerlink" title="BlockingQueue"></a>BlockingQueue</h2><p>java.util.concurrent.BlockingQueue 接口有以下阻塞队列的实现：</p>
 <ul>
 <li><strong>FIFO 队列</strong> ：LinkedBlockingQueue、ArrayBlockingQueue（固定长度）</li>
@@ -651,6 +687,15 @@
 
     <footer class="post-footer">
       
+        
+          
+        
+        <div class="post-tags">
+          
+            <a href="/tags/java/" rel="tag"># java</a>
+          
+        </div>
+      
 
       
       
@@ -750,7 +795,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">44</span>
+                    <span class="site-state-item-count">47</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -785,7 +830,17 @@
                     
                       
                     
-                    <span class="site-state-item-count">9</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">14</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -840,7 +895,17 @@
                     
                       
                     
-                    <span class="site-state-item-count">21</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">26</span>
                     <span class="site-state-item-name">tags</span>
                   
                 </div>
@@ -909,7 +974,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#状态"><span class="nav-number">1.</span> <span class="nav-text">状态</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基础"><span class="nav-number">2.</span> <span class="nav-text">基础</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#中断"><span class="nav-number">3.</span> <span class="nav-text">中断</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ReentrantLock"><span class="nav-number">4.</span> <span class="nav-text">ReentrantLock</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#AQS"><span class="nav-number">5.</span> <span class="nav-text">AQS</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#CountDownLatch"><span class="nav-number">5.1.</span> <span class="nav-text">CountDownLatch</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#CyclicBarrier"><span class="nav-number">5.1.1.</span> <span class="nav-text">CyclicBarrier</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Semaphore"><span class="nav-number">5.2.</span> <span class="nav-text">Semaphore</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#FuturnTask"><span class="nav-number">5.3.</span> <span class="nav-text">FuturnTask</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BlockingQueue"><span class="nav-number">5.4.</span> <span class="nav-text">BlockingQueue</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ForkJoin"><span class="nav-number">5.5.</span> <span class="nav-text">ForkJoin</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#内存模型"><span class="nav-number">6.</span> <span class="nav-text">内存模型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#三大特性"><span class="nav-number">6.1.</span> <span class="nav-text">三大特性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#volatile-为什么不能保证原子性"><span class="nav-number">6.1.1.</span> <span class="nav-text">volatile 为什么不能保证原子性</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#保证线程安全"><span class="nav-number">7.</span> <span class="nav-text">保证线程安全</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#不可变"><span class="nav-number">7.1.</span> <span class="nav-text">不可变</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#同步"><span class="nav-number">7.2.</span> <span class="nav-text">同步</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#互斥同步"><span class="nav-number">7.2.1.</span> <span class="nav-text">互斥同步</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#非阻塞同步"><span class="nav-number">7.2.2.</span> <span class="nav-text">非阻塞同步</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#CAS"><span class="nav-number">7.2.2.1.</span> <span class="nav-text">CAS</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#原子类"><span class="nav-number">7.2.2.2.</span> <span class="nav-text">原子类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ABA问题"><span class="nav-number">7.2.2.3.</span> <span class="nav-text">ABA问题</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#无同步方案"><span class="nav-number">7.2.3.</span> <span class="nav-text">无同步方案</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#可重入代码"><span class="nav-number">7.2.3.1.</span> <span class="nav-text">可重入代码</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#锁的优化"><span class="nav-number">8.</span> <span class="nav-text">锁的优化</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#线程池"><span class="nav-number">9.</span> <span class="nav-text">线程池</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#线程任务按顺序执行"><span class="nav-number">10.</span> <span class="nav-text">线程任务按顺序执行</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#实践建议"><span class="nav-number">11.</span> <span class="nav-text">实践建议</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#状态"><span class="nav-number">1.</span> <span class="nav-text">状态</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基础"><span class="nav-number">2.</span> <span class="nav-text">基础</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#中断"><span class="nav-number">3.</span> <span class="nav-text">中断</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ReentrantLock"><span class="nav-number">4.</span> <span class="nav-text">ReentrantLock</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#AQS"><span class="nav-number">5.</span> <span class="nav-text">AQS</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#CountDownLatch"><span class="nav-number">5.1.</span> <span class="nav-text">CountDownLatch</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#CyclicBarrier"><span class="nav-number">5.1.1.</span> <span class="nav-text">CyclicBarrier</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Semaphore"><span class="nav-number">5.2.</span> <span class="nav-text">Semaphore</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#FutureTask"><span class="nav-number">5.3.</span> <span class="nav-text">FutureTask</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BlockingQueue"><span class="nav-number">5.4.</span> <span class="nav-text">BlockingQueue</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ForkJoin"><span class="nav-number">5.5.</span> <span class="nav-text">ForkJoin</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#内存模型"><span class="nav-number">6.</span> <span class="nav-text">内存模型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#三大特性"><span class="nav-number">6.1.</span> <span class="nav-text">三大特性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#volatile-为什么不能保证原子性"><span class="nav-number">6.1.1.</span> <span class="nav-text">volatile 为什么不能保证原子性</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#保证线程安全"><span class="nav-number">7.</span> <span class="nav-text">保证线程安全</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#不可变"><span class="nav-number">7.1.</span> <span class="nav-text">不可变</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#同步"><span class="nav-number">7.2.</span> <span class="nav-text">同步</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#互斥同步"><span class="nav-number">7.2.1.</span> <span class="nav-text">互斥同步</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#非阻塞同步"><span class="nav-number">7.2.2.</span> <span class="nav-text">非阻塞同步</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#CAS"><span class="nav-number">7.2.2.1.</span> <span class="nav-text">CAS</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#原子类"><span class="nav-number">7.2.2.2.</span> <span class="nav-text">原子类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ABA问题"><span class="nav-number">7.2.2.3.</span> <span class="nav-text">ABA问题</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#无同步方案"><span class="nav-number">7.2.3.</span> <span class="nav-text">无同步方案</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#可重入代码"><span class="nav-number">7.2.3.1.</span> <span class="nav-text">可重入代码</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#锁的优化"><span class="nav-number">8.</span> <span class="nav-text">锁的优化</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#线程池"><span class="nav-number">9.</span> <span class="nav-text">线程池</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#线程任务按顺序执行"><span class="nav-number">10.</span> <span class="nav-text">线程任务按顺序执行</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#实践建议"><span class="nav-number">11.</span> <span class="nav-text">实践建议</span></a></li></ol></div>
             
 
           </div>
@@ -949,7 +1014,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">176k</span>
+    <span title="Symbols count total">210k</span>
   
 
   
@@ -958,7 +1023,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="Reading time total">2:40</span>
+    <span title="Reading time total">3:11</span>
   
 </div>
 

@@ -2,8 +2,8 @@
 layout: post
 title: 'Python3 简易教程'
 date: 2017-09-19
-categories: python3
-tags: python3 脚本语言
+categories: 编程语言
+tags: python3
 ---
 
 # 看图识语法
@@ -352,3 +352,20 @@ def regex(s):
     for x in pattern.findall(s):
         print(x)
 ```
+
+# 异常处理
+
+```python
+try:
+    fh = open("testfile", "w")
+    fh.write("这是一个测试文件，用于测试异常!!")
+except IOError:
+    print "Error: 没有找到文件或读取文件失败"
+else:
+    # 如果没有异常执行这块代码
+    print "内容写入文件成功"
+    fh.close()
+```
+
+except 后面可以跟任意多个异常类型（0个也可以），表示捕获不同异常
+

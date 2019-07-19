@@ -2,7 +2,7 @@
 title: Gist
 date: 2018-08-26 23:29:41
 categories: git
-tags: github
+tags: gist
 ---
 
 > [Gist](https://gist.github.com/) 是 [Github](https://github.com/) 推出的基于 Git 的代码片段管理服务。用户可以提交自己的代码片段或任意的文本，可以作为个人的代码管理库、文档管理库等。

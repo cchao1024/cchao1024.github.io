@@ -3,8 +3,8 @@ layout: post
 title: 'java tuple（元组）'
 subtitle: ''
 date: 2017-05-30
-categories: 技术
-tags: java 编程语言
+tags: java 
+categories: 编程语言
 ---
 
 # java tuple（元组）
@@ -12,6 +12,8 @@ tags: java 编程语言
 > 很经常我们希望方法的return能够返回多个对象，可是遗憾的是java只能有一个返回值（类型），为了实现这个功能我们可能会去编写一个特别的类，让它能够携带多的返回值，这样的概念称之为 **元组（Tuple）** 也称为 **数据传输对象、信使**。
 
 为了实现这个元组，我们编写了如下的代码。
+
+
 ```
 public class DataSet{
     private String string1;

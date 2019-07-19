@@ -1,7 +1,8 @@
 ---
 title: java-函数式编程
-date: 2019-06-24 14:58:21
-tags:
+date: 2018-06-24 14:58:21
+tags: java 
+categories: 编程语言
 ---
 
 # 函数式接口

@@ -2,8 +2,8 @@
 layout: post
 title: okHttp-拦截器们
 date: 2017-09-19
-categories: 技术
-tags: okhttp 网络
+categories: 框架技术
+tags: okhttp
 ---
 
 > 上回我们说到 RealInterceptorChain#proceed 依次执行拦截器的intercept方法，那我们就逐个看看这些拦截器都是怎么样实现拦截方法的

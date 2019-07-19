@@ -1,7 +1,8 @@
 ---
 title: Next博客主题优化
 date: 2019-06-11 10:37:00
-tags: 
+categories: 搭建过程
+tags: Next
 ---
 
 # 阅读更多

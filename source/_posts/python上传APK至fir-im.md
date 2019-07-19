@@ -1,8 +1,8 @@
 ---
 title: python上传APK至fir.im
 date: 2018-08-18 23:26:19
-categories: python3
-tags: fir
+categories: 脚本实现
+tags: python3
 ---
 
 

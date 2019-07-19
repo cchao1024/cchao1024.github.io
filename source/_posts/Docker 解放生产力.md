@@ -1,8 +1,4 @@
----
-title: Docker 解放生产力
-date: 2019-06-13 15:46:39
-tags:
----
+
 
 
 
@@ -163,3 +159,34 @@ alias docm="docker-compose"
 
 ![ps](../images/2019-6/docker_1.png)
 
+# 打包容器到Docker hub
+1. 去[ https://hub.docker.com]( https://hub.docker.com) 新建一个 repository
+
+2. `docker login` 登录账号
+
+3. 运行 `docker ps` 查看当前容器 id
+
+  ![image-20190628110555941](../images/2019-6/docker_1.png)
+
+4. 创建一个提交生成镜像 `docker commit CONTAINER_ID Name`
+    ![](../images/2019-6/docker_2.jpg)
+
+5. push 刚才的镜像到远程仓库
+     ![](../images/2019-6/docker_3.png)
+
+6. 正常的使用镜像
+```dockerfile
+version: "3.7"
+services:
+  mysql_cchao:
+    container_name: mysql_cchao
+    image: cchao1024/mysql:latest                          #从私有仓库拉镜像
+    restart: always                    
+    volumes:
+      - ./mysql/data/:/var/lib/mysql/                             #映射mysql的数据目录到宿主机，保存数据
+      - ./mysql/conf/mysqld.cnf:/etc/mysql/mysql.conf.d/mysqld.cnf
+    ports:
+      - "3307:3307"
+    environment:
+      - MYSQL_ROOT_PASSWORD=ROOT
+```

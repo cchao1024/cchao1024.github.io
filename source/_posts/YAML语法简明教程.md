@@ -3,9 +3,8 @@ layout: post
 title: YAML语法简明教程
 subtitle: YAML
 date: 2018-4-30
-categories: 技术
-cover: ''
-tags: 语言
+categories: 周边积累
+tags: yaml
 ---
 
 ## YAML

@@ -3,9 +3,8 @@ layout: post
 title: Onesignalt推送-Python3的实现
 subtitle: Onesignal推送
 date: 2018-5-15
-categories: 技术
-cover: ''
-tags: 工具 脚本
+categories: 脚本实现
+tags: python3
 ---
 
 # OneSignal

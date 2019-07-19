@@ -3,8 +3,8 @@ layout: post
 title: Java8 简明教程
 subtitle: Java8
 date: 2017-12-1
-categories: java
-tags: 编程语言
+categories: 编程语言
+tags: java
 ---
 
 # 特性

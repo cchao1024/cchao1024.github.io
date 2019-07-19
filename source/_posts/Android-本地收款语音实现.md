@@ -2,6 +2,7 @@
 title: Android 本地收款语音实现
 date: 2019-01-13 14:53:51
 tags: Android
+categories: Android
 ---
 
 # 需求

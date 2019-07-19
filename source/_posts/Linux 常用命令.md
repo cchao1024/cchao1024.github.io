@@ -3,9 +3,8 @@ layout: post
 title: Linux 常用命令
 subtitle: linux
 date: 2018-4-17
-categories: Linux
-cover: ''
-tags: Linux 命令
+tags: Linux
+categories: 运维技术
 ---
 
 ## cd命令
