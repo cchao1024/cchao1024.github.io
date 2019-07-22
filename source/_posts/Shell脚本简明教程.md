@@ -1,5 +1,5 @@
 ---
-title: Shell脚本简明教程
+title: Shell 脚本简明教程
 date: 2018-12-23 23:23:54
 categories: 编程语言
 tags: shell

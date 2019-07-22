@@ -3,7 +3,7 @@ layout: post
 title: 利用Fidder抓包，捕获https协议的传输内容
 subtitle: android端真机、模拟器抓包
 date: 2017-11-27
-categories: 技术
+categories: 周边积累
 tags: Fidder
 ---
 

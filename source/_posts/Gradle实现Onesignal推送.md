@@ -3,7 +3,7 @@ layout: post
 title: Gradle实现Onesignal推送
 subtitle: Gradle实现Onesignal推送
 date: 2017-12-22
-categories: 工具
+categories: 脚本实现
 tags: gradle 
 ---
 

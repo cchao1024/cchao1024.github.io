@@ -1,7 +1,7 @@
 ---
 title: Gist
 date: 2018-08-26 23:29:41
-categories: git
+categories: 周边积累
 tags: gist
 ---
 

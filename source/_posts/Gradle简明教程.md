@@ -3,7 +3,7 @@ layout: post
 title: Gradle简明教程
 subtitle: Gradle 基于Ant和Maven概念的项目自动化构建工具
 date: 2017-12-1
-categories: 工具
+categories: 编程语音
 tags: gradle 
 ---
 

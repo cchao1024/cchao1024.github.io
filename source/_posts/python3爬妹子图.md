@@ -3,7 +3,7 @@ layout: post
 title: 'Python3爬虫 多线程爬取美女图片保存到本地'
 subtitle: '多线程爬取美女图片'
 date: 2017-01-18
-categories: 编程语言
+categories: 脚本实现
 tags: python3
 ---
 
