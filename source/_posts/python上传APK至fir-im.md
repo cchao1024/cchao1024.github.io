@@ -200,7 +200,7 @@ task uploadFir {
 }
 ```
 
-在 终端 执行  gradle uploadFir
+在 终端 执行  `gradle uploadFir`
 
 运行结果
 
