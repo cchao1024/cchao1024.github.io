@@ -50,18 +50,18 @@ Webkit内核的浏览器，必须加上-webkit前缀。
 
 ## 容器属性
 
-- flex-direction:  决定主轴的方向
+- `flex-direction`:  决定主轴的方向
   - row（默认）   主轴为水平方向，起点在左端
   - row-reverse    主轴为水平方向，起点在右端
   - column
   - column-reverse  主轴为垂直方向，起点在下沿
-- flex-wrap:  决定换行 nowrap(默认) | wrap | wrap-reverse(换行且第一行在下方。）
-- flex-flow:  是flex-direction属性和flex-wrap属性的简写形式，默认值为row nowrap。
-- justify-content:  定义了项目在主轴上的对齐方式。
+- `flex-wrap`:  决定换行 nowrap(默认) | wrap | wrap-reverse(换行且第一行在下方。）
+- `flex-flow`:  是flex-direction属性和flex-wrap属性的简写形式，默认值为row nowrap。
+- `justify-content`:  定义了项目在主轴上的对齐方式。
   - flex-start（默认值）：左对齐 ,  flex-end（右对齐），center（居中）
   - space-between：两端对齐，项目之间的间隔都相等。
   - space-around：每个项目两侧的间隔相等。所以，项目之间的间隔比项目与边框的间隔大一倍。
-- align-items:  定义项目在交叉轴上如何对齐。
+- `align-items`:  定义项目在交叉轴上如何对齐。
   - flex-start：交叉轴的起点对齐。flex-end(终点对齐), center(中点对齐)
   - baseline: 项目的第一行文字的基线对齐。
   - stretch（默认值）：如果项目未设置高度或设为auto，将占满整个容器的高度。
