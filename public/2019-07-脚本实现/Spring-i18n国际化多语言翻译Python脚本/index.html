@@ -1,0 +1,1103 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html class="theme-next gemini" lang>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link rel="stylesheet" href="/lib/pace/pace-theme-flash.min.css?v=1.0.2">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.2">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.2">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.2">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.2">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.2" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: true,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="i18n在做spring的国际化时，是需要准备多语言的，如果 项目庞大，纯粹用人工去翻译成本巨大，所以笔者就使用翻译Api，如 百度翻译) ， 读者如果不用 百度的，也可以通过修改脚本去替换 api  百度翻译这个时候还是要说下百度的好 本来大家都是用 google 翻译的，由于不知名的内外部原因，google 翻译不行了，这个时候百度的翻译就很好的解决了问题，而且还 免费，流程简单。 我们只要注">
+<meta name="keywords" content="i18n">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Spring i18n国际化多语言翻译Python脚本">
+<meta property="og:url" content="http://yoursite.com/2019-07-脚本实现/Spring-i18n国际化多语言翻译Python脚本/index.html">
+<meta property="og:site_name" content="cchao1024 blog">
+<meta property="og:description" content="i18n在做spring的国际化时，是需要准备多语言的，如果 项目庞大，纯粹用人工去翻译成本巨大，所以笔者就使用翻译Api，如 百度翻译) ， 读者如果不用 百度的，也可以通过修改脚本去替换 api  百度翻译这个时候还是要说下百度的好 本来大家都是用 google 翻译的，由于不知名的内外部原因，google 翻译不行了，这个时候百度的翻译就很好的解决了问题，而且还 免费，流程简单。 我们只要注">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/images/2019-6/blog20190709110242.png">
+<meta property="og:image" content="http://yoursite.com/images/2019-6/blog20190709112725.png">
+<meta property="og:image" content="http://yoursite.com/images/2019-6/blog20190709112920.png">
+<meta property="og:image" content="http://yoursite.com/images/2019-6/blog20190709114706.png">
+<meta property="og:image" content="http://yoursite.com/images/2019-6/blog20190709114035.png">
+<meta property="og:updated_time" content="2019-09-12T08:52:18.209Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Spring i18n国际化多语言翻译Python脚本">
+<meta name="twitter:description" content="i18n在做spring的国际化时，是需要准备多语言的，如果 项目庞大，纯粹用人工去翻译成本巨大，所以笔者就使用翻译Api，如 百度翻译) ， 读者如果不用 百度的，也可以通过修改脚本去替换 api  百度翻译这个时候还是要说下百度的好 本来大家都是用 google 翻译的，由于不知名的内外部原因，google 翻译不行了，这个时候百度的翻译就很好的解决了问题，而且还 免费，流程简单。 我们只要注">
+<meta name="twitter:image" content="http://yoursite.com/images/2019-6/blog20190709110242.png">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://yoursite.com/2019-07-脚本实现/Spring-i18n国际化多语言翻译Python脚本/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Spring i18n国际化多语言翻译Python脚本 | cchao1024 blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband">
+
+    <a href="https://github.com/cchao1024" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a>
+    <style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    </div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">cchao1024 blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019-07-脚本实现/Spring-i18n国际化多语言翻译Python脚本/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="cchao1024">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/config/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="cchao1024 blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Spring i18n国际化多语言翻译Python脚本
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-07-09 11:01:01" itemprop="dateCreated datePublished" datetime="2019-07-09T11:01:01+08:00">2019-07-09</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-09-12 16:52:18" itemprop="dateModified" datetime="2019-09-12T16:52:18+08:00">2019-09-12</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/脚本实现/" itemprop="url" rel="index"><span itemprop="name">脚本实现</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">Comments: </span>
+                <a href="/2019-07-脚本实现/Spring-i18n国际化多语言翻译Python脚本/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019-07-脚本实现/Spring-i18n国际化多语言翻译Python脚本/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Symbols count in article: </span>
+                
+                <span title="Symbols count in article">3.1k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">3 mins.</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="i18n"><a href="#i18n" class="headerlink" title="i18n"></a>i18n</h1><p>在做<strong>spring的国际化时</strong>，是需要准备多语言的，如果 项目庞大，纯粹用人工去翻译成本巨大，所以笔者就使用翻译Api，如 <a href="[http://api.fanyi.baidu.com](http://api.fanyi.baidu.com/">百度翻译</a>) ， 读者如果不用 百度的，也可以通过修改脚本去替换 api</p>
+<p><img src="../../images/2019-6/blog20190709110242.png" alt></p>
+<h1 id="百度翻译"><a href="#百度翻译" class="headerlink" title="百度翻译"></a>百度翻译</h1><p>这个时候还是要说下百度的好</p>
+<p>本来大家都是用 <em>google</em> 翻译的，由于不知名的内外部原因，<em>google</em> 翻译不行了，这个时候百度的翻译就很好的解决了问题，而且还 免费，流程简单。</p>
+<p>我们只要注册登录，申请应用就可以了，很简单，流程就不写了</p>
+<p>特别的说明下，百度翻译是<strong>分等级</strong>的，有钱的小伙伴用 vip 应该会体验好很多，但是手头拮据些的用免费的也是足够使用了，</p>
+<p><img src="../../images/2019-6/blog20190709112725.png" alt></p>
+<p>注意这里的 QPS ，脚本中会对他做 <code>time.sleep</code> 如果是 vip <strong>可以注释掉</strong>，快速的完成翻译。</p>
+<p>还有一点就是 <strong>不是所有的语言都支持的</strong>，如果有特殊语种需要 恐怕需要另谋其他方法了。</p>
+<p><img src="../../images/2019-6/blog20190709112920.png" alt></p>
+<h1 id="脚本源码"><a href="#脚本源码" class="headerlink" title="脚本源码"></a>脚本源码</h1><h2 id="必要参数"><a href="#必要参数" class="headerlink" title="必要参数"></a>必要参数</h2><ul>
+<li>appid  你的appid</li>
+<li>secretKey  你的密钥</li>
+<li>def_from_lang  默认待翻译的语言（zh）</li>
+<li>from_file_path   待翻译的源文件</li>
+<li>out_put_file_name = ‘message_%s.properties’  输出目标语言文件名</li>
+<li>to_lang_map 要翻译的语言和文件名映射</li>
+</ul>
+<p>以上是 需要 读者自行去修改填充</p>
+<h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># /usr/bin/env python</span></span><br><span class="line"><span class="comment"># coding=utf8</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> hashlib</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line">api = <span class="string">'http://api.fanyi.baidu.com/api/trans/vip/translate'</span></span><br><span class="line">appid = <span class="string">'2019070800031591*'</span>  <span class="comment"># 你的appid</span></span><br><span class="line">secretKey = <span class="string">'tymR5YEUYQVkK*******'</span>  <span class="comment"># 你的密钥</span></span><br><span class="line">def_from_lang = <span class="string">'zh'</span></span><br><span class="line">from_file_path = <span class="string">'./message_zh_CN.properties'</span></span><br><span class="line">out_put_file_name = <span class="string">'message_%s.properties'</span></span><br><span class="line">to_lang_map = &#123;</span><br><span class="line">    <span class="string">'en'</span>: <span class="string">'en_GB'</span>,</span><br><span class="line">    <span class="string">'ru'</span>: <span class="string">'ru_RU'</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 调用百度翻译api 执行翻译</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">trans_bd_api</span><span class="params">(q, to_lang, from_lang=def_from_lang)</span>:</span></span><br><span class="line">    salt = random.randint(<span class="number">32768</span>, <span class="number">65536</span>)</span><br><span class="line"></span><br><span class="line">    md5 = hashlib.md5()</span><br><span class="line">    sign = appid + q + str(salt) + secretKey</span><br><span class="line">    sign = sign.encode(<span class="string">'utf-8'</span>)</span><br><span class="line">    <span class="comment"># print("生成字符串1" + str(sign))</span></span><br><span class="line">    md5.update(sign)</span><br><span class="line">    sign = md5.hexdigest()</span><br><span class="line">    <span class="comment"># print("生成字符串1md5  " + str(sign))</span></span><br><span class="line"></span><br><span class="line">    data = &#123;</span><br><span class="line">        <span class="string">'appid'</span>: appid,</span><br><span class="line">        <span class="string">'q'</span>: q,</span><br><span class="line">        <span class="string">'from'</span>: from_lang,</span><br><span class="line">        <span class="string">'to'</span>: to_lang,</span><br><span class="line">        <span class="string">'salt'</span>: str(salt),</span><br><span class="line">        <span class="string">'sign'</span>: sign</span><br><span class="line">    &#125;</span><br><span class="line">    proxies = &#123;</span><br><span class="line">        <span class="string">"http"</span>: <span class="string">"http://127.0.0.1:8888"</span>,</span><br><span class="line">        <span class="string">"https"</span>: <span class="string">"http://127.0.0.1:8888"</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 发送请求</span></span><br><span class="line">    response = requests.get(api, data, proxies=proxies)</span><br><span class="line">    <span class="comment"># response = requests.get(api, data)</span></span><br><span class="line">    <span class="string">'''</span></span><br><span class="line"><span class="string">    &#123;</span></span><br><span class="line"><span class="string">        "from": "en",</span></span><br><span class="line"><span class="string">        "to": "zh",</span></span><br><span class="line"><span class="string">        "trans_result": [&#123;</span></span><br><span class="line"><span class="string">            "src": "apple",</span></span><br><span class="line"><span class="string">            "dst": "苹果"</span></span><br><span class="line"><span class="string">        &#125;]</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">    '''</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        json_obj = json.loads(str(response.text))</span><br><span class="line">        result = json_obj[<span class="string">'trans_result'</span>][<span class="number">0</span>][<span class="string">'dst'</span>]</span><br><span class="line">        print(<span class="string">'【'</span> + q + <span class="string">'】      目标语言【'</span> + to_lang + <span class="string">'】      响应的结果【'</span> + result + <span class="string">'】'</span>)</span><br><span class="line">        <span class="keyword">return</span> result</span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        print(str(response.text) + <span class="string">'【'</span> + q + <span class="string">'】      目标语言【'</span> + to_lang + <span class="string">'】'</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="string">'█'</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 翻译完后追加写入到 目标文件</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">trans_and_write</span><span class="params">(key, q)</span>:</span></span><br><span class="line">    <span class="keyword">for</span> lang <span class="keyword">in</span> to_lang_map:</span><br><span class="line">        result = trans_bd_api(q, lang)</span><br><span class="line">        out_put_file = out_put_file_name % to_lang_map.get(lang)</span><br><span class="line">        <span class="keyword">with</span> open(out_put_file, <span class="string">'a'</span>) <span class="keyword">as</span> f:</span><br><span class="line">            f.write(key + <span class="string">'='</span> + str(result) + <span class="string">'\n'</span>)</span><br><span class="line">            print(<span class="string">'['</span> + out_put_file + <span class="string">']   【'</span> + key + <span class="string">'='</span> + result + <span class="string">'】'</span>)</span><br><span class="line">        <span class="comment"># 非vip 不允许高频率请求接口</span></span><br><span class="line">        time.sleep(<span class="number">2</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">split_trans_content</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="comment"># 正则 待翻译的文本</span></span><br><span class="line">    pattern = re.compile(<span class="string">r'^(.*)=(.*)$'</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">with</span> open(from_file_path, <span class="string">'r+'</span>, encoding=<span class="string">'utf-8'</span>) <span class="keyword">as</span> f:</span><br><span class="line">        <span class="keyword">for</span> line <span class="keyword">in</span> f.readlines():</span><br><span class="line">            <span class="keyword">if</span> pattern.match(line.strip()):</span><br><span class="line">                groups = pattern.match(line.strip()).groups()</span><br><span class="line">                trans_and_write(groups[<span class="number">0</span>], groups[<span class="number">1</span>])</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">split_trans_content()</span><br></pre></td></tr></table></figure>
+<h2 id="响应结果"><a href="#响应结果" class="headerlink" title="响应结果"></a>响应结果</h2><p><img src="../../images/2019-6/blog20190709114706.png" alt></p>
+<h1 id="执行步骤"><a href="#执行步骤" class="headerlink" title="执行步骤"></a>执行步骤</h1><ol>
+<li>替换必要参数</li>
+<li>将待翻译的文件准备好与<code>from_file_path</code> 对应清楚</li>
+<li>执行脚本程序</li>
+<li>等待后，拿到翻译完成目标文件</li>
+<li>如果出错需要查看日志，并删除已翻译的文件（因为是追加写入的）</li>
+</ol>
+<blockquote>
+<p>为了调试方便，在执行 <code>response = requests.get(api, data, proxies=proxies)</code> 时，笔者 写入了代理服务器去查看请求，如果读者不需要注意需要注释掉</p>
+</blockquote>
+<h1 id="错误码列表"><a href="#错误码列表" class="headerlink" title="错误码列表"></a>错误码列表</h1><p><img src="../../images/2019-6/blog20190709114035.png" alt></p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        
+          
+        
+        <div class="post-tags">
+          
+            <a href="/tags/i18n/" rel="tag"># i18n</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019-06-编程语言/Java-guide-学习笔记/" rel="next" title="Java-guide 学习笔记">
+                <i class="fa fa-chevron-left"></i> Java-guide 学习笔记
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019-07-Web技术/Flex-布局学习/" rel="prev" title="Flex 布局学习">
+                Flex 布局学习 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/config/avatar.png" alt="cchao1024">
+            
+              <p class="site-author-name" itemprop="name">cchao1024</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">52</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">16</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">26</span>
+                    <span class="site-state-item-name">tags</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/cchao1024" title="GitHub &rarr; https://github.com/cchao1024" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:cchao1024@163.com" title="E-Mail &rarr; mailto:cchao1024@163.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+<!--网易云音乐-->
+<div id="music163player" style="margin-top: 15px">
+    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="360" height="86" src="//music.163.com/outchain/player?type=2&id=36664503&auto=1&height=66"></iframe>
+</div>
+
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#i18n"><span class="nav-number">1.</span> <span class="nav-text">i18n</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#百度翻译"><span class="nav-number">2.</span> <span class="nav-text">百度翻译</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#脚本源码"><span class="nav-number">3.</span> <span class="nav-text">脚本源码</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#必要参数"><span class="nav-number">3.1.</span> <span class="nav-text">必要参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Code"><span class="nav-number">3.2.</span> <span class="nav-text">Code</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#响应结果"><span class="nav-number">3.3.</span> <span class="nav-text">响应结果</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#执行步骤"><span class="nav-number">4.</span> <span class="nav-text">执行步骤</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#错误码列表"><span class="nav-number">5.</span> <span class="nav-text">错误码列表</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">cchao1024</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+    <span title="Symbols count total">218k</span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+    <span title="Reading time total">3:18</span>
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.1.2</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.2"></script>
+
+  <script src="/js/motion.js?v=7.1.2"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.1.2"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.1.2"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.2"></script>
+<script src="/js/post-details.js?v=7.1.2"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.2"></script>
+
+
+  
+
+  
+
+  
+
+  
+  
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+
+
+<script>
+  var disqus_config = function() {
+    this.page.url = "http://yoursite.com/2019-07-脚本实现/Spring-i18n国际化多语言翻译Python脚本/";
+    this.page.identifier = "2019-07-脚本实现/Spring-i18n国际化多语言翻译Python脚本/";
+    this.page.title = 'Spring i18n国际化多语言翻译Python脚本';
+    };
+  function loadComments() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', '' + +new Date());
+    (d.head || d.body).appendChild(s);
+  }
+  
+    window.addEventListener('load', loadComments, false);
+  
+</script>
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  <!-- 代码块复制功能 -->
+  <script type="text/javascript" src="/js/src/clipboard.min.js"></script>  
+  <script type="text/javascript" src="/js/src/clipboard-use.js"></script>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>

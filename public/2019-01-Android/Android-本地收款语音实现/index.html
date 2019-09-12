@@ -1,0 +1,1107 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html class="theme-next gemini" lang>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link rel="stylesheet" href="/lib/pace/pace-theme-flash.min.css?v=1.0.2">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.2">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.2">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.2">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.2">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.2" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: true,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="需求 需实现收到推送消息 （比如：支付宝到账 234.23元） 能播放语音文件。 遵循队列结构，先来的先播报，后来的排队等待。  原本使用的 第三方语音合成SDK 的，但在生产环境中发现播放播报会不播放或者播放一半就停止。 所以后面开始使用 本地的语音音频 (.mp3)  拼接播放，不再采用 sdk 方案。 当前使用android标配的 MediaPlayer 。 方案确定为了实现本地收款语音的播">
+<meta name="keywords" content="Android">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android 本地收款语音实现">
+<meta property="og:url" content="http://yoursite.com/2019-01-Android/Android-本地收款语音实现/index.html">
+<meta property="og:site_name" content="cchao1024 blog">
+<meta property="og:description" content="需求 需实现收到推送消息 （比如：支付宝到账 234.23元） 能播放语音文件。 遵循队列结构，先来的先播报，后来的排队等待。  原本使用的 第三方语音合成SDK 的，但在生产环境中发现播放播报会不播放或者播放一半就停止。 所以后面开始使用 本地的语音音频 (.mp3)  拼接播放，不再采用 sdk 方案。 当前使用android标配的 MediaPlayer 。 方案确定为了实现本地收款语音的播">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/images/2019-1/voice2.png">
+<meta property="og:updated_time" content="2019-09-12T08:52:18.237Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android 本地收款语音实现">
+<meta name="twitter:description" content="需求 需实现收到推送消息 （比如：支付宝到账 234.23元） 能播放语音文件。 遵循队列结构，先来的先播报，后来的排队等待。  原本使用的 第三方语音合成SDK 的，但在生产环境中发现播放播报会不播放或者播放一半就停止。 所以后面开始使用 本地的语音音频 (.mp3)  拼接播放，不再采用 sdk 方案。 当前使用android标配的 MediaPlayer 。 方案确定为了实现本地收款语音的播">
+<meta name="twitter:image" content="http://yoursite.com/images/2019-1/voice2.png">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://yoursite.com/2019-01-Android/Android-本地收款语音实现/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Android 本地收款语音实现 | cchao1024 blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband">
+
+    <a href="https://github.com/cchao1024" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a>
+    <style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    </div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">cchao1024 blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019-01-Android/Android-本地收款语音实现/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="cchao1024">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/config/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="cchao1024 blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Android 本地收款语音实现
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-01-13 14:53:51" itemprop="dateCreated datePublished" datetime="2019-01-13T14:53:51+08:00">2019-01-13</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-09-12 16:52:18" itemprop="dateModified" datetime="2019-09-12T16:52:18+08:00">2019-09-12</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">Comments: </span>
+                <a href="/2019-01-Android/Android-本地收款语音实现/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019-01-Android/Android-本地收款语音实现/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Symbols count in article: </span>
+                
+                <span title="Symbols count in article">4.9k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">4 mins.</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h1><blockquote>
+<p>需实现收到推送消息 （比如：支付宝到账 234.23元） 能播放语音文件。</p>
+<p>遵循队列结构，先来的先播报，后来的排队等待。</p>
+</blockquote>
+<p>原本使用的 <strong>第三方语音合成SDK</strong> 的，但在生产环境中发现播放播报会不播放或者播放一半就停止。</p>
+<p>所以后面开始使用 <strong>本地的语音音频</strong> (.mp3)  拼接播放，不再采用 sdk 方案。 当前使用android标配的 MediaPlayer 。</p>
+<h1 id="方案确定"><a href="#方案确定" class="headerlink" title="方案确定"></a>方案确定</h1><p>为了实现本地收款语音的播放，笔者想过多种方式实现：</p>
+<ol>
+<li>使用 单个MediaPlayer 循环，逐个播放音频文件</li>
+<li>使用 两个（或多个）MediaPlayer，交易播放音频队列</li>
+<li>使用多个MediaPlayer(对应音频文件数)，逐个播放音频文件</li>
+</ol>
+<p>笔者在实现编码中3种方案均有实现过，但发现方案1，2因为来回切换播放源会有严重延迟。</p>
+<p>最终确认方案3 是可行且稳妥的方案，以下是详细思路</p>
+<h1 id="实现思路"><a href="#实现思路" class="headerlink" title="实现思路"></a>实现思路</h1><ol>
+<li>初始化VoiceSpeaker时同时构建多个MediaPlayer(对应音频文件数)并设置好音频源</li>
+<li>调用者放入<strong>待播放语音文字</strong>（如：收款成功 23.5 元），判断如果正在播放，就将语音文字放入<strong>待播放队列</strong></li>
+<li>取出队列头部的<strong>待播放语音文字</strong>，将其转化成大写中文金额写法（如：收款成功 二十三点五元）</li>
+<li>根据中文金额的待播放语音文字<strong>映射</strong>成对应的音频文件名，封装成List （如：[2,ten,3,dot,5,元]</li>
+<li>遍历<strong>待播放音频文件名List</strong>  依次取出MediaPlayer列表播放</li>
+<li>播放完成，查看<strong>待播放队列</strong>是否有<strong>待播放语音文字</strong>，</li>
+<li>存在则继续执行 3-6，否则 END</li>
+</ol>
+<p>思路还是很清晰的，但是编写过程中还是遇到了问题。如下图</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">    二</span><br><span class="line">-----------       三</span><br><span class="line">              ----------      点</span><br><span class="line">                          ----------       五</span><br><span class="line">                                       ----------      元</span><br><span class="line">                                                    -----------</span><br></pre></td></tr></table></figure>
+<p>通过 <strong>setOnCompletionListener </strong> 监听上一播放音频的结束，结束了 才开始下一音频的播放，但是音频文件的前后部分 是会有一部分是没有声音的，这就导致 读起来像</p>
+<p>【收款成功，二    十    三   点   五  元】中间有间隔。</p>
+<p>所以 笔者相到一种方法：</p>
+<p>在上一音频还未播放结束时(到 85%这样）</p>
+<p>就开始播放下一音频（这个值可控）,如下图</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">   二</span><br><span class="line">---------    三</span><br><span class="line">        ----------    点</span><br><span class="line">                 ----------    五</span><br><span class="line">                          ----------   元</span><br><span class="line">                                   -----------</span><br></pre></td></tr></table></figure>
+<p>So，这个实现过程就是这样</p>
+<h1 id="code"><a href="#code" class="headerlink" title="code"></a>code</h1><h2 id="核心播放器"><a href="#核心播放器" class="headerlink" title="核心播放器"></a>核心播放器</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 播放者，通过 多个 MediaPlayer 分别播放音频文件。</span></span><br><span class="line"><span class="comment"> * 为了使播放更流畅，会利用TimerTask延时控制（比分比可控制）音频在还未结结算时就开始播放下一个音频。</span></span><br><span class="line"><span class="comment"> * 但特别的，短的（小于&#123;<span class="doctag">@link</span> Constant#ALL_PLAY_END_MIN&#125;ms）</span></span><br><span class="line"><span class="comment"> * 或长的（大于&#123;<span class="doctag">@link</span> Constant#ALL_PLAY_END_MAX&#125;ms)音频允许其播放完整个音频文件</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> cchao</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@version</span> 11/6/18.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">VoiceSpeaker</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">static</span> String TAG = <span class="string">"VoiceSpeaker"</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Context mContext;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> VoiceSpeaker mInstance;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 池</span></span><br><span class="line">    <span class="keyword">private</span> ExecutorService mExecutorService = Executors.newCachedThreadPool();</span><br><span class="line">    <span class="comment">// MediaPlayer 实体列表</span></span><br><span class="line">    HashMap&lt;String, MediaPlayer&gt; mPlayers = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 当前播放标识</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> mIndex = <span class="number">0</span>;</span><br><span class="line">    <span class="comment">// 待播放的队列（如多个语音需要播放 则会排队播放）</span></span><br><span class="line">    Queue&lt;List&lt;String&gt;&gt; mListQueue = <span class="keyword">new</span> LinkedBlockingDeque&lt;&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 当前播放的语音列表</span></span><br><span class="line">    List&lt;String&gt; mCurPlayList = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 当前播放状态</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">boolean</span> mIsPlaying;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">float</span> mRatio = Constant.NEXT_PLAY_RATIO;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 如果存在相同的数字 （比如：2.33 二点三三元） 则第一个三播放时需完整播放</span></span><br><span class="line">    <span class="keyword">private</span> String mSameNum;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//  记录这个list开始的播放时间，如果超过 认为的出错时间 就清空队列（避免污染下一次播放）</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">long</span> mPlayListStartTime = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">VoiceSpeaker</span><span class="params">(Context context)</span> </span>&#123;</span><br><span class="line">        mContext = context.getApplicationContext();</span><br><span class="line">        init();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 单例</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> VoiceSpeaker <span class="title">getInstance</span><span class="params">(Context context)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (mInstance != <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> mInstance;</span><br><span class="line">        &#125;</span><br><span class="line">        mInstance = <span class="keyword">new</span> VoiceSpeaker(context);</span><br><span class="line">        <span class="keyword">return</span> mInstance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="暴露的公共方法"><a href="#暴露的公共方法" class="headerlink" title="暴露的公共方法"></a>暴露的公共方法</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 设置音频播放多少比例后 开启下一音频的播放</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> ratio 比例</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setPlayRatio</span><span class="params">(<span class="keyword">float</span> ratio)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (ratio &gt; <span class="number">1</span> || ratio &lt; <span class="number">0.5</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    mRatio = ratio;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 设置允许播放完成的音频长度</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setMinMaxPlayEnd</span><span class="params">(<span class="keyword">long</span> min, <span class="keyword">long</span> max)</span> </span>&#123;</span><br><span class="line">    Constant.ALL_PLAY_END_MIN = min;</span><br><span class="line">    Constant.ALL_PLAY_END_MAX = max;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="播放"><a href="#播放" class="headerlink" title="播放"></a>播放</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 将待播放语音放入列表，如果当前非播放状态，则无需排队，直接播放</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> list 语音列表</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">putQueue</span><span class="params">(<span class="keyword">final</span> List&lt;String&gt; list)</span> </span>&#123;</span><br><span class="line">    <span class="comment">//  记录这个list开始的播放时间，如果超过 认为的出错时间 就清空队列（避免污染下一次播放）</span></span><br><span class="line">    <span class="keyword">if</span> (System.currentTimeMillis() - mPlayListStartTime &gt; Constant.ERROR_TIME_OUT) &#123;</span><br><span class="line">        mIsPlaying = <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (!mIsPlaying) &#123;</span><br><span class="line">        togglePlaying(<span class="keyword">true</span>);</span><br><span class="line">        startPlayList(list);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        mListQueue.add(list);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 播放下一音频</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">playNext</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (mIndex &gt;= mCurPlayList.size()) &#123;</span><br><span class="line">        <span class="keyword">if</span> (mListQueue.size() &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            startPlayList(mListQueue.remove());</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        togglePlaying(<span class="keyword">false</span>);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    String key = mCurPlayList.get(mIndex++);</span><br><span class="line">    togglePlaying(<span class="keyword">true</span>);</span><br><span class="line">    MediaPlayer mediaPlayer = mPlayers.get(key);</span><br><span class="line">    <span class="keyword">final</span> <span class="keyword">int</span> duration = mediaPlayer.getDuration();</span><br><span class="line">    mediaPlayer.start();</span><br><span class="line">    <span class="keyword">if</span> (!isAllowPlayEnd(mediaPlayer)) &#123;</span><br><span class="line">        mExecutorService.execute(<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    Thread.sleep((<span class="keyword">long</span>) (duration * mRatio));</span><br><span class="line">                    playNext();</span><br><span class="line">                &#125; <span class="keyword">catch</span> (Exception ex) &#123;</span><br><span class="line">                    ex.printStackTrace();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="如何使用"><a href="#如何使用" class="headerlink" title="如何使用"></a>如何使用</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 添加依赖</span></span><br><span class="line">implementation <span class="string">'com.github.cchao:VoiceSpeaker:1.0.0'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 初始化</span></span><br><span class="line">mVoiceSpeaker = VoiceSpeaker.getInstance(<span class="keyword">this</span>);</span><br><span class="line">mVoiceSpeaker.setPlayRatio(<span class="number">0.88f</span>);</span><br><span class="line">mVoiceSpeaker.setMinMaxPlayEnd(<span class="number">100</span>, <span class="number">1500</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 放入队列播放</span></span><br><span class="line">mVoiceSpeaker.putQueue(<span class="keyword">new</span> VoiceSynthesize()</span><br><span class="line"> .prefix(<span class="string">"success"</span>)</span><br><span class="line"> .numString(money)</span><br><span class="line"> .build());</span><br></pre></td></tr></table></figure>
+<p>详细代码请移步 <a href="https://github.com/cchao1024/voicePlayer" target="_blank" rel="noopener">https://github.com/cchao1024/voicePlayer</a></p>
+<p>可以通过运行 sample 查看默认的效果，sample界面如下：</p>
+<p><img src="../../images/2019-1/voice2.png" alt="1547369007444"></p>
+<h1 id="ref"><a href="#ref" class="headerlink" title="ref"></a>ref</h1><p><a href="https://www.jianshu.com/p/df2022b3937d" target="_blank" rel="noopener">https://www.jianshu.com/p/df2022b3937d</a></p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        
+          
+        
+        <div class="post-tags">
+          
+            <a href="/tags/Android/" rel="tag"># Android</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018-12-脚本实现/Shell脚本简明教程/" rel="next" title="Shell 脚本简明教程">
+                <i class="fa fa-chevron-left"></i> Shell 脚本简明教程
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019-02-周边积累/译-Nginx引导教程/" rel="prev" title="[译] Nginx引导教程">
+                [译] Nginx引导教程 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/config/avatar.png" alt="cchao1024">
+            
+              <p class="site-author-name" itemprop="name">cchao1024</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">52</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">16</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">26</span>
+                    <span class="site-state-item-name">tags</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/cchao1024" title="GitHub &rarr; https://github.com/cchao1024" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:cchao1024@163.com" title="E-Mail &rarr; mailto:cchao1024@163.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+<!--网易云音乐-->
+<div id="music163player" style="margin-top: 15px">
+    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="360" height="86" src="//music.163.com/outchain/player?type=2&id=36664503&auto=1&height=66"></iframe>
+</div>
+
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#需求"><span class="nav-number">1.</span> <span class="nav-text">需求</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#方案确定"><span class="nav-number">2.</span> <span class="nav-text">方案确定</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#实现思路"><span class="nav-number">3.</span> <span class="nav-text">实现思路</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#code"><span class="nav-number">4.</span> <span class="nav-text">code</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#核心播放器"><span class="nav-number">4.1.</span> <span class="nav-text">核心播放器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#暴露的公共方法"><span class="nav-number">4.2.</span> <span class="nav-text">暴露的公共方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#播放"><span class="nav-number">4.3.</span> <span class="nav-text">播放</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#如何使用"><span class="nav-number">5.</span> <span class="nav-text">如何使用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ref"><span class="nav-number">6.</span> <span class="nav-text">ref</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">cchao1024</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+    <span title="Symbols count total">218k</span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+    <span title="Reading time total">3:18</span>
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.1.2</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.2"></script>
+
+  <script src="/js/motion.js?v=7.1.2"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.1.2"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.1.2"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.2"></script>
+<script src="/js/post-details.js?v=7.1.2"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.2"></script>
+
+
+  
+
+  
+
+  
+
+  
+  
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+
+
+<script>
+  var disqus_config = function() {
+    this.page.url = "http://yoursite.com/2019-01-Android/Android-本地收款语音实现/";
+    this.page.identifier = "2019-01-Android/Android-本地收款语音实现/";
+    this.page.title = 'Android 本地收款语音实现';
+    };
+  function loadComments() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', '' + +new Date());
+    (d.head || d.body).appendChild(s);
+  }
+  
+    window.addEventListener('load', loadComments, false);
+  
+</script>
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  <!-- 代码块复制功能 -->
+  <script type="text/javascript" src="/js/src/clipboard.min.js"></script>  
+  <script type="text/javascript" src="/js/src/clipboard-use.js"></script>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>

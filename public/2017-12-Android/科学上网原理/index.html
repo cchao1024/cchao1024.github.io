@@ -1,0 +1,1168 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html class="theme-next gemini" lang>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link rel="stylesheet" href="/lib/pace/pace-theme-flash.min.css?v=1.0.2">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.2">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.2">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.2">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.2">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.2" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: true,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="防火墙 防火墙（英文：Firewall）是一个架设在互联网与内网之间的资安系统，根据预定的策略来监控往来的数据传输。  防火长城（英语：Great Firewall (of China)，常用简称：GFW，是对中华人民共和国政府在其互联网边界审查系统（包括相关行政审查系统）的统称。此系统起步于1998年，其英文名称得自于2002年5月17日Charles R. Smith所写的一篇关于中国网络审查">
+<meta name="keywords" content="科学上网">
+<meta property="og:type" content="article">
+<meta property="og:title" content="科学上网原理">
+<meta property="og:url" content="http://yoursite.com/2017-12-Android/科学上网原理/index.html">
+<meta property="og:site_name" content="cchao1024 blog">
+<meta property="og:description" content="防火墙 防火墙（英文：Firewall）是一个架设在互联网与内网之间的资安系统，根据预定的策略来监控往来的数据传输。  防火长城（英语：Great Firewall (of China)，常用简称：GFW，是对中华人民共和国政府在其互联网边界审查系统（包括相关行政审查系统）的统称。此系统起步于1998年，其英文名称得自于2002年5月17日Charles R. Smith所写的一篇关于中国网络审查">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/images/2017-12/gfw1.jpg">
+<meta property="og:image" content="http://yoursite.com/images/2017-12/gfw2.jpg">
+<meta property="og:updated_time" content="2019-09-12T08:52:18.234Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="科学上网原理">
+<meta name="twitter:description" content="防火墙 防火墙（英文：Firewall）是一个架设在互联网与内网之间的资安系统，根据预定的策略来监控往来的数据传输。  防火长城（英语：Great Firewall (of China)，常用简称：GFW，是对中华人民共和国政府在其互联网边界审查系统（包括相关行政审查系统）的统称。此系统起步于1998年，其英文名称得自于2002年5月17日Charles R. Smith所写的一篇关于中国网络审查">
+<meta name="twitter:image" content="http://yoursite.com/images/2017-12/gfw1.jpg">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://yoursite.com/2017-12-Android/科学上网原理/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>科学上网原理 | cchao1024 blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband">
+
+    <a href="https://github.com/cchao1024" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a>
+    <style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    </div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">cchao1024 blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017-12-Android/科学上网原理/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="cchao1024">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/config/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="cchao1024 blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">科学上网原理
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2017-12-23 00:00:00" itemprop="dateCreated datePublished" datetime="2017-12-23T00:00:00+08:00">2017-12-23</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-09-12 16:52:18" itemprop="dateModified" datetime="2019-09-12T16:52:18+08:00">2019-09-12</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/基础知识/" itemprop="url" rel="index"><span itemprop="name">基础知识</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">Comments: </span>
+                <a href="/2017-12-Android/科学上网原理/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017-12-Android/科学上网原理/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Symbols count in article: </span>
+                
+                <span title="Symbols count in article">5k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">5 mins.</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="防火墙"><a href="#防火墙" class="headerlink" title="防火墙"></a>防火墙</h1><blockquote>
+<p>防火墙（英文：Firewall）是一个架设在互联网与内网之间的资安系统，根据预定的策略来监控往来的数据传输。</p>
+</blockquote>
+<p>防火长城（英语：Great Firewall (of China)，常用简称：GFW，是对中华人民共和国政府在其互联网边界审查系统（包括相关行政审查系统）的统称。此系统起步于1998年，其英文名称得自于2002年5月17日Charles R. Smith所写的一篇关于中国网络审查的文章，取与Great Wall（长城）相谐的效果，简写为Great Firewall，缩写GFW。随着使用的拓广，中文”墙”和英文”GFW”有时也被用作动词，网友所说的”被墙”即指被防火长城所屏蔽，”翻墙”也被引申为浏览境外网站的行为。</p>
+<p><img src="../../images/2017-12/gfw1.jpg" alt="防火长城"></p>
+<p>一般情况下，防火长城主要指中国政府监控和过滤互联网国际出口上内容的软硬件系统的集合。但中国政府并进一步设置将查获的特定网点阻断等，造成大家所熟知的连接错误现象，因此防火墙不是中国特有的一个专门单位，是由分散部门的各服务器和路由器等设备，加上相关公司的应用程序所构成，是一个跨军民合作的大型信息管制系统，防火长城的作用主要是监控国际网关上的通讯，对部分的传输内容，进行干扰、阻断、屏蔽。含有”不合适”内容的网站，会受到政府直接的行政干预，被要求自我审查、自我监管，乃至关闭，故防火长城主要作用在于分析和过滤中国境外网络的信息互相访问。</p>
+<h1 id="墙的主要技术"><a href="#墙的主要技术" class="headerlink" title="墙的主要技术"></a>墙的主要技术</h1><h2 id="DNS污染"><a href="#DNS污染" class="headerlink" title="DNS污染"></a>DNS污染</h2><blockquote>
+<p>防火长城对所有经过骨干出口路由的在UDP的53端口(域名解析)进行监测，一经发现与 <strong>黑名单列表</strong> 相匹配的域名查询请求，防火长城会伪装成目标域名的解析服务器给查询者返回虚假结果。由于通常的域名查询没有任何认证机制，而且域名查询通常基于的UDP协议是无连接不可靠的协议，查询者只能接受最先到达的格式正确结果，并丢弃之后的结果。用户若改用TCP在53端口上进行DNS查询，虽然不会被防火长城污染，但可能会遭遇连接重置，导致无法获得目标网站的IP地址。</p>
+</blockquote>
+<p>当我们访问某一墙外网站时，最新需要的就是根据域名获取到相应网站的IP地址，而墙就会在主干网络（比如 上海的路由中转）返回错误的IP地址，我们拿到这个错误的IP自然无法正确访问到数据。</p>
+<p>应对DNS污染，我们想到了如果我们直接通过访问网站的IP地址（不是域名），是不是意味着不进行域名解析了，不需要访问DNS服务器了，也就不被误导去错误的地址了。</p>
+<p>那问题来了，我们不通过域名解析怎么能知道正确的网站IP呢？</p>
+<p>社区从来不缺乐于助人的工程师。<a href="https://github.com/racaljk/hosts" target="_blank" rel="noopener">https://github.com/racaljk/hosts</a> 通过他人分享的host文件替换自己本地的就阔以了。</p>
+<p>没错，我们就是这么一群品德高尚、心地善良的人，捂脸。</p>
+<h2 id="IP封锁"><a href="#IP封锁" class="headerlink" title="IP封锁"></a>IP封锁</h2><p>既然我们可以通过IP直接访问网站，是不是墙也可以屏蔽掉这个IP的访问请求呢？没错，它确实这么做了，在以前墙有一张 <strong>访问控制列表</strong>，就是一张映射表，列出某某IP可以访问，某某IP不可以。在主干路由对传输的IP报文的目标地址进行比较，决定改报文是否能正确送达。</p>
+<p>后面被 <strong>路由扩散技术</strong> 替代了，该技术理解为，网络管理员通过 <strong>静态路由协议</strong> 在某一主干路由故意把特定IP路由到错误的服务器，然后其他相邻路由根据 <strong>动态路由协议</strong> 在进行分享路由信息时，就也拿到了错误的路由路径。。。然后整个局域网对该IP的路由信息都是错的。</p>
+<p>假设网络管理者在配置的时候故意将IP路由到一台接受所有数据的服务器（<strong>黑洞服务器</strong>），他就能收集所有对封锁IP的网络交互，可能还返回引导向善之类的页面。</p>
+<p>以前一个IP可能不仅仅对应一个网站（<strong>VPS 虚拟主机服务</strong>）,所有墙的这种方式很容易误伤，比如我是守法公民，刚好和坏坏的网站使用同一个虚拟主机服务提供商且分到了同一个ip（端口不一样），就被误杀了。所有，墙就把封锁粒度调到端口了，针对特定的 [IP+端口] 封锁。</p>
+<h1 id="代理"><a href="#代理" class="headerlink" title="代理"></a>代理</h1><h2 id="HTTP代理"><a href="#HTTP代理" class="headerlink" title="HTTP代理"></a>HTTP代理</h2><p>既然IP不能直接访问了，那是不是可以通过中间人访问到目标地址呢。举个例子。</p>
+<p>上课时小明想给小红小纸条，但是班主任看着呢。小明就假假的和学习委员讨论问题，然后委托学习委员把纸条给小红，学习委员又假假的和小红讨论问题，最后把纸条给了小红。学习委员在这个场景里就是 <strong>代理服务器</strong>。</p>
+<p><img src="../../images/2017-12/gfw2.jpg" alt="REST API"></p>
+<p>在上面的场景中，我们知道了代理的工作机制，</p>
+<p>但是互联网不像我们普通的沟通，没协议你说个球呀。所以我们熟悉的Http就先上了。</p>
+<p>HTTP代理很简单，就是墙内 <strong>客户端A</strong> 试图与 <strong>服务器B</strong> 进行数据交互。但是直接连接受限制了，于是A和B就通过 <strong>代理服务器C</strong> 转发数据完成交互，这里C与A或B的通讯应不受限制。</p>
+<p>首先A和 <strong>代理服务器C</strong> 建立TCP连接，然后通过Http(S)协议发起 <strong>CONNECT 请求</strong> 告诉C去连接目标服务器B。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">CONNECT www.google.com:80 HTTP/1.1</span><br><span class="line">Host: www.google.com:80</span><br><span class="line">Proxy-Connection: Keep-Alive</span><br><span class="line">Proxy-Authorization: Basic + [BASE64编码的账号和密码]</span><br><span class="line">Content-Length: 0</span><br></pre></td></tr></table></figure>
+<p>C在收到请求并验证身份完成后发出响应。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">HTTP/1.1 200 Connection Established</span><br></pre></td></tr></table></figure>
+<p>至此，代理服务器就确定了自己作为 <strong>中间人</strong> 的角色完成双方的数据通讯。</p>
+<p>A在收到C的响应后，就把原先要发送给B的数据发送给C，C再转交给B（数据回传也同理），这里需要注意的在 <strong>完成代理关系确定后，A和B的通讯不仅仅是HTTP协议了 ，他们可以是其他TCP/IP协议。</strong> 如：POP2、SMTP、FTP等等。</p>
+<p>虽然HTTP代理看上去应该是阔以的，但是不要忘了，请求行是文明传输的，你想要发CONNET连接的时候各大的主干路由都知道了。拿你的目标地址和黑名单比对，匹配上了就把你的包肆意处理了。然后就没有然后了。。。</p>
+<h2 id="VPN"><a href="#VPN" class="headerlink" title="VPN"></a>VPN</h2><p>从上面Http代理的惨痛失败中我们可以知道，任何明文的传输都会把自己的想法暴露出去。所以理所当然的我们想到了加密传输，而且要先建立加密连接（不暴露目标服务器信息）然后再发送目标数据。这个加密连接我们称为 <strong>隧道</strong>，建立该隧道的协议称为 <strong>隧道协议</strong>。<br>VPN（虚拟专用网Virtual Private Network）就是利用隧道协议来进行通讯的，客户端先与VPN服务器认证，建立隧道，然后再通过隧道发送加密的数据，经过VPN服务器的代理中转送达目标服务器。可想而知VPN提供商是能知道客户端与目标服务器通讯的所有报文的，所以通讯内容其实是不隐秘的。其次墙虽然不知道你的目标服务器，但是他可以感知某个VPN服务器被大量的客户端频繁访问，然后搞事情。</p>
+<p>隧道协议有许多种实现，比如：</p>
+<p>基于数据包:</p>
+<ul>
+<li>IPsec</li>
+<li>一般路由封装（GRE），支持多种网络层协议和多路技术</li>
+<li>IP in IP[2]，比GRE更小的负载头，并且适合只有负载一个IP流的情况。</li>
+<li>L2TP（数据链接层隧道协议）[3]</li>
+<li>MPLS （多协议标签交换）</li>
+<li>GTP</li>
+<li>PPTP（点对点隧道协议） [4]</li>
+<li>PPPoE（基于以太网的点对点隧道）</li>
+<li>PPPoA（基于ATM的点对点隧道）</li>
+<li>IEEE 802.1Q （以太网VLANs）</li>
+<li>DLSw（英语：DLSw） (SNA负载互联网协议)</li>
+<li>XOT（英语：XOT） (X.25数据片负载TCP)</li>
+<li>IPv6 穿隧：6to4、6in4、Teredo</li>
+</ul>
+<p>基于流:</p>
+<ul>
+<li>传输层安全</li>
+<li>SSH</li>
+<li>SOCKS</li>
+<li>HTTP CONNECT 命令</li>
+</ul>
+<h2 id="SSH"><a href="#SSH" class="headerlink" title="SSH"></a>SSH</h2><blockquote>
+<p>SSH的英文全称是Secure SHell。通过使用SSH，你可以把所有传输的数据进行加密，这样“中间人”这种攻击方式就不可能实现了，而且也能够防止DNS和IP欺骗。还有一个额外的好处就是传输的数据是经过压缩的，所以可以加快传输的速度。SSH有很多功能，它既可以代替telnet，又可以为ftp、pop、甚至ppp提供一个安全的“通道”。SSH是由客户端和服务端的软件组成的，有两个不兼容的版本分别是：1.x和2.x。用SSH 2.x的客户程序是不能连接到SSH 1.x的服务程序上去的。OpenSSH 2.x同时支持SSH 1.x和2.x。</p>
+</blockquote>
+<p>SSH 提供两种级别的安全验证</p>
+<ul>
+<li>第一种级别（基于口令的安全验证） 只要你知道自己帐号和口令，就可以登录到远程主机。所有传输的数据都会被加密，但是不能保证你正在连接的服务器就是你想连接的服务器。可能会有别的服务器在冒充真正的服务器，也就是受到“中间人”这种方式的攻击。</li>
+<li><p>第二种级别（基于密匙的安全验证） 需要依靠密匙，也就是你必须为自己创建一对密匙，并把公用密匙放在需要访问的服务器上。如果你要连接到SSH服务器上，客户端软件就会向服务器发出请求，请求用你的密匙进行安全验证。服务器收到请求之后，先在你在该服务器的Home目录下寻找你的公用密匙，然后把它和你发送过来的公用密匙进行比较。如果两个密匙一致，服务器就用公用密匙加密“质询”（challenge）并把它发送给客户端软件。客户端软件收到“质询”之后就可以用你的私人密匙解密再把它发送给服务器。用这种方式，你必须知道自己密匙的口令。</p>
+<p>与第一种级别相比，第二种级别不需要在网络上传送口令。第二种级别不仅加密所有传送的数据，而且“中间人”这种攻击方式也是不可能的（因为他没有你的私人密匙）。但是整个登录的过程可能需要10秒。</p>
+</li>
+</ul>
+<h2 id="SOCKS"><a href="#SOCKS" class="headerlink" title="SOCKS"></a>SOCKS</h2><blockquote>
+<p>SOCKS是一种 <strong>会话层网络代理协议</strong> ，主要用于客户端与外网服务器之间通讯的中间传递</p>
+</blockquote>
+<p>同样是代理协议 SOCKS工作的层级和HTTP代理更低。我们知道HTTP是应用层协议，需要建立TCP链接,发了HTPP的CONNECT代理请求（这个时候暴露了目标服务器地址）代理才能走通，而且该代理也只能转发TCP报文。而SOCKS5支持UDP和TCP。</p>
+<p>其转发过程可以概括如下：</p>
+<ol>
+<li>代理服务器B 监听发给1080端口，客户端A 与代理服务端 <strong>建立TCP连接</strong>（3次握手） （1-3）</li>
+<li>客户端A 发送支持的 <strong>认证方式列表</strong> ，代理服务器B 发送报文收到的响应 （4-5）</li>
+<li>代理服务器B 发送 <strong>选择响应认证方式</strong> ，客户端A发送报文收到的响应 （6-7）</li>
+<li>（认证过程，无需认证就跳过该步骤）</li>
+<li>客户端A 发送 <strong>连接目标服务器的请求</strong>，包含目标服务器IP，端口，连接方式（TCP/IP流、TCP/IP端口、UDP端口），地址类型（域名、IPV4、IPV6）,代理服务器B 发送报文收到的响应 （8-9）</li>
+<li>代理服务器B <strong>发送对代理请求的响应</strong>，包含目标服务器IP，端口等。客户端A发送报文收到的响应（10-11）</li>
+<li>客户端A向目标服务器发送HTTP请求（或者其他基于TCP/UDP的协议），代理服务器B 发送报文收到的响应（12-13）</li>
+<li>代理服务器B 对目标服务器 <strong>发送HTTP请求</strong>，目标服务器发送HTTP响应。</li>
+<li>代理服务器B 对客户端A <strong>转发HTTP响应</strong>，客户端A 发送报文收到的响应 （14-15）</li>
+<li>TCP四次挥手，<strong>关闭连接</strong> （16-19）</li>
+</ol>
+<h2 id="SSH-SOCKS"><a href="#SSH-SOCKS" class="headerlink" title="SSH + SOCKS"></a>SSH + SOCKS</h2><blockquote>
+<p>由于SOCKS是明文传输的，所以这样直接明目张胆的传输数据肯定是不对嘀。从上文我们知道SSH是可以建立加密的通讯隧道。</p>
+</blockquote>
+<p>SO 我可以这样，通过SSH 建立加密的隧道，然后 SSH服务端 转发我们的请求给 SOCKS服务器程序（端口1080）。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -f -C2qTnN -D 1080 &lt;username&gt;@&lt;remote SSH server&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>-f  后台运行</li>
+<li>-C 压缩</li>
+<li>-2 只支持版本2协议</li>
+<li>-q 静默模式</li>
+<li>-T 禁用伪终端分配</li>
+<li>-n  阻止从标准输入读取。后台运行的话，必须使用。</li>
+<li>-N 不执行远程命令</li>
+<li>-D [bind_address : ] port <strong>本地动态应用级端口转发</strong>。没有指定address将监听在127.0.0.1上。</li>
+</ul>
+<h2 id="Shadowsocks"><a href="#Shadowsocks" class="headerlink" title="Shadowsocks"></a>Shadowsocks</h2><p><strong>Shadowsocks</strong> Shadowsocks是通过协定好客户端和代理服务器使用的 <strong>对称加密算法</strong>。</p>
+<p>客户端发过去的时候加密，SS代理收的时候解密，解密获取到明文的请求信息后对目标服务器发起请求。SS代理收到响应后加密回传给客户端。</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        
+          
+        
+        <div class="post-tags">
+          
+            <a href="/tags/科学上网/" rel="tag"># 科学上网</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017-12-脚本实现/Gradle实现Onesignal推送/" rel="next" title="Gradle实现Onesignal推送">
+                <i class="fa fa-chevron-left"></i> Gradle实现Onesignal推送
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018-04-运维技术/Linux 常用命令/" rel="prev" title="Linux 常用命令">
+                Linux 常用命令 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/config/avatar.png" alt="cchao1024">
+            
+              <p class="site-author-name" itemprop="name">cchao1024</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">52</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">16</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">26</span>
+                    <span class="site-state-item-name">tags</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/cchao1024" title="GitHub &rarr; https://github.com/cchao1024" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:cchao1024@163.com" title="E-Mail &rarr; mailto:cchao1024@163.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+<!--网易云音乐-->
+<div id="music163player" style="margin-top: 15px">
+    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="360" height="86" src="//music.163.com/outchain/player?type=2&id=36664503&auto=1&height=66"></iframe>
+</div>
+
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#防火墙"><span class="nav-number">1.</span> <span class="nav-text">防火墙</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#墙的主要技术"><span class="nav-number">2.</span> <span class="nav-text">墙的主要技术</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#DNS污染"><span class="nav-number">2.1.</span> <span class="nav-text">DNS污染</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IP封锁"><span class="nav-number">2.2.</span> <span class="nav-text">IP封锁</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#代理"><span class="nav-number">3.</span> <span class="nav-text">代理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTP代理"><span class="nav-number">3.1.</span> <span class="nav-text">HTTP代理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#VPN"><span class="nav-number">3.2.</span> <span class="nav-text">VPN</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SSH"><span class="nav-number">3.3.</span> <span class="nav-text">SSH</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SOCKS"><span class="nav-number">3.4.</span> <span class="nav-text">SOCKS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SSH-SOCKS"><span class="nav-number">3.5.</span> <span class="nav-text">SSH + SOCKS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Shadowsocks"><span class="nav-number">3.6.</span> <span class="nav-text">Shadowsocks</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">cchao1024</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+    <span title="Symbols count total">218k</span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+    <span title="Reading time total">3:18</span>
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.1.2</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.2"></script>
+
+  <script src="/js/motion.js?v=7.1.2"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.1.2"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.1.2"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.2"></script>
+<script src="/js/post-details.js?v=7.1.2"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.2"></script>
+
+
+  
+
+  
+
+  
+
+  
+  
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+
+
+<script>
+  var disqus_config = function() {
+    this.page.url = "http://yoursite.com/2017-12-Android/科学上网原理/";
+    this.page.identifier = "2017-12-Android/科学上网原理/";
+    this.page.title = '科学上网原理';
+    };
+  function loadComments() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', '' + +new Date());
+    (d.head || d.body).appendChild(s);
+  }
+  
+    window.addEventListener('load', loadComments, false);
+  
+</script>
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  <!-- 代码块复制功能 -->
+  <script type="text/javascript" src="/js/src/clipboard.min.js"></script>  
+  <script type="text/javascript" src="/js/src/clipboard-use.js"></script>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
