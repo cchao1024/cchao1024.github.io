@@ -1,0 +1,1132 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html class="theme-next gemini" lang>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link rel="stylesheet" href="/lib/pace/pace-theme-flash.min.css?v=1.0.2">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.2">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.2">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.2">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.2">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.2" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: true,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="本文为译文，原文来至 http://nginx.org/en/docs/beginners_guide.html  Guide本教程基础的介绍了 nginx，以及能使用nginx完成的简单任务。本教程建立在读者已经安装了 nginx，如果并没有，请移步  Installing nginx。本教程将包括以下内容：  nginx 的开启和关闭 nginx 重启配置 配置文件结构说明 配置 nginx">
+<meta name="keywords" content="nginx">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[译] Nginx引导教程">
+<meta property="og:url" content="http://yoursite.com/2019-02-周边积累/译-Nginx引导教程/index.html">
+<meta property="og:site_name" content="cchao1024 blog">
+<meta property="og:description" content="本文为译文，原文来至 http://nginx.org/en/docs/beginners_guide.html  Guide本教程基础的介绍了 nginx，以及能使用nginx完成的简单任务。本教程建立在读者已经安装了 nginx，如果并没有，请移步  Installing nginx。本教程将包括以下内容：  nginx 的开启和关闭 nginx 重启配置 配置文件结构说明 配置 nginx">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-11-19T07:08:23.848Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="[译] Nginx引导教程">
+<meta name="twitter:description" content="本文为译文，原文来至 http://nginx.org/en/docs/beginners_guide.html  Guide本教程基础的介绍了 nginx，以及能使用nginx完成的简单任务。本教程建立在读者已经安装了 nginx，如果并没有，请移步  Installing nginx。本教程将包括以下内容：  nginx 的开启和关闭 nginx 重启配置 配置文件结构说明 配置 nginx">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://yoursite.com/2019-02-周边积累/译-Nginx引导教程/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>[译] Nginx引导教程 | cchao1024 blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband">
+
+    <a href="https://github.com/cchao1024" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a>
+    <style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    </div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">cchao1024 blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Navigationsleiste an/ausschalten">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Startseite</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>Über</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Schlagwörter</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Kategorien</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archiv</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019-02-周边积累/译-Nginx引导教程/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="cchao1024">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/config/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="cchao1024 blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">[译] Nginx引导教程
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+
+              
+                
+              
+
+              <time title="Erstellt: 2019-02-11 11:49:57" itemprop="dateCreated datePublished" datetime="2019-02-11T11:49:57+08:00">2019-02-11</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Bearbeitet am</span>
+                
+                <time title="Geändert am: 2019-11-19 15:08:23" itemprop="dateModified" datetime="2019-11-19T15:08:23+08:00">2019-11-19</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">in</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/周边积累/" itemprop="url" rel="index"><span itemprop="name">周边积累</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">Kommentare: </span>
+                <a href="/2019-02-周边积累/译-Nginx引导教程/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019-02-周边积累/译-Nginx引导教程/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Symbole im Artikel gezählt: </span>
+                
+                <span title="Symbole im Artikel gezählt">3.8k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Lesezeit &asymp;</span>
+                
+                <span title="Lesezeit">3 minuten.</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>本文为译文，原文来至 <a href="http://nginx.org/en/docs/beginners_guide.html" target="_blank" rel="noopener">http://nginx.org/en/docs/beginners_guide.html</a></p>
+</blockquote>
+<h1 id="Guide"><a href="#Guide" class="headerlink" title="Guide"></a>Guide</h1><p>本教程基础的介绍了 nginx，以及能使用nginx完成的简单任务。<br>本教程建立在读者已经安装了 nginx，如果并没有，请移步  <a href="http://nginx.org/en/docs/install.html" target="_blank" rel="noopener">Installing nginx</a>。<br>本教程将包括以下内容：</p>
+<ul>
+<li>nginx 的开启和关闭</li>
+<li>nginx 重启配置</li>
+<li>配置文件结构说明</li>
+<li>配置 nginx 提供静态服务</li>
+<li>配置 nginx 作为代理服务器</li>
+<li>连接 nginx 与 FastCGI 应用</li>
+</ul>
+<p>nginx 拥有<strong>一个主进程</strong>和<strong>多个工作进程</strong>，主进程的主要任务是管理配置信息和调度工作进程。<strong>工作进程做真实的请求处理</strong>。<br>nginx 基于事件的模型和操作系统平台依托的机制在工作进程间有效地分发请求。<br>工作进程的数量是配置文件定义的，可以通过配置文件固定，也可以根据cpu核心数自适应（<a href="http://nginx.org/en/docs/ngx_core_module.html#worker_processes" target="_blank" rel="noopener">worker_processes</a>)。<br>nginx的工作方式和模块情况取决于它的配置文件 <strong>nginx.conf</strong> ，而它的配置文件一般在</p>
+<ul>
+<li>/usr/local/nginx/conf 或者</li>
+<li>/etc/nginx 或者</li>
+<li>/usr/local/etc/nginx</li>
+</ul>
+<h1 id="启动，关闭，刷新配置"><a href="#启动，关闭，刷新配置" class="headerlink" title="启动，关闭，刷新配置"></a>启动，关闭，刷新配置</h1><p>运行可执行文件启动nginx,nginx启动后可以通过 -s 参数去 控制它<br><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">nginx</span> -s SIGNAL</span><br></pre></td></tr></table></figure></p>
+<p>SIGNAL 可以是如下值</p>
+<ul>
+<li>stop —— 快速停止</li>
+<li>quit —— 优雅停止</li>
+<li>reload —— 刷新配置文件</li>
+<li>reopen —— 重新打开log文件</li>
+</ul>
+<p>比如：你希望 等工作进程完成当前正在处理的请求后就停止 nginx 进程，可以使用<br><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">nginx</span> -s quit</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>注意，执行这个命令的用户要和启动nginx的用户是同一个。</p>
+</blockquote>
+<p>如果你修改了配置文件，那么你需要执行reload命令或者重启nginx才能生效<br><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">nginx</span> -s reload</span><br></pre></td></tr></table></figure></p>
+<p>主进程在收到reload命令时，会去检查配置文件的语法并且尝试去应用配置的内容。<br>如果成功，主进程就会启动一个新的工作进程去发送信息命令其他工作进程关闭；<br>否则主进程将会 <strong>回滚</strong>，并应用回上一次的配置信息，工作进程继续工作着。<br>工作进程收到关闭的命令后将不再接受新的客户端请求，<strong>继续完成手头上的请求后关闭</strong>。</p>
+<p>在类Unix系统平台上也可以通过类似kill的命令向nginx发送消息，这样的消息一般是直接发送给用进程ID标识的nginx进程。<br>nginx的主进程ID默认是写在 <strong>/usr/local/nginx/logs</strong> 或者 <strong>/var/run</strong> 目录下的 nginx.pid。<br>比如当前nginx主进程的进程ID是1628，可以这样</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 优雅的关闭nginx</span></span><br><span class="line">* kill -s quit 1628 </span><br><span class="line"><span class="comment"># 通过 ps 可以获取到 nginx 进程号</span></span><br><span class="line">* ps -ax | grep nginx</span><br></pre></td></tr></table></figure>
+<p>更多的信息，请求查看<a href="http://nginx.org/en/docs/control.html" target="_blank" rel="noopener">Controlling nginx</a></p>
+<h1 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h1><p>nginx由模块组成，这些模块由配置文件中指定的指令控制。<br>指令分为<strong>简单指令</strong>和<strong>指令块</strong>。</p>
+<ul>
+<li><strong>简单指令</strong>   由以分号结尾，空格分隔的键值对组成[  key  value ; ]</li>
+<li><strong>指令块</strong>    和简单指令结构相同，但是使用一对大括号（ {} ）去包裹一组指令。<br>  包含其他指令的指令块称为<strong>上下文</strong> （比如events，http, server和location）</li>
+</ul>
+<p>在配置文件中，块级指令之外的区域称之为主(根)上下文（main context)。<br>比如：<br>events 和 http 指令是处在主上下文里的，<br>server指令是处在http上下文里中，<br>location指令又是处在server上下文里中。</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">主（根）上下文</span><br><span class="line">http&#123;</span><br><span class="line">    server&#123;</span><br><span class="line">       <span class="section">location</span> &#123;</span><br><span class="line">       &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>同一行内 # 字符后的都是注释</strong></p>
+<h1 id="静态资源服务"><a href="#静态资源服务" class="headerlink" title="静态资源服务"></a>静态资源服务</h1><p>Web服务器的一项重要功能就是能充当静态服务器（如：图片，静态HTML文本)。<br>比如你要实现这样的情景：<br>【根据不同的请求，nginx会返回指定的文件资源】<br><strong>/data/images</strong> 目录下的图片<br><strong>/data/www/</strong> 目录下的html文件。<br>只需要配置 nginx 文件，在 http 配置块的 server 下写两个 location 块。<br>首先创建 /data/www 目录，在这个目录下建立 index.html 文件，里面随便写点什么内容<br>​    创建 /data/images 目录，里面放一些图片。<br>然后打开配置文件(文件中默认是配置有几个 server 块的，但大部分是被注释掉的)，把那些 server 都注释掉，在http块下重新配置一个server块。</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">http&#123;</span><br><span class="line">    server&#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>一般来说，配置文件会根据监听端口号或者主机名分为几个 server 块，而 nginx 到底把 http 请求交给哪个 server 处理，则是根据请求的 URI 和 server 里 location 指令的值的匹配来处理的。<br>下面我们添加一个 location 到 server 中</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">location</span> / &#123;</span><br><span class="line">    <span class="attribute">root</span> /data/www;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上述 location 的 “/“ 前缀，是用来匹配 http 请求 URI 的。而它会添加到 root 指定的路径下，也就是 /data/www,以此来<strong>形成请求资源（文件）和本地文件系统的对应</strong>。<br>如果有多个 location 和 URI 匹配的话，那就<strong>优先选择最长匹配的 location</strong>。<br>我们写的 location 只提供了最短的前缀，长度为1。所以，只有其他 location 匹配失败的情况下才能使用这个location。现在，我们再添加一个location</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">location</span> /images/ &#123;</span><br><span class="line">    <span class="attribute">root</span> /data;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>上述的 location 将会匹配一个以 /images 开始的 http 请求（location / 也会被匹配但是它更短)。<br>配置好后，应该是类似下面的内容</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">http&#123;</span><br><span class="line">    server&#123;</span><br><span class="line">        <span class="attribute">location</span> / &#123;</span><br><span class="line">            <span class="attribute">root</span> /data/www;</span><br><span class="line">            &#125;</span><br><span class="line">        <span class="attribute">location</span> /images/ &#123;</span><br><span class="line">            <span class="attribute">root</span> /data;</span><br><span class="line">            &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这样就配置了监听标准 80 端口的 server，可以通过 <a href="http://localhost" target="_blank" rel="noopener">http://localhost</a> 验证。<br>当请求URI以 /image/ 开头，服务器将响应 /data/images/ 目录下的文件<br>– 例如：访问 <a href="http://localhost/images/example.png，Web服务器会响应" target="_blank" rel="noopener">http://localhost/images/example.png，Web服务器会响应</a> /data/images/example.png<br>如果该文件不存在，则返回 404 error.如果URI不是以/images/开头，那就映射到/data/www目录，<br>– 例如：访问<a href="http://localhost/some/example.html，Web服务器将会把/data/www/some/example.html响应给客户端。" target="_blank" rel="noopener">http://localhost/some/example.html，Web服务器将会把/data/www/some/example.html响应给客户端。</a><br>修改nginx配置文件之后，记得让主进程重新读取配置文件才能生效</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">nginx</span> -s reload</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>如果出错的话，记得查看access.log和error.log日志文件的内容。<br>日志目录一般在/usr/local/nginx/log/或者/var/log/nginx/里。</p>
+</blockquote>
+<h1 id="配置简单代理服务器"><a href="#配置简单代理服务器" class="headerlink" title="配置简单代理服务器"></a>配置简单代理服务器</h1><p>nginx 的一个常见用途是作为<strong>代理服务器</strong>，代理服务器是接受请求，转发请求的到被代理的服务器，再从被代理的服务器获取响应回传给客户端。<br>在下面这个例子中，我们会配置一个简单的代理服务器，直接返回静态文件，其他的则转发给被代理的服务器。<br>首先，编写个server块</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">server</span> &#123;</span><br><span class="line">    <span class="attribute">listen</span> <span class="number">8080</span>;</span><br><span class="line">    <span class="attribute">root</span> /data/up1;</span><br><span class="line"></span><br><span class="line">    <span class="attribute">location</span> / &#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这样就能提供一个简单监听 8080 端口的server (这里需要写 listen 是因为之前默认的80端口已经被占用了)，这个server 映射所有请求到本地 /data/up1 目录。创建一个 index.html文件到这个目录下。<br>注意，当 location 下未指定 root 目录时将会使用 server 的 root 目录（类似默认值）<br>然后，修改配置文件 在先前 server 的第一个 location 处放入 proxy_pass，指定 协议，域名，端口，如：</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">server</span> &#123;</span><br><span class="line">    <span class="attribute">location</span> / &#123;</span><br><span class="line">        <span class="attribute">proxy_pass</span> http://localhost:8080;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="attribute">location</span> /images/ &#123;</span><br><span class="line">        <span class="attribute">root</span> /data;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>修改第二个 localtion（映射 /images/ 开头到本地目录）成根据文件类型拓展名匹配<br><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">location</span> <span class="regexp">~ \.(gif|jpg|png)$</span> &#123;</span><br><span class="line">    <span class="attribute">root</span> /data/images;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>该参数是一个正则表达式，匹配以 .gif，.jpg 或 .png 结尾的所有URI。正则表达式应该以<strong>〜开头</strong>。相应的请求将映射到 /data/images 目录。</p>
+<p>nginx 在分发请求给 location 时，会先选出最长的匹配前缀的 location，然后去检查正则表达式，如果正则表达式匹配就选择正则表达式所在的 location，否则就使用之前选出最长匹配 location</p>
+<p>更多的指令请移步 <a href="http://nginx.org/en/docs/http/ngx_http_proxy_module.html" target="_blank" rel="noopener">more</a></p>
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p><a href="http://nginx.org/en/docs/beginners_guide.html" target="_blank" rel="noopener">http://nginx.org/en/docs/beginners_guide.html</a><br><a href="https://juejin.im/post/5a050d7f51882578d84eeaf8" target="_blank" rel="noopener">https://juejin.im/post/5a050d7f51882578d84eeaf8</a></p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        
+          
+        
+        <div class="post-tags">
+          
+            <a href="/tags/nginx/" rel="tag"># nginx</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019-01-Android/Android-本地收款语音实现/" rel="next" title="Android 本地收款语音实现">
+                <i class="fa fa-chevron-left"></i> Android 本地收款语音实现
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019-02-booklist/" rel="prev" title="书单">
+                书单 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/config/avatar.png" alt="cchao1024">
+            
+              <p class="site-author-name" itemprop="name">cchao1024</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">98</span>
+                    <span class="site-state-item-name">Artikel</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">16</span>
+                    <span class="site-state-item-name">Kategorien</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">27</span>
+                    <span class="site-state-item-name">schlagwörter</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/cchao1024" title="GitHub &rarr; https://github.com/cchao1024" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:cchao1024@163.com" title="E-Mail &rarr; mailto:cchao1024@163.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+<!--网易云音乐-->
+<div id="music163player" style="margin-top: 15px">
+    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="360" height="86" src="//music.163.com/outchain/player?type=2&id=36664503&auto=1&height=66"></iframe>
+</div>
+
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Guide"><span class="nav-number">1.</span> <span class="nav-text">Guide</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#启动，关闭，刷新配置"><span class="nav-number">2.</span> <span class="nav-text">启动，关闭，刷新配置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#配置文件"><span class="nav-number">3.</span> <span class="nav-text">配置文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#静态资源服务"><span class="nav-number">4.</span> <span class="nav-text">静态资源服务</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#配置简单代理服务器"><span class="nav-number">5.</span> <span class="nav-text">配置简单代理服务器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Reference"><span class="nav-number">6.</span> <span class="nav-text">Reference</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">cchao1024</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+    <span title="Insgesamt gezählte Symbole">246k</span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+    <span title="Insgesamte Lesezeit">3:44</span>
+  
+</div>
+
+
+  <div class="powered-by">Erstellt mit  <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.9.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Design – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.1.2</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.2"></script>
+
+  <script src="/js/motion.js?v=7.1.2"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.1.2"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.1.2"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.2"></script>
+<script src="/js/post-details.js?v=7.1.2"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.2"></script>
+
+
+  
+
+  
+
+  
+
+  
+  
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+
+
+<script>
+  var disqus_config = function() {
+    this.page.url = "http://yoursite.com/2019-02-周边积累/译-Nginx引导教程/";
+    this.page.identifier = "2019-02-周边积累/译-Nginx引导教程/";
+    this.page.title = '[译] Nginx引导教程';
+    };
+  function loadComments() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', '' + +new Date());
+    (d.head || d.body).appendChild(s);
+  }
+  
+    window.addEventListener('load', loadComments, false);
+  
+</script>
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  <!-- 代码块复制功能 -->
+  <script type="text/javascript" src="/js/src/clipboard.min.js"></script>  
+  <script type="text/javascript" src="/js/src/clipboard-use.js"></script>
+</body>
+</html>
