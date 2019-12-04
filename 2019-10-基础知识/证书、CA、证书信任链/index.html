@@ -101,22 +101,24 @@
 
 
 
-  <meta name="description" content="TLS 传输层安全性协定 TLS（Transport Layer Security），及其前身安全套接层 SSL（Secure Sockets Layer）是一种安全协议，目的是为网际网路通信，提供安全及数据完整性保障。   如图，TLS 在建立连接时是需要   客户端发送 ClientHello（包含支持的协议版本、加密算法和 随机数A (Client random)）到服务端 服务端返回 Se">
+  <meta name="description" content="TLS 传输层安全性协定 TLS（Transport Layer Security），及其前身安全套接层 SSL（Secure Sockets Layer）是一种安全协议，目的是为网际网路通信，提供安全及数据完整性保障。   如图，TLS 在建立连接时是需要   客户端发送 ClientHello（包含支持的协议版本、加密算法和 随机数A (Client random)）到服务端 服务端返回 S">
+<meta name="keywords" content="未定义">
 <meta property="og:type" content="article">
-<meta property="og:title" content="cchao1024 blog">
-<meta property="og:url" content="http://yoursite.com/2019-11-基础知识/证书、CA、证书信任链/index.html">
+<meta property="og:title" content="一次看懂Https证书认证">
+<meta property="og:url" content="http://yoursite.com/2019-10-基础知识/证书、CA、证书信任链/index.html">
 <meta property="og:site_name" content="cchao1024 blog">
-<meta property="og:description" content="TLS 传输层安全性协定 TLS（Transport Layer Security），及其前身安全套接层 SSL（Secure Sockets Layer）是一种安全协议，目的是为网际网路通信，提供安全及数据完整性保障。   如图，TLS 在建立连接时是需要   客户端发送 ClientHello（包含支持的协议版本、加密算法和 随机数A (Client random)）到服务端 服务端返回 Se">
+<meta property="og:description" content="TLS 传输层安全性协定 TLS（Transport Layer Security），及其前身安全套接层 SSL（Secure Sockets Layer）是一种安全协议，目的是为网际网路通信，提供安全及数据完整性保障。   如图，TLS 在建立连接时是需要   客户端发送 ClientHello（包含支持的协议版本、加密算法和 随机数A (Client random)）到服务端 服务端返回 S">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://coding.net/u/cchao1024/p/hexo/git/raw/source/source/images/2019-10/image-20191024102611052.png">
-<meta property="og:image" content="https://coding.net/u/cchao1024/p/hexo/git/raw/source/source/images/2019-10/image-20191024102642226.png">
-<meta property="og:image" content="https://coding.net/u/cchao1024/p/hexo/git/raw/source/source/images/2019-10/image-20191024102703865.png">
+<meta property="og:image" content="https://coding.net/u/cchao1024/p/hexo/git/raw/source/source/images/2019-10/1572769582415.png">
+<meta property="og:image" content="https://coding.net/u/cchao1024/p/hexo/git/raw/source/source/images/2019-10/image-20191022202706325.png">
+<meta property="og:image" content="https://coding.net/u/cchao1024/p/hexo/git/raw/source/source/images/2019-10/1240.png">
+<meta property="og:image" content="https://coding.net/u/cchao1024/p/hexo/git/raw/source/source/images/2019-10/strip.gif">
 <meta property="og:image" content="https://coding.net/u/cchao1024/p/hexo/git/raw/source/source/images/2000/global/wx_rec.png">
-<meta property="og:updated_time" content="2019-11-19T07:08:23.855Z">
+<meta property="og:updated_time" content="2019-12-04T06:43:49.873Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="cchao1024 blog">
-<meta name="twitter:description" content="TLS 传输层安全性协定 TLS（Transport Layer Security），及其前身安全套接层 SSL（Secure Sockets Layer）是一种安全协议，目的是为网际网路通信，提供安全及数据完整性保障。   如图，TLS 在建立连接时是需要   客户端发送 ClientHello（包含支持的协议版本、加密算法和 随机数A (Client random)）到服务端 服务端返回 Se">
-<meta name="twitter:image" content="https://coding.net/u/cchao1024/p/hexo/git/raw/source/source/images/2019-10/image-20191024102611052.png">
+<meta name="twitter:title" content="一次看懂Https证书认证">
+<meta name="twitter:description" content="TLS 传输层安全性协定 TLS（Transport Layer Security），及其前身安全套接层 SSL（Secure Sockets Layer）是一种安全协议，目的是为网际网路通信，提供安全及数据完整性保障。   如图，TLS 在建立连接时是需要   客户端发送 ClientHello（包含支持的协议版本、加密算法和 随机数A (Client random)）到服务端 服务端返回 S">
+<meta name="twitter:image" content="https://coding.net/u/cchao1024/p/hexo/git/raw/source/source/images/2019-10/1572769582415.png">
 
 
 
@@ -124,7 +126,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/2019-11-基础知识/证书、CA、证书信任链/">
+  <link rel="canonical" href="http://yoursite.com/2019-10-基础知识/证书、CA、证书信任链/">
 
 
 
@@ -134,7 +136,7 @@
   };
 </script>
 
-  <title> | cchao1024 blog</title>
+  <title>一次看懂Https证书认证 | cchao1024 blog</title>
   
 
 
@@ -355,7 +357,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019-11-基础知识/证书、CA、证书信任链/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019-10-基础知识/证书、CA、证书信任链/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="cchao1024">
@@ -372,7 +374,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
+          <h1 class="post-title" itemprop="name headline">一次看懂Https证书认证
 
               
             
@@ -398,12 +400,46 @@
                 
               
 
-              <time title="创建时间：2019-11-19 15:08:23" itemprop="dateCreated datePublished" datetime="2019-11-19T15:08:23+08:00">2019-11-19</time>
+              <time title="创建时间：2019-10-22 20:14:55" itemprop="dateCreated datePublished" datetime="2019-10-22T20:14:55+08:00">2019-10-22</time>
             
 
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-12-04 14:43:49" itemprop="dateModified" datetime="2019-12-04T14:43:49+08:00">2019-12-04</time>
+              
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/工具推荐/" itemprop="url" rel="index"><span itemprop="name">工具推荐</span></a></span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -417,8 +453,8 @@
                 </span>
             
                 <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019-11-基础知识/证书、CA、证书信任链/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019-11-基础知识/证书、CA、证书信任链/" itemprop="commentCount"></span>
+                <a href="/2019-10-基础知识/证书、CA、证书信任链/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019-10-基础知识/证书、CA、证书信任链/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -474,10 +510,11 @@
       
 
       
-        <h1 id="TLS"><a href="#TLS" class="headerlink" title="TLS"></a>TLS</h1><blockquote>
+        <p><img src="https://coding.net/u/cchao1024/p/hexo/git/raw/source/source/images/2019-10/1572769582415.png" alt="1572769582415"></p>
+<h1 id="TLS"><a href="#TLS" class="headerlink" title="TLS"></a>TLS</h1><blockquote>
 <p>传输层安全性协定 TLS（Transport Layer Security），及其前身安全套接层 SSL（Secure Sockets Layer）是一种安全协议，目的是为网际网路通信，提供安全及数据完整性保障。</p>
 </blockquote>
-<p><img src="https://coding.net/u/cchao1024/p/hexo/git/raw/source/source/images/2019-10/image-20191024102611052.png" alt="image-20191024102611052"></p>
+<p><img src="https://coding.net/u/cchao1024/p/hexo/git/raw/source/source/images/2019-10/image-20191022202706325.png" alt="image-20191022202706325"></p>
 <p>如图，<strong>TLS</strong> 在建立连接时是需要 </p>
 <ol>
 <li>客户端发送 ClientHello（包含支持的协议版本、加密算法和 <strong>随机数A (Client random)</strong>）到服务端</li>
@@ -487,7 +524,7 @@
 <li>客户端使用对称密钥（客户端也用随机数ABC生成对称密钥）对数据进行解密。</li>
 <li>双方手持对称密钥 <strong>使用对称加密算法通讯</strong></li>
 </ol>
-<p>而这一流程 <strong>服务端的证书</strong> 是是至关重要的。</p>
+<p>而这一流程 <strong>服务端的证书</strong> 是至关重要的。</p>
 <h1 id="证书"><a href="#证书" class="headerlink" title="证书"></a>证书</h1><blockquote>
 <p>证书用来证明公钥拥有者身份的凭证</p>
 </blockquote>
@@ -505,20 +542,21 @@
 <li>发行者对这份文件的数字签名及使用的算法</li>
 <li>有效期</li>
 </ul>
-<p>证书的格式和验证方法普遍遵循<a href="https://www.wikiwand.com/zh-hans/X.509" title="X.509" target="_blank" rel="noopener">X.509</a> 国际标准。</p>
-<p><img src="https://coding.net/u/cchao1024/p/hexo/git/raw/source/source/images/2019-10/image-20191024102642226.png" alt="image-20191024102642226"></p>
+<p>证书的格式和验证方法普遍遵循 <a href="https://www.wikiwand.com/zh-hans/X.509" title="X.509" target="_blank" rel="noopener">X.509</a> 国际标准。</p>
+<p><img src="https://coding.net/u/cchao1024/p/hexo/git/raw/source/source/images/2019-10/1240.png" alt="image"></p>
 <h1 id="证书认证机构（CA）"><a href="#证书认证机构（CA）" class="headerlink" title="证书认证机构（CA）"></a>证书认证机构（CA）</h1><blockquote>
 <p>数字证书认证机构（英语：Certificate Authority，缩写为CA），也称为电子商务认证中心、电子商务认证授权机构，是负责发放和管理数字证书的权威机构，并作为电子商务交易中受信任的第三方，承担公钥体系中公钥的合法性检验的责任。</p>
 </blockquote>
 <p>其实任何个体/组织都可以成为CA（自签证书），但是你发发布的证书客户端是不信任的，也是就前文提及的需要权威。比如 <strong>Symantec、Comodo、Godaddy、Digicert</strong>。</p>
 <p>客户端信任这些CA，就会在其本地保持这些CA的 <strong>根证书</strong>（<strong>root certificate</strong>），<strong>根证书是CA自己的证书</strong>，是证书验证链的开头。<br>根证书没有机构（已经是权威了）再为其做数字签名，所以都是自签证书。</p>
 <p>CA会通过 <strong>中介证书（intermediate-certificate）</strong> 替代根证书的去做服务器端的证书签名，确保根证书密钥绝对不可访问。</p>
-<p>Godaddy 给出了解释<br><a href="https://sg.godaddy.com/help/what-is-an-intermediate-certificate-868" target="_blank" rel="noopener">What is an intermediate certificate?</a></p>
+<p>Godaddy 给出了解释</p>
+<p> <a href="https://sg.godaddy.com/help/what-is-an-intermediate-certificate-868" target="_blank" rel="noopener">What is an intermediate certificate?</a></p>
 <h1 id="证书信任链"><a href="#证书信任链" class="headerlink" title="证书信任链"></a>证书信任链</h1><p>前文提到，在向CA 申请证书时是需要 <strong>CA的私钥</strong> 去对整个证书的签名摘要做非对称加密的，也就是证书是可以通过 <strong>CA的公钥</strong> 去解密得到<strong>证书的签名摘要</strong>的。<br>当我们再次用 <strong>相同的摘要算法</strong>（证书里面有保存所使用的算法）对整个证书做签名，如果得到的签名和证书上的签名是一致的，说明这个证书是可信任的。</p>
 <p>同理，中介证书 也是可以被这样的方式证明其可信任。这样的一整个流程称为 <strong>信任链</strong>（Chain of trust）。</p>
-<p>就是我<strong>绝对</strong>相信你（A&gt;B）；你<strong>绝对</strong>相信他（B&gt;C）；等于我<strong>绝对</strong>相信他（A&gt;C）。</p>
+<p>就是我<strong>绝对</strong>相信你（A&gt;B）；你<strong>绝对</strong>相信他（B&gt;C）；等于我<strong>绝对</strong>相信他（A&gt;C）</p>
 <p>以下是整个流程：</p>
-<p><img src="https://coding.net/u/cchao1024/p/hexo/git/raw/source/source/images/2019-10/image-20191024102703865.png" alt="image-20191024102703865"></p>
+<p><img src="https://coding.net/u/cchao1024/p/hexo/git/raw/source/source/images/2019-10/strip.gif" alt="信任链.gif"></p>
 <ol>
 <li>客户端得到服务端返回的证书，通过读取得到 <strong>服务端证书的发布机构（Issuer）</strong></li>
 <li>客户端去操作系统查找这个发布机构的的证书，如果是不是根证书就继续递归下去 <strong>直到拿到根证书</strong>。</li>
@@ -526,7 +564,7 @@
 <li>最后验证服务器端的证书是 <strong>可信任</strong> 的。</li>
 </ol>
 <h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p><a href="https://www.wikiwand.com/zh/根证书" target="_blank" rel="noopener">https://www.wikiwand.com/zh/根证书</a><br><a href="https://www.wikiwand.com/zh-hans/信任鏈" target="_blank" rel="noopener">https://www.wikiwand.com/zh-hans/信任鏈</a><br><a href="https://www.wikiwand.com/zh-hans/证书颁发机构" target="_blank" rel="noopener">https://www.wikiwand.com/zh-hans/证书颁发机构</a><br><a href="http://www.cnblogs.com/JeffreySun/archive/2010/06/24/1627247.html" target="_blank" rel="noopener">http://www.cnblogs.com/JeffreySun/archive/2010/06/24/1627247.html</a><br><a href="http://www.ruanyifeng.com/blog/2011/08/what_is_a_digital_signature.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2011/08/what_is_a_digital_signature.html</a></p>
-<h1 id="更多"><a href="#更多" class="headerlink" title="更多"></a>更多</h1><p>获取优秀内容，请 <strong>关注微信公众号【极客收藏夹】</strong> 获取哦！</p>
+<h1 id="更多"><a href="#更多" class="headerlink" title="更多"></a>更多</h1><p>更多优秀内容，可以通过 <strong>关注微信公众号【极客收藏夹】</strong> 获取，加群还可以与小伙伴们交流讨论哦！</p>
 <p><img src="https://coding.net/u/cchao1024/p/hexo/git/raw/source/source/images/2000/global/wx_rec.png" alt="wx"></p>
 
       
@@ -549,6 +587,15 @@
 
     <footer class="post-footer">
       
+        
+          
+        
+        <div class="post-tags">
+          
+            <a href="/tags/未定义/" rel="tag"># 未定义</a>
+          
+        </div>
+      
 
       
       
@@ -558,8 +605,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019-11-运维技术/Curl-请求交互耗时格式化输出/" rel="next" title="Curl-请求交互耗时格式化输出.md">
-                <i class="fa fa-chevron-left"></i> Curl-请求交互耗时格式化输出.md
+              <a href="/2019-10-工具推荐/周边-一次看懂Https证书认证/" rel="next" title="一次看懂Https证书认证">
+                <i class="fa fa-chevron-left"></i> 一次看懂Https证书认证
               </a>
             
           </div>
@@ -568,8 +615,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019-11-工具推荐/Terminal-树状图展示目录内容-tree/" rel="prev" title="终端-树状图展示目录内容-tree">
-                终端-树状图展示目录内容-tree <i class="fa fa-chevron-right"></i>
+              <a href="/2019-10-工具推荐/Todo-插件-whatsrun/" rel="prev" title="Windows-包管理工具-Chocolatey">
+                Windows-包管理工具-Chocolatey <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -648,7 +695,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">100</span>
+                    <span class="site-state-item-count">106</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -697,7 +744,7 @@
                     
                       
                     
-                    <span class="site-state-item-count">16</span>
+                    <span class="site-state-item-count">15</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -873,7 +920,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">247k</span>
+    <span title="站点总字数">253k</span>
   
 
   
@@ -882,7 +929,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">3:45</span>
+    <span title="站点阅读时长">3:50</span>
   
 </div>
 
@@ -1019,9 +1066,9 @@
 
 <script>
   var disqus_config = function() {
-    this.page.url = "http://yoursite.com/2019-11-基础知识/证书、CA、证书信任链/";
-    this.page.identifier = "2019-11-基础知识/证书、CA、证书信任链/";
-    this.page.title = '';
+    this.page.url = "http://yoursite.com/2019-10-基础知识/证书、CA、证书信任链/";
+    this.page.identifier = "2019-10-基础知识/证书、CA、证书信任链/";
+    this.page.title = '一次看懂Https证书认证';
     };
   function loadComments() {
     var d = document, s = d.createElement('script');
