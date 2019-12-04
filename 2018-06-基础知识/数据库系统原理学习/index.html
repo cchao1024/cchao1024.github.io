@@ -101,19 +101,20 @@
 
 
 
-  <meta name="description" content="使用https://github.com/fatedier/frp/blob/master/README_zh.md 客户端配置下载压缩包将压缩包下载到 /usr/local/frp 1234cd /usr/localmkdir frpcd frpwget https://github.com/fatedier/frp/releases/download/v0.29.0/frp_0.29.0_li">
+  <meta name="description" content="事务ACID1. 原子性（Atomicity）事务被视为不可分割的最小单元，事务的所有操作要么全部提交成功，要么全部失败回滚。 回滚可以用回滚日志来实现，回滚日志记录着事务所执行的修改操作，在回滚时反向执行这些修改操作即可。 2. 一致性（Consistency）数据库在事务执行前后都保持一致性状态。在一致性状态下，所有事务对一个数据的读取结果都是相同的。 3. 隔离性（Isolation）一个事">
+<meta name="keywords" content="未定义">
 <meta property="og:type" content="article">
-<meta property="og:title" content="cchao1024 blog">
-<meta property="og:url" content="http://yoursite.com/2019-11-搭建过程/内网穿透搭建/index.html">
+<meta property="og:title" content="数据库系统原理学习">
+<meta property="og:url" content="http://yoursite.com/2018-06-基础知识/数据库系统原理学习/index.html">
 <meta property="og:site_name" content="cchao1024 blog">
-<meta property="og:description" content="使用https://github.com/fatedier/frp/blob/master/README_zh.md 客户端配置下载压缩包将压缩包下载到 /usr/local/frp 1234cd /usr/localmkdir frpcd frpwget https://github.com/fatedier/frp/releases/download/v0.29.0/frp_0.29.0_li">
+<meta property="og:description" content="事务ACID1. 原子性（Atomicity）事务被视为不可分割的最小单元，事务的所有操作要么全部提交成功，要么全部失败回滚。 回滚可以用回滚日志来实现，回滚日志记录着事务所执行的修改操作，在回滚时反向执行这些修改操作即可。 2. 一致性（Consistency）数据库在事务执行前后都保持一致性状态。在一致性状态下，所有事务对一个数据的读取结果都是相同的。 3. 隔离性（Isolation）一个事">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://coding.net/u/cchao1024/p/hexo/git/raw/source/source/images/2019-10/image-20191010154442453.png">
-<meta property="og:updated_time" content="2019-11-19T07:08:23.907Z">
+<meta property="og:image" content="https://github.com/CyC2018/CS-Notes/blob/master/notes/pics/417bc315-4409-48c6-83e0-59e8d405429e.jpg">
+<meta property="og:updated_time" content="2019-12-04T07:53:36.805Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="cchao1024 blog">
-<meta name="twitter:description" content="使用https://github.com/fatedier/frp/blob/master/README_zh.md 客户端配置下载压缩包将压缩包下载到 /usr/local/frp 1234cd /usr/localmkdir frpcd frpwget https://github.com/fatedier/frp/releases/download/v0.29.0/frp_0.29.0_li">
-<meta name="twitter:image" content="https://coding.net/u/cchao1024/p/hexo/git/raw/source/source/images/2019-10/image-20191010154442453.png">
+<meta name="twitter:title" content="数据库系统原理学习">
+<meta name="twitter:description" content="事务ACID1. 原子性（Atomicity）事务被视为不可分割的最小单元，事务的所有操作要么全部提交成功，要么全部失败回滚。 回滚可以用回滚日志来实现，回滚日志记录着事务所执行的修改操作，在回滚时反向执行这些修改操作即可。 2. 一致性（Consistency）数据库在事务执行前后都保持一致性状态。在一致性状态下，所有事务对一个数据的读取结果都是相同的。 3. 隔离性（Isolation）一个事">
+<meta name="twitter:image" content="https://github.com/CyC2018/CS-Notes/blob/master/notes/pics/417bc315-4409-48c6-83e0-59e8d405429e.jpg">
 
 
 
@@ -121,7 +122,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/2019-11-搭建过程/内网穿透搭建/">
+  <link rel="canonical" href="http://yoursite.com/2018-06-基础知识/数据库系统原理学习/">
 
 
 
@@ -131,7 +132,7 @@
   };
 </script>
 
-  <title> | cchao1024 blog</title>
+  <title>数据库系统原理学习 | cchao1024 blog</title>
   
 
 
@@ -352,7 +353,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019-11-搭建过程/内网穿透搭建/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018-06-基础知识/数据库系统原理学习/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="cchao1024">
@@ -369,7 +370,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
+          <h1 class="post-title" itemprop="name headline">数据库系统原理学习
 
               
             
@@ -395,12 +396,46 @@
                 
               
 
-              <time title="创建时间：2019-11-19 15:08:23" itemprop="dateCreated datePublished" datetime="2019-11-19T15:08:23+08:00">2019-11-19</time>
+              <time title="创建时间：2018-06-28 12:00:02" itemprop="dateCreated datePublished" datetime="2018-06-28T12:00:02+08:00">2018-06-28</time>
             
 
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-12-04 15:53:36" itemprop="dateModified" datetime="2019-12-04T15:53:36+08:00">2019-12-04</time>
+              
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/基础知识/" itemprop="url" rel="index"><span itemprop="name">基础知识</span></a></span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -414,8 +449,8 @@
                 </span>
             
                 <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019-11-搭建过程/内网穿透搭建/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019-11-搭建过程/内网穿透搭建/" itemprop="commentCount"></span>
+                <a href="/2018-06-基础知识/数据库系统原理学习/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018-06-基础知识/数据库系统原理学习/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -437,7 +472,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">767</span>
+                <span title="本文字数">1.5k</span>
               
 
               
@@ -471,18 +506,120 @@
       
 
       
-        <h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><p><a href="https://github.com/fatedier/frp/blob/master/README_zh.md" target="_blank" rel="noopener"><a href="https://github.com/fatedier/frp/blob/master/README_zh.md" target="_blank" rel="noopener">https://github.com/fatedier/frp/blob/master/README_zh.md</a></a></p>
-<h1 id="客户端配置"><a href="#客户端配置" class="headerlink" title="客户端配置"></a>客户端配置</h1><h2 id="下载压缩包"><a href="#下载压缩包" class="headerlink" title="下载压缩包"></a>下载压缩包</h2><p>将压缩包下载到 <code>/usr/local/frp</code></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/local</span><br><span class="line">mkdir frp</span><br><span class="line">cd frp</span><br><span class="line">wget https://github.com/fatedier/frp/releases/download/v0.29.0/frp_0.29.0_linux_amd64.tar.gz</span><br></pre></td></tr></table></figure>
-<p>解压 <code>tar -zxvf  frp_0.29.0_linux_amd64.tar.gz</code></p>
-<p><img src="https://coding.net/u/cchao1024/p/hexo/git/raw/source/source/images/2019-10/image-20191010154442453.png" alt="image-20191010154442453"></p>
-<p>这里主要关注4个文件，分别是<code>frpc、frpc.ini和frps、frps.ini</code>，前者两个文件是客户端所关注文件，后者两个文件是服务端所关注两个文件。</p>
-<p>意味着 客户端（内网设备），服务端（公网服务器），都需要分别下载和解压文件。</p>
-<h1 id="服务器"><a href="#服务器" class="headerlink" title="服务器"></a>服务器</h1><p>服务器只需要编辑  <code>frps.ini</code>  就可以了。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[common]</span><br><span class="line">bind_port = 7000</span><br><span class="line">vhost_http_port=8000</span><br><span class="line"></span><br><span class="line">dashboard_port= 7500</span><br><span class="line">dashboard_user=admin</span><br><span class="line">dashboard_pwd=123456</span><br></pre></td></tr></table></figure>
-<p>配置了 <strong>dashboard_</strong> 是提供 <strong>frp</strong> 的管理界面</p>
-<h1 id="客户端"><a href="#客户端" class="headerlink" title="客户端"></a>客户端</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">[common]</span><br><span class="line">server_addr = 121.43.39.190</span><br><span class="line">server_port = 7000</span><br><span class="line">vhost_http_port= 8000</span><br><span class="line"></span><br><span class="line">[ssh]</span><br><span class="line">type = tcp</span><br><span class="line">local_ip = 127.0.0.1</span><br><span class="line">local_port = 22</span><br><span class="line">remote_port = 222</span><br><span class="line"></span><br><span class="line">[web_1]</span><br><span class="line">type=http</span><br><span class="line">local_port=81</span><br><span class="line">subdomain=app</span><br><span class="line"></span><br><span class="line">[web_2]</span><br><span class="line">type=http</span><br><span class="line">local_port=82</span><br><span class="line">subdomain=admin</span><br></pre></td></tr></table></figure>
-<p>这样</p>
+        <h1 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h1><h2 id="ACID"><a href="#ACID" class="headerlink" title="ACID"></a>ACID</h2><h3 id="1-原子性（Atomicity）"><a href="#1-原子性（Atomicity）" class="headerlink" title="1. 原子性（Atomicity）"></a>1. 原子性（Atomicity）</h3><p>事务被视为不可分割的最小单元，事务的所有操作要么全部提交成功，要么全部失败回滚。</p>
+<p>回滚可以用回滚日志来实现，回滚日志记录着事务所执行的修改操作，在回滚时反向执行这些修改操作即可。</p>
+<h3 id="2-一致性（Consistency）"><a href="#2-一致性（Consistency）" class="headerlink" title="2. 一致性（Consistency）"></a>2. 一致性（Consistency）</h3><p>数据库在事务执行前后都保持一致性状态。在一致性状态下，所有事务对一个数据的读取结果都是相同的。</p>
+<h3 id="3-隔离性（Isolation）"><a href="#3-隔离性（Isolation）" class="headerlink" title="3. 隔离性（Isolation）"></a>3. 隔离性（Isolation）</h3><p>一个事务所做的修改在最终提交以前，对其它事务是不可见的。</p>
+<h3 id="4-持久性（Durability）"><a href="#4-持久性（Durability）" class="headerlink" title="4. 持久性（Durability）"></a>4. 持久性（Durability）</h3><p>一旦事务提交，则其所做的修改将会永远保存到数据库中。即使系统发生崩溃，事务执行的结果也不能丢失。</p>
+<p>使用重做日志来保证持久性。</p>
+<p><img src="https://github.com/CyC2018/CS-Notes/blob/master/notes/pics/417bc315-4409-48c6-83e0-59e8d405429e.jpg" alt></p>
+<h1 id="并发一致问题"><a href="#并发一致问题" class="headerlink" title="并发一致问题"></a>并发一致问题</h1><h2 id="丢失修改"><a href="#丢失修改" class="headerlink" title="丢失修改"></a>丢失修改</h2><p>T1 和 T2 两个事务都对一个数据进行修改，T1 先修改，T2 随后修改，T2 的修改覆盖了 T1 的修改。</p>
+<h2 id="读脏数据"><a href="#读脏数据" class="headerlink" title="读脏数据"></a>读脏数据</h2><p>T1 修改一个数据，T2 随后读取这个数据。如果 T1 撤销了这次修改，那么 T2 读取的数据是脏数据。</p>
+<h2 id="不可重复读"><a href="#不可重复读" class="headerlink" title="不可重复读"></a>不可重复读</h2><p>T2 读取一个数据，T1 对该数据做了修改。如果 T2 再次读取这个数据，此时读取的结果和第一次读取的结果不同。</p>
+<h2 id="幻影读"><a href="#幻影读" class="headerlink" title="幻影读"></a>幻影读</h2><p>T1 读取某个范围的数据，T2 在这个范围内插入新的数据，T1 再次读取这个范围的数据，此时读取的结果和和第一次读取的结果不同。</p>
+<p>产生并发不一致性问题主要原因是破坏了事务的<strong>隔离性</strong>。</p>
+<p>并发控制可以通过<strong>封锁</strong>来实现，但是封锁操作需要用户自己控制，相当复杂。</p>
+<p>数据库管理系统提供了<strong>事务的隔离级别</strong>，让用户以一种更轻松的方式处理并发一致性问题。</p>
+<h1 id="封锁类型"><a href="#封锁类型" class="headerlink" title="封锁类型"></a>封锁类型</h1><h3 id="1-读写锁"><a href="#1-读写锁" class="headerlink" title="1. 读写锁"></a>1. 读写锁</h3><ul>
+<li>排它锁（Exclusive），简写为 X 锁，又称写锁。  只允许一个事务读写</li>
+<li>共享锁（Shared），简写为 S 锁，又称读锁。允许多个事务读，不允许写。多个事务可以加 S 锁</li>
+</ul>
+<h3 id="2-意向锁"><a href="#2-意向锁" class="headerlink" title="2. 意向锁"></a>2. 意向锁</h3><p>使用意向锁（Intention Locks）可以更容易地支持多粒度封锁。<br>已存在 行\表 级锁时，其他事务想要加锁，就需要遍历每一行是否已有锁，性能很差<br>意向锁引入了 IX/IS 表锁，表示一个事务想要在表中的某个数据行上加 X 锁或 S 锁</p>
+<ul>
+<li>一个事务在获得某个数据行对象的 S 锁之前，必须先获得表的 IS 锁或者更强的锁；</li>
+<li>一个事务在获得某个数据行对象的 X 锁之前，必须先获得表的 IX 锁。<br>通过引入意向锁，事务 T 想要对表 A 加 X 锁，只需要先检测是否有其它事务对表 A 加了 X/IX/S/IS 锁，如果有，则事务 T 加 X 锁失败。</li>
+</ul>
+<p>各种锁的兼容关系如下：</p>
+<table>
+<thead>
+<tr>
+<th>-</th>
+<th>X</th>
+<th>IX</th>
+<th>S</th>
+<th>IS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>X</strong></td>
+<td>×</td>
+<td>×</td>
+<td>×</td>
+<td>×</td>
+</tr>
+<tr>
+<td><strong>IX</strong></td>
+<td>×</td>
+<td>√</td>
+<td>×</td>
+<td>√</td>
+</tr>
+<tr>
+<td><strong>S</strong></td>
+<td>×</td>
+<td>×</td>
+<td>√</td>
+<td>√</td>
+</tr>
+<tr>
+<td><strong>IS</strong></td>
+<td>×</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+</tr>
+</tbody>
+</table>
+<p>解释如下：</p>
+<ul>
+<li>任意 IS/IX 锁之间都是兼容的，因为它们只是表示想要对表加锁，而不是真正加锁；</li>
+<li>S 锁只与 S 锁和 IS 锁兼容，也就是说事务 T 想要对数据行加 S 锁，其它事务可以已经获得对表或者表中的行的 S 锁。</li>
+</ul>
+<h3 id="3-封锁协议"><a href="#3-封锁协议" class="headerlink" title="3. 封锁协议"></a>3. 封锁协议</h3><h3 id="4-隔离级别"><a href="#4-隔离级别" class="headerlink" title="4. 隔离级别"></a>4. 隔离级别</h3><ul>
+<li><strong>未提交读（READ UNCOMMITTED）</strong> 事务中的修改，即使没有提交，对其它事务也是可见的。</li>
+<li><strong>提交读（READ COMMITTED）</strong>一个事务只能读取已经提交的事务所做的修改。换句话说，一个事务所做的修改在提交之前对其它事务是不可见的。</li>
+<li><strong>可重复读（REPEATABLE READ）</strong>  保证在同一个事务中多次读取同样数据的结果是一样的。</li>
+<li><strong>可串行化（SERIALIZABLE）</strong> 强制事务串行执行。 需要加锁实现，而其它隔离级别通常不需要。</li>
+</ul>
+<hr>
+<table>
+<thead>
+<tr>
+<th>隔离级别</th>
+<th>脏读</th>
+<th>不可重复读</th>
+<th>幻影读</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>未提交读</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+</tr>
+<tr>
+<td>提交读</td>
+<td>×</td>
+<td>√</td>
+<td>√</td>
+</tr>
+<tr>
+<td>可重复读</td>
+<td>×</td>
+<td>×</td>
+<td>√</td>
+</tr>
+<tr>
+<td>可串行化</td>
+<td>×</td>
+<td>×</td>
+</tr>
+</tbody>
+</table>
+<p>todo</p>
+<h1 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h1><p><a href="https://github.com/CyC2018/CS-Notes/blob/master/notes/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86.md" target="_blank" rel="noopener"><a href="https://github.com/CyC2018/CS-Notes/blob/master/notes/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86.md" target="_blank" rel="noopener">https://github.com/CyC2018/CS-Notes/blob/master/notes/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86.md</a></a></p>
 
       
     </div>
@@ -504,6 +641,15 @@
 
     <footer class="post-footer">
       
+        
+          
+        
+        <div class="post-tags">
+          
+            <a href="/tags/未定义/" rel="tag"># 未定义</a>
+          
+        </div>
+      
 
       
       
@@ -513,8 +659,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019-11-运维技术/Curl-请求交互耗时格式化输出/" rel="next" title="Curl-请求交互耗时格式化输出.md">
-                <i class="fa fa-chevron-left"></i> Curl-请求交互耗时格式化输出.md
+              <a href="/2018-06-基础知识/设计模式学习/" rel="next" title="设计模式学习">
+                <i class="fa fa-chevron-left"></i> 设计模式学习
               </a>
             
           </div>
@@ -523,8 +669,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019-11-工具推荐/IDEA-BackgroundPlus/" rel="prev" title="IDEA必备系列-Background Image Plus +">
-                IDEA必备系列-Background Image Plus + <i class="fa fa-chevron-right"></i>
+              <a href="/2018-07-运维技术/Docker 解放生产力/" rel="prev" title="Docker 解放生产力">
+                Docker 解放生产力 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -648,11 +794,7 @@
                     
                       
                     
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">15</span>
+                    <span class="site-state-item-count">14</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -788,7 +930,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#使用"><span class="nav-number">1.</span> <span class="nav-text">使用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#客户端配置"><span class="nav-number">2.</span> <span class="nav-text">客户端配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#下载压缩包"><span class="nav-number">2.1.</span> <span class="nav-text">下载压缩包</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#服务器"><span class="nav-number">3.</span> <span class="nav-text">服务器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#客户端"><span class="nav-number">4.</span> <span class="nav-text">客户端</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#事务"><span class="nav-number">1.</span> <span class="nav-text">事务</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ACID"><span class="nav-number">1.1.</span> <span class="nav-text">ACID</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-原子性（Atomicity）"><span class="nav-number">1.1.1.</span> <span class="nav-text">1. 原子性（Atomicity）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-一致性（Consistency）"><span class="nav-number">1.1.2.</span> <span class="nav-text">2. 一致性（Consistency）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-隔离性（Isolation）"><span class="nav-number">1.1.3.</span> <span class="nav-text">3. 隔离性（Isolation）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-持久性（Durability）"><span class="nav-number">1.1.4.</span> <span class="nav-text">4. 持久性（Durability）</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#并发一致问题"><span class="nav-number">2.</span> <span class="nav-text">并发一致问题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#丢失修改"><span class="nav-number">2.1.</span> <span class="nav-text">丢失修改</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#读脏数据"><span class="nav-number">2.2.</span> <span class="nav-text">读脏数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#不可重复读"><span class="nav-number">2.3.</span> <span class="nav-text">不可重复读</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#幻影读"><span class="nav-number">2.4.</span> <span class="nav-text">幻影读</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#封锁类型"><span class="nav-number">3.</span> <span class="nav-text">封锁类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-读写锁"><span class="nav-number">3.0.1.</span> <span class="nav-text">1. 读写锁</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-意向锁"><span class="nav-number">3.0.2.</span> <span class="nav-text">2. 意向锁</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-封锁协议"><span class="nav-number">3.0.3.</span> <span class="nav-text">3. 封锁协议</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-隔离级别"><span class="nav-number">3.0.4.</span> <span class="nav-text">4. 隔离级别</span></a></li></ol></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#reference"><span class="nav-number">4.</span> <span class="nav-text">reference</span></a></li></div>
             
 
           </div>
@@ -974,9 +1116,9 @@
 
 <script>
   var disqus_config = function() {
-    this.page.url = "http://yoursite.com/2019-11-搭建过程/内网穿透搭建/";
-    this.page.identifier = "2019-11-搭建过程/内网穿透搭建/";
-    this.page.title = '';
+    this.page.url = "http://yoursite.com/2018-06-基础知识/数据库系统原理学习/";
+    this.page.identifier = "2018-06-基础知识/数据库系统原理学习/";
+    this.page.title = '数据库系统原理学习';
     };
   function loadComments() {
     var d = document, s = d.createElement('script');
